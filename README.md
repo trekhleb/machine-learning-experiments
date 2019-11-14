@@ -8,7 +8,15 @@
 python3 -m venv env
 ```
 
-### Apply environment
+### Activate environment
+
+For `shell`:
+
+```bash
+source ./env/bin/activate
+```
+
+For `fish`:
 
 ```bash
 source ./env/bin/activate.fish
