@@ -1,1 +1,1 @@
-# interactive-machine-learning
+# Interactive Machine Learning
