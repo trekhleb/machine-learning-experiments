@@ -2,6 +2,10 @@
 
 Collection of interactive machine-learning experiments.
 
+## Experiments
+
+- Digits recognition
+
 ## How to use this repository
 
 ### Create an environment
