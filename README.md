@@ -1,4 +1,4 @@
-# Machine Learning Experiments
+# 🤖Machine Learning Experiments
 
 Collection of interactive machine-learning experiments.
 
