@@ -1,4 +1,6 @@
-# Interactive Machine Learning
+# Machine Learning Experiments
+
+Collection of interactive machine-learning experiments.
 
 ## How to use this repository
 
