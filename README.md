@@ -2,6 +2,10 @@
 
 Collection of interactive machine-learning experiments.
 
+## Demo
+
+@TODO: Add demo link and instructions
+
 ## Experiments
 
 - Digits recognition
@@ -50,4 +54,12 @@ pip install -r requirements.txt
 
 ```bash
 jupyter notebook
+```
+
+### Launching demos locally
+
+```bash
+cd demos
+yarn install
+yarn start
 ```
