@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Machine Learning Experiments Demo
+
+## TODO
+
+- Add route titles using `Helmet`
+- Cleanup this README
 
 ## Available Scripts
 
