@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const DigitsRecognitionExperiment = () => {
+const DigitsRecognitionExperiment = () => {
   return (
     <div>
       <h2>Digits Recognition Experiment</h2>
     </div>
   );
 };
+
+export default DigitsRecognitionExperiment;
