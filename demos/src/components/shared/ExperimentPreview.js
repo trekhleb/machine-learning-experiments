@@ -33,7 +33,7 @@ const ExperimentPreview = (props) => {
           startIcon={<PlayArrowIcon />}
           onClick={onTry}
         >
-          Try
+          Launch
         </Button>
       </CardActions>
     </Card>
