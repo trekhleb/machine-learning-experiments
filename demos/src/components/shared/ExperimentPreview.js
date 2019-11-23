@@ -11,16 +11,16 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import {EXPERIMENTS_ROUTE} from '../../constants/routes';
 
 const ExperimentPreview = (props) => {
-  const {name, id, previewUrl, history} = props;
+  const {name, id, cover, history} = props;
   const experimentUrl = `${EXPERIMENTS_ROUTE}/${id}`;
 
-  const onTry = () => {
+  const onExperimentLaunch = () => {
     history.push(experimentUrl);
   };
 
   return (
     <Card>
-      {previewUrl && <CardMedia image={previewUrl} title={name} />}
+      <CardMedia image={cover} title={name} style={cardMediaStyle} />
       <CardContent>
         <Typography variant="h5" component="h2">
           {name}
@@ -31,7 +31,7 @@ const ExperimentPreview = (props) => {
           variant="contained"
           color="default"
           startIcon={<PlayArrowIcon />}
-          onClick={onTry}
+          onClick={onExperimentLaunch}
         >
           Launch
         </Button>
@@ -39,5 +39,10 @@ const ExperimentPreview = (props) => {
     </Card>
   );
 };
+
+const cardMediaStyle = {
+  height: '100px',
+};
+
 
 export default withRouter(ExperimentPreview);

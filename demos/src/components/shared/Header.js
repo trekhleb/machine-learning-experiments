@@ -4,7 +4,7 @@ import MaterialLink from '@material-ui/core/Link';
 
 import {HOME_ROUTE} from '../../constants/routes';
 
-const PrimaryMenu = () => {
+const Header = () => {
   return (
     <>
       <MaterialLink component={RouterLink} to={HOME_ROUTE}>
@@ -14,4 +14,4 @@ const PrimaryMenu = () => {
   );
 };
 
-export default PrimaryMenu;
+export default Header;

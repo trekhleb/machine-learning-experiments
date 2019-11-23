@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'typeface-roboto';
 
-import PrimaryMenu from './PrimaryMenu';
+import Header from './Header';
 
 const RootLayout = (props) => {
   const {children} = props;
@@ -15,7 +15,7 @@ const RootLayout = (props) => {
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <PrimaryMenu />
+            <Header />
           </Grid>
           <Grid item xs={12}>
             {children}
