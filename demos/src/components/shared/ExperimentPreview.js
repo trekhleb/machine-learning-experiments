@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -12,6 +13,8 @@ import {EXPERIMENTS_ROUTE} from '../../constants/routes';
 
 const ExperimentPreview = (props) => {
   const {name, id, cover, history} = props;
+  const classes = useStyles();
+
   const experimentUrl = `${EXPERIMENTS_ROUTE}/${id}`;
 
   const onExperimentLaunch = () => {
@@ -20,7 +23,7 @@ const ExperimentPreview = (props) => {
 
   return (
     <Card>
-      <CardMedia image={cover} title={name} style={cardMediaStyle} />
+      <CardMedia image={cover} title={name} className={classes.media} />
       <CardContent>
         <Typography variant="h5" component="h2">
           {name}
@@ -40,9 +43,10 @@ const ExperimentPreview = (props) => {
   );
 };
 
-const cardMediaStyle = {
-  height: '100px',
-};
-
+const useStyles = makeStyles(theme => ({
+  media: {
+    height: '200px',
+  },
+}));
 
 export default withRouter(ExperimentPreview);

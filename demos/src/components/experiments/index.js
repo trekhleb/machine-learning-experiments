@@ -1,5 +1,5 @@
 import DigitsRecognition from './DigitsRecognition/DigitsRecognition';
-import DigitsRecognitionCover from './DigitsRecognition/cover.png';
+import DigitsRecognitionCover from './DigitsRecognition/cover.jpg';
 
 const experiments = {
   digitsRecognition: {
