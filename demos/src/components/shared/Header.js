@@ -20,8 +20,8 @@ const Header = () => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" className={classes.logoText} noWrap>
-            <MaterialLink component={RouterLink} to={HOME_ROUTE} color="inherit">
+          <Typography variant="h6" className={classes.logoTypography} noWrap>
+            <MaterialLink component={RouterLink} to={HOME_ROUTE} className={classes.logoLink}>
               Machine Learning Experiments
             </MaterialLink>
           </Typography>
@@ -50,12 +50,14 @@ const Header = () => {
 };
 
 const useStyles = makeStyles(theme => ({
-  logoText: {
+  logoTypography: {
     flexGrow: 1,
   },
   logoLink: {
-    textDecoration: 'none',
     color: 'inherit',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
   offset: theme.mixins.toolbar,
 }));
