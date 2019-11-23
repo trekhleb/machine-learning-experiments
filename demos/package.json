@@ -1,7 +1,7 @@
 {
-  "name": "demos",
+  "name": "machine-learning-experiments-demo",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
