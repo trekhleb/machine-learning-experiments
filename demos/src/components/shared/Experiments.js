@@ -16,6 +16,7 @@ const Experiments = () => {
         key={experimentId}
         name={experiment.name}
         cover={experiment.cover}
+        description={experiment.description}
       />
     );
   }
