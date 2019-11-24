@@ -1,16 +1,18 @@
 import React from 'react';
+import {ThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'typeface-roboto';
 
 import Header from './Header';
+import theme from '../../constants/theme';
 
 const RootLayout = (props) => {
   const {children} = props;
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="xl">
         <Grid container spacing={3}>
@@ -22,7 +24,7 @@ const RootLayout = (props) => {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </ThemeProvider>
   );
 };
 
