@@ -24,7 +24,7 @@ const ExperimentPreview = (props) => {
       <CardActionArea onClick={onExperimentLaunch}>
         <CardMedia image={cover} title={name} className={classes.media} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h6" component="h2">
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
