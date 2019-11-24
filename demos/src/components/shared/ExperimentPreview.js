@@ -13,7 +13,7 @@ import {EXPERIMENTS_ROUTE} from '../../constants/routes';
 
 const ExperimentPreview = (props) => {
   const {name, id, cover, history} = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   const experimentUrl = `${EXPERIMENTS_ROUTE}/${id}`;
 
