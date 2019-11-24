@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 
 import experiments from '../experiments';
 import {EXPERIMENT_ID_PARAM} from '../../constants/routes';
@@ -13,9 +14,20 @@ const Experiment = (props) => {
     return <div>Unknown experiment</div>;
   }
 
-  const ExperimentElement = experiments[experimentId].component;
+  const experiment = experiments[experimentId];
+  const ExperimentElement = experiment.component;
 
-  return <ExperimentElement />;
+  return (
+    <>
+      <Typography variant="h5">
+        {experiment.name}
+      </Typography>
+      <Typography variant="body1" component="p">
+        {experiment.description}
+      </Typography>
+      <ExperimentElement />
+    </>
+  );
 };
 
 export default withRouter(Experiment);

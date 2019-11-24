@@ -3,17 +3,19 @@ import Typography from '@material-ui/core/Typography';
 
 import cover from './cover.png';
 
+const experimentName = 'Digits Recognition';
+const experimentDescription = 'Hand-written digits recognition';
+
 const DigitsRecognition = () => {
   return (
-    <Typography variant="h5">
-      Digits Recognition
-    </Typography>
+    <>
+    </>
   );
 };
 
 const experiment = {
-  name: 'Digits Recognition',
-  description: 'Hand-written digits recognition',
+  name: experimentName,
+  description: experimentDescription,
   component: DigitsRecognition,
   cover,
 };
