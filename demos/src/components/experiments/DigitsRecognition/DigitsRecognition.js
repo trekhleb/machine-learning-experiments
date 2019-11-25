@@ -1,22 +1,21 @@
 import React from 'react';
-import type {Node} from 'react';
-import Typography from '@material-ui/core/Typography';
+import type { Node } from 'react';
 
-import type {ExperimentProps, Experiment} from '../types'; 
+import type { Experiment } from '../types';
 import cover from './cover.png';
 
+const experimentSlug = 'DigitsRecognition';
 const experimentName = 'Digits Recognition';
 const experimentDescription = 'Hand-written digits recognition';
 
-const DigitsRecognition = (props: ExperimentProps): Node => {
-  return (
-    <>
+const DigitsRecognition = (): Node => (
+  <>
       Canvas goes here
-    </>
-  );
-};
+  </>
+);
 
 const experiment: Experiment = {
+  slug: experimentSlug,
   name: experimentName,
   description: experimentDescription,
   component: DigitsRecognition,

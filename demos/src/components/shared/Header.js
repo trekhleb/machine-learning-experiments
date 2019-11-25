@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link as RouterLink} from 'react-router-dom';
-import {makeStyles} from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import MaterialLink from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,21 @@ import Tooltip from '@material-ui/core/Tooltip';
 import HomeIcon from '@material-ui/icons/Home';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
-import {HOME_ROUTE} from '../../constants/routes';
-import {MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL} from '../../constants/links';
+import { HOME_ROUTE } from '../../constants/routes';
+import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+
+const useStyles = makeStyles((theme) => ({
+  logoTypography: {
+    flexGrow: 1,
+  },
+  logoLink: {
+    color: 'inherit',
+    '&:hover': {
+      textDecoration: 'none',
+    },
+  },
+  offset: theme.mixins.toolbar,
+}));
 
 const Header = () => {
   const classes = useStyles();
@@ -48,18 +61,5 @@ const Header = () => {
     </>
   );
 };
-
-const useStyles = makeStyles(theme => ({
-  logoTypography: {
-    flexGrow: 1,
-  },
-  logoLink: {
-    color: 'inherit',
-    '&:hover': {
-      textDecoration: 'none',
-    },
-  },
-  offset: theme.mixins.toolbar,
-}));
 
 export default Header;

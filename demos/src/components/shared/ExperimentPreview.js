@@ -1,26 +1,32 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import {makeStyles} from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import type {RouterHistory} from 'react-router-dom';
+import type { RouterHistory } from 'react-router-dom';
 
-import {EXPERIMENTS_ROUTE} from '../../constants/routes';
-import type {Experiment} from '../experiments/types.js';
+import { EXPERIMENTS_ROUTE } from '../../constants/routes';
+import type { Experiment } from '../experiments/types';
+
+const useStyles = makeStyles(() => ({
+  media: {
+    height: 200,
+  },
+}));
 
 type ExperimentPreviewProps = {
   experiment: Experiment,
   history: RouterHistory,
 };
 
-const ExperimentPreview = (props) => {
-  const {experiment, history} = props;
+const ExperimentPreview = (props: ExperimentPreviewProps) => {
+  const { experiment, history } = props;
   const classes = useStyles(props);
 
-  const experimentUrl = `${EXPERIMENTS_ROUTE}/${experiment.id}`;
+  const experimentUrl = `${EXPERIMENTS_ROUTE}/${experiment.slug}`;
 
   const onExperimentLaunch = () => {
     history.push(experimentUrl);
@@ -42,11 +48,5 @@ const ExperimentPreview = (props) => {
     </Card>
   );
 };
-
-const useStyles = makeStyles(theme => ({
-  media: {
-    height: 200,
-  },
-}));
 
 export default withRouter(ExperimentPreview);

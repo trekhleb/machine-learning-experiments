@@ -7,6 +7,20 @@
 
 ## How to use this repo
 
+### Linting
+
+To check source code by ESLint run:
+
+```bash
+yarn lint
+```
+
+To fix the code according to ESLint config run:
+
+```bash
+yarn lint --fix
+```
+
 ### Flow type checking
 
 ```bash
