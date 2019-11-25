@@ -12,11 +12,17 @@
     "react-scripts": "3.2.0",
     "typeface-roboto": "^0.0.75"
   },
+  "devDependencies": {
+    "flow-bin": "^0.112.0",
+    "flow-typed": "^2.6.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "flow-typed": "flow-typed"
   },
   "eslintConfig": {
     "extends": "react-app"

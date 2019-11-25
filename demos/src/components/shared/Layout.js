@@ -1,4 +1,5 @@
 import React from 'react';
+import type {Node} from 'react';
 import {ThemeProvider} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -8,7 +9,11 @@ import 'typeface-roboto';
 import Header from './Header';
 import theme from '../../constants/theme';
 
-const RootLayout = (props) => {
+type LayoutProps = {
+  children: Node,
+};
+
+const Layout = (props: LayoutProps) => {
   const {children} = props;
 
   return (
@@ -28,4 +33,4 @@ const RootLayout = (props) => {
   );
 };
 
-export default RootLayout;
+export default Layout;

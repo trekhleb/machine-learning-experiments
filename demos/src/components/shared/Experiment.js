@@ -1,20 +1,32 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import type {Match} from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 
+import type {Experiment as ExperimentType} from '../experiments/types.js';
 import experiments from '../experiments';
 import {EXPERIMENT_ID_PARAM} from '../../constants/routes';
 
-const Experiment = (props) => {
+type ExperimentProps = {
+  match: Match,
+};
+
+const Experiment = (props: ExperimentProps) => {
   const {match} = props;
 
-  const experimentId = match.params[EXPERIMENT_ID_PARAM];
+  const experimentId: ?string = match.params[EXPERIMENT_ID_PARAM];
 
-  if (!Object.prototype.hasOwnProperty.call(experiments, experimentId)) {
-    return <div>Unknown experiment</div>;
+  const unknownExperiment = <div>Unknown experiment</div>;
+
+  if (!experimentId) {
+    return unknownExperiment;
   }
 
-  const experiment = experiments[experimentId];
+  if (!Object.prototype.hasOwnProperty.call(experiments, experimentId)) {
+    return unknownExperiment;
+  }
+
+  const experiment: ExperimentType = experiments[experimentId];
   const ExperimentElement = experiment.component;
 
   return (

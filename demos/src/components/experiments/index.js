@@ -1,6 +1,7 @@
+import type {ExperimentsMap} from './types.js';
 import DigitsRecognition from './DigitsRecognition/DigitsRecognition';
 
-const experiments = {
+const experiments: ExperimentsMap = {
   DigitsRecognition,
 };
 

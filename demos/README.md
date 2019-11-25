@@ -5,6 +5,42 @@
 - Add route titles using `Helmet`
 - Cleanup this README
 
+## How to use this repo
+
+### Flow type checking
+
+```bash
+yarn flow
+```
+
+This project is using [Flow](https://flow.org/) type checking. If you're using VSCode you might want to disable a javascript validation by adding this line to you VCode config file:
+
+```json
+"javascript.validate.enable": false,
+```
+
+This is because at the moment of writing this file the VSCode [didn't support](https://github.com/Microsoft/vscode-react-native/issues/631) Flow types correctly.
+
+### Adding new flow type definitions
+
+First you may want to search for a definitions:
+
+```bash
+yarn flow-typed search your-package-name
+```
+
+If definitions are not created you may want to mock the module:
+
+```bash
+yarn flow-typed create-stub your-package-name
+```
+
+If definitions exist you may install them:
+
+```bash
+yarn flow-typed install your-package-name
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

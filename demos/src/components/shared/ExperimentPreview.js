@@ -6,14 +6,21 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import type {RouterHistory} from 'react-router-dom';
 
 import {EXPERIMENTS_ROUTE} from '../../constants/routes';
+import type {Experiment} from '../experiments/types.js';
+
+type ExperimentPreviewProps = {
+  experiment: Experiment,
+  history: RouterHistory,
+};
 
 const ExperimentPreview = (props) => {
-  const {name, id, cover, description, history} = props;
+  const {experiment, history} = props;
   const classes = useStyles(props);
 
-  const experimentUrl = `${EXPERIMENTS_ROUTE}/${id}`;
+  const experimentUrl = `${EXPERIMENTS_ROUTE}/${experiment.id}`;
 
   const onExperimentLaunch = () => {
     history.push(experimentUrl);
@@ -22,13 +29,13 @@ const ExperimentPreview = (props) => {
   return (
     <Card>
       <CardActionArea onClick={onExperimentLaunch}>
-        <CardMedia image={cover} title={name} className={classes.media} />
+        <CardMedia image={experiment.cover} title={experiment.name} className={classes.media} />
         <CardContent>
           <Typography gutterBottom variant="h6" component="h2">
-            {name}
+            {experiment.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {description}
+            {experiment.description}
           </Typography>
         </CardContent>
       </CardActionArea>

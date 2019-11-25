@@ -13,8 +13,8 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import {HOME_ROUTE} from '../../constants/routes';
 import {MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL} from '../../constants/links';
 
-const Header = (props) => {
-  const classes = useStyles(props);
+const Header = () => {
+  const classes = useStyles();
 
   return (
     <>
