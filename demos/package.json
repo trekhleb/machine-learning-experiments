@@ -31,7 +31,8 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "flow-typed": "flow-typed",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "ci": "yarn lint && yarn flow"
   },
   "eslintConfig": {
     "extends": "react-app"
