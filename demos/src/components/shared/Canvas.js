@@ -11,6 +11,12 @@ const defaultProps = {
   lineColor: '#000000',
   lineWidth: 5,
   lineJoin: 'round',
+  onDrawEnd: canvasImages => {},
+};
+
+export type CanvasImages = {
+  dataURL: ?string,
+  blob: ?Blob,
 };
 
 type Coordinate = {
@@ -24,6 +30,7 @@ type CanvasProps = {
   lineWidth?: number,
   lineJoin?: string,
   lineColor?: string,
+  onDrawEnd?: (canvasImages: CanvasImages) => void,
 };
 
 // @see: https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
@@ -34,11 +41,28 @@ const Canvas = (props: CanvasProps) => {
     lineColor,
     lineWidth,
     lineJoin,
+    onDrawEnd: onDrawEndCallback,
   } = props;
 
   const canvasRef = useRef(null);
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
+
+  const onDrawEnd = () => {
+    if (!canvasRef.current) {
+      return;
+    }
+
+    const imageFormat = 'image/png';
+    const canvas: HTMLCanvasElement = canvasRef.current;
+
+    canvas.toBlob((blob: Blob) => {
+      onDrawEndCallback({
+        dataURL: canvas.toDataURL(imageFormat),
+        blob,
+      });
+    }, imageFormat);
+  };
 
   const getCoordinates = (event: MouseEvent): ?Coordinate => {
     if (!canvasRef.current) {
@@ -81,17 +105,6 @@ const Canvas = (props: CanvasProps) => {
     }
   };
 
-  useEffect(() => {
-    if (!canvasRef.current) {
-      return undefined;
-    }
-    const canvas: HTMLCanvasElement = canvasRef.current;
-    canvas.addEventListener('mousedown', startPaint);
-    return () => {
-      canvas.removeEventListener('mousedown', startPaint);
-    };
-  }, [startPaint]);
-
   const paint = useCallback(
     (event: MouseEvent) => {
       if (isPainting) {
@@ -105,6 +118,25 @@ const Canvas = (props: CanvasProps) => {
     [isPainting, mousePosition],
   );
 
+  const exitPaint = useCallback(() => {
+    onDrawEnd();
+    setIsPainting(false);
+    setMousePosition(undefined);
+  }, []);
+
+  // Effect for MouseDown.
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return undefined;
+    }
+    const canvas: HTMLCanvasElement = canvasRef.current;
+    canvas.addEventListener('mousedown', startPaint);
+    return () => {
+      canvas.removeEventListener('mousedown', startPaint);
+    };
+  }, [startPaint]);
+
+  // Effect for MouseMove.
   useEffect(() => {
     if (!canvasRef.current) {
       return undefined;
@@ -116,11 +148,7 @@ const Canvas = (props: CanvasProps) => {
     };
   }, [paint]);
 
-  const exitPaint = useCallback(() => {
-    setIsPainting(false);
-    setMousePosition(undefined);
-  }, []);
-
+  // Effect for MouseUp and MouseLeave.
   useEffect(() => {
     if (!canvasRef.current) {
       return undefined;
