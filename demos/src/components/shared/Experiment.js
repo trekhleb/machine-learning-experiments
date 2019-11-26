@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
 import type { Experiment as ExperimentType } from '../experiments/types';
@@ -37,7 +38,9 @@ const Experiment = (props: ExperimentProps) => {
       <Typography variant="body1" component="p">
         {experiment.description}
       </Typography>
-      <ExperimentElement />
+      <Box marginTop={3}>
+        <ExperimentElement />
+      </Box>
     </>
   );
 };
