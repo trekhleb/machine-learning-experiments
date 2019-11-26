@@ -5,6 +5,14 @@ import React, {
   useState,
 } from 'react';
 
+const defaultProps = {
+  width: 200,
+  height: 200,
+  lineColor: '#000000',
+  lineWidth: 5,
+  lineJoin: 'round',
+};
+
 type Coordinate = {
   x: number,
   y: number,
@@ -15,13 +23,17 @@ type CanvasProps = {
   height?: number,
   lineWidth?: number,
   lineJoin?: string,
-  color?: string,
+  lineColor?: string,
 };
 
 // @see: https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 const Canvas = (props: CanvasProps) => {
   const {
-    width, height, color, lineWidth, lineJoin,
+    width,
+    height,
+    lineColor,
+    lineWidth,
+    lineJoin,
   } = props;
 
   const canvasRef = useRef(null);
@@ -56,9 +68,9 @@ const Canvas = (props: CanvasProps) => {
     const canvas: HTMLCanvasElement = canvasRef.current;
     const context = canvas.getContext('2d');
     if (context) {
-      context.strokeStyle = color;
-      context.lineJoin = lineJoin;
-      context.lineWidth = lineWidth;
+      context.strokeStyle = lineColor || defaultProps.lineColor;
+      context.lineJoin = lineJoin || defaultProps.lineJoin;
+      context.lineWidth = lineWidth || defaultProps.lineWidth;
 
       context.beginPath();
       context.moveTo(originalMousePosition.x, originalMousePosition.y);
@@ -131,12 +143,6 @@ const Canvas = (props: CanvasProps) => {
   );
 };
 
-Canvas.defaultProps = {
-  width: 200,
-  height: 200,
-  color: '#000000',
-  lineWidth: 5,
-  lineJoin: 'round',
-};
+Canvas.defaultProps = defaultProps;
 
 export default Canvas;
