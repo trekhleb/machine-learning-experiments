@@ -41,7 +41,13 @@ pip install --upgrade pip
 ### Add new package (optional)
 
 ```bash
-pip install package && pip freeze > requirements.txt
+pip install package
+```
+
+### Save added package to `requirements.txt`
+
+```bash
+pip freeze > requirements.txt
 ```
 
 ### Install packages
