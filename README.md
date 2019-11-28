@@ -18,12 +18,6 @@ Collection of interactive machine-learning experiments.
 python3 -m venv env
 ```
 
-### Quit the environment
-
-```bash
-deactivate
-```
-
 ### Activate environment
 
 For `shell`:
@@ -36,6 +30,12 @@ For `fish`:
 
 ```bash
 source ./env/bin/activate.fish
+```
+
+### Quitting the environment
+
+```bash
+deactivate
 ```
 
 ### Upgrading `pip`
