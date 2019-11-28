@@ -18,6 +18,12 @@ Collection of interactive machine-learning experiments.
 python3 -m venv env
 ```
 
+### Quit the environment
+
+```bash
+deactivate
+```
+
 ### Activate environment
 
 For `shell`:
