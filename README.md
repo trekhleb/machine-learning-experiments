@@ -10,6 +10,10 @@ Collection of interactive machine-learning experiments.
 
 - Digits recognition
 
+| Gif preview | Name | Complexity | How to use the model | How to train the model | Topics | Technology |
+| ----------- | ---- | ---------- | -------------------- | ---------------------- | ------ | ---------- |
+| Gif image | Handwritten digits recognition | ⭐️⭐️ | demo 🏄‍♂️| 🏋️‍♂️ | CNN, NN | Tensorflow |
+
 ## How to use this repository
 
 ### Create an environment
