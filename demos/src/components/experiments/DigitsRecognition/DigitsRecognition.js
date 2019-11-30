@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
+import {MODELS_PATH} from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
 
@@ -16,6 +18,8 @@ const experimentDescription = 'Hand-written digits recognition';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
+
+const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -37,6 +41,17 @@ const DigitsRecognition = (): Node => {
   const [recognizedDigit, setRecognizedDigit] = useState(null);
   const [digitDataURL, setDigitDataURL] = useState(null);
   const [digitBlob, setDigitBlob] = useState(null);
+  const [model, setModel] = useState(null);
+
+  useEffect(() => {
+    tf.loadLayersModel(modelPath)
+      .then((model) => {
+        setModel(model);
+      })
+      .catch((e) => {
+        console.error('Error while fetching the model:', e);
+      })
+  }, []);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
     setDigitDataURL(canvasImages.dataURL);
