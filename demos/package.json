@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
+  "homepage": "https://trekhleb.github.io/machine-learning-experiments/",
   "dependencies": {
     "@material-ui/core": "^4.6.1",
     "@material-ui/icons": "^4.5.1",
@@ -23,7 +24,8 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "flow-bin": "^0.112.0",
-    "flow-typed": "^2.6.2"
+    "flow-typed": "^2.6.2",
+    "gh-pages": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,7 +35,9 @@
     "flow": "flow",
     "flow-typed": "flow-typed",
     "lint": "eslint ./src",
-    "ci": "yarn lint && yarn flow"
+    "ci": "yarn lint && yarn flow",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
