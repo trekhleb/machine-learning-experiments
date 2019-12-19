@@ -45,6 +45,7 @@ const DigitsRecognition = (): Node => {
   const [digitImageData, setDigitImageData] = useState(null);
   const [model, setModel] = useState(null);
   const [modelLoadingProgress, setModelLoadingProgress] = useState(null);
+  const [isPredicting, setIsPredicting] = useState(false);
 
   const onProgress = (progress) => {
     setModelLoadingProgress(progress);
@@ -73,6 +74,10 @@ const DigitsRecognition = (): Node => {
   };
 
   const onRecognize = () => {
+    if (!digitImageData) {
+      return;
+    }
+
     const modelInputWidth = model.layers[0].input.shape[1];
     const modelInputHeight = model.layers[0].input.shape[2];
     const colorsAxis = 2;
@@ -85,21 +90,9 @@ const DigitsRecognition = (): Node => {
       .reshape([1, modelInputWidth, modelInputHeight])
       .div(255);
 
-    // console.log(tensor.arraySync());
-    // const imageData = imageDataToGreyScaleMatrix(canvasImages.imageData);
-    // const flattenImageData = flattenImageMatrix(imageData);
-    // const prediction = model.predict(tf.tensor([imageData])).print();
-
     const prediction = model.predict(tensor);
-    console.log(prediction.mul(1000).floorDiv(100).dataSync());
-    console.log(prediction.argMax(1).dataSync());
-    
-    // model.predict(tensor).data().then((data) => {
-    //   console.log(data);
-    // });
-    // setRecognizedDigit(prediction[0].find(1));
-
-    setRecognizedDigit(3);
+    const recognizedDigit = prediction.argMax(1).dataSync()[0];
+    setRecognizedDigit(recognizedDigit);
   };
 
   if (modelLoadingProgress < 1) {
@@ -123,6 +116,7 @@ const DigitsRecognition = (): Node => {
 
       <Box display="flex" flexDirection="column" alignItems="flex-start">
         <Button
+          variant="outlined"
           onClick={onRecognize}
           startIcon={<PlayArrowIcon />}
           disabled={!digitImageData}
@@ -131,6 +125,7 @@ const DigitsRecognition = (): Node => {
         </Button>
 
         <Button
+          variant="outlined"
           onClick={onClearCanvas}
           startIcon={<DeleteIcon />}
           disabled={!digitImageData}
