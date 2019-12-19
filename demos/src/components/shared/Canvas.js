@@ -9,14 +9,13 @@ const defaultProps = {
   width: 200,
   height: 200,
   lineColor: '#000000',
-  lineWidth: 5,
+  lineWidth: 16,
   lineJoin: 'round',
   onDrawEnd: canvasImages => {},
 };
 
 export type CanvasImages = {
-  dataURL: ?string,
-  blob: ?Blob,
+  imageData: ?ImageData,
 };
 
 type Coordinate = {
@@ -53,24 +52,20 @@ const Canvas = (props: CanvasProps) => {
       return;
     }
 
-    const imageFormat = 'image/png';
     const canvas: HTMLCanvasElement = canvasRef.current;
-
-    canvas.toBlob((blob: Blob) => {
-      onDrawEndCallback({
-        dataURL: canvas.toDataURL(imageFormat),
-        blob,
-      });
-    }, imageFormat);
+    const context = canvas.getContext('2d');
+    
+    // Call a callback.
+    onDrawEndCallback({
+      imageData: context.getImageData(0, 0, canvas.width, canvas.height),
+    });
   };
 
   const getCoordinates = (event: MouseEvent): ?Coordinate => {
     if (!canvasRef.current) {
       return null;
     }
-
     const canvas: HTMLCanvasElement = canvasRef.current;
-
     return {
       x: event.pageX - canvas.offsetLeft,
       y: event.pageY - canvas.offsetTop,
@@ -95,12 +90,10 @@ const Canvas = (props: CanvasProps) => {
       context.strokeStyle = lineColor || defaultProps.lineColor;
       context.lineJoin = lineJoin || defaultProps.lineJoin;
       context.lineWidth = lineWidth || defaultProps.lineWidth;
-
       context.beginPath();
       context.moveTo(originalMousePosition.x, originalMousePosition.y);
       context.lineTo(newMousePosition.x, newMousePosition.y);
       context.closePath();
-
       context.stroke();
     }
   };
@@ -127,7 +120,7 @@ const Canvas = (props: CanvasProps) => {
   // Effect for MouseDown.
   useEffect(() => {
     if (!canvasRef.current) {
-      return undefined;
+      return;
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
@@ -139,7 +132,7 @@ const Canvas = (props: CanvasProps) => {
   // Effect for MouseMove.
   useEffect(() => {
     if (!canvasRef.current) {
-      return undefined;
+      return;
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
@@ -151,7 +144,7 @@ const Canvas = (props: CanvasProps) => {
   // Effect for MouseUp and MouseLeave.
   useEffect(() => {
     if (!canvasRef.current) {
-      return undefined;
+      return;
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
@@ -162,11 +155,22 @@ const Canvas = (props: CanvasProps) => {
     };
   }, [exitPaint]);
 
+  // Effect for filling a canvases with color.
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return;
+    }
+    const canvas: HTMLCanvasElement = canvasRef.current;
+    const context = canvas.getContext('2d');
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  }, []);
+
   return (
     <canvas
       ref={canvasRef}
-      height={height}
       width={width}
+      height={height}
     />
   );
 };

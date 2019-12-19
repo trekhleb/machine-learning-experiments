@@ -4,17 +4,20 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import * as tf from '@tensorflow/tfjs';
+import DeleteIcon from '@material-ui/icons/Delete';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
-import {MODELS_PATH} from '../../../constants/links';
+import { MODELS_PATH } from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
 
 const experimentSlug = 'DigitsRecognition';
-const experimentName = 'Digits Recognition';
-const experimentDescription = 'Hand-written digits recognition';
+const experimentName = 'Digits Recognition (MLP)';
+const experimentDescription = 'Hand-written digits recognition using MLP (Multilayer Perceptron)';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
@@ -39,35 +42,77 @@ const DigitsRecognition = (): Node => {
   const classes = useStyles();
 
   const [recognizedDigit, setRecognizedDigit] = useState(null);
-  const [digitDataURL, setDigitDataURL] = useState(null);
-  const [digitBlob, setDigitBlob] = useState(null);
+  const [digitImageData, setDigitImageData] = useState(null);
   const [model, setModel] = useState(null);
+  const [modelLoadingProgress, setModelLoadingProgress] = useState(null);
+
+  const onProgress = (progress) => {
+    setModelLoadingProgress(progress);
+  };
 
   useEffect(() => {
-    tf.loadLayersModel(modelPath)
+    tf.loadLayersModel(modelPath, {onProgress})
       .then((model) => {
         setModel(model);
       })
       .catch((e) => {
-        console.error('Error while fetching the model:', e);
+        console.error(e);
       })
   }, []);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
-    setDigitDataURL(canvasImages.dataURL);
-    setDigitBlob(canvasImages.blob);
+    if (!canvasImages.imageData) {
+      return;
+    }
+    setDigitImageData(canvasImages.imageData);
   };
 
   const onClearCanvas = () => {
     setRecognizedDigit(null);
+    setDigitImageData(null);
   };
 
   const onRecognize = () => {
+    const modelInputWidth = model.layers[0].input.shape[1];
+    const modelInputHeight = model.layers[0].input.shape[2];
+    const colorsAxis = 2;
+
+    const tensor = tf.browser
+      .fromPixels(digitImageData)
+      .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
+      .mean(colorsAxis)
+      .toFloat()
+      .reshape([1, modelInputWidth, modelInputHeight])
+      .div(255);
+
+    // console.log(tensor.arraySync());
+    // const imageData = imageDataToGreyScaleMatrix(canvasImages.imageData);
+    // const flattenImageData = flattenImageMatrix(imageData);
+    // const prediction = model.predict(tf.tensor([imageData])).print();
+
+    const prediction = model.predict(tensor);
+    console.log(prediction.mul(1000).floorDiv(100).dataSync());
+    console.log(prediction.argMax(1).dataSync());
+    
+    // model.predict(tensor).data().then((data) => {
+    //   console.log(data);
+    // });
+    // setRecognizedDigit(prediction[0].find(1));
+
     setRecognizedDigit(3);
   };
 
+  if (modelLoadingProgress < 1) {
+    return (
+      <Box>
+        Loading the model
+        <LinearProgress variant="determinate" value={modelLoadingProgress * 100} />
+      </Box>
+    );
+  }
+
   return (
-    <Box flexDirection="row" display="flex">
+    <Box display="flex" flexDirection="row">
       <Paper className={classes.paper}>
         <Canvas
           width={canvasWidth}
@@ -76,9 +121,22 @@ const DigitsRecognition = (): Node => {
         />  
       </Paper>
 
-      <Box>
-        <Button onClick={onRecognize}>Recognize</Button>
-        <Button onClick={onClearCanvas}>Clear</Button>
+      <Box display="flex" flexDirection="column" alignItems="flex-start">
+        <Button
+          onClick={onRecognize}
+          startIcon={<PlayArrowIcon />}
+          disabled={!digitImageData}
+        >
+          Recognize
+        </Button>
+
+        <Button
+          onClick={onClearCanvas}
+          startIcon={<DeleteIcon />}
+          disabled={!digitImageData}
+        >
+          Clear
+        </Button>
       </Box>
 
       <Paper className={classes.paper}>
