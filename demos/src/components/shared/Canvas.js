@@ -127,8 +127,10 @@ const Canvas = (props: CanvasProps) => {
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
+    canvas.addEventListener('touchstart', startPaint);
     return () => {
       canvas.removeEventListener('mousedown', startPaint);
+      canvas.removeEventListener('touchstart', startPaint);
     };
   }, [startPaint]);
 
@@ -139,8 +141,10 @@ const Canvas = (props: CanvasProps) => {
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
+    canvas.addEventListener('touchmove', paint);
     return () => {
       canvas.removeEventListener('mousemove', paint);
+      canvas.removeEventListener('touchmove', paint);
     };
   }, [paint]);
 
@@ -152,9 +156,13 @@ const Canvas = (props: CanvasProps) => {
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
     canvas.addEventListener('mouseleave', exitPaint);
+    canvas.addEventListener('touchend', exitPaint);
+    canvas.addEventListener('touchcancel', exitPaint);
     return () => {
       canvas.removeEventListener('mouseup', exitPaint);
       canvas.removeEventListener('mouseleave', exitPaint);
+      canvas.removeEventListener('touchend', exitPaint);
+      canvas.removeEventListener('touchcancel', exitPaint);
     };
   }, [exitPaint]);
 

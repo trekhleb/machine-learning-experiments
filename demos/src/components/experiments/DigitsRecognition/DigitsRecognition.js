@@ -41,22 +41,20 @@ const useStyles = makeStyles(() => ({
 const DigitsRecognition = (): Node => {
   const classes = useStyles();
 
+  const [model, setModel] = useState(null);
+  const [modelError, setModelError] = useState(null);
   const [recognizedDigit, setRecognizedDigit] = useState(null);
   const [digitImageData, setDigitImageData] = useState(null);
-  const [model, setModel] = useState(null);
-  const [modelLoadingProgress, setModelLoadingProgress] = useState(null);
-
-  const onProgress = (progress) => {
-    setModelLoadingProgress(progress);
-  };
 
   useEffect(() => {
-    tf.loadLayersModel(modelPath, {onProgress})
+    tf.loadLayersModel(modelPath)
       .then((model) => {
         setModel(model);
       })
       .catch((e) => {
+        // @TODO: Display an error in a snackbar.
         console.error(e);
+        setModelError(modelError);
       })
   }, []);
 
@@ -98,11 +96,13 @@ const DigitsRecognition = (): Node => {
     setRecognizedDigit(recognizedDigit);
   };
 
-  if (modelLoadingProgress < 1) {
+  if (!model && !modelError) {
     return (
       <Box>
-        Loading the model
-        <LinearProgress variant="determinate" value={modelLoadingProgress * 100} />
+        <Box>
+          Loading the model
+        </Box>
+        <LinearProgress />
       </Box>
     );
   }
