@@ -117,24 +117,37 @@ const DigitsRecognition = (): Node => {
         />  
       </Paper>
 
-      <Box display="flex" flexDirection="column" alignItems="flex-start">
-        <Button
-          variant="outlined"
-          onClick={onRecognize}
-          startIcon={<PlayArrowIcon />}
-          disabled={!digitImageData}
-        >
-          Recognize
-        </Button>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="flex-start"
+        justifyContent="center"
+        pl={2}
+        pr={2}
+      >
+        <Box mb={1}>
+          <Button
+            // variant="contained"
+            color="primary"
+            onClick={onRecognize}
+            startIcon={<PlayArrowIcon />}
+            disabled={!digitImageData}
+          >
+            Recognize
+          </Button>
+        </Box>
 
-        <Button
-          variant="outlined"
-          onClick={onClearCanvas}
-          startIcon={<DeleteIcon />}
-          disabled={!digitImageData}
-        >
-          Clear
-        </Button>
+        <Box mb={1}>
+          <Button
+            // variant="contained"
+            color="secondary"
+            onClick={onClearCanvas}
+            startIcon={<DeleteIcon />}
+            disabled={!digitImageData}
+          >
+            Clear
+          </Button>
+        </Box>
       </Box>
 
       <Paper className={classes.paper}>
