@@ -84,13 +84,17 @@ const DigitsRecognition = (): Node => {
 
     const tensor = tf.browser
       .fromPixels(digitImageData)
+      // Resize image to fit neural network input.
       .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
+      // Calculate grey-scale average across channels.
       .mean(colorsAxis)
-      .toFloat()
-      .reshape([1, modelInputWidth, modelInputHeight])
+      // Invert image colors to fit neural network model input.
+      .mul(-1)
+      .add(255)
+      // Normalize.
       .div(255);
 
-    const prediction = model.predict(tensor);
+    const prediction = model.predict(tensor.reshape([1, modelInputWidth, modelInputHeight]));
     const recognizedDigit = prediction.argMax(1).dataSync()[0];
     setRecognizedDigit(recognizedDigit);
   };
