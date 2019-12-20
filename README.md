@@ -123,7 +123,9 @@ tensorflowjs_converter --input_format keras path/to/my_model.h5 path/to/tfjs_tar
 For example:
 
 ```bash
-tensorflowjs_converter --input_format keras ./experiments/digits_recognition/digits_recognition.h5 ./demos/public/models/digits_recognition
+tensorflowjs_converter --input_format keras \
+  ./experiments/digits_recognition/digits_recognition.h5 \
+  ./demos/public/models/digits_recognition
 ```
 
 ### Launching demos locally
