@@ -11,6 +11,7 @@ const defaultProps = {
   lineColor: '#000000',
   lineWidth: 16,
   lineJoin: 'round',
+  backgroundColor: '#FFFFFF',
   onDrawEnd: canvasImages => {},
 };
 
@@ -29,6 +30,7 @@ type CanvasProps = {
   lineWidth?: number,
   lineJoin?: string,
   lineColor?: string,
+  backgroundColor?: String,
   onDrawEnd?: (canvasImages: CanvasImages) => void,
 };
 
@@ -40,6 +42,7 @@ const Canvas = (props: CanvasProps) => {
     lineColor,
     lineWidth,
     lineJoin,
+    backgroundColor,
     onDrawEnd: onDrawEndCallback,
   } = props;
 
@@ -162,7 +165,7 @@ const Canvas = (props: CanvasProps) => {
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     const context = canvas.getContext('2d');
-    context.fillStyle = 'white';
+    context.fillStyle = backgroundColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
   }, []);
 
