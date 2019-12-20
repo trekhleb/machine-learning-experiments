@@ -45,7 +45,6 @@ const DigitsRecognition = (): Node => {
   const [digitImageData, setDigitImageData] = useState(null);
   const [model, setModel] = useState(null);
   const [modelLoadingProgress, setModelLoadingProgress] = useState(null);
-  const [isPredicting, setIsPredicting] = useState(false);
 
   const onProgress = (progress) => {
     setModelLoadingProgress(progress);
