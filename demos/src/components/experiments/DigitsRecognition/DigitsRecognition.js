@@ -27,7 +27,8 @@ const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
 const useStyles = makeStyles(() => ({
   paper: {
     width: canvasWidth,
-    height: canvasHeight
+    height: canvasHeight,
+    overflow: 'hidden',
   },
   recognizedDigit: {
     height: '100%',
