@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import * as tf from '@tensorflow/tfjs';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
@@ -108,14 +108,19 @@ const DigitsRecognition = (): Node => {
   }
 
   return (
-    <Box display="flex" flexDirection="row">
-      <Paper className={classes.paper}>
-        <Canvas
-          width={canvasWidth}
-          height={canvasHeight}
-          onDrawEnd={onDrawEnd}
-        />  
-      </Paper>
+    <Box display="flex" flexDirection={'row'}>
+      <Box>
+        <Box fontWeight="fontWeightLight" mb={1}>
+          Draw one big digit here
+        </Box>
+        <Paper className={classes.paper}>
+          <Canvas
+            width={canvasWidth}
+            height={canvasHeight}
+            onDrawEnd={onDrawEnd}
+          />  
+        </Paper>
+      </Box>
 
       <Box
         display="flex"
@@ -150,11 +155,16 @@ const DigitsRecognition = (): Node => {
         </Box>
       </Box>
 
-      <Paper className={classes.paper}>
-        <Box className={classes.recognizedDigit}>
-          {recognizedDigit}
+      <Box>
+        <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
+          Recognized digit will appear here
         </Box>
-      </Paper>
+        <Paper className={classes.paper}>
+          <Box className={classes.recognizedDigit}>
+            {recognizedDigit}
+          </Box>
+        </Paper>
+      </Box>
     </Box>
   );
 };
