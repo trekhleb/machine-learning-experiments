@@ -18,7 +18,7 @@ import cover from './cover.png';
 
 const experimentSlug = 'DigitsRecognition';
 const experimentName = 'Digits Recognition (MLP)';
-const experimentDescription = 'Hand-written digits recognition using MLP (Multilayer Perceptron)';
+const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
@@ -117,11 +117,20 @@ const DigitsRecognition = (): Node => {
     );
   }
 
+  const oneHotBars = probabilities ? (
+    <Box>
+      <Box mb={1}>
+        Probabilities
+      </Box>
+      <OneHotBars data={probabilities} />
+    </Box>
+  ) : null; 
+
   return (
-    <Box display="flex" flexDirection={'row'}>
-      <Box>
+    <Box display="flex" flexDirection={'row'} mb={1}>
+      <Box mb={1}>
         <Box fontWeight="fontWeightLight" mb={1}>
-          Draw <b>one big</b> digit here
+          Draw <b>one BIG</b> digit here
         </Box>
         <Paper className={classes.paper}>
           <Canvas
@@ -140,6 +149,7 @@ const DigitsRecognition = (): Node => {
         justifyContent="center"
         pl={2}
         pr={2}
+        mb={1}
       >
         <Box mb={1}>
           <Button
@@ -166,7 +176,7 @@ const DigitsRecognition = (): Node => {
         </Box>
       </Box>
 
-      <Box>
+      <Box mb={1}>
         <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
           Recognized digit will appear here
         </Box>
@@ -176,8 +186,7 @@ const DigitsRecognition = (): Node => {
           </Box>
         </Paper>
 
-        Probabilities
-        <OneHotBars data={probabilities} />
+        {oneHotBars}
       </Box>
     </Box>
   );
