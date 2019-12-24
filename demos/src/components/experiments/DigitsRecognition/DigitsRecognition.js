@@ -11,6 +11,7 @@ import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
+import OneHotBars, {valueKey, labelKey} from '../../shared/OneHotBars';
 import { MODELS_PATH } from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
@@ -45,6 +46,7 @@ const DigitsRecognition = (): Node => {
   const [model, setModel] = useState(null);
   const [modelError, setModelError] = useState(null);
   const [recognizedDigit, setRecognizedDigit] = useState(null);
+  const [probabilities, setProbabilities] = useState(null);
   const [digitImageData, setDigitImageData] = useState(null);
 
   useEffect(() => {
@@ -69,6 +71,7 @@ const DigitsRecognition = (): Node => {
   const onClearCanvas = () => {
     setRecognizedDigit(null);
     setDigitImageData(null);
+    setProbabilities(null);
   };
 
   const onRecognize = () => {
@@ -95,6 +98,10 @@ const DigitsRecognition = (): Node => {
     const prediction = model.predict(tensor.reshape([1, modelInputWidth, modelInputHeight]));
     const recognizedDigit = prediction.argMax(1).dataSync()[0];
     setRecognizedDigit(recognizedDigit);
+    setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
+      [valueKey]: probability,
+      [labelKey]: index, 
+    })));
   };
 
   if (!model && !modelError) {
@@ -112,7 +119,7 @@ const DigitsRecognition = (): Node => {
     <Box display="flex" flexDirection={'row'}>
       <Box>
         <Box fontWeight="fontWeightLight" mb={1}>
-          Draw one big digit here
+          Draw <b>one big</b> digit here
         </Box>
         <Paper className={classes.paper}>
           <Canvas
@@ -165,6 +172,9 @@ const DigitsRecognition = (): Node => {
             {recognizedDigit}
           </Box>
         </Paper>
+
+        Probabilities
+        <OneHotBars data={probabilities} />
       </Box>
     </Box>
   );
