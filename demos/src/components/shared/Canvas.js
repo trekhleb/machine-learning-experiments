@@ -30,7 +30,8 @@ type CanvasProps = {
   lineWidth?: number,
   lineJoin?: string,
   lineColor?: string,
-  backgroundColor?: String,
+  backgroundColor?: string,
+  revision?: number,
   onDrawEnd?: (canvasImages: CanvasImages) => void,
 };
 
@@ -43,6 +44,7 @@ const Canvas = (props: CanvasProps) => {
     lineWidth,
     lineJoin,
     backgroundColor,
+    revision,
     onDrawEnd: onDrawEndCallback,
   } = props;
 
@@ -176,6 +178,17 @@ const Canvas = (props: CanvasProps) => {
     context.fillStyle = backgroundColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
   }, [backgroundColor]);
+
+  // Effect to cleanup the canvas.
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return;
+    }
+    const canvas: HTMLCanvasElement = canvasRef.current;
+    const context = canvas.getContext('2d');
+    context.fillStyle = backgroundColor;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+  }, [revision]);
 
   return (
     <canvas

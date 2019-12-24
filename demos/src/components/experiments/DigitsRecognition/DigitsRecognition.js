@@ -48,6 +48,7 @@ const DigitsRecognition = (): Node => {
   const [recognizedDigit, setRecognizedDigit] = useState(null);
   const [probabilities, setProbabilities] = useState(null);
   const [digitImageData, setDigitImageData] = useState(null);
+  const [canvasRevision, setCanvasRevision] = useState(0);
 
   useEffect(() => {
     tf.loadLayersModel(modelPath)
@@ -72,6 +73,7 @@ const DigitsRecognition = (): Node => {
     setRecognizedDigit(null);
     setDigitImageData(null);
     setProbabilities(null);
+    setCanvasRevision(canvasRevision + 1);
   };
 
   const onRecognize = () => {
@@ -126,6 +128,7 @@ const DigitsRecognition = (): Node => {
             width={canvasWidth}
             height={canvasHeight}
             onDrawEnd={onDrawEnd}
+            revision={canvasRevision}
           />  
         </Paper>
       </Box>
