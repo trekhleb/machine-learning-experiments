@@ -45,7 +45,7 @@ const Experiment = (props: ExperimentProps) => {
       </Box>
       <Box mb={3}>
         <Button size="small" variant="outlined" href={experiment.trainingURL}>
-          Train this model
+          See how this model was trained
         </Button>
       </Box>
       <Box mb={1}>
