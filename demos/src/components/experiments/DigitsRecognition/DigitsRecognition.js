@@ -19,6 +19,8 @@ import cover from './cover.png';
 const experimentSlug = 'DigitsRecognition';
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
+// @TODO: Add URL to see how the model was trained.
+const experimentTrainingURL = 'https://jupyter.com';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
@@ -127,66 +129,75 @@ const DigitsRecognition = (): Node => {
   ) : null; 
 
   return (
-    <Box display="flex" flexDirection={'row'} mb={1}>
-      <Box mb={1}>
-        <Box fontWeight="fontWeightLight" mb={1}>
-          Draw <b>one BIG</b> digit here
-        </Box>
-        <Paper className={classes.paper}>
-          <Canvas
-            width={canvasWidth}
-            height={canvasHeight}
-            onDrawEnd={onDrawEnd}
-            revision={canvasRevision}
-          />  
-        </Paper>
-      </Box>
-
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="flex-start"
-        justifyContent="center"
-        pl={2}
-        pr={2}
-        mb={1}
-      >
-        <Box mb={1}>
-          <Button
-            // variant="contained"
-            color="primary"
-            onClick={onRecognize}
-            startIcon={<PlayArrowIcon />}
-            disabled={!digitImageData}
-          >
-            Recognize
-          </Button>
-        </Box>
-
-        <Box mb={1}>
-          <Button
-            // variant="contained"
-            color="secondary"
-            onClick={onClearCanvas}
-            startIcon={<DeleteIcon />}
-            disabled={!digitImageData}
-          >
-            Clear
-          </Button>
-        </Box>
-      </Box>
-
-      <Box mb={1}>
-        <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
-          Recognized digit will appear here
-        </Box>
-        <Paper className={classes.paper}>
-          <Box className={classes.recognizedDigit}>
-            {recognizedDigit}
+    <Box>
+      <Box display="flex" flexDirection={'row'} mb={1}>
+        <Box mb={3}>
+          <Box fontWeight="fontWeightLight" mb={1}>
+            Draw <b>one BIG</b> digit here
           </Box>
-        </Paper>
+          <Paper className={classes.paper}>
+            <Canvas
+              width={canvasWidth}
+              height={canvasHeight}
+              onDrawEnd={onDrawEnd}
+              revision={canvasRevision}
+            />  
+          </Paper>
+        </Box>
 
-        {oneHotBars}
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-start"
+          justifyContent="center"
+          pl={2}
+          pr={2}
+          mb={1}
+        >
+          <Box mb={1}>
+            <Button
+              // variant="contained"
+              color="primary"
+              onClick={onRecognize}
+              startIcon={<PlayArrowIcon />}
+              disabled={!digitImageData}
+            >
+              Recognize
+            </Button>
+          </Box>
+
+          <Box mb={1}>
+            <Button
+              // variant="contained"
+              color="secondary"
+              onClick={onClearCanvas}
+              startIcon={<DeleteIcon />}
+              disabled={!digitImageData}
+            >
+              Clear
+            </Button>
+          </Box>
+        </Box>
+
+        <Box mb={1}>
+          <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
+            Recognized digit will appear here
+          </Box>
+          <Paper className={classes.paper}>
+            <Box className={classes.recognizedDigit}>
+              {recognizedDigit}
+            </Box>
+          </Paper>
+
+          {oneHotBars}
+        </Box>
+      </Box>
+
+      <Box mb={1}>
+        This model has a disadvantage that the digit should be big and centered. If you would try to draw the
+        small digit and in the corner the recognition will most probably fail. 
+
+        To overcome this limitation the CNN might be used.
       </Box>
     </Box>
   );
@@ -197,6 +208,7 @@ const experiment: Experiment = {
   name: experimentName,
   description: experimentDescription,
   component: DigitsRecognition,
+  trainingURL: experimentTrainingURL,
   cover,
 };
 

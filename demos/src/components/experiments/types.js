@@ -4,7 +4,8 @@ export type Experiment = {|
   slug: string,
   name: string,
   description: string,
-  component: Function,
+  component: function,
+  trainingURL: string,
   cover: string,
 |};
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import type { Experiment as ExperimentType } from '../experiments/types';
@@ -32,13 +33,22 @@ const Experiment = (props: ExperimentProps) => {
 
   return (
     <>
-      <Typography variant="h5">
-        {experiment.name}
-      </Typography>
-      <Typography variant="body1" component="p">
-        {experiment.description}
-      </Typography>
-      <Box marginTop={3}>
+      <Box mb={1}>
+        <Typography variant="h5">
+          {experiment.name}
+        </Typography>
+      </Box>
+      <Box mb={1}>
+        <Typography variant="body1" component="p">
+          {experiment.description}
+        </Typography>
+      </Box>
+      <Box mb={3}>
+        <Button size="small" variant="outlined" href={experiment.trainingURL}>
+          Train this model
+        </Button>
+      </Box>
+      <Box mb={1}>
         <ExperimentElement />
       </Box>
     </>
