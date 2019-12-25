@@ -20,21 +20,17 @@ type OneHotBarProps = {
 };
 
 const OneHotBars = (props: OneHotBarProps) => {
-  const {data} = props;
+  const { data } = props;
 
   if (!data) {
     return null;
   }
-  
+
   return (
-    <ResponsiveContainer
-      width="100%"
-      height={100}
-      margin={{top: 0, right: 0, bottom: 0, left: 0}}
-    >
+    <ResponsiveContainer width="100%" height={100}>
       <BarChart data={data}>
-        <XAxis dataKey={labelKey} />
         <YAxis />
+        <XAxis dataKey={labelKey} />
         <Bar type="monotone" dataKey={valueKey} barSize={30} fill="#8884d8" />
       </BarChart>
     </ResponsiveContainer>
