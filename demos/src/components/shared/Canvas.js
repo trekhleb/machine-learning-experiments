@@ -11,8 +11,9 @@ const defaultProps = {
   lineColor: '#000000',
   lineWidth: 16,
   lineJoin: 'round',
+  revision: 0,
   backgroundColor: '#FFFFFF',
-  onDrawEnd: canvasImages => {},
+  onDrawEnd: () => {},
 };
 
 export type CanvasImages = {
@@ -59,7 +60,7 @@ const Canvas = (props: CanvasProps) => {
 
     const canvas: HTMLCanvasElement = canvasRef.current;
     const context = canvas.getContext('2d');
-    
+
     // Call a callback.
     onDrawEndCallback({
       imageData: context.getImageData(0, 0, canvas.width, canvas.height),
@@ -130,6 +131,7 @@ const Canvas = (props: CanvasProps) => {
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
     canvas.addEventListener('touchstart', startPaint);
+
     return () => {
       canvas.removeEventListener('mousedown', startPaint);
       canvas.removeEventListener('touchstart', startPaint);
@@ -144,6 +146,7 @@ const Canvas = (props: CanvasProps) => {
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
     canvas.addEventListener('touchmove', paint);
+
     return () => {
       canvas.removeEventListener('mousemove', paint);
       canvas.removeEventListener('touchmove', paint);
@@ -160,6 +163,7 @@ const Canvas = (props: CanvasProps) => {
     canvas.addEventListener('mouseleave', exitPaint);
     canvas.addEventListener('touchend', exitPaint);
     canvas.addEventListener('touchcancel', exitPaint);
+
     return () => {
       canvas.removeEventListener('mouseup', exitPaint);
       canvas.removeEventListener('mouseleave', exitPaint);

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -11,7 +10,7 @@ import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
-import OneHotBars, {valueKey, labelKey} from '../../shared/OneHotBars';
+import OneHotBars, { valueKey, labelKey } from '../../shared/OneHotBars';
 import { MODELS_PATH } from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
@@ -42,7 +41,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DigitsRecognition = (): Node => {
+const DigitsRecognition = () => {
   const classes = useStyles();
 
   const [model, setModel] = useState(null);
@@ -54,14 +53,13 @@ const DigitsRecognition = (): Node => {
 
   useEffect(() => {
     tf.loadLayersModel(modelPath)
-      .then((model) => {
-        setModel(model);
+      .then((layersModel) => {
+        setModel(layersModel);
       })
-      .catch((e) => {
+      .catch(() => {
         // @TODO: Display an error in a snackbar.
-        console.error(e);
         setModelError(modelError);
-      })
+      });
   }, []);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
@@ -100,11 +98,11 @@ const DigitsRecognition = (): Node => {
       .div(255);
 
     const prediction = model.predict(tensor.reshape([1, modelInputWidth, modelInputHeight]));
-    const recognizedDigit = prediction.argMax(1).dataSync()[0];
-    setRecognizedDigit(recognizedDigit);
+    const digit = prediction.argMax(1).dataSync()[0];
+    setRecognizedDigit(digit);
     setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
       [valueKey]: probability,
-      [labelKey]: index, 
+      [labelKey]: index,
     })));
   };
 
@@ -120,20 +118,24 @@ const DigitsRecognition = (): Node => {
   }
 
   const oneHotBars = probabilities ? (
-    <Box>
+    <Box width={200}>
       <Box mb={1}>
         Probabilities
       </Box>
       <OneHotBars data={probabilities} />
     </Box>
-  ) : null; 
+  ) : null;
 
   return (
     <Box>
-      <Box display="flex" flexDirection={'row'} mb={1}>
+      <Box display="flex" flexDirection="row" mb={1}>
         <Box mb={3}>
           <Box fontWeight="fontWeightLight" mb={1}>
-            Draw <b>one BIG</b> digit here
+            Draw
+            {' '}
+            <b>one BIG</b>
+            {' '}
+            digit here
           </Box>
           <Paper className={classes.paper}>
             <Canvas
@@ -141,7 +143,7 @@ const DigitsRecognition = (): Node => {
               height={canvasHeight}
               onDrawEnd={onDrawEnd}
               revision={canvasRevision}
-            />  
+            />
           </Paper>
         </Box>
 
@@ -156,7 +158,6 @@ const DigitsRecognition = (): Node => {
         >
           <Box mb={1}>
             <Button
-              // variant="contained"
               color="primary"
               onClick={onRecognize}
               startIcon={<PlayArrowIcon />}
@@ -168,7 +169,6 @@ const DigitsRecognition = (): Node => {
 
           <Box mb={1}>
             <Button
-              // variant="contained"
               color="secondary"
               onClick={onClearCanvas}
               startIcon={<DeleteIcon />}
@@ -188,16 +188,15 @@ const DigitsRecognition = (): Node => {
               {recognizedDigit}
             </Box>
           </Paper>
-
-          {oneHotBars}
         </Box>
+
+        {oneHotBars}
       </Box>
 
       <Box mb={1}>
-        This model has a disadvantage that the digit should be big and centered. If you would try to draw the
-        small digit and in the corner the recognition will most probably fail. 
-
-        To overcome this limitation the CNN might be used.
+        This model has a disadvantage that the digit should be big and centered.
+        If you would try to draw the small digit and in the corner the recognition
+        will most probably fail. To overcome this limitation the CNN might be used.
       </Box>
     </Box>
   );
