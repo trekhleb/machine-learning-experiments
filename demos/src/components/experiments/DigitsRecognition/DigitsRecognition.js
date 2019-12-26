@@ -119,6 +119,70 @@ const DigitsRecognition = () => {
     );
   }
 
+  const canvasPaper = (
+    <>
+      <Box fontWeight="fontWeightLight" mb={1}>
+        Draw
+        {' '}
+        <b>one BIG</b>
+        {' '}
+        digit here
+      </Box>
+      <Paper className={classes.paper}>
+        <Canvas
+          width={canvasWidth}
+          height={canvasHeight}
+          onDrawEnd={onDrawEnd}
+          revision={canvasRevision}
+        />
+      </Paper>
+    </>
+  );
+
+  const buttons = (
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="flex-start"
+      justifyContent="center"
+    >
+      <Box mb={1}>
+        <Button
+          color="primary"
+          onClick={onRecognize}
+          startIcon={<PlayArrowIcon />}
+          disabled={!digitImageData}
+        >
+          Recognize
+        </Button>
+      </Box>
+
+      <Box mb={1}>
+        <Button
+          color="secondary"
+          onClick={onClearCanvas}
+          startIcon={<DeleteIcon />}
+          disabled={!digitImageData}
+        >
+          Clear
+        </Button>
+      </Box>
+    </Box>
+  );
+
+  const digitsPaper = (
+    <>
+      <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
+        Recognized digit will appear here
+      </Box>
+      <Paper className={classes.paper}>
+        <Box className={classes.recognizedDigit}>
+          {recognizedDigit}
+        </Box>
+      </Paper>
+    </>
+  );
+
   const oneHotBars = probabilities ? (
     <Box width={200}>
       <Box mb={1}>
@@ -131,76 +195,36 @@ const DigitsRecognition = () => {
     </Box>
   ) : null;
 
+  const description = (
+    <>
+      This model has a disadvantage that the digit should be big and centered.
+      If you would try to draw the small digit and in the corner the recognition
+      will most probably fail. To overcome this limitation the CNN might be used.
+    </>
+  );
+
   return (
     <Box>
       <Box display="flex" flexDirection="row">
         <Box mb={2} mr={2}>
-          <Box fontWeight="fontWeightLight" mb={1}>
-            Draw
-            {' '}
-            <b>one BIG</b>
-            {' '}
-            digit here
-          </Box>
-          <Paper className={classes.paper}>
-            <Canvas
-              width={canvasWidth}
-              height={canvasHeight}
-              onDrawEnd={onDrawEnd}
-              revision={canvasRevision}
-            />
-          </Paper>
-        </Box>
-
-        <Box
-          display="flex"
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="center"
-          mb={2}
-          mr={2}
-        >
-          <Box mb={1}>
-            <Button
-              color="primary"
-              onClick={onRecognize}
-              startIcon={<PlayArrowIcon />}
-              disabled={!digitImageData}
-            >
-              Recognize
-            </Button>
-          </Box>
-
-          <Box mb={1}>
-            <Button
-              color="secondary"
-              onClick={onClearCanvas}
-              startIcon={<DeleteIcon />}
-              disabled={!digitImageData}
-            >
-              Clear
-            </Button>
-          </Box>
+          {canvasPaper}
         </Box>
 
         <Box mb={2} mr={2}>
-          <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
-            Recognized digit will appear here
-          </Box>
-          <Paper className={classes.paper}>
-            <Box className={classes.recognizedDigit}>
-              {recognizedDigit}
-            </Box>
-          </Paper>
+          {buttons}
         </Box>
 
-        {oneHotBars}
+        <Box mb={2} mr={2}>
+          {digitsPaper}
+        </Box>
+
+        <Box mb={2} mr={2}>
+          {oneHotBars}
+        </Box>
       </Box>
 
       <Box mb={1}>
-        This model has a disadvantage that the digit should be big and centered.
-        If you would try to draw the small digit and in the corner the recognition
-        will most probably fail. To overcome this limitation the CNN might be used.
+        {description}
       </Box>
     </Box>
   );
