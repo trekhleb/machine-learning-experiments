@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -43,6 +44,7 @@ const useStyles = makeStyles(() => ({
 
 const DigitsRecognition = () => {
   const classes = useStyles();
+  const theme: Theme = useTheme();
 
   const [model, setModel] = useState(null);
   const [modelError, setModelError] = useState(null);
@@ -122,14 +124,17 @@ const DigitsRecognition = () => {
       <Box mb={1}>
         Probabilities
       </Box>
-      <OneHotBars data={probabilities} />
+      <OneHotBars
+        data={probabilities}
+        barColor={theme.palette.primary.main}
+      />
     </Box>
   ) : null;
 
   return (
     <Box>
-      <Box display="flex" flexDirection="row" mb={1}>
-        <Box mb={3}>
+      <Box display="flex" flexDirection="row">
+        <Box mb={2} mr={2}>
           <Box fontWeight="fontWeightLight" mb={1}>
             Draw
             {' '}
@@ -152,9 +157,8 @@ const DigitsRecognition = () => {
           flexDirection="column"
           alignItems="flex-start"
           justifyContent="center"
-          pl={2}
-          pr={2}
-          mb={1}
+          mb={2}
+          mr={2}
         >
           <Box mb={1}>
             <Button
@@ -179,7 +183,7 @@ const DigitsRecognition = () => {
           </Box>
         </Box>
 
-        <Box mb={1}>
+        <Box mb={2} mr={2}>
           <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
             Recognized digit will appear here
           </Box>
