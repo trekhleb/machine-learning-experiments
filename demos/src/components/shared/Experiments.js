@@ -6,7 +6,7 @@ import ExperimentPreview from './ExperimentPreview';
 import experiments from '../experiments';
 import type { Experiment } from '../experiments/types';
 
-const Experiments = () => {
+const Experiments = (): Node => {
   const experimentsPreviews: Node[] = [];
 
   Object.keys(experiments).forEach((experimentId: string) => {

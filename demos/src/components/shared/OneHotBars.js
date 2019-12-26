@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Node } from 'react';
 import {
   BarChart,
   Bar,
@@ -24,7 +25,7 @@ type OneHotBarProps = {
   barColor?: string,
 };
 
-const OneHotBars = (props: OneHotBarProps) => {
+const OneHotBars = (props: OneHotBarProps): Node => {
   const { data, barColor } = props;
 
   if (!data) {

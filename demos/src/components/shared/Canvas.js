@@ -4,6 +4,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import type { Node } from 'react';
 
 const defaultProps = {
   width: 200,
@@ -37,7 +38,7 @@ type CanvasProps = {
 };
 
 // @see: https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
-const Canvas = (props: CanvasProps) => {
+const Canvas = (props: CanvasProps): Node => {
   const {
     width,
     height,

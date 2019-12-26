@@ -13,7 +13,7 @@ type LayoutProps = {
   children: Node,
 };
 
-const Layout = (props: LayoutProps) => {
+const Layout = (props: LayoutProps): Node => {
   const { children } = props;
 
   return (

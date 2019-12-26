@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -42,7 +43,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DigitsRecognition = () => {
+const DigitsRecognition = (): Node => {
   const classes = useStyles();
   const theme: Theme = useTheme();
 

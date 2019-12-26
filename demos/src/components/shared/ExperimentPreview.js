@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Node } from 'react';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -22,7 +23,7 @@ type ExperimentPreviewProps = {
   history: RouterHistory,
 };
 
-const ExperimentPreview = (props: ExperimentPreviewProps) => {
+const ExperimentPreview = (props: ExperimentPreviewProps): Node => {
   const { experiment, history } = props;
   const classes = useStyles(props);
 

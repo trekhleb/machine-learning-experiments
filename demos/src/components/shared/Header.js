@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Node } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import MaterialLink from '@material-ui/core/Link';
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
-const Header = () => {
+const Header = (): Node => {
   const classes = useStyles();
 
   return (

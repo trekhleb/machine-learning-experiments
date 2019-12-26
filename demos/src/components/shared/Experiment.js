@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Node } from 'react';
 import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
@@ -13,7 +14,7 @@ type ExperimentProps = {
   match: Match,
 };
 
-const Experiment = (props: ExperimentProps) => {
+const Experiment = (props: ExperimentProps): Node => {
   const { match } = props;
 
   const experimentId: ?string = match.params[EXPERIMENT_ID_PARAM];
