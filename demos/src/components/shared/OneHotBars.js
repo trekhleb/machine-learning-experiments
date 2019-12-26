@@ -15,12 +15,17 @@ type DataRecord = {
   label: string,
 };
 
+const defaultProps = {
+  barColor: '#8884d8',
+};
+
 type OneHotBarProps = {
   data: ?DataRecord[],
+  barColor?: string,
 };
 
 const OneHotBars = (props: OneHotBarProps) => {
-  const { data } = props;
+  const { data, barColor } = props;
 
   if (!data) {
     return null;
@@ -31,10 +36,12 @@ const OneHotBars = (props: OneHotBarProps) => {
       <BarChart data={data}>
         <YAxis />
         <XAxis dataKey={labelKey} />
-        <Bar type="monotone" dataKey={valueKey} barSize={30} fill="#8884d8" />
+        <Bar type="monotone" dataKey={valueKey} barSize={30} fill={barColor} />
       </BarChart>
     </ResponsiveContainer>
   );
 };
+
+OneHotBars.defaultProps = defaultProps;
 
 export default OneHotBars;
