@@ -20,10 +20,16 @@ type DataRecord = {
 
 type OneHotBarProps = {
   data: ?DataRecord[],
+  height?: number,
+};
+
+const defaultProps = {
+  height: 100,
 };
 
 const OneHotBars = (props: OneHotBarProps): Node => {
-  const { data } = props;
+  const { data, height } = props;
+  const width = '100%';
 
   const theme: Theme = useTheme();
 
@@ -32,13 +38,13 @@ const OneHotBars = (props: OneHotBarProps): Node => {
   }
 
   const margins = {
-    left: -25, top: 0, bottom: 0, right: 0,
+    left: -25, top: 1, bottom: 1, right: 1,
   };
 
   return (
-    <ResponsiveContainer width="100%" height={100}>
+    <ResponsiveContainer width={width} height={height}>
       <BarChart data={data} margin={margins}>
-        <YAxis />
+        <YAxis dataKey={valueKey} />
         <XAxis dataKey={labelKey} interval={0} />
         <Bar
           type="monotone"
@@ -50,5 +56,7 @@ const OneHotBars = (props: OneHotBarProps): Node => {
     </ResponsiveContainer>
   );
 };
+
+OneHotBars.defaultProps = defaultProps;
 
 export default OneHotBars;

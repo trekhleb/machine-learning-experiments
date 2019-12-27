@@ -25,6 +25,8 @@ const experimentTrainingURL = 'https://jupyter.com';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
+const oneHotBarWidth = 200;
+const oneHotBarHeight = 200;
 
 const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
 
@@ -103,7 +105,7 @@ const DigitsRecognition = (): Node => {
     const digit = prediction.argMax(1).dataSync()[0];
     setRecognizedDigit(digit);
     setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
-      [valueKey]: probability,
+      [valueKey]: Math.floor(10 * probability) / 10,
       [labelKey]: index,
     })));
   };
@@ -184,11 +186,11 @@ const DigitsRecognition = (): Node => {
   );
 
   const oneHotBars = probabilities ? (
-    <Box width={200}>
-      <Box mb={1}>
+    <Box width={oneHotBarWidth}>
+      <Box fontWeight="fontWeightLight" mb={1}>
         Probabilities
       </Box>
-      <OneHotBars data={probabilities} />
+      <OneHotBars data={probabilities} height={oneHotBarHeight} />
     </Box>
   ) : null;
 
@@ -202,7 +204,7 @@ const DigitsRecognition = (): Node => {
 
   return (
     <Box>
-      <Grid container spacing={3} alignItems="center" justify="center">
+      <Grid container spacing={3} alignItems="center" justify="flex-start">
         <Grid item>
           {canvasPaper}
         </Grid>
