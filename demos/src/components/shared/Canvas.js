@@ -200,6 +200,7 @@ const Canvas = (props: CanvasProps): Node => {
       ref={canvasRef}
       width={width}
       height={height}
+      style={{ touchAction: 'none' }}
     />
   );
 };
