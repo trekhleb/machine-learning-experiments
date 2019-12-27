@@ -31,9 +31,13 @@ const OneHotBars = (props: OneHotBarProps): Node => {
     return null;
   }
 
+  const margins = {
+    left: -25, top: 0, bottom: 0, right: 0,
+  };
+
   return (
     <ResponsiveContainer width="100%" height={100}>
-      <BarChart data={data}>
+      <BarChart data={data} margin={margins}>
         <YAxis />
         <XAxis dataKey={labelKey} interval={0} />
         <Bar
