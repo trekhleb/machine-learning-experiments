@@ -1,5 +1,7 @@
 import React from 'react';
 import type { Node } from 'react';
+import { useTheme } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core';
 import {
   BarChart,
   Bar,
@@ -16,17 +18,14 @@ type DataRecord = {
   label: string,
 };
 
-const defaultProps = {
-  barColor: '#8884d8',
-};
-
 type OneHotBarProps = {
   data: ?DataRecord[],
-  barColor?: string,
 };
 
 const OneHotBars = (props: OneHotBarProps): Node => {
-  const { data, barColor } = props;
+  const { data } = props;
+
+  const theme: Theme = useTheme();
 
   if (!data) {
     return null;
@@ -36,13 +35,16 @@ const OneHotBars = (props: OneHotBarProps): Node => {
     <ResponsiveContainer width="100%" height={100}>
       <BarChart data={data}>
         <YAxis />
-        <XAxis dataKey={labelKey} />
-        <Bar type="monotone" dataKey={valueKey} barSize={30} fill={barColor} />
+        <XAxis dataKey={labelKey} interval={0} />
+        <Bar
+          type="monotone"
+          dataKey={valueKey}
+          barSize={30}
+          fill={theme.palette.primary.main}
+        />
       </BarChart>
     </ResponsiveContainer>
   );
 };
-
-OneHotBars.defaultProps = defaultProps;
 
 export default OneHotBars;
