@@ -38,7 +38,7 @@ const Header = (): Node => {
         <Toolbar>
           <Typography variant="h6" className={classes.logoTypography} noWrap>
             <MaterialLink component={RouterLink} to={HOME_ROUTE} className={classes.logoLink}>
-              <EmojiObjectsIcon style={{ marginBottom: '-3px' }} />
+              <EmojiObjectsIcon style={{ marginBottom: '-4px' }} />
               {' '}
               <Hidden only={['xs']}>
                 Machine Learning Experiments
