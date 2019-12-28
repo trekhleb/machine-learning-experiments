@@ -26,8 +26,8 @@ const jupyterURL = 'https://jupyter.com';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
-const oneHotBarWidth = 200;
-const oneHotBarHeight = 200;
+const oneHotBarWidth = 150;
+const oneHotBarHeight = 90;
 
 const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
 
@@ -176,7 +176,7 @@ const DigitsRecognition = (): Node => {
   const digitsPaper = (
     <>
       <Box mb={1} whiteSpace="nowrap">
-        Recognized digit will appear here
+        Recognized digit appears here
       </Box>
       <Paper className={classes.paper}>
         <Box className={classes.recognizedDigit}>
