@@ -6,6 +6,8 @@ import React, {
 } from 'react';
 import type { Node } from 'react';
 
+const defaultBackgroundColor = '#FFFFFF';
+
 const defaultProps = {
   width: 200,
   height: 200,
@@ -13,7 +15,7 @@ const defaultProps = {
   lineWidth: 16,
   lineJoin: 'round',
   revision: 0,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: defaultBackgroundColor,
   onDrawEnd: () => {},
 };
 
@@ -45,7 +47,7 @@ const Canvas = (props: CanvasProps): Node => {
     lineColor,
     lineWidth,
     lineJoin,
-    backgroundColor,
+    backgroundColor = defaultBackgroundColor,
     revision,
     onDrawEnd: onDrawEndCallback,
   } = props;
@@ -131,10 +133,12 @@ const Canvas = (props: CanvasProps): Node => {
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
+    // $FlowFixMe
     canvas.addEventListener('touchstart', startPaint);
 
     return () => {
       canvas.removeEventListener('mousedown', startPaint);
+      // $FlowFixMe
       canvas.removeEventListener('touchstart', startPaint);
     };
   }, [startPaint]);
@@ -146,10 +150,12 @@ const Canvas = (props: CanvasProps): Node => {
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
+    // $FlowFixMe
     canvas.addEventListener('touchmove', paint);
 
     return () => {
       canvas.removeEventListener('mousemove', paint);
+      // $FlowFixMe
       canvas.removeEventListener('touchmove', paint);
     };
   }, [paint]);
