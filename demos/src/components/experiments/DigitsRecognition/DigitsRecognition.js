@@ -26,7 +26,7 @@ const jupyterURL = 'https://jupyter.com';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
-const oneHotBarWidth = 150;
+const oneHotBarWidth = 200;
 const oneHotBarHeight = 90;
 
 const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
