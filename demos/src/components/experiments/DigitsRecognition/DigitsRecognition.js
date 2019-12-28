@@ -82,7 +82,7 @@ const DigitsRecognition = (): Node => {
   };
 
   const onRecognize = () => {
-    if (!digitImageData) {
+    if (!digitImageData || !model) {
       return;
     }
 
