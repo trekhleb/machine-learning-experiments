@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MaterialLink from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -13,6 +14,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { HOME_ROUTE } from '../../constants/routes';
 import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+import Hidden from '@material-ui/core/Hidden';
 
 const useStyles = makeStyles((theme) => ({
   logoTypography: {
@@ -36,7 +38,12 @@ const Header = (): Node => {
         <Toolbar>
           <Typography variant="h6" className={classes.logoTypography} noWrap>
             <MaterialLink component={RouterLink} to={HOME_ROUTE} className={classes.logoLink}>
-              Machine Learning Experiments
+              <Hidden only={['xs']}>
+                Machine Learning Experiments
+              </Hidden>
+              <Hidden only={['sm', 'md', 'lg', 'xl']}>
+                ML Experiments
+              </Hidden>
             </MaterialLink>
           </Typography>
 
