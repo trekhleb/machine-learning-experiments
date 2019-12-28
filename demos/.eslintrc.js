@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:flowtype/recommended',
     'airbnb',
+    'react-app',
   ],
   globals: {
     Atomics: 'readonly',

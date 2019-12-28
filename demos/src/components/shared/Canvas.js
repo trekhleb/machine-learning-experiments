@@ -89,26 +89,26 @@ const Canvas = (props: CanvasProps): Node => {
     }
   }, []);
 
-  const drawLine = (originalMousePosition: Coordinate, newMousePosition: Coordinate) => {
-    if (!canvasRef.current) {
-      return;
-    }
-    const canvas: HTMLCanvasElement = canvasRef.current;
-    const context = canvas.getContext('2d');
-    if (context) {
-      context.strokeStyle = lineColor || defaultProps.lineColor;
-      context.lineJoin = lineJoin || defaultProps.lineJoin;
-      context.lineWidth = lineWidth || defaultProps.lineWidth;
-      context.beginPath();
-      context.moveTo(originalMousePosition.x, originalMousePosition.y);
-      context.lineTo(newMousePosition.x, newMousePosition.y);
-      context.closePath();
-      context.stroke();
-    }
-  };
-
   const paint = useCallback(
     (event: MouseEvent) => {
+      const drawLine = (originalMousePosition: Coordinate, newMousePosition: Coordinate) => {
+        if (!canvasRef.current) {
+          return;
+        }
+        const canvas: HTMLCanvasElement = canvasRef.current;
+        const context = canvas.getContext('2d');
+        if (context) {
+          context.strokeStyle = lineColor || defaultProps.lineColor;
+          context.lineJoin = lineJoin || defaultProps.lineJoin;
+          context.lineWidth = lineWidth || defaultProps.lineWidth;
+          context.beginPath();
+          context.moveTo(originalMousePosition.x, originalMousePosition.y);
+          context.lineTo(newMousePosition.x, newMousePosition.y);
+          context.closePath();
+          context.stroke();
+        }
+      };
+
       if (isPainting) {
         const newMousePosition = getCoordinates(event);
         if (mousePosition && newMousePosition) {
@@ -117,14 +117,14 @@ const Canvas = (props: CanvasProps): Node => {
         }
       }
     },
-    [isPainting, mousePosition],
+    [isPainting, mousePosition, lineColor, lineJoin, lineWidth],
   );
 
   const exitPaint = useCallback(() => {
     onDrawEnd();
     setIsPainting(false);
     setMousePosition(undefined);
-  }, []);
+  }, [onDrawEnd]);
 
   // Effect for MouseDown.
   useEffect(() => {
@@ -199,7 +199,7 @@ const Canvas = (props: CanvasProps): Node => {
     const context = canvas.getContext('2d');
     context.fillStyle = backgroundColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
-  }, [revision]);
+  }, [revision, backgroundColor]);
 
   return (
     <canvas

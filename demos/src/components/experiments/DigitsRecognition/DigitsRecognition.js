@@ -62,11 +62,11 @@ const DigitsRecognition = (): Node => {
       .then((layersModel) => {
         setModel(layersModel);
       })
-      .catch(() => {
+      .catch((e) => {
         // @TODO: Display an error in a snackbar.
-        setModelError(modelError);
+        setModelError(e);
       });
-  }, []);
+  }, [setModelError, setModel]);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
     if (!canvasImages.imageData) {
