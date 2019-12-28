@@ -49,7 +49,7 @@ const Canvas = (props: CanvasProps): Node => {
     lineJoin,
     backgroundColor = defaultBackgroundColor,
     revision,
-    onDrawEnd: onDrawEndCallback,
+    onDrawEnd: onDrawEndCallback = (canvasImages: CanvasImages) => canvasImages,
   } = props;
 
   const canvasRef = useRef(null);
