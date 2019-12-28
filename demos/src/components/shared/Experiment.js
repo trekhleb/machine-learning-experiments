@@ -3,12 +3,14 @@ import type { Node } from 'react';
 import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import type { Experiment as ExperimentType } from '../experiments/types';
 import experiments from '../experiments';
 import { EXPERIMENT_ID_PARAM } from '../../constants/routes';
+import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+import Badge, { badgeType } from './Badge';
 
 type ExperimentProps = {
   match: Match,
@@ -32,6 +34,33 @@ const Experiment = (props: ExperimentProps): Node => {
   const experiment: ExperimentType = experiments[experimentId];
   const ExperimentElement = experiment.component;
 
+  const githubLink = (
+    <Grid item>
+      <Badge
+        url={MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL}
+        type={badgeType.github}
+      />
+    </Grid>
+  );
+
+  const colabLink = experiment.colabURL ? (
+    <Grid item>
+      <Badge
+        url={experiment.colabURL}
+        type={badgeType.colab}
+      />
+    </Grid>
+  ) : null;
+
+  const jupyterLink = experiment.jupyterURL ? (
+    <Grid item>
+      <Badge
+        url={experiment.jupyterURL}
+        type={badgeType.jupyter}
+      />
+    </Grid>
+  ) : null;
+
   return (
     <>
       <Box mb={1}>
@@ -45,11 +74,13 @@ const Experiment = (props: ExperimentProps): Node => {
         </Typography>
       </Box>
       <Box mb={3}>
-        <Button size="small" variant="outlined" href={experiment.trainingURL}>
-          See how this model was trained
-        </Button>
+        <Grid container spacing={1} alignItems="center" justify="flex-start">
+          {githubLink}
+          {colabLink}
+          {jupyterLink}
+        </Grid>
       </Box>
-      <Box mb={1}>
+      <Box mb={3}>
         <ExperimentElement />
       </Box>
     </>

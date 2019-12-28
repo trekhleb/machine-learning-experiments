@@ -21,7 +21,8 @@ const experimentSlug = 'DigitsRecognition';
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
 // @TODO: Add URL to see how the model was trained.
-const experimentTrainingURL = 'https://jupyter.com';
+const colabURL = 'https://jupyter.com';
+const jupyterURL = 'https://jupyter.com';
 
 const canvasWidth = 200;
 const canvasHeight = 200;
@@ -234,7 +235,8 @@ const experiment: Experiment = {
   name: experimentName,
   description: experimentDescription,
   component: DigitsRecognition,
-  trainingURL: experimentTrainingURL,
+  colabURL,
+  jupyterURL,
   cover,
 };
 

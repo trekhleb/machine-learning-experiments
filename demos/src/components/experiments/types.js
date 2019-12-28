@@ -7,7 +7,8 @@ export type Experiment = {|
   name: string,
   description: string,
   component: () => Node,
-  trainingURL: string,
+  colabURL: ?string,
+  jupyterURL: ?string,
   cover: string,
 |};
 
