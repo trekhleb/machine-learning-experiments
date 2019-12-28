@@ -56,20 +56,6 @@ const Canvas = (props: CanvasProps): Node => {
   const [isPainting, setIsPainting] = useState(false);
   const [mousePosition, setMousePosition] = useState(undefined);
 
-  const onDrawEnd = () => {
-    if (!canvasRef.current) {
-      return;
-    }
-
-    const canvas: HTMLCanvasElement = canvasRef.current;
-    const context = canvas.getContext('2d');
-
-    // Call a callback.
-    onDrawEndCallback({
-      imageData: context.getImageData(0, 0, canvas.width, canvas.height),
-    });
-  };
-
   const getCoordinates = (event: MouseEvent): ?Coordinate => {
     if (!canvasRef.current) {
       return null;
@@ -121,10 +107,24 @@ const Canvas = (props: CanvasProps): Node => {
   );
 
   const exitPaint = useCallback(() => {
+    const onDrawEnd = () => {
+      if (!canvasRef.current) {
+        return;
+      }
+
+      const canvas: HTMLCanvasElement = canvasRef.current;
+      const context = canvas.getContext('2d');
+
+      // Call a callback.
+      onDrawEndCallback({
+        imageData: context.getImageData(0, 0, canvas.width, canvas.height),
+      });
+    };
+
     onDrawEnd();
     setIsPainting(false);
     setMousePosition(undefined);
-  }, [onDrawEnd]);
+  }, [onDrawEndCallback]);
 
   // Effect for MouseDown.
   useEffect(() => {
