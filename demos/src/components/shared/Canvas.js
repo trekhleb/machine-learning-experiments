@@ -127,7 +127,7 @@ const Canvas = (props: CanvasProps): Node => {
   // Effect for MouseDown.
   useEffect(() => {
     if (!canvasRef.current) {
-      return;
+      return () => {};
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousedown', startPaint);
@@ -142,7 +142,7 @@ const Canvas = (props: CanvasProps): Node => {
   // Effect for MouseMove.
   useEffect(() => {
     if (!canvasRef.current) {
-      return;
+      return () => {};
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mousemove', paint);
@@ -157,7 +157,7 @@ const Canvas = (props: CanvasProps): Node => {
   // Effect for MouseUp and MouseLeave.
   useEffect(() => {
     if (!canvasRef.current) {
-      return;
+      return () => {};
     }
     const canvas: HTMLCanvasElement = canvasRef.current;
     canvas.addEventListener('mouseup', exitPaint);
