@@ -75,9 +75,9 @@ const Experiment = (props: ExperimentProps): Node => {
       </Box>
       <Box mb={3}>
         <Grid container spacing={1} alignItems="center" justify="flex-start">
-          {githubLink}
           {colabLink}
           {jupyterLink}
+          {githubLink}
         </Grid>
       </Box>
       <Box mb={3}>

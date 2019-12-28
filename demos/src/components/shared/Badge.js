@@ -3,6 +3,11 @@ import React from 'react';
 const jupyterBadgeUrl = 'https://binder.pangeo.io/badge_logo.svg';
 const colabBadgeUrl = 'https://colab.research.google.com/assets/colab-badge.svg';
 
+// @see: https://shields.io/category/build
+const githubBadgeUrl = 'https://img.shields.io/static/v1?label=GitHub&message=Fork&color=green&logo=github&style=flat';
+// const githubBadgeUrl = 'https://img.shields.io/github/stars/trekhleb/machine-learning-experiments?label=Star&style=social';
+// const githubBadgeUrl = 'https://img.shields.io/github/forks/trekhleb/machine-learning-experiments?label=Fork&style=social';
+
 export const badgeType = {
   colab: 'colab',
   jupyter: 'jupyter',
@@ -28,7 +33,7 @@ const Badge = (props: BadgeProps) => {
   }
 
   if (type === badgeType.github) {
-    badge = <img src={jupyterBadgeUrl} alt="Launch in Binder" />;
+    badge = <img src={githubBadgeUrl} alt="Open on Binder" />;
   }
 
   return (
