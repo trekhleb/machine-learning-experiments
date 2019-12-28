@@ -6,7 +6,7 @@
  */
 
 /*
- * A next module declaration is a copy paste of type from `@material-ui/core`
+ * A next module declarationGitHub is a copy paste of type from `@material-ui/core`
  * I use `@@SvgIcon` name to not cause conflicts with the original type.
  * More info: https://github.com/flow-typed/flow-typed/pull/3303#issuecomment-493877563
  */
