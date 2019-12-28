@@ -124,7 +124,7 @@ const DigitsRecognition = (): Node => {
 
   const canvasPaper = (
     <>
-      <Box fontWeight="fontWeightLight" mb={1}>
+      <Box mb={1}>
         Draw
         {' '}
         <b>one BIG</b>
@@ -175,7 +175,7 @@ const DigitsRecognition = (): Node => {
 
   const digitsPaper = (
     <>
-      <Box fontWeight="fontWeightLight" mb={1} whiteSpace="nowrap">
+      <Box mb={1} whiteSpace="nowrap">
         Recognized digit will appear here
       </Box>
       <Paper className={classes.paper}>
@@ -188,7 +188,7 @@ const DigitsRecognition = (): Node => {
 
   const oneHotBars = probabilities ? (
     <Box width={oneHotBarWidth}>
-      <Box fontWeight="fontWeightLight" mb={1}>
+      <Box mb={1}>
         Probabilities
       </Box>
       <OneHotBars data={probabilities} height={oneHotBarHeight} />
