@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { Helmet } from 'react-helmet';
 import ErrorIcon from '@material-ui/icons/Error';
 import Typography from '@material-ui/core/Typography';
 
@@ -12,6 +13,7 @@ import experiments from '../experiments';
 import { EXPERIMENT_ID_PARAM } from '../../constants/routes';
 import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
 import Badge, { badgeType } from './Badge';
+import { WINDOW_TITLE } from '../../constants/copies';
 
 type ExperimentProps = {
   match: Match,
@@ -69,6 +71,10 @@ const Experiment = (props: ExperimentProps): Node => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${WINDOW_TITLE} | ${experiment.name}`}</title>
+        <meta name="description" content={experiment.description} />
+      </Helmet>
       <Box mb={1}>
         <Typography variant="h5">
           {experiment.name}

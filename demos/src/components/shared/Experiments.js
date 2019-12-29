@@ -1,10 +1,12 @@
 import React from 'react';
 import type { Node } from 'react';
+import { Helmet } from 'react-helmet';
 import Grid from '@material-ui/core/Grid';
 
 import ExperimentPreview from './ExperimentPreview';
 import experiments from '../experiments';
 import type { Experiment } from '../experiments/types';
+import { WINDOW_TITLE } from '../../constants/copies';
 
 const Experiments = (): Node => {
   const experimentsPreviews: Node[] = [];
@@ -20,9 +22,14 @@ const Experiments = (): Node => {
   });
 
   return (
-    <Grid container spacing={3}>
-      {experimentsPreviews}
-    </Grid>
+    <>
+      <Helmet>
+        <title>{WINDOW_TITLE}</title>
+      </Helmet>
+      <Grid container spacing={3}>
+        {experimentsPreviews}
+      </Grid>
+    </>
   );
 };
 
