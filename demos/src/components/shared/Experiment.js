@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import ErrorIcon from '@material-ui/icons/Error';
 import Typography from '@material-ui/core/Typography';
 
 import type { Experiment as ExperimentType } from '../experiments/types';
@@ -21,7 +22,12 @@ const Experiment = (props: ExperimentProps): Node => {
 
   const experimentId: ?string = match.params[EXPERIMENT_ID_PARAM];
 
-  const unknownExperiment = <div>Unknown experiment</div>;
+  const unknownExperiment = (
+    <Box display="flex" justifyContent="flex-start">
+      <ErrorIcon fontSize="small" />
+      <Box ml={1}>Unknown experiment</Box>
+    </Box>
+  );
 
   if (!experimentId) {
     return unknownExperiment;

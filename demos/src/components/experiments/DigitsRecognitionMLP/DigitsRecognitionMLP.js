@@ -18,7 +18,7 @@ import { MODELS_PATH } from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
 
-const experimentSlug = 'DigitsRecognition';
+const experimentSlug = 'DigitsRecognitionMLP';
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
 // @TODO: Add URL to see how the model was trained.
@@ -30,7 +30,7 @@ const canvasHeight = 200;
 const oneHotBarWidth = 200;
 const oneHotBarHeight = 90;
 
-const modelPath = `${MODELS_PATH}/digits_recognition/model.json`;
+const modelPath = `${MODELS_PATH}/digits_recognition_mlp/model.json`;
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DigitsRecognition = (): Node => {
+const DigitsRecognitionMLP = (): Node => {
   const classes = useStyles();
 
   const [model, setModel] = useState(null);
@@ -235,7 +235,7 @@ const experiment: Experiment = {
   slug: experimentSlug,
   name: experimentName,
   description: experimentDescription,
-  component: DigitsRecognition,
+  component: DigitsRecognitionMLP,
   colabURL,
   jupyterURL,
   cover,

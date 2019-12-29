@@ -1,8 +1,8 @@
 import type { ExperimentsMap } from './types';
-import DigitsRecognition from './DigitsRecognition/DigitsRecognition';
+import DigitsRecognitionMLP from './DigitsRecognitionMLP/DigitsRecognitionMLP';
 
 const experiments: ExperimentsMap = {
-  DigitsRecognition,
+  DigitsRecognitionMLP,
 };
 
 export default experiments;
