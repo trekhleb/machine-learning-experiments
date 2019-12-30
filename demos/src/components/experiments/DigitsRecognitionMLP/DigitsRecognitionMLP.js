@@ -14,23 +14,24 @@ import * as tf from '@tensorflow/tfjs';
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
 import OneHotBars, { valueKey, labelKey } from '../../shared/OneHotBars';
-import { MODELS_PATH } from '../../../constants/links';
+import {
+  ML_EXPERIMENTS_DEMO_MODELS_PATH,
+  ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
+} from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
 
 const experimentSlug = 'DigitsRecognitionMLP';
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
-// @TODO: Add URL to see how the model was trained.
-const colabURL = 'https://jupyter.com';
-const jupyterURL = 'https://jupyter.com';
+const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_mlp/digits_recognition_mlp.ipynb`;
 
 const canvasWidth = 200;
 const canvasHeight = 200;
 const oneHotBarWidth = 200;
 const oneHotBarHeight = 90;
 
-const modelPath = `${MODELS_PATH}/digits_recognition_mlp/model.json`;
+const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_mlp/model.json`;
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -236,8 +237,7 @@ const experiment: Experiment = {
   name: experimentName,
   description: experimentDescription,
   component: DigitsRecognitionMLP,
-  colabURL,
-  jupyterURL,
+  notebookUrl,
   cover,
 };
 

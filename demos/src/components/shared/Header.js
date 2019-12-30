@@ -16,7 +16,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { HOME_ROUTE } from '../../constants/routes';
-import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+import { ML_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
 
 const useStyles = makeStyles((theme) => ({
   logoTypography: {
@@ -62,7 +62,7 @@ const Header = (): Node => {
             </Tooltip>
 
             <Tooltip title="ML Experiments on GitHub">
-              <MaterialLink href={MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL} color="inherit">
+              <MaterialLink href={ML_EXPERIMENTS_GITHUB_URL} color="inherit">
                 <IconButton color="inherit">
                   <GitHubIcon />
                 </IconButton>

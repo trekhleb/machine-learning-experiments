@@ -1,6 +1,6 @@
 import React from 'react';
 
-const jupyterBadgeUrl = 'https://binder.pangeo.io/badge_logo.svg';
+const jupyterBadgeUrl = 'https://mybinder.org/badge_logo.svg';
 const colabBadgeUrl = 'https://colab.research.google.com/assets/colab-badge.svg';
 
 // @see: https://shields.io/category/build

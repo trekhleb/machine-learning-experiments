@@ -11,9 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import type { Experiment as ExperimentType } from '../experiments/types';
 import experiments from '../experiments';
 import { EXPERIMENT_ID_PARAM } from '../../constants/routes';
-import { MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+import { ML_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
 import Badge, { badgeType } from './Badge';
 import { WINDOW_TITLE } from '../../constants/copies';
+import { generateColabLink, generateJupyterLink } from '../../utils/links';
 
 type ExperimentProps = {
   match: Match,
@@ -45,26 +46,26 @@ const Experiment = (props: ExperimentProps): Node => {
   const githubLink = (
     <Grid item>
       <Badge
-        url={MACHINE_LEARNING_EXPERIMENTS_GITHUB_URL}
+        url={ML_EXPERIMENTS_GITHUB_URL}
         type={badgeType.github}
       />
     </Grid>
   );
-
-  const colabLink = experiment.colabURL ? (
+  
+  const jupyterLink = experiment.notebookUrl ? (
     <Grid item>
       <Badge
-        url={experiment.colabURL}
-        type={badgeType.colab}
+        url={generateJupyterLink(experiment.notebookUrl)}
+        type={badgeType.jupyter}
       />
     </Grid>
   ) : null;
 
-  const jupyterLink = experiment.jupyterURL ? (
+  const colabLink = experiment.notebookUrl ? (
     <Grid item>
       <Badge
-        url={experiment.jupyterURL}
-        type={badgeType.jupyter}
+        url={generateColabLink(experiment.notebookUrl)}
+        type={badgeType.colab}
       />
     </Grid>
   ) : null;
@@ -87,8 +88,8 @@ const Experiment = (props: ExperimentProps): Node => {
       </Box>
       <Box mb={3}>
         <Grid container spacing={1} alignItems="center" justify="flex-start">
-          {colabLink}
           {jupyterLink}
+          {colabLink}
           {githubLink}
         </Grid>
       </Box>
