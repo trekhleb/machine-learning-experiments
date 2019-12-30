@@ -29,10 +29,16 @@ jsonschema==3.1.1
 jupyter==1.0.0
 jupyter-client==5.3.4
 jupyter-console==6.0.0
+jupyter-contrib-core==0.3.3
+jupyter-contrib-nbextensions==0.5.1
 jupyter-core==4.6.1
+jupyter-highlight-selected-word==0.2.0
+jupyter-latex-envs==1.4.6
+jupyter-nbextensions-configurator==0.4.1
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 kiwisolver==1.1.0
+lxml==4.4.2
 Markdown==3.1.1
 MarkupSafe==1.1.1
 matplotlib==3.1.1
@@ -60,6 +66,7 @@ pyparsing==2.4.5
 pyrsistent==0.15.5
 python-dateutil==2.8.1
 pytz==2019.3
+PyYAML==5.2
 pyzmq==18.1.0
 qtconsole==4.5.5
 requests==2.22.0
