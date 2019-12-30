@@ -12,7 +12,7 @@ Collection of interactive machine-learning experiments.
 
 | Gif preview | Name | Complexity | How to use the model | How to train the model | Topics | Technology |
 | ----------- | ---- | ---------- | -------------------- | ---------------------- | ------ | ---------- |
-| Gif image | Handwritten digits recognition | ⭐️⭐️ | demo 🏄‍♂️| 🏋️‍♂️ | CNN, NN | Tensorflow |
+| Gif image | Handwritten digits recognition (MLP) | ⭐️️ | demo 🏄‍ ️| 🏋️‍️ | MLP, NN | Tensorflow |
 
 ## How to use this repository
 
