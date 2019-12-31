@@ -51,7 +51,7 @@ const Experiment = (props: ExperimentProps): Node => {
       />
     </Grid>
   );
-  
+
   const jupyterLink = experiment.notebookUrl ? (
     <Grid item>
       <Badge
