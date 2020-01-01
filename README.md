@@ -4,7 +4,7 @@ Collection of interactive machine-learning experiments.
 
 ## Demo
 
-@TODO: Add demo link and instructions
+@TODO: Add demo link and instructions: http://trekhleb.github.io/machine-learning-experiments
 
 ## Experiments
 
