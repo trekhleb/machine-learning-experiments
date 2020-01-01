@@ -14,9 +14,8 @@ Collection of interactive machine-learning experiments.
 | ----------- | ---- | ---------- | -------------------- | ---------------------- | ------ | ---------- |
 | Gif image | Handwritten digits recognition (MLP) | ⭐️️ | demo 🏄‍ ️| training 🏋️‍️ | MLP, NN | Tensorflow |
 
-![Open in Binder](https://mybinder.org/badge_logo.svg)
-
-![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)
+[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
 ## How to use this repository
 
