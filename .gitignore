@@ -3,3 +3,4 @@
 .vscode
 .virtualenvs
 .ipynb_checkpoints
+.logs
