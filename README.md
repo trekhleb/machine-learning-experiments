@@ -14,6 +14,10 @@ Collection of interactive machine-learning experiments.
 | ----------- | ---- | ---------- | -------------------- | ---------------------- | ------ | ---------- |
 | Gif image | Handwritten digits recognition (MLP) | ⭐️️ | demo 🏄‍ ️| training 🏋️‍️ | MLP, NN | Tensorflow |
 
+![Open in Binder](https://mybinder.org/badge_logo.svg)
+
+![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)
+
 ## How to use this repository
 
 ### Virtual environment for Experiments
