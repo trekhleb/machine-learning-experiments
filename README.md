@@ -124,8 +124,8 @@ For example:
 
 ```bash
 tensorflowjs_converter --input_format keras \
-  ./experiments/digits_recognition/digits_recognition.h5 \
-  ./demos/public/models/digits_recognition
+  ./experiments/digits_recognition_mlp/digits_recognition_mlp.h5 \
+  ./demos/public/models/digits_recognition_mlp
 ```
 
 ### Launching demos locally
