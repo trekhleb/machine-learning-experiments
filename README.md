@@ -46,7 +46,10 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        ▶️ <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">Demo</a>
+        ▶️
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
+          Launch demo
+        </a>
       </td>
       <td>
         MLP, Tensorflow
@@ -68,7 +71,10 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        ▶️ <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">Demo</a>
+        ▶️
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
+          Launch demo
+        </a>
       </td>
       <td>
         MLP, Tensorflow
