@@ -46,9 +46,8 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        ▶️
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
-          Launch&nbsp;demo
+          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -71,9 +70,8 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        ▶️
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
-          Launch&nbsp;demo
+          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
