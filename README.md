@@ -22,14 +22,15 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th style="text-align: left"> </th>
-      <th style="text-align: left">Experiment</th>
-      <th style="text-align: left">Model training</th>
-      <th style="text-align: left">Model usage</th>
-      <th style="text-align: left">Topics</th>
+      <th style="text-align: left !important;"> </th>
+      <th style="text-align: left !important;">Experiment</th>
+      <th style="text-align: left !important;">Model training</th>
+      <th style="text-align: left !important;">Model usage</th>
+      <th style="text-align: left !important;">Topics</th>
     </tr>
   </thead>
   <tbody>
+    <!-- Experiment -->
     <tr>
       <td>
         <img src="assets/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" />
@@ -54,6 +55,7 @@ Collection of interactive machine-learning experiments.
         MLP, Tensorflow
       </td>
     </tr>
+    <!-- Experiment -->
     <tr>
       <td>
         <img src="assets/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
