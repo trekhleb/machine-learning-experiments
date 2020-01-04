@@ -22,11 +22,11 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th> </th>
-      <th>Experiment</th>
-      <th>Model training</th>
-      <th>Model usage</th>
-      <th>Topics</th>
+      <th align="left"> </th>
+      <th align="left">Experiment</th>
+      <th align="left">Model training</th>
+      <th align="left">Model usage</th>
+      <th align="left">Topics</th>
     </tr>
   </thead>
   <tbody>
