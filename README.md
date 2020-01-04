@@ -19,22 +19,19 @@ Collection of interactive machine-learning experiments.
 [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
-<table>
-  <thead>
-    <tr>
-      <th>
-        Test
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        ![Handwritten digits recognition (MLP)](assets/images/digits_recognition_mlp.png)
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+### Handwritten digits recognition (MLP)
+
+Handwritten digits recognition using Multilayer Perceptron (MLP).
+
+#### ▶️ Interactive Demo
+
+ [▶️ Launch demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP)
+
+#### 🏋 Model Training
+
+[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
 ## How to use this repository
 
