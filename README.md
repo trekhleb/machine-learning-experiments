@@ -22,11 +22,11 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th style="text-align: left !important;"> </th>
-      <th style="text-align: left !important;">Experiment</th>
-      <th style="text-align: left !important;">Model training</th>
-      <th style="text-align: left !important;">Model usage</th>
-      <th style="text-align: left !important;">Topics</th>
+      <th align="left"> </th>
+      <th align="left">Experiment</th>
+      <th align="left">Model training</th>
+      <th align="left">Model usage</th>
+      <th align="left">Topics</th>
     </tr>
   </thead>
   <tbody>
@@ -82,19 +82,6 @@ Collection of interactive machine-learning experiments.
     </tr>
   </tbody>
 </table>
-
-### Handwritten digits recognition (MLP)
-
-Handwritten digits recognition using Multilayer Perceptron (MLP).
-
-#### ▶️ Interactive Demo
-
- [▶️ Launch demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP)
-
-#### 🏋 Model Training
-
-[![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
 ## How to use this repository
 
