@@ -22,23 +22,58 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th>&nbsp;</th>
+      <th> </th>
       <th>Experiment</th>
+      <th>Model training</th>
+      <th>Model usage</th>
+      <th>Topics</th>
     </tr>
   </thead>
   <tbody>
-      <tr>
-        <td>
-          <img src="assets/images/digits_recognition_mlp.png" alt="" />
-        </td>
-        <td>
-          <b>Handwritten digits recognition (MLP)</b>
-        </td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>4</td>
-      </tr>
+    <tr>
+      <td>
+        <img src="assets/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" />
+      </td>
+      <td>
+        <b>Handwritten digits recognition (MLP)</b>
+      </td>
+      <td>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        ▶️ <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">Demo</a>
+      </td>
+      <td>
+        MLP, Tensorflow
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="assets/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
+      </td>
+      <td>
+        <b>Handwritten digits recognition (CNN)</b>
+      </td>
+      <td>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        ▶️ <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">Demo</a>
+      </td>
+      <td>
+        MLP, Tensorflow
+      </td>
+    </tr>
   </tbody>
 </table>
 
