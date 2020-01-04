@@ -22,14 +22,18 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th>1</th>
-      <th>2</th>
+      <th>&nbsp;</th>
+      <th>Experiment</th>
     </tr>
   </thead>
   <tbody>
       <tr>
-        <td>1</td>
-        <td>2</td>
+        <td>
+          <img src="assets/images/digits_recognition_mlp.png" alt="" />
+        </td>
+        <td>
+          <b>Handwritten digits recognition (MLP)</b>
+        </td>
       </tr>
       <tr>
         <td>3</td>
