@@ -197,14 +197,6 @@ const DigitsRecognitionMLP = (): Node => {
     </Box>
   ) : null;
 
-  const description = (
-    <>
-      This model has a disadvantage that the digit should be big and centered.
-      If you would try to draw the small digit and in the corner the recognition
-      will most probably fail. To overcome this limitation the CNN might be used.
-    </>
-  );
-
   return (
     <Box>
       <Grid container spacing={3} alignItems="center" justify="flex-start">
@@ -224,10 +216,6 @@ const DigitsRecognitionMLP = (): Node => {
           {oneHotBars}
         </Grid>
       </Grid>
-
-      <Box mt={3}>
-        {description}
-      </Box>
     </Box>
   );
 };

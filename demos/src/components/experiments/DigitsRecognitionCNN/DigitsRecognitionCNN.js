@@ -104,7 +104,10 @@ const DigitsRecognitionCNN = (): Node => {
       // Normalize.
       .div(255);
 
-    const prediction = model.predict(tensor.reshape([1, modelInputWidth, modelInputHeight]));
+    const prediction = model.predict(
+      // Reshape and add one dimension for the pixel color to match CNN input size
+      tensor.reshape([1, modelInputWidth, modelInputHeight, 1])
+    );
     const digit = prediction.argMax(1).dataSync()[0];
     setRecognizedDigit(digit);
     setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
@@ -197,14 +200,6 @@ const DigitsRecognitionCNN = (): Node => {
     </Box>
   ) : null;
 
-  const description = (
-    <>
-      This model has a disadvantage that the digit should be big and centered.
-      If you would try to draw the small digit and in the corner the recognition
-      will most probably fail. To overcome this limitation the CNN might be used.
-    </>
-  );
-
   return (
     <Box>
       <Grid container spacing={3} alignItems="center" justify="flex-start">
@@ -224,10 +219,6 @@ const DigitsRecognitionCNN = (): Node => {
           {oneHotBars}
         </Grid>
       </Grid>
-
-      <Box mt={3}>
-        {description}
-      </Box>
     </Box>
   );
 };
