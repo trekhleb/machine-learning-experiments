@@ -8,12 +8,10 @@ Collection of interactive machine-learning experiments.
 
 ## Experiments
 
-- Digits recognition
-
-| Preview | Name | Complexity | How to use the model | How to train the model | Topics |
-| ----------- | ---- | ---------- | -------------------- | ---------------------- | ------ |
-| ![Handwritten digits recognition (MLP)](assets/images/digits_recognition_mlp.png) | Handwritten digits recognition (MLP) | ⭐️️ | demo 🏄‍ ️| training 🏋️‍️ | MLP, Tensorflow |
-| ![Handwritten digits recognition (CNN)](assets/images/digits_recognition_cnn.png) | Handwritten digits recognition (CNN) | ⭐️️ | demo 🏄‍ ️| training 🏋️‍️ | CNN, Tensorflow |
+| Preview | Name | Demo | Training | Topics |
+| ------- | ---- | ---- | -------- | ------ |
+| ![Handwritten digits recognition (MLP)](assets/images/digits_recognition_mlp.png) | Handwritten digits recognition (MLP) | [Launch demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP) ️| training 🏋️‍️ | MLP, Tensorflow |
+| ![Handwritten digits recognition (CNN)](assets/images/digits_recognition_cnn.png) | Handwritten digits recognition (CNN) | [Launch demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN) ️| training 🏋️‍️ | CNN, Tensorflow |
 
 [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
