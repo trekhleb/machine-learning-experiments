@@ -19,6 +19,20 @@ Collection of interactive machine-learning experiments.
 [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+  </tbody>
+</table>
 
 ### Handwritten digits recognition (MLP)
 
