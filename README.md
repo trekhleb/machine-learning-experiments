@@ -9,7 +9,7 @@ Collection of interactive machine-learning experiments.
 ## Experiments
 
 |         | Experiment | Model usage | Model training | Topics |
-| ------- | ---------- | ----------- | -------------- | ------ |
+| ------- | :---------- | ----------- | -------------- | ------ |
 | ![Handwritten digits recognition (MLP)](assets/images/digits_recognition_mlp.png) | **Handwritten digits recognition (MLP)** | [▶️ Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP) ️| [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)‍️ | MLP, Tensorflow |
 | ![Handwritten digits recognition (CNN)](assets/images/digits_recognition_cnn.png) | **Handwritten digits recognition (CNN)** | [▶️ Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN) ️| [![Open in Binder](https://mybinder.org/badge_logo.svg)](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb) ️‍| CNN, Tensorflow |
 
