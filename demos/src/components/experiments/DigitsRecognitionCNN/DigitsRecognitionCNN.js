@@ -21,12 +21,12 @@ import {
 import type { Experiment } from '../types';
 import cover from './cover.png';
 
-const experimentSlug = 'DigitsRecognitionMLP';
-const experimentName = 'Digits Recognition (MLP)';
-const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
-const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_mlp/digits_recognition_mlp.ipynb`;
+const experimentSlug = 'DigitsRecognitionCNN';
+const experimentName = 'Digits Recognition (CNN)';
+const experimentDescription = 'Hand-written digits recognition using Convolutional Neural Network (CNN)';
+const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_cnn/digits_recognition_cnn.ipynb`;
 
-const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_mlp/model.json`;
+const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_cnn/model.json`;
 
 const canvasWidth = 200;
 const canvasHeight = 200;
@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const DigitsRecognitionMLP = (): Node => {
+const DigitsRecognitionCNN = (): Node => {
   const classes = useStyles();
 
   const [model, setModel] = useState(null);
@@ -236,7 +236,7 @@ const experiment: Experiment = {
   slug: experimentSlug,
   name: experimentName,
   description: experimentDescription,
-  component: DigitsRecognitionMLP,
+  component: DigitsRecognitionCNN,
   notebookUrl,
   cover,
 };
