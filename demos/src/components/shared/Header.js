@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import MaterialLink from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
@@ -17,6 +16,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { HOME_ROUTE } from '../../constants/routes';
 import { ML_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
+import Logo from './Logo';
 
 const useStyles = makeStyles((theme) => ({
   logoTypography: {
@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       textDecoration: 'none',
     },
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   offset: theme.mixins.toolbar,
 }));
@@ -42,8 +45,7 @@ const Header = (): Node => {
           <Toolbar>
             <Typography variant="h6" className={classes.logoTypography} noWrap>
               <MaterialLink component={RouterLink} to={HOME_ROUTE} className={classes.logoLink}>
-                <EmojiObjectsIcon style={{ marginBottom: '-4px' }} />
-                {' '}
+                <Logo />
                 <Hidden only={['xs']}>
                   Machine Learning Experiments
                 </Hidden>
