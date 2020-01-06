@@ -76,7 +76,7 @@ Collection of interactive machine-learning experiments.
 
 ### Virtual environment for Experiments
 
-This environment is used to run Jupyter notebooks with experiments. This environment is used by default for further documentation. If some commands need to be run in another environment (i.e. in `convertor` environment) this will be specified explicitly.
+This environment is used to run Jupyter notebooks with experiments. This environment is used by default for further documentation. If some commands need to be run in another environment (i.e. in `converter` environment) this will be specified explicitly.
 
 #### Create environment for Experiments
 
@@ -98,28 +98,28 @@ For `fish`:
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-### Virtual environment for Model Convertor
+### Virtual environment for Model Converter
 
 This environment is used to convert the models that were trained during the experiments from `.h5` format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
 
 #### Create environment for Converter
 
 ```bash
-python3 -m venv .virtualenvs/convertor
+python3 -m venv .virtualenvs/converter
 ```
 
-#### Activate environment for Convertor
+#### Activate environment for Converter
 
 For `shell`:
 
 ```bash
-source .virtualenvs/convertor/bin/activate
+source .virtualenvs/converter/bin/activate
 ```
 
 For `fish`:
 
 ```bash
-source .virtualenvs/convertor/bin/activate.fish
+source .virtualenvs/converter/bin/activate.fish
 ```
 
 ### Quitting virtual environments
@@ -146,10 +146,10 @@ pip install package
 pip freeze > requirements.txt
 ```
 
-To list installed packages for convertor environment you should launch:
+To list installed packages for converter environment you should launch:
 
 ```bash
-pip freeze > requirements.convertor.txt
+pip freeze > requirements.converter.txt
 ```
 
 ### Install packages
@@ -158,10 +158,10 @@ pip freeze > requirements.convertor.txt
 pip install -r requirements.txt
 ```
 
-To install packages in `convertor` environment run:
+To install packages in `converter` environment run:
 
 ```bash
-pip install -r requirements.convertor.txt
+pip install -r requirements.converter.txt
 ```
 
 ### Launching Jupyter
