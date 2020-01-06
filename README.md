@@ -2,6 +2,14 @@
 
 Collection of interactive machine-learning experiments.
 
+**How to use this repo**
+
+@TODO: Finish this list
+
+- See demo (how to apply models)
+- See notebooks (how to train models)
+- Checkout and play around locally
+
 ## Demo
 
 @TODO: Add demo link and instructions: http://trekhleb.github.io/machine-learning-experiments
