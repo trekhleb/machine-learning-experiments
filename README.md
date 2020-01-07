@@ -52,7 +52,7 @@ Collection of interactive machine-learning experiments.
         <code>Multilayer&nbsp;Perceptron</code>,
         <code>MLP</code>,
         <code>Tensorflow</code>,
-        <code>Keras</code>,
+        <code>Keras</code>
       </td>
     </tr>
     <!-- Experiment -->
@@ -80,7 +80,7 @@ Collection of interactive machine-learning experiments.
         <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>CNN</code>,
         <code>Tensorflow</code>,
-        <code>Keras</code>,
+        <code>Keras</code>
       </td>
     </tr>
   </tbody>
