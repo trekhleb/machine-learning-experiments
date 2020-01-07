@@ -23,7 +23,7 @@ Collection of interactive machine-learning experiments.
       <th align="left">Experiment</th>
       <th align="left">Model training</th>
       <th align="left">Model usage</th>
-      <th align="left">Topics</th>
+      <th align="left">Tags</th>
     </tr>
   </thead>
   <tbody>
