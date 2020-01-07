@@ -49,9 +49,10 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        <code>MLP</code>,
         <code>Multilayer&nbsp;Perceptron</code>,
-        <code>Tensorflow</code>
+        <code>MLP</code>,
+        <code>Tensorflow</code>,
+        <code>Keras</code>,
       </td>
     </tr>
     <!-- Experiment -->
@@ -76,9 +77,10 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        <code>CNN</code>,
         <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>Tensorflow</code>
+        <code>CNN</code>,
+        <code>Tensorflow</code>,
+        <code>Keras</code>,
       </td>
     </tr>
   </tbody>
