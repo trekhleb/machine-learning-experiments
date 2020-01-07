@@ -49,9 +49,9 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        MLP,
-        Multilayer Perceptron,
-        Tensorflow
+        <code>MLP</code>,
+        <code>Multilayer Perceptron</code>,
+        <code>Tensorflow</code>
       </td>
     </tr>
     <!-- Experiment -->
