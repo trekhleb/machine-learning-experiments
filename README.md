@@ -77,7 +77,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <code>CNN</code>,
-        <code>Convolutional Neural Network</code>,
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>Tensorflow</code>
       </td>
     </tr>
