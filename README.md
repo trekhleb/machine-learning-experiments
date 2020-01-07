@@ -49,7 +49,9 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        MLP, Tensorflow
+        MLP,
+        Multilayer Perceptron,
+        Tensorflow
       </td>
     </tr>
     <!-- Experiment -->
@@ -74,7 +76,9 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        MLP, Tensorflow
+        CNN,
+        Convolutional Neural Network,
+        Tensorflow
       </td>
     </tr>
   </tbody>
