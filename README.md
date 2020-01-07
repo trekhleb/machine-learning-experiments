@@ -50,7 +50,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <code>MLP</code>,
-        <code style="white-space: nowrap !important;">Multilayer Perceptron</code>,
+        <code>Multilayer&nbsp;Perceptron</code>,
         <code>Tensorflow</code>
       </td>
     </tr>
@@ -77,7 +77,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <code>CNN</code>,
-        <code style="white-space: nowrap !important;">Convolutional Neural Network</code>,
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>Tensorflow</code>
       </td>
     </tr>
