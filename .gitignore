@@ -4,3 +4,4 @@
 .virtualenvs
 .ipynb_checkpoints
 .logs
+.tmp
