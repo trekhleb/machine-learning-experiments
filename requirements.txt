@@ -49,6 +49,7 @@ nbformat==4.4.0
 notebook==6.0.2
 numpy==1.17.4
 oauthlib==3.1.0
+opencv-python==4.1.2.30
 opt-einsum==3.1.0
 pandas==0.25.3
 pandocfilters==1.4.2
