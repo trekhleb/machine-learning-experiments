@@ -31,7 +31,7 @@ Collection of interactive machine-learning experiments.
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" />
+        <img src="assets/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
         <b>Handwritten digits recognition (MLP)</b>
