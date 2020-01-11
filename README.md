@@ -24,6 +24,7 @@ Collection of interactive machine-learning experiments.
       <th align="left">Model training</th>
       <th align="left">Model usage</th>
       <th align="left">Tags</th>
+      <th align="left">Dataset</th>
     </tr>
   </thead>
   <tbody>
@@ -54,6 +55,11 @@ Collection of interactive machine-learning experiments.
         <code>Tensorflow</code>,
         <code>Keras</code>
       </td>
+      <td>
+        <a href="https://www.tensorflow.org/datasets/catalog/mnist">
+          MNIST
+        </a>
+      </td>
     </tr>
     <!-- Experiment -->
     <tr>
@@ -81,6 +87,11 @@ Collection of interactive machine-learning experiments.
         <code>CNN</code>,
         <code>Tensorflow</code>,
         <code>Keras</code>
+      </td>
+      <td>
+        <a href="https://www.tensorflow.org/datasets/catalog/mnist">
+          MNIST
+        </a>
       </td>
     </tr>
   </tbody>
