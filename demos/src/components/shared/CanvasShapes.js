@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import type { Node } from 'react';
 
-export type Detection = {
+export type Box = {
   leftTopX: number,
   leftTopY: number,
   width: number,
@@ -10,19 +10,19 @@ export type Detection = {
   probability: number,
 };
 
-type ObjectsDetectionsProps = {
-  detections: ?Detection[],
-  width: number,
-  height: number,
+type CanvasShapesProps = {
+  boxes: ?Box[],
+  canvasWidth: number,
+  canvasHeight: number,
 };
 
-const detectionColor = '#2fff00';
-const detectionFrameWidth = 1;
-const detectionLabelFont = '24px helvetica';
-const detectionLabelColor = '#000000';
+const boxColor = '#2fff00';
+const boxFrameWidth = 1;
+const boxLabelFont = '24px helvetica';
+const boxLabelColor = '#000000';
 
-const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
-  const { detections, width, height } = props;
+const CanvasShapes = (props: CanvasShapesProps): Node => {
+  const { boxes, canvasWidth, canvasHeight } = props;
 
   const canvasRef = useRef(null);
 
@@ -33,14 +33,14 @@ const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
 
     const ctx = canvasRef.current.getContext('2d');
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.font = detectionLabelFont;
+    ctx.font = boxLabelFont;
     ctx.textBaseline = 'top';
 
-    if (!detections || !detections.length) {
+    if (!boxes || !boxes.length) {
       return;
     }
 
-    detections.forEach((detection: Detection) => {
+    boxes.forEach((box: Box) => {
       const {
         leftTopX,
         leftTopY,
@@ -48,17 +48,17 @@ const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
         height: detectionHeight,
         label,
         probability,
-      } = detection;
+      } = box;
 
       // Draw the bounding box.
-      ctx.strokeStyle = detectionColor;
-      ctx.lineWidth = detectionFrameWidth;
+      ctx.strokeStyle = boxColor;
+      ctx.lineWidth = boxFrameWidth;
       ctx.strokeRect(leftTopX, leftTopY, detectionWidth, detectionHeight);
 
       // Draw the label background.
-      ctx.fillStyle = detectionColor;
+      ctx.fillStyle = boxColor;
       const textWidth = ctx.measureText(label).width;
-      const textHeight = parseInt(detectionLabelFont, 10);
+      const textHeight = parseInt(boxLabelFont, 10);
 
       // Draw top left rectangle.
       ctx.fillRect(
@@ -77,7 +77,7 @@ const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
       );
 
       // Draw the text last to ensure it's on top.
-      ctx.fillStyle = detectionLabelColor;
+      ctx.fillStyle = boxLabelColor;
       ctx.fillText(label, leftTopX, leftTopY);
       ctx.fillText(
         probability.toFixed(2),
@@ -87,7 +87,7 @@ const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
     });
   };
 
-  const drawDetectionsCallback = useCallback(drawDetections, [detections]);
+  const drawDetectionsCallback = useCallback(drawDetections, [boxes]);
 
   useEffect(() => {
     drawDetectionsCallback();
@@ -96,15 +96,15 @@ const ObjectsDetections = (props: ObjectsDetectionsProps): Node => {
   return (
     <canvas
       ref={canvasRef}
-      width={width}
-      height={height}
+      width={canvasWidth}
+      height={canvasHeight}
       style={canvasStyle}
     />
   );
 };
 
 const canvasStyle = {
-  background: 'yellow',
+  border: '2px dashed blue',
 };
 
-export default ObjectsDetections;
+export default CanvasShapes;
