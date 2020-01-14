@@ -42,8 +42,6 @@ const ObjectsDetection = (): Node => {
     }
     model.detect(video)
       .then((detections) => {
-        console.log({detections});
-
         setBoxes(detections.map((detection) => ({
           leftTopX: detection.bbox[0],
           leftTopY: detection.bbox[1],
@@ -84,8 +82,8 @@ const ObjectsDetection = (): Node => {
     );
   }
 
-  const width = 500;
-  const height = 500;
+  const width = 400;
+  const height = 400;
 
   const canvasStyle = {
     marginTop: -1 * height,

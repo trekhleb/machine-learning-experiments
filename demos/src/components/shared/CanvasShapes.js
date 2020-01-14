@@ -18,7 +18,7 @@ type CanvasShapesProps = {
 
 const boxColor = '#2fff00';
 const boxFrameWidth = 1;
-const boxLabelFont = '24px helvetica';
+const boxLabelFont = '20px helvetica';
 const boxLabelColor = '#000000';
 
 const CanvasShapes = (props: CanvasShapesProps): Node => {
@@ -103,8 +103,6 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
   );
 };
 
-const canvasStyle = {
-  border: '2px dashed blue',
-};
+const canvasStyle = {};
 
 export default CanvasShapes;

@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -14,7 +15,7 @@ const defaultFrameThrottling = 1000;
 const defaultFacingMode = 'environment';
 
 const defaultProps = {
-  onVideoFrame: null,
+  onVideoFrame: (video: HTMLVideoElement) => {},
   maxWidth: defaultMaxWidth,
   maxHeight: defaultMaxHeight,
   videoFrameRate: defaultVideoFrameRate,
@@ -30,14 +31,14 @@ type CameraStreamProps = {
   facingMode?: string,
   videoFrameRate?: number,
   frameThrottling?: number,
-  onVideoFrame?: ?(video: HTMLVideoElement) => void,
+  onVideoFrame?: (video: HTMLVideoElement) => void,
 };
 
 const CameraStream = (props: CameraStreamProps): Node => {
   const {
     width,
     height,
-    onVideoFrame,
+    onVideoFrame = (video) => {},
     maxWidth = defaultMaxWidth,
     maxHeight = defaultMaxHeight,
     facingMode,
@@ -48,6 +49,8 @@ const CameraStream = (props: CameraStreamProps): Node => {
   const videoRef = useRef(null);
 
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const onVideoFrameCallback = useCallback(onVideoFrame, []);
 
   useEffect(() => {
     if (!videoRef.current) {
@@ -63,11 +66,8 @@ const CameraStream = (props: CameraStreamProps): Node => {
     let localAnimationRequestID = null;
 
     const onFrame = () => {
-      if (!onVideoFrame) {
-        return;
-      }
       localAnimationRequestID = requestAnimationFrame(() => {
-        onVideoFrame(videoRef.current);
+        onVideoFrameCallback(videoRef.current);
         throttledOnFrame();
       });
     };
@@ -122,7 +122,7 @@ const CameraStream = (props: CameraStreamProps): Node => {
     width,
     height,
     facingMode,
-    onVideoFrame,
+    onVideoFrameCallback,
     videoFrameRate,
     frameThrottling,
   ]);
