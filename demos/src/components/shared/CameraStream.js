@@ -11,7 +11,7 @@ import throttle from 'lodash/throttle';
 const defaultMaxWidth = 500;
 const defaultMaxHeight = 500;
 const defaultVideoFrameRate = 30;
-const defaultFrameThrottling = 1000;
+const defaultFrameThrottling = 500;
 const defaultFacingMode = 'environment';
 
 const defaultProps = {
