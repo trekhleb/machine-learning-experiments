@@ -17,12 +17,12 @@ const CameraStream = (props: CameraStreamProps): Node => {
   // Request the access to camera.
   useEffect(() => {
     if (!videoRef.current) {
-      return;
+      return () => {};
     }
 
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       setErrorMessage('Camera access is not supported by your browser');
-      return;
+      return () => {};
     }
 
     const userMediaConstraints = {
@@ -34,12 +34,15 @@ const CameraStream = (props: CameraStreamProps): Node => {
       audio: false,
     };
 
+    let localStream = null;
+
     navigator.mediaDevices
       .getUserMedia(userMediaConstraints)
       .then((stream: MediaStream) => {
         if (!videoRef.current) {
           return;
         }
+        localStream = stream;
         videoRef.current.srcObject = stream;
         // videoRef.current.onloadedmetadata = () => {
         //   onVideoFrameCallback();
@@ -48,6 +51,12 @@ const CameraStream = (props: CameraStreamProps): Node => {
       .catch((e) => {
         setErrorMessage('Video cannot be started');
       });
+
+    return () => {
+      if (localStream) {
+        localStream.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, [width, height]);
 
   return (
