@@ -30,6 +30,7 @@ const CameraStream = (props: CameraStreamProps): Node => {
         width: { ideal: width },
         height: { ideal: height },
         facingMode: { ideal: 'environment' },
+        frameRate: { ideal: 30 },
       },
       audio: false,
     };
