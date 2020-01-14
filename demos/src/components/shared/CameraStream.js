@@ -1,23 +1,54 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import type { Node } from 'react';
 import Snack from './Snack';
+import throttle from 'lodash/throttle';
+
+const defaultMaxWidth = 500;
+const defaultMaxHeight = 500;
+const defaultVideoFrameRate = 30;
+const defaultFrameThrottling = 1000;
+const defaultFacingMode = 'environment';
+
+const defaultProps = {
+  onVideoFrame: null,
+  maxWidth: defaultMaxWidth,
+  maxHeight: defaultMaxHeight,
+  videoFrameRate: defaultVideoFrameRate,
+  frameThrottling: defaultFrameThrottling,
+  facingMode: defaultFacingMode,
+};
 
 type CameraStreamProps = {
   width: number,
   height: number,
+  maxWidth?: number,
+  maxHeight?: number,
+  facingMode?: string,
+  videoFrameRate?: number,
+  frameThrottling?: number,
+  onVideoFrame?: ?() => void,
 };
 
-const maxWidth = 500;
-const maxHeight = 500;
-
 const CameraStream = (props: CameraStreamProps): Node => {
-  const { width, height } = props;
+  const {
+    width,
+    height,
+    onVideoFrame,
+    maxWidth = defaultMaxWidth,
+    maxHeight = defaultMaxHeight,
+    facingMode,
+    videoFrameRate,
+    frameThrottling,
+  } = props;
 
   const videoRef = useRef(null);
 
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // Request the access to camera.
   useEffect(() => {
     if (!videoRef.current) {
       return () => {};
@@ -28,17 +59,37 @@ const CameraStream = (props: CameraStreamProps): Node => {
       return () => {};
     }
 
+    let localStream = null;
+    let localAnimationRequestID = null;
+
+    const onFrame = () => {
+      if (!onVideoFrame) {
+        return;
+      }
+      localAnimationRequestID = requestAnimationFrame(() => {
+        onVideoFrame();
+        throttledOnFrame();
+      });
+    };
+
+    const throttledOnFrame = throttle(
+      onFrame,
+      frameThrottling,
+      {
+        leading: false,
+        trailing: true,
+      },
+    );
+
     const userMediaConstraints = {
       video: {
         width: { ideal: width },
         height: { ideal: height },
-        facingMode: { ideal: 'environment' },
-        frameRate: { ideal: 30 },
+        facingMode: { ideal: facingMode },
+        frameRate: { ideal: videoFrameRate },
       },
       audio: false,
     };
-
-    let localStream = null;
 
     navigator.mediaDevices
       .getUserMedia(userMediaConstraints)
@@ -48,20 +99,33 @@ const CameraStream = (props: CameraStreamProps): Node => {
         }
         localStream = stream;
         videoRef.current.srcObject = stream;
-        // videoRef.current.onloadedmetadata = () => {
-        //   onVideoFrameCallback();
-        // };
+        videoRef.current.onloadedmetadata = () => {
+          throttledOnFrame();
+        };
       })
       .catch((e) => {
         setErrorMessage('Video cannot be started');
       });
 
     return () => {
+      // Stop animation frames.
+      throttledOnFrame.cancel();
+      if (localAnimationRequestID) {
+        cancelAnimationFrame(localAnimationRequestID);
+      }
+      // Stop camera access.
       if (localStream) {
         localStream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, [width, height]);
+  }, [
+    width,
+    height,
+    facingMode,
+    onVideoFrame,
+    videoFrameRate,
+    frameThrottling,
+  ]);
 
   return (
     <>
@@ -78,6 +142,8 @@ const CameraStream = (props: CameraStreamProps): Node => {
     </>
   );
 };
+
+CameraStream.defaultProps = defaultProps;
 
 const videoStyle = {};
 
