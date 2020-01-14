@@ -30,7 +30,7 @@ type CameraStreamProps = {
   facingMode?: string,
   videoFrameRate?: number,
   frameThrottling?: number,
-  onVideoFrame?: ?() => void,
+  onVideoFrame?: ?(video: HTMLVideoElement) => void,
 };
 
 const CameraStream = (props: CameraStreamProps): Node => {
@@ -67,7 +67,7 @@ const CameraStream = (props: CameraStreamProps): Node => {
         return;
       }
       localAnimationRequestID = requestAnimationFrame(() => {
-        onVideoFrame();
+        onVideoFrame(videoRef.current);
         throttledOnFrame();
       });
     };
