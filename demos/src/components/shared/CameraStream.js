@@ -7,6 +7,9 @@ type CameraStreamProps = {
   height: number,
 };
 
+const maxWidth = 500;
+const maxHeight = 500;
+
 const CameraStream = (props: CameraStreamProps): Node => {
   const { width, height } = props;
 
@@ -67,8 +70,8 @@ const CameraStream = (props: CameraStreamProps): Node => {
         autoPlay
         muted
         ref={videoRef}
-        width={width}
-        height={height}
+        width={Math.min(width, maxWidth)}
+        height={Math.min(height, maxHeight)}
         style={videoStyle}
       />
       <Snack severity="error" message={errorMessage} />
