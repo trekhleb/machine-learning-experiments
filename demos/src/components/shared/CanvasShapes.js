@@ -7,7 +7,6 @@ export type Box = {
   width: number,
   height: number,
   label: number,
-  probability: number,
 };
 
 type CanvasShapesProps = {
@@ -18,7 +17,7 @@ type CanvasShapesProps = {
 
 const boxColor = '#2fff00';
 const boxFrameWidth = 1;
-const boxLabelFont = '20px helvetica';
+const boxLabelFont = '16px helvetica';
 const boxLabelColor = '#000000';
 
 const CanvasShapes = (props: CanvasShapesProps): Node => {
@@ -47,7 +46,6 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
         width: detectionWidth,
         height: detectionHeight,
         label,
-        probability,
       } = box;
 
       // Draw the bounding box.
@@ -68,22 +66,9 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
         textHeight + 10,
       );
 
-      // Draw bottom left rectangle.
-      ctx.fillRect(
-        leftTopX,
-        leftTopY + detectionHeight - textHeight,
-        textWidth + 15,
-        textHeight + 10,
-      );
-
       // Draw the text last to ensure it's on top.
       ctx.fillStyle = boxLabelColor;
       ctx.fillText(label, leftTopX, leftTopY);
-      ctx.fillText(
-        probability.toFixed(2),
-        leftTopX,
-        leftTopY + detectionHeight - textHeight,
-      );
     });
   };
 

@@ -7,7 +7,7 @@ import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import Paper from '@material-ui/core/Paper';
 
 import {
-  ML_EXPERIMENTS_DEMO_MODELS_PATH,
+  // ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
@@ -47,8 +47,7 @@ const ObjectsDetection = (): Node => {
           leftTopY: detection.bbox[1],
           width: detection.bbox[2],
           height: detection.bbox[3],
-          label: detection.class,
-          probability: detection.score,
+          label: `${detection.class}: ${detection.score.toFixed(2)}`,
         })));
       })
       .catch((e) => {
