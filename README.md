@@ -94,6 +94,38 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
     </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="assets/images/objects_detection.jpg" alt="Objects detection" width="150" />
+      </td>
+      <td>
+        <b>Objects Detection</b>
+      </td>
+      <td>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection/objects_detection.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection/objects_detection.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetection">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
+      </td>
+      <td>
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
+        <code>CNN</code>,
+        <code>Tensorflow</code>,
+      </td>
+      <td>
+        <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md#coco-trained-models">
+          SSD COCO
+        </a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
