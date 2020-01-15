@@ -4,11 +4,12 @@ Collection of interactive machine-learning experiments.
 
 **How to use this repo**
 
-@TODO: Finish this list
+**@TODO:** Finish this list
 
 - See demo (how to apply models)
 - See notebooks (how to train models)
 - Checkout and play around locally
+- Paste charts from https://arxiv.org/pdf/1611.10012.pdf (+ net configurations?)
 
 ## Demo
 
