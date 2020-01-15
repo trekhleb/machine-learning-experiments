@@ -90,6 +90,9 @@ const ObjectsDetection = (): Node => {
 
   return (
     <Box>
+      <Box mb={1}>
+        Your camera stream appears here
+      </Box>
       <Paper className={classes.paper} style={{ width, height }}>
         <CameraStream
           width={width}
