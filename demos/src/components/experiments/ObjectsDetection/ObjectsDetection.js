@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import Paper from '@material-ui/core/Paper';
 
 import {
@@ -101,7 +102,9 @@ const ObjectsDetection = (): Node => {
 
   return (
     <Box ref={cameraStreamWrapper}>
-      <Box mb={1}>
+      <Box mb={1} display="flex" alignItems="center">
+        <PhoneIphoneIcon />
+        {' '}
         Your camera stream appears here
       </Box>
       <Paper className={classes.paper} style={{ width, height }}>
