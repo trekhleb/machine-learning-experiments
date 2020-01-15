@@ -11,7 +11,7 @@ import Snack from './Snack';
 const defaultMaxWidth = 500;
 const defaultMaxHeight = 500;
 const defaultVideoFrameRate = 30;
-const defaultFrameThrottling = 100;
+const defaultFrameThrottling = 200;
 const defaultFacingMode = 'environment';
 
 const defaultProps = {
