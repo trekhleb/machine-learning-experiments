@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import type { Node } from 'react';
 
 export type Box = {
-  leftTopX: number,
-  leftTopY: number,
+  x: number,
+  y: number,
   width: number,
   height: number,
   label: number,
@@ -42,8 +42,8 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
 
     boxes.forEach((box: Box) => {
       const {
-        leftTopX,
-        leftTopY,
+        x,
+        y,
         width: detectionWidth,
         height: detectionHeight,
         label,
@@ -52,7 +52,7 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
       // Draw the bounding box.
       ctx.strokeStyle = boxColor;
       ctx.lineWidth = boxFrameWidth;
-      ctx.strokeRect(leftTopX, leftTopY, detectionWidth, detectionHeight);
+      ctx.strokeRect(x, y, detectionWidth, detectionHeight);
 
       // Draw the label background.
       ctx.fillStyle = boxColor;
@@ -61,8 +61,8 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
 
       // Draw top left rectangle.
       ctx.fillRect(
-        leftTopX,
-        leftTopY,
+        x,
+        y,
         textWidth + boxLabelPadding,
         textHeight + boxLabelPadding,
       );
@@ -71,8 +71,8 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
       ctx.fillStyle = boxLabelColor;
       ctx.fillText(
         label,
-        leftTopX + boxLabelPadding / 2,
-        leftTopY + boxLabelPadding / 2,
+        x + boxLabelPadding / 2,
+        y + boxLabelPadding / 2,
       );
     });
   };

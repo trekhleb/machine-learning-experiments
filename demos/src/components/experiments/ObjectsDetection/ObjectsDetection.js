@@ -50,8 +50,8 @@ const ObjectsDetection = (): Node => {
     model.detect(video)
       .then((detections) => {
         setBoxes(detections.map((detection) => ({
-          leftTopX: detection.bbox[0],
-          leftTopY: detection.bbox[1],
+          x: detection.bbox[0],
+          y: detection.bbox[1],
           width: detection.bbox[2],
           height: detection.bbox[3],
           label: `${detection.class}: ${detection.score.toFixed(2)}`,
@@ -68,7 +68,6 @@ const ObjectsDetection = (): Node => {
       const size = Math.min(maxCameraStreamSize, cameraStreamWrapper.current.offsetWidth);
       setWidth(size);
       setHeight(size);
-      console.log({size});
     }
 
     if (model) {
