@@ -77,9 +77,9 @@ scipy==1.4.1
 seaborn==0.9.0
 Send2Trash==1.5.0
 six==1.13.0
-tensorboard==2.0.1
-tensorflow==2.0.0
-tensorflow-estimator==2.0.1
+tensorboard==2.1.0
+tensorflow==2.1.0
+tensorflow-estimator==2.1.0
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
