@@ -229,7 +229,7 @@ jupyter notebook
 
 ### Converting the models
 
-To convert `.h5` model to `.json` and `.bin` formats for further usage in JavaScript Demos you should run:
+To convert `.h5` model to `.json` and `.bin` formats for further usage in JavaScript Demos you should use [tfjs-converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter):
 
 ```bash
 tensorflowjs_converter --input_format keras path/to/my_model.h5 path/to/tfjs_target_dir
