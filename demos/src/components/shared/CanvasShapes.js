@@ -19,6 +19,7 @@ const boxColor = '#2fff00';
 const boxFrameWidth = 1;
 const boxLabelFont = '16px helvetica';
 const boxLabelColor = '#000000';
+const boxLabelPadding = 10;
 
 const CanvasShapes = (props: CanvasShapesProps): Node => {
   const { boxes, canvasWidth, canvasHeight } = props;
@@ -62,13 +63,17 @@ const CanvasShapes = (props: CanvasShapesProps): Node => {
       ctx.fillRect(
         leftTopX,
         leftTopY,
-        textWidth + 10,
-        textHeight + 10,
+        textWidth + boxLabelPadding,
+        textHeight + boxLabelPadding,
       );
 
       // Draw the text last to ensure it's on top.
       ctx.fillStyle = boxLabelColor;
-      ctx.fillText(label, leftTopX, leftTopY);
+      ctx.fillText(
+        label,
+        leftTopX + boxLabelPadding / 2,
+        leftTopY + boxLabelPadding / 2,
+      );
     });
   };
 
