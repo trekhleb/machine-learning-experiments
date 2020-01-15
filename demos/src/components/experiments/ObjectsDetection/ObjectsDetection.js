@@ -12,14 +12,14 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
-import cover from './cover.jpeg';
+import cover from './cover.jpg';
 import CanvasShapes from '../../shared/CanvasShapes';
 import CameraStream from '../../shared/CameraStream';
 import Snack from '../../shared/Snack';
 
 const experimentSlug = 'ObjectsDetection';
 const experimentName = 'Objects Detection';
-const experimentDescription = 'Detecting objects on the image or camera';
+const experimentDescription = 'Detecting objects in your camera stream';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_mlp/digits_recognition_mlp.ipynb`;
 
 // const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_mlp/model.json`;
