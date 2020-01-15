@@ -4,9 +4,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import throttle from 'lodash/throttle';
 import type { Node } from 'react';
 import Snack from './Snack';
-import throttle from 'lodash/throttle';
 
 const defaultMaxWidth = 500;
 const defaultMaxHeight = 500;
