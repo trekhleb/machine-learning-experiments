@@ -106,7 +106,7 @@ const DigitsRecognitionCNN = (): Node => {
 
     const prediction = model.predict(
       // Reshape and add one dimension for the pixel color to match CNN input size
-      tensor.reshape([1, modelInputWidth, modelInputHeight, 1])
+      tensor.reshape([1, modelInputWidth, modelInputHeight, 1]),
     );
     const digit = prediction.argMax(1).dataSync()[0];
     setRecognizedDigit(digit);
