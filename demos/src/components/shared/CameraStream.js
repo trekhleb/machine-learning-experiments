@@ -104,7 +104,11 @@ const CameraStream = (props: CameraStreamProps): Node => {
         };
       })
       .catch((e) => {
-        setErrorMessage('Video cannot be started');
+        let message = 'Video cannot be started';
+        if (e && e.message) {
+          message += `: ${e.message}`;
+        }
+        setErrorMessage(message);
       });
 
     return () => {
