@@ -10,6 +10,9 @@ Collection of interactive machine-learning experiments.
 - See notebooks (how to train models)
 - Checkout and play around locally
 - Paste charts from https://arxiv.org/pdf/1611.10012.pdf (+ net configurations?)
+- Comparison of CNN computer vision algorithms (Speed, accuracy, etc)
+- Machine learning cycle diagram (Train, Deploy, Evaluate)
+- Add a link to Homemade ML repo (See how to implement ML algorithms without frameworks)
 
 ## Demo
 
