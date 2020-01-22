@@ -31,14 +31,14 @@ type CameraStreamProps = {
   facingMode?: string,
   videoFrameRate?: number,
   frameThrottling?: number,
-  onVideoFrame?: (video: HTMLVideoElement) => void,
+  onVideoFrame?: (video?: ?HTMLVideoElement) => Promise<void>,
 };
 
 const CameraStream = (props: CameraStreamProps): Node => {
   const {
     width,
     height,
-    onVideoFrame = (video) => {},
+    onVideoFrame = async (video) => {},
     maxWidth = defaultMaxWidth,
     maxHeight = defaultMaxHeight,
     facingMode,
@@ -67,8 +67,9 @@ const CameraStream = (props: CameraStreamProps): Node => {
 
     const onFrame = () => {
       localAnimationRequestID = requestAnimationFrame(() => {
-        onVideoFrameCallback(videoRef.current);
-        throttledOnFrame();
+        onVideoFrameCallback(videoRef.current).then(() => {
+          throttledOnFrame();
+        });
       });
     };
 

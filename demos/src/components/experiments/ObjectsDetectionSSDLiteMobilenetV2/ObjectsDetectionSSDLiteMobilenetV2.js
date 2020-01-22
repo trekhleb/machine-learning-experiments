@@ -55,92 +55,103 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
   const [boxes, setBoxes] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const onVideoFrame = (video: HTMLVideoElement) => {
-    if (!model) {
-      return;
-    }
-
-    const tensor = tf.browser.fromPixels(video);
-    const inputImageWidth = tensor.shape[0];
-    const inputImageHeight = tensor.shape[1];
-
-    model.executeAsync(tensor.expandDims(0))
-      .then((result) => {
-        const scoresTensor = result[0];
-        const classesTensor = result[1];
-        const numDetectionsTensor = result[2];
-        const boxesTensor = result[3];
-
-        if (!scoresTensor || !classesTensor || !numDetectionsTensor || !boxesTensor) {
-          setErrorMessage('Detection tensors not found');
-          return;
-        }
-
-        const numDetections = numDetectionsTensor.arraySync().pop();
-        const detectionScores = scoresTensor.arraySync().pop();
-        const detectionClasses = classesTensor.toInt().arraySync().pop();
-        const detectionBoxes = boxesTensor.arraySync().pop();
-
-        if (!detectionScores || !detectionClasses || !detectionBoxes) {
-          setErrorMessage('Cannot extract detection info');
-        }
-
-        tf.image.nonMaxSuppressionAsync(
-          detectionBoxes, detectionScores, maxNumBoxes, iouThreshold, scoreThreshold,
-        ).then((indicesTensor) => {
-          const importantDetectionIndices = indicesTensor.dataSync();
-
-          const detections = [];
-
-          for (let detectionIndex = 0; detectionIndex < numDetections; detectionIndex += 1) {
-            if (importantDetectionIndices.includes(detectionIndex)) {
-              const cocoClassId = detectionClasses[detectionIndex];
-              const cocoClass = CocoClasses[detectionClasses[detectionIndex]];
-
-              if (!cocoClass) {
-                setErrorMessage(`Unknown COCO class ID: ${cocoClassId} ${detectionClasses.slice(0, 4).toString()}`);
-              }
-
-              const cocoClassName = cocoClass ? cocoClass.displayName : '';
-
-              const score = Math.floor(100 * detectionScores[detectionIndex]);
-              const detectionBox = detectionBoxes[detectionIndex];
-
-              const x1 = Math.floor(inputImageHeight * detectionBox[1]);
-              const y1 = Math.floor(inputImageWidth * detectionBox[0]);
-              const x2 = Math.floor(inputImageHeight * detectionBox[3]);
-              const y2 = Math.floor(inputImageWidth * detectionBox[2]);
-
-              const detection = {
-                x: x1,
-                y: y1,
-                width: x2 - x1,
-                height: y2 - y1,
-                label: `${cocoClassName} ${score}%`,
-              };
-
-              detections.push(detection);
-            }
-          }
-
-          setBoxes(detections);
-        });
-      })
-      .catch((e) => {
-        let message = 'Video cannot be started';
-        if (e && e.message) {
-          message += `: ${e.message}`;
-        }
-        setErrorMessage(message);
-      });
-  };
-
   const warmupModel = async () => {
     if (model && !modelIsWarm) {
       const result = await model.executeAsync(tf.zeros([1, 300, 300, 3]));
       await Promise.all(result.map((tensor) => tensor.data()));
       result.map((tensor) => tensor.dispose());
     }
+  };
+
+  const executeModel = async (video?: ?HTMLVideoElement) => {
+    if (!model || !video) {
+      return false;
+    }
+
+    const tensor = tf.browser.fromPixels(video);
+    const inputImageWidth = tensor.shape[0];
+    const inputImageHeight = tensor.shape[1];
+
+    let result;
+    try {
+      result = await model.executeAsync(tensor.expandDims(0));
+    } catch (e) {
+      let message = 'Video cannot be started';
+      if (e && e.message) {
+        message += `: ${e.message}`;
+      }
+      setErrorMessage(message);
+    }
+
+    if (!result) {
+      return false;
+    }
+
+    const scoresTensor = result[0];
+    const classesTensor = result[1];
+    const numDetectionsTensor = result[2];
+    const boxesTensor = result[3];
+
+    if (!scoresTensor || !classesTensor || !numDetectionsTensor || !boxesTensor) {
+      setErrorMessage('Detection tensors not found');
+      return false;
+    }
+
+    const numDetections = numDetectionsTensor.arraySync().pop();
+    const detectionScores = scoresTensor.arraySync().pop();
+    const detectionClasses = classesTensor.toInt().arraySync().pop();
+    const detectionBoxes = boxesTensor.arraySync().pop();
+
+    if (!detectionScores || !detectionClasses || !detectionBoxes) {
+      setErrorMessage('Cannot extract detection info');
+    }
+
+    const indicesTensor = await tf.image.nonMaxSuppressionAsync(
+      detectionBoxes, detectionScores, maxNumBoxes, iouThreshold, scoreThreshold,
+    );
+
+    const importantDetectionIndices = indicesTensor.dataSync();
+
+    const detections = [];
+
+    for (let detectionIndex = 0; detectionIndex < numDetections; detectionIndex += 1) {
+      if (importantDetectionIndices.includes(detectionIndex)) {
+        const cocoClassId = detectionClasses[detectionIndex];
+        const cocoClass = CocoClasses[detectionClasses[detectionIndex]];
+
+        if (!cocoClass) {
+          setErrorMessage(`Unknown COCO class ID: ${cocoClassId} ${detectionClasses.slice(0, 4).toString()}`);
+        }
+
+        const cocoClassName = cocoClass ? cocoClass.displayName : '';
+
+        const score = Math.floor(100 * detectionScores[detectionIndex]);
+        const detectionBox = detectionBoxes[detectionIndex];
+
+        const x1 = Math.floor(inputImageHeight * detectionBox[1]);
+        const y1 = Math.floor(inputImageWidth * detectionBox[0]);
+        const x2 = Math.floor(inputImageHeight * detectionBox[3]);
+        const y2 = Math.floor(inputImageWidth * detectionBox[2]);
+
+        const detection = {
+          x: x1,
+          y: y1,
+          width: x2 - x1,
+          height: y2 - y1,
+          label: `${cocoClassName} ${score}%`,
+        };
+
+        detections.push(detection);
+      }
+    }
+
+    setBoxes(detections);
+
+    return true;
+  };
+
+  const onVideoFrame = async (video?: ?HTMLVideoElement) => {
+    await executeModel(video);
   };
 
   const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
