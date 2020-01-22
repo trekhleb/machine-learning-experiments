@@ -223,7 +223,6 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
           maxWidth={maxCameraStreamSize}
           maxHeight={maxCameraStreamSize}
           onVideoFrame={onVideoFrame}
-          frameThrottling={2000}
         />
       </Paper>
       <Box style={canvasStyle}>
