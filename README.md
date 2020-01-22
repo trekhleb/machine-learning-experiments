@@ -47,7 +47,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
-          ▶️&nbsp;Demo
+          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -80,7 +80,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
-          ▶️&nbsp;Demo
+          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -113,7 +113,7 @@ Collection of interactive machine-learning experiments.
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetectionSSDLiteMobilenetV2">
-          ▶️&nbsp;Demo
+          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
