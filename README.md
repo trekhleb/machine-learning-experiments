@@ -20,7 +20,7 @@ Collection of interactive machine-learning experiments.
 <table>
   <thead>
     <tr>
-      <th align="left"> </th>
+      <th align="left" width="150" style="width: 150px !important"> </th>
       <th align="left">Experiment</th>
       <th align="left">Model training</th>
       <th align="left">Model usage</th>
@@ -97,7 +97,7 @@ Collection of interactive machine-learning experiments.
     </tr>
     <!-- Experiment -->
     <tr>
-      <td style="width: 150px !important">
+      <td>
         <img src="assets/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
