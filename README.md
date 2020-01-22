@@ -87,7 +87,7 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;NN</code>,
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>CNN</code>,
         <code>Tensorflow</code>,
         <code>Keras</code>
@@ -120,7 +120,7 @@ Collection of interactive machine-learning experiments.
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;NN</code>,
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>MobileNetV2</code>,
         <code>SSDLite</code>,
         <code>CNN</code>,
