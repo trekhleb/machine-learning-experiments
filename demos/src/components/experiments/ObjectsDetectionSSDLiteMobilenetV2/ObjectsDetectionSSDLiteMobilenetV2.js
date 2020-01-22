@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
@@ -46,6 +51,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
   const [width, setWidth] = useState(defaultCameraStreamSize);
   const [height, setHeight] = useState(defaultCameraStreamSize);
   const [model, setModel] = useState(null);
+  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [boxes, setBoxes] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -129,6 +135,16 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
       });
   };
 
+  const warmupModel = async () => {
+    if (model && !modelIsWarm) {
+      const result = await model.executeAsync(tf.zeros([1, 300, 300, 3]));
+      await Promise.all(result.map((tensor) => tensor.data()));
+      result.map((tensor) => tensor.dispose());
+    }
+  };
+
+  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
+
   // Load the model.
   useEffect(() => {
     if (cameraStreamWrapper.current && cameraStreamWrapper.current.offsetWidth) {
@@ -150,6 +166,13 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
       });
   }, [model, setErrorMessage, setModel]);
 
+  // Warmup the model.
+  useEffect(() => {
+    if (model && !modelIsWarm) {
+      warmupModelCallback().then(() => setModelIsWarm(true));
+    }
+  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
+
   if (!model) {
     return (
       <Box>
@@ -165,12 +188,22 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
     marginTop: -1 * height,
   };
 
+  const notificationElement = modelIsWarm === null ? (
+    <>
+      Preparing the model...
+    </>
+  ) : (
+    <>
+      <PhoneIphoneIcon />
+      {' '}
+      Your camera stream appears here
+    </>
+  );
+
   return (
     <Box ref={cameraStreamWrapper}>
       <Box mb={1} display="flex" alignItems="center">
-        <PhoneIphoneIcon />
-        {' '}
-        Your camera stream appears here
+        {notificationElement}
       </Box>
       <Paper className={classes.paper} style={{ width, height }}>
         <CameraStream
