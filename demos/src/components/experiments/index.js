@@ -1,12 +1,12 @@
 import type { ExperimentsMap } from './types';
 import DigitsRecognitionMLP from './DigitsRecognitionMLP/DigitsRecognitionMLP';
 import DigitsRecognitionCNN from './DigitsRecognitionCNN/DigitsRecognitionCNN';
-import ObjectsDetection from './ObjectsDetection/ObjectsDetection';
+import ObjectsDetectionSSDLiteMobilenetV2 from './ObjectsDetectionSSDLiteMobilenetV2/ObjectsDetectionSSDLiteMobilenetV2';
 
 const experiments: ExperimentsMap = {
   DigitsRecognitionMLP,
   DigitsRecognitionCNN,
-  ObjectsDetection,
+  ObjectsDetectionSSDLiteMobilenetV2,
 };
 
 export default experiments;
