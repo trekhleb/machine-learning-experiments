@@ -6,7 +6,7 @@ export type Box = {
   y: number,
   width: number,
   height: number,
-  label: number,
+  label: string,
 };
 
 type CanvasShapesProps = {

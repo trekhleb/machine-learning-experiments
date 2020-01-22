@@ -22,7 +22,7 @@ import CanvasShapes from '../../shared/CanvasShapes';
 import CameraStream from '../../shared/CameraStream';
 import Snack from '../../shared/Snack';
 import CocoClasses from './classes';
-// import type Box as BoxType from '../../shared/CanvasShapes';
+import type { Box as BoxType } from '../../shared/CanvasShapes';
 
 const experimentSlug = 'ObjectsDetectionSSDLiteMobilenetV2';
 const experimentName = 'Objects Detection (MobileNetV2)';
@@ -112,7 +112,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
 
     const importantDetectionIndices = indicesTensor.dataSync();
 
-    const detections = [];
+    const detections: BoxType[] = [];
 
     for (let detectionIndex = 0; detectionIndex < numDetections; detectionIndex += 1) {
       if (importantDetectionIndices.includes(detectionIndex)) {
@@ -133,7 +133,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
         const x2 = Math.floor(inputImageHeight * detectionBox[3]);
         const y2 = Math.floor(inputImageWidth * detectionBox[2]);
 
-        const detection = {
+        const detection: BoxType = {
           x: x1,
           y: y1,
           width: x2 - x1,
