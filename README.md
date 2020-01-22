@@ -98,7 +98,7 @@ Collection of interactive machine-learning experiments.
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/objects_detection.jpg" alt="Objects detection" width="150" />
+        <img src="assets/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
         <b>Objects Detection (MobileNetV2)</b>
