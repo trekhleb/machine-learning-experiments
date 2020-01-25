@@ -191,10 +191,10 @@ source .virtualenvs/converter/bin/activate.fish
 deactivate
 ```
 
-### Upgrading `pip`
+### Upgrading `pip` and `setuptools`
 
 ```bash
-pip install --upgrade pip
+pip install --upgrade pip setuptools
 ```
 
 ### Add new package (optional)
