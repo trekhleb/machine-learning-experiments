@@ -256,3 +256,15 @@ cd demos
 yarn install
 yarn start
 ```
+
+## Issues
+
+[Issue](https://github.com/tensorflow/tensorflow/issues/33183)
+
+Recommended Python versions: `> 3.7.3`.
+
+In case if you have Python version `3.7.3` you might experience the following error when trying to `import tensorflow`:
+
+```
+RuntimeError: dictionary changed size during iteration
+```
