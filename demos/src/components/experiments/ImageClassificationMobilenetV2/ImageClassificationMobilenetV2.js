@@ -20,6 +20,8 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/image_classification
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/image_classification_mobilenet_v2/model.json`;
 
+const maxPreviewWidth = 300;
+
 const useStyles = makeStyles(() => ({
   paper: {
     overflow: 'hidden',
@@ -29,8 +31,11 @@ const useStyles = makeStyles(() => ({
 const ImageClassificationMobilenetV2 = (): Node => {
   const classes = useStyles();
 
+  const previewWidth = maxPreviewWidth;
+
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [images, setImages] = useState(null);
 
   // Load the model.
   useEffect(() => {
@@ -47,9 +52,32 @@ const ImageClassificationMobilenetV2 = (): Node => {
       });
   }, [model, setErrorMessage, setModel]);
 
+  const imagesPreview = images ? (
+    images.map((image: File) => (
+      <Box
+        key={image.name}
+        boxShadow={2}
+        width={previewWidth}
+        fontSize={0}
+      >
+        <img
+          src={URL.createObjectURL(image)}
+          alt={image.name}
+          width={previewWidth}
+        />
+      </Box>
+    ))
+  ) : null;
+
   return (
     <Box>
-      <ImageInput />
+      <Box mb={2}>
+        Select an image or take a photo that you want to be tagged (classified).
+      </Box>
+      <ImageInput onSelect={setImages} />
+      <Box mt={2}>
+        {imagesPreview}
+      </Box>
       <Snack severity="error" message={errorMessage} />
     </Box>
   );
