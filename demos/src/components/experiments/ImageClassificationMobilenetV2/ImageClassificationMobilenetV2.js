@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
 
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
@@ -22,15 +21,7 @@ const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/image_classification_mobil
 
 const maxPreviewWidth = 400;
 
-const useStyles = makeStyles(() => ({
-  paper: {
-    overflow: 'hidden',
-  },
-}));
-
 const ImageClassificationMobilenetV2 = (): Node => {
-  const classes = useStyles();
-
   const experimentWrapper = useRef(null);
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -52,6 +43,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
       });
   }, [model, setErrorMessage, setModel]);
 
+  // Setup preview width.
   useEffect(() => {
     const width = Math.min(maxPreviewWidth, experimentWrapper.current.offsetWidth);
     setPreviewWidth(width);
