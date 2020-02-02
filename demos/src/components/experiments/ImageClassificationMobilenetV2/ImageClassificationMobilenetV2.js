@@ -28,12 +28,15 @@ const ImageClassificationMobilenetV2 = (): Node => {
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
 
+  const onImagesSelect = (images: File[]) => {
+    setImages(images);
+  };
+
   // Load the model.
   useEffect(() => {
     if (model) {
       return;
     }
-
     tf.loadLayersModel(modelPath)
       .then((layersModel) => {
         setModel(layersModel);
@@ -71,7 +74,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
       <Box mb={2}>
         Select an image or take a photo that you want to be tagged (classified).
       </Box>
-      <ImageInput onSelect={setImages} />
+      <ImageInput onSelect={onImagesSelect} />
       <Box mt={2}>
         {imagesPreview}
       </Box>
