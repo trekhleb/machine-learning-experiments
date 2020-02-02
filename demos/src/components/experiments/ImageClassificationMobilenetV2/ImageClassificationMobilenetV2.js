@@ -28,10 +28,6 @@ const ImageClassificationMobilenetV2 = (): Node => {
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
 
-  const onImagesSelect = (images: File[]) => {
-    setImages(images);
-  };
-
   // Load the model.
   useEffect(() => {
     if (model) {
@@ -48,9 +44,21 @@ const ImageClassificationMobilenetV2 = (): Node => {
 
   // Setup preview width.
   useEffect(() => {
-    const width = Math.min(maxPreviewWidth, experimentWrapper.current.offsetWidth);
+    if (!experimentWrapper.current) {
+      return;
+    }
+    const width = Math.min(
+      maxPreviewWidth,
+      experimentWrapper.current.offsetWidth
+    );
     setPreviewWidth(width);
   }, []);
+
+  useEffect(() => {
+    if (!images || !images.length) {
+      return;
+    }
+  }, [images]);
 
   const imagesPreview = images ? (
     images.map((image: File) => (
@@ -74,7 +82,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
       <Box mb={2}>
         Select an image or take a photo that you want to be tagged (classified).
       </Box>
-      <ImageInput onSelect={onImagesSelect} />
+      <ImageInput onSelect={setImages} />
       <Box mt={2}>
         {imagesPreview}
       </Box>
