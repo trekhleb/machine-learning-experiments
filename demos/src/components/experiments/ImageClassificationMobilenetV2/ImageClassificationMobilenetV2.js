@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
@@ -20,7 +20,7 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/image_classification
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/image_classification_mobilenet_v2/model.json`;
 
-const maxPreviewWidth = 300;
+const maxPreviewWidth = 400;
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -31,11 +31,11 @@ const useStyles = makeStyles(() => ({
 const ImageClassificationMobilenetV2 = (): Node => {
   const classes = useStyles();
 
-  const previewWidth = maxPreviewWidth;
-
+  const experimentWrapper = useRef(null);
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [images, setImages] = useState(null);
+  const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
 
   // Load the model.
   useEffect(() => {
@@ -51,6 +51,11 @@ const ImageClassificationMobilenetV2 = (): Node => {
         setErrorMessage('Model cannot be loaded');
       });
   }, [model, setErrorMessage, setModel]);
+
+  useEffect(() => {
+    const width = Math.min(maxPreviewWidth, experimentWrapper.current.offsetWidth);
+    setPreviewWidth(width);
+  }, []);
 
   const imagesPreview = images ? (
     images.map((image: File) => (
@@ -70,7 +75,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
   ) : null;
 
   return (
-    <Box>
+    <Box ref={experimentWrapper}>
       <Box mb={2}>
         Select an image or take a photo that you want to be tagged (classified).
       </Box>
