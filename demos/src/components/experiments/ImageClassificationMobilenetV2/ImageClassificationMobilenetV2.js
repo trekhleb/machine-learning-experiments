@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
@@ -23,10 +23,30 @@ const maxPreviewWidth = 400;
 
 const ImageClassificationMobilenetV2 = (): Node => {
   const experimentWrapper = useRef(null);
+  const imagePreviewRef = useRef(null);
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
+
+  const classifyImage = () => {
+    if (!model) {
+      return;
+    }
+
+    const image = imagePreviewRef.current;
+    if (!image) {
+      return;
+    }
+
+    const tensor = tf.browser
+      .fromPixels(image);
+  };
+
+  const classifyImageCallback = useCallback(
+    classifyImage,
+    [imagePreviewRef],
+  );
 
   // Load the model.
   useEffect(() => {
@@ -54,11 +74,13 @@ const ImageClassificationMobilenetV2 = (): Node => {
     setPreviewWidth(width);
   }, []);
 
+  // Classify an image if new image has been selected.
   useEffect(() => {
-    if (!images || !images.length) {
+    if (!images || !images.length || !imagePreviewRef.current) {
       return;
     }
-  }, [images]);
+    imagePreviewRef.current.addEventListener('load', classifyImageCallback);
+  }, [images, classifyImageCallback]);
 
   const imagesPreview = images ? (
     images.map((image: File) => (
@@ -69,6 +91,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
         fontSize={0}
       >
         <img
+          ref={imagePreviewRef}
           src={URL.createObjectURL(image)}
           alt={image.name}
           width={previewWidth}
