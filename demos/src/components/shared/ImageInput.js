@@ -9,12 +9,15 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+const defaultDisabledState = false;
+
 type ImageInputProps = {
   onSelect: (images: File[]) => void,
+  disabled?: boolean,
 };
 
 const ImageInput = (props: ImageInputProps) => {
-  const { onSelect } = props;
+  const { onSelect, disabled = defaultDisabledState } = props;
 
   const classes = useStyles();
 
@@ -44,6 +47,7 @@ const ImageInput = (props: ImageInputProps) => {
         ref={fileInputRef}
       />
       <Button
+        disabled={disabled}
         startIcon={<ImageIcon />}
         variant="contained"
         color="primary"
@@ -53,6 +57,10 @@ const ImageInput = (props: ImageInputProps) => {
       </Button>
     </>
   );
+};
+
+ImageInput.defaultProps = {
+  disabled: defaultDisabledState,
 };
 
 export default ImageInput;
