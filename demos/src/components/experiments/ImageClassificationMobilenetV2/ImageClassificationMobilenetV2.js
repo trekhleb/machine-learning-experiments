@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback,
+} from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
-import Box from '@material-ui/core/Box';
 
+import Box from '@material-ui/core/Box';
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
@@ -26,6 +28,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
   const imagePreviewRef = useRef(null);
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
 
@@ -39,14 +42,33 @@ const ImageClassificationMobilenetV2 = (): Node => {
       return;
     }
 
-    const tensor = tf.browser
-      .fromPixels(image);
+    const modelInputWidth = model.layers[0].input.shape[1];
+    const modelInputHeight = model.layers[0].input.shape[2];
+
+    const tensor: tf.Tensor = tf.browser
+      .fromPixels(image)
+      .resizeNearestNeighbor([modelInputWidth, modelInputHeight]);
+
+    const batchAxis = 0;
+    const prediction = model.predict(tensor.expandDims(batchAxis));
   };
 
   const classifyImageCallback = useCallback(
     classifyImage,
-    [imagePreviewRef],
+    [imagePreviewRef, model],
   );
+
+  const warmupModel = async () => {
+    if (model && !modelIsWarm) {
+      const modelInputWidth = model.layers[0].input.shape[1];
+      const modelInputHeight = model.layers[0].input.shape[2];
+      model.predict(
+        tf.zeros([1, modelInputWidth, modelInputHeight, 3]),
+      );
+    }
+  };
+
+  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
 
   // Load the model.
   useEffect(() => {
@@ -61,6 +83,14 @@ const ImageClassificationMobilenetV2 = (): Node => {
         setErrorMessage('Model cannot be loaded');
       });
   }, [model, setErrorMessage, setModel]);
+
+  // Warmup the model.
+  useEffect(() => {
+    if (model && !modelIsWarm) {
+      warmupModelCallback();
+      setModelIsWarm(true);
+    }
+  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
 
   // Setup preview width.
   useEffect(() => {
@@ -81,6 +111,12 @@ const ImageClassificationMobilenetV2 = (): Node => {
     }
     imagePreviewRef.current.addEventListener('load', classifyImageCallback);
   }, [images, classifyImageCallback]);
+
+  const notificationElement = modelIsWarm === null ? (
+    <>Preparing the model...</>
+  ) : (
+    <>Select an image or take a photo that you want to be tagged (classified).</>
+  );
 
   const imagesPreview = images ? (
     images.map((image: File) => (
@@ -103,9 +139,9 @@ const ImageClassificationMobilenetV2 = (): Node => {
   return (
     <Box ref={experimentWrapper}>
       <Box mb={2}>
-        Select an image or take a photo that you want to be tagged (classified).
+        {notificationElement}
       </Box>
-      <ImageInput onSelect={setImages} />
+      <ImageInput onSelect={setImages} disabled={!modelIsWarm} />
       <Box mt={2}>
         {imagesPreview}
       </Box>
