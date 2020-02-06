@@ -74,8 +74,8 @@ const ImageClassificationMobilenetV2 = (): Node => {
 
     const tensor: tf.Tensor = tf.browser
       .fromPixels(image)
-      .div(255)
-      .resizeNearestNeighbor([modelInputWidth, modelInputHeight]);
+      .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
+      .div(255);
 
     const batchAxis = 0;
     const currentPredictions = model.predict(tensor.expandDims(batchAxis));
