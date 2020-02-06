@@ -3,8 +3,12 @@ import React, {
 } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
-
+import Chip from '@material-ui/core/Chip';
+import HelpIcon from '@material-ui/icons/Help';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/styles';
+
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
@@ -13,6 +17,7 @@ import type { Experiment } from '../types';
 import cover from './cover.png';
 import Snack from '../../shared/Snack';
 import ImageInput from '../../shared/ImageInput';
+import imageNetLabels from './imageNetLabels.json';
 
 const experimentSlug = 'ImageClassificationMobilenetV2';
 const experimentName = 'Image Classification (MobileNetV2)';
@@ -23,7 +28,28 @@ const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/image_classification_mobil
 
 const maxPreviewWidth = 400;
 
+type Prediction = {
+  label: string,
+  probability: number,
+};
+
+const predictionThreshold = 0.2;
+const tagsLimit = 5;
+
+const useStyles = makeStyles((theme) => ({
+  tagsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    '& > *': {
+      marginRight: theme.spacing(1),
+      marginBottom: theme.spacing(1),
+    },
+  },
+}));
+
 const ImageClassificationMobilenetV2 = (): Node => {
+  const classes = useStyles();
+
   const experimentWrapper = useRef(null);
   const imagePreviewRef = useRef(null);
   const [model, setModel] = useState(null);
@@ -31,6 +57,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
   const [modelIsWarm, setModelIsWarm] = useState(null);
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
+  const [predictions, setPredictions] = useState([]);
 
   const classifyImage = () => {
     if (!model) {
@@ -50,12 +77,23 @@ const ImageClassificationMobilenetV2 = (): Node => {
       .resizeNearestNeighbor([modelInputWidth, modelInputHeight]);
 
     const batchAxis = 0;
-    const prediction = model.predict(tensor.expandDims(batchAxis));
+    const currentPredictions = model.predict(tensor.expandDims(batchAxis));
+    const predictionsArray = currentPredictions.arraySync()[0];
+
+    const predictionsSet: Prediction[] = imageNetLabels.map((label: string, index: number) => {
+      const prediction: Prediction = {
+        label,
+        probability: predictionsArray[index],
+      };
+      return prediction;
+    });
+
+    setPredictions(predictionsSet);
   };
 
   const classifyImageCallback = useCallback(
     classifyImage,
-    [imagePreviewRef, model],
+    [model],
   );
 
   const warmupModel = async () => {
@@ -99,7 +137,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
     }
     const width = Math.min(
       maxPreviewWidth,
-      experimentWrapper.current.offsetWidth
+      experimentWrapper.current.offsetWidth,
     );
     setPreviewWidth(width);
   }, []);
@@ -107,9 +145,13 @@ const ImageClassificationMobilenetV2 = (): Node => {
   // Classify an image if new image has been selected.
   useEffect(() => {
     if (!images || !images.length || !imagePreviewRef.current) {
-      return;
+      return () => {};
     }
-    imagePreviewRef.current.addEventListener('load', classifyImageCallback);
+    const imagePreview = imagePreviewRef.current;
+    imagePreview.addEventListener('load', classifyImageCallback, { once: true });
+    return () => {
+      imagePreview.removeEventListener('load', classifyImageCallback, { once: true });
+    };
   }, [images, classifyImageCallback]);
 
   const notificationElement = modelIsWarm === null ? (
@@ -136,12 +178,51 @@ const ImageClassificationMobilenetV2 = (): Node => {
     ))
   ) : null;
 
+  const tags = predictions && predictions.length
+    ? predictions
+      .filter((prediction: Prediction) => prediction.probability > predictionThreshold)
+      .sort((a: Prediction, b: Prediction) => {
+        if (a.probability === b.probability) { return 0; }
+        if (a.probability < b.probability) { return 1; }
+        return -1;
+      })
+      .filter((prediction: Prediction, index) => index < tagsLimit)
+      .map((prediction: Prediction) => {
+        const label = `${prediction.label} | ${Math.floor(100 * prediction.probability)}%`;
+        return (
+          <Chip
+            key={prediction.label}
+            label={label}
+            color="secondary"
+            icon={<LocalOfferIcon />}
+          />
+        );
+      })
+    : null;
+
+  const tagsContainer = tags && tags.length ? (
+    <Box className={classes.tagsContainer} mt={2} mb={2}>
+      {tags}
+    </Box>
+  ) : null;
+
+  const tagsError = predictions && predictions.length && (!tags || !tags.length) ? (
+    <Box className={classes.tagsContainer} mt={2} mb={2}>
+      <Chip
+        label="Cannot classify"
+        icon={<HelpIcon />}
+      />
+    </Box>
+  ) : null;
+
   return (
     <Box ref={experimentWrapper}>
       <Box mb={2}>
         {notificationElement}
       </Box>
       <ImageInput onSelect={setImages} disabled={!modelIsWarm} />
+      {tagsContainer}
+      {tagsError}
       <Box mt={2}>
         {imagesPreview}
       </Box>
