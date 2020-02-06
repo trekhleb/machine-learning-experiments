@@ -75,7 +75,11 @@ const ImageClassificationMobilenetV2 = (): Node => {
     const tensor: tf.Tensor = tf.browser
       .fromPixels(image)
       .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
-      .div(255);
+      // Imitating tf.keras.applications.mobilenet_v2.preprocess_input() function.
+      // Trying to convert [0, 255] range to [-1, 1] range.
+      // @see: https://github.com/keras-team/keras-applications/blob/master/keras_applications/imagenet_utils.py#L18
+      .div(255 / 2)
+      .add(-1);
 
     const batchAxis = 0;
     const currentPredictions = model.predict(tensor.expandDims(batchAxis));
@@ -156,9 +160,14 @@ const ImageClassificationMobilenetV2 = (): Node => {
   }, [images, classifyImageCallback]);
 
   const notificationElement = modelIsWarm === null ? (
-    <>Preparing the model...</>
+    <Box>
+      Preparing the model...
+    </Box>
   ) : (
-    <>Select an image or take a photo that you want to be tagged (classified).</>
+    <Box display="flex">
+      Select an image or take a photo that you want to be tagged (classified).
+      Try to have one distinct object on the photo.
+    </Box>
   );
 
   const imagesPreview = images ? (
