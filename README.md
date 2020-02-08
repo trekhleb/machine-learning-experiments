@@ -2,6 +2,8 @@
 
 Collection of interactive machine-learning experiments.
 
+_☝ Remember the notebooks and demos in this repository are just **experiments** or playgrounds and **not** a production ready, fine-tuned, super-performant re-usable code_
+
 **How to use this repo**
 
 **@TODO:** Finish this list
