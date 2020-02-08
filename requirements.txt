@@ -10,11 +10,14 @@ chardet==3.0.4
 cycler==0.10.0
 decorator==4.4.1
 defusedxml==0.6.0
+dill==0.3.1.1
 entrypoints==0.3
+future==0.18.2
 gast==0.2.2
 google-auth==1.7.1
 google-auth-oauthlib==0.4.1
 google-pasta==0.1.8
+googleapis-common-protos==1.51.0
 grpcio==1.25.0
 h5py==2.10.0
 idna==2.8
@@ -58,6 +61,7 @@ pexpect==4.7.0
 pickleshare==0.7.5
 Pillow==7.0.0
 prometheus-client==0.7.1
+promise==2.3
 prompt-toolkit==2.0.10
 protobuf==3.10.0
 ptyprocess==0.6.0
@@ -81,11 +85,14 @@ Send2Trash==1.5.0
 six==1.13.0
 tensorboard==2.1.0
 tensorflow==2.1.0
+tensorflow-datasets==2.0.0
 tensorflow-estimator==2.1.0
+tensorflow-metadata==0.21.1
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
 tornado==6.0.3
+tqdm==4.42.1
 traitlets==4.3.3
 urllib3==1.25.7
 wcwidth==0.1.7
