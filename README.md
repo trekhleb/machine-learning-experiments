@@ -103,6 +103,39 @@ _☝ Remember the notebooks and demos in this repository are just **experiments*
     <!-- Experiment -->
     <tr>
       <td>
+        <img src="assets/images/rock_paper_scissors.png" alt="Rock Paper Scissors" width="150" />
+      </td>
+      <td>
+        <b>Rock Paper Scissors (CNN)</b>
+      </td>
+      <td>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors/rock_paper_scissors.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors/rock_paper_scissors.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissors">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
+      </td>
+      <td>
+        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
+        <code>CNN</code>,
+        <code>Tensorflow</code>,
+        <code>Keras</code>
+      </td>
+      <td>
+        <a href="https://www.tensorflow.org/datasets/catalog/mnist">
+          MNIST
+        </a>
+      </td>
+    </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
         <img src="assets/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
