@@ -207,7 +207,7 @@ _☝ Remember the notebooks and demos in this repository are just **experiments*
 
 ### Virtual environment for Experiments
 
-This environment is used to run Jupyter notebooks with experiments. This environment is used by default for further documentation. If some commands need to be run in another environment (i.e. in `converter` environment) this will be specified explicitly.
+This environment is used by default to run Jupyter notebooks with experiments.
 
 #### Create environment for Experiments
 
@@ -227,30 +227,6 @@ For `fish`:
 
 ```bash
 source .virtualenvs/experiments/bin/activate.fish
-```
-
-### Virtual environment for Model Converter
-
-This environment is used to convert the models that were trained during the experiments from `.h5` format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
-
-#### Create environment for Converter
-
-```bash
-python3 -m venv .virtualenvs/converter
-```
-
-#### Activate environment for Converter
-
-For `shell`:
-
-```bash
-source .virtualenvs/converter/bin/activate
-```
-
-For `fish`:
-
-```bash
-source .virtualenvs/converter/bin/activate.fish
 ```
 
 ### Quitting virtual environments
@@ -277,17 +253,51 @@ pip install package
 pip freeze > requirements.txt
 ```
 
-To list installed packages for converter environment you should launch:
-
-```bash
-pip freeze > requirements.converter.txt
-```
-
 ### Install packages
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### Launching Jupyter
+
+```bash
+jupyter notebook
+```
+
+### Launching demos locally
+
+```bash
+cd demos
+yarn install
+yarn start
+```
+
+## Converting Keras models into web-format for Demo app
+
+The `converter` environment is used to convert the models that were trained during the experiments from `.h5` format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
+
+### Create environment for Converter
+
+```bash
+python3 -m venv .virtualenvs/converter
+```
+
+### Activate environment for Converter
+
+For `shell`:
+
+```bash
+source .virtualenvs/converter/bin/activate
+```
+
+For `fish`:
+
+```bash
+source .virtualenvs/converter/bin/activate.fish
+```
+
+### Install packages
 
 To install packages in `converter` environment run:
 
@@ -295,10 +305,12 @@ To install packages in `converter` environment run:
 pip install -r requirements.converter.txt
 ```
 
-### Launching Jupyter
+### Save added package to `requirements.requirements.txt`
+
+To list installed packages for converter environment you should launch:
 
 ```bash
-jupyter notebook
+pip freeze > requirements.converter.txt
 ```
 
 ### Converting the models
@@ -317,15 +329,7 @@ tensorflowjs_converter --input_format keras \
   ./demos/public/models/digits_recognition_mlp
 ```
 
-### Launching demos locally
-
-```bash
-cd demos
-yarn install
-yarn start
-```
-
-## Issues
+## Known Issues
 
 [Issue](https://github.com/tensorflow/tensorflow/issues/33183)
 
