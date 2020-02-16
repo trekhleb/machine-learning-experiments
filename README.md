@@ -128,8 +128,8 @@ _☝ Remember the notebooks and demos in this repository are just **experiments*
         <code>Keras</code>
       </td>
       <td>
-        <a href="https://www.tensorflow.org/datasets/catalog/mnist">
-          MNIST
+        <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
+          RPS
         </a>
       </td>
     </tr>
