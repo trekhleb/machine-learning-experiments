@@ -109,15 +109,15 @@ _☝ Remember the notebooks and demos in this repository are just **experiments*
         <b>Rock Paper Scissors (CNN)</b>
       </td>
       <td>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors/rock_paper_scissors.ipynb">
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
-        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors/rock_paper_scissors.ipynb">
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
         </a>
       </td>
       <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissors">
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN">
           ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
