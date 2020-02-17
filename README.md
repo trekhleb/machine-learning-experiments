@@ -205,17 +205,17 @@ _☝ Remember the notebooks and demos in this repository are just **experiments*
 
 ## How to use this repository
 
-### Virtual environment for Experiments
+### Setup virtual environment for Experiments
 
 This environment is used by default to run Jupyter notebooks with experiments.
 
-#### Create environment for Experiments
+**Create environment for Experiments**
 
 ```bash
 python3 -m venv .virtualenvs/experiments
 ```
 
-#### Activate environment for Experiments
+**Activate environment for Experiments**
 
 For `shell`:
 
@@ -229,43 +229,45 @@ For `fish`:
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-### Quitting virtual environments
+***Quitting virtual environments**
 
 ```bash
 deactivate
 ```
 
-### Upgrading `pip` and `setuptools`
+### Install dependencies
+
+**Upgrade `pip` and `setuptools`**
 
 ```bash
 pip install --upgrade pip setuptools
 ```
 
-### Add new package (optional)
+**Add new package (optional)**
 
 ```bash
 pip install package
 ```
 
-### Save added package to `requirements.txt`
+**Save added package to `requirements.txt`**
 
 ```bash
 pip freeze > requirements.txt
 ```
 
-### Install packages
+**Install packages**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Launching Jupyter
+### Launch Jupyter locally
 
 ```bash
 jupyter notebook
 ```
 
-### Launching demos locally
+### Launch demos locally
 
 ```bash
 cd demos
@@ -283,7 +285,7 @@ The `converter` environment is used to convert the models that were trained duri
 python3 -m venv .virtualenvs/converter
 ```
 
-### Activate environment for Converter
+**Activate environment for Converter**
 
 For `shell`:
 
@@ -305,7 +307,7 @@ To install packages in `converter` environment run:
 pip install -r requirements.converter.txt
 ```
 
-### Save added package to `requirements.requirements.txt`
+**Save added package to `requirements.requirements.txt`**
 
 To list installed packages for converter environment you should launch:
 
