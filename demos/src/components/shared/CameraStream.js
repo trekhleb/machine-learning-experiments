@@ -82,7 +82,7 @@ const CameraStream = (props: CameraStreamProps): Node => {
       },
     );
 
-    const userMediaConstraints = {
+    const userMediaConstraints: MediaStreamConstraints = {
       video: {
         width: { ideal: width },
         height: { ideal: height },
