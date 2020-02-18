@@ -121,6 +121,7 @@ const RockPaperScissorsCNN = (): Node => {
           height={canvasHeight}
           onVideoFrame={onVideoFrame}
           facingMode="user"
+          flipHorizontal
         />
       </Paper>
     </>

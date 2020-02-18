@@ -21,6 +21,7 @@ const defaultProps = {
   videoFrameRate: defaultVideoFrameRate,
   frameThrottling: defaultFrameThrottling,
   facingMode: defaultFacingMode,
+  flipHorizontal: false,
 };
 
 type CameraStreamProps = {
@@ -32,6 +33,7 @@ type CameraStreamProps = {
   videoFrameRate?: number,
   frameThrottling?: number,
   onVideoFrame?: (video?: ?HTMLVideoElement) => Promise<void>,
+  flipHorizontal?: boolean,
 };
 
 const CameraStream = (props: CameraStreamProps): Node => {
@@ -44,6 +46,7 @@ const CameraStream = (props: CameraStreamProps): Node => {
     facingMode,
     videoFrameRate,
     frameThrottling,
+    flipHorizontal,
   } = props;
 
   const videoRef = useRef(null);
@@ -132,6 +135,10 @@ const CameraStream = (props: CameraStreamProps): Node => {
     frameThrottling,
   ]);
 
+  const videoStyle = {
+    transform: flipHorizontal ? 'scaleX(-1)' : '',
+  };
+
   return (
     <>
       <video
@@ -149,7 +156,5 @@ const CameraStream = (props: CameraStreamProps): Node => {
 };
 
 CameraStream.defaultProps = defaultProps;
-
-const videoStyle = {};
 
 export default CameraStream;
