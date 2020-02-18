@@ -22,6 +22,8 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/rock_paper_scissors_cnn/model.json`;
 
+const countDownStart = 4;
+
 const canvasWidth = 300;
 const canvasHeight = 300;
 
@@ -97,6 +99,7 @@ const choices: Choices = {
 
 const RockPaperScissorsCNN = (): Node => {
   const [computerChoice, setComputerChoice] = useState('');
+  const [counter, setCounter] = useState(null);
 
   const classes = useStyles();
 
@@ -104,9 +107,26 @@ const RockPaperScissorsCNN = (): Node => {
     console.log('+++ On video frame');
   };
 
-  const onPlay = () => {
-    console.log('+++ PLAY');
+  const onGameStart = () => {
+    setCounter(countDownStart);
   };
+
+  const onGameEnd = () => {
+    console.log('+++ GAME!');
+  };
+
+  // Countdown effect.
+  useEffect(() => {
+    if (counter === null) {
+      return;
+    }
+    if (counter === 0) {
+      setCounter(null);
+      onGameEnd();
+      return;
+    }
+    setTimeout(() => setCounter(counter - 1), 500);
+  }, [counter]);
 
   const cameraPaper = (
     <>
@@ -144,21 +164,28 @@ const RockPaperScissorsCNN = (): Node => {
     </>
   );
 
-  const buttons = (
+  const buttons = counter === null ? (
     <Box className={classes.buttons}>
       <Fab
         variant="extended"
         color="secondary"
         aria-label="Play"
         size="large"
-        onClick={onPlay}
+        onClick={onGameStart}
       >
         <PlayArrowIcon />
         {' '}
         PLAY
       </Fab>
+      {counter}
     </Box>
-  );
+  ) : null;
+
+  const countdown = counter !== null ? (
+    <Box>
+      {counter}
+    </Box>
+  ) : null;
 
   const description = (
     <ol>
@@ -210,6 +237,7 @@ const RockPaperScissorsCNN = (): Node => {
 
           <Grid item>
             {buttons}
+            {countdown}
           </Grid>
 
           <Grid item>
