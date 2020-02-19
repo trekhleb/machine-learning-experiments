@@ -13,7 +13,7 @@ import {
 export const valueKey = 'value';
 export const labelKey = 'label';
 
-type DataRecord = {
+export type DataRecord = {
   value: number,
   label: string,
 };

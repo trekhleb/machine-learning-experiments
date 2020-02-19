@@ -15,6 +15,8 @@ import { ML_EXPERIMENTS_DEMO_MODELS_PATH, ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } 
 import type { Experiment } from '../types';
 import CameraStream from '../../shared/CameraStream';
 import Snack from '../../shared/Snack';
+import OneHotBars from '../../shared/OneHotBars';
+import type { DataRecord } from '../../shared/OneHotBars';
 
 const experimentSlug = 'RockPaperScissorsCNN';
 const experimentName = 'Rock Paper Scissors (CNN)';
@@ -67,6 +69,32 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     background: 'none',
     zIndex: 10,
+  },
+  paperHumanChoiceBackground: {
+    width: canvasWidth,
+    height: canvasHeight,
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: 'none',
+    marginTop: `-${canvasHeight}px`,
+    position: 'absolute',
+    background: 'rgba(255, 255, 255, .4)',
+    zIndex: 20,
+  },
+  paperHumanChoice: {
+    width: canvasWidth,
+    height: canvasHeight,
+    overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: 'none',
+    marginTop: `-${canvasHeight}px`,
+    position: 'absolute',
+    background: 'none',
+    zIndex: 30,
   },
   choice: {
     width: canvasWidth,
@@ -149,6 +177,7 @@ const RockPaperScissorsCNN = (): Node => {
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [modelIsWarm, setModelIsWarm] = useState(null);
+  const [rawPredictions, setRawPredictions] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
   const [humanChoice, setHumanChoice] = useState(null);
   const [humanScore, setHumanScore] = useState(0);
@@ -162,6 +191,38 @@ const RockPaperScissorsCNN = (): Node => {
 
   const classes = useStyles();
 
+  const predictHumanChoice = (currentCanvas: ?HTMLCanvasElement) => {
+    if (!model) {
+      setErrorMessage('Model is not loaded');
+      return null;
+    }
+
+    if (!currentCanvas) {
+      setErrorMessage('Canvas is not rendered');
+      return null;
+    }
+
+    const modelInputWidth = model.input.shape[1];
+    const modelInputHeight = model.input.shape[2];
+
+    const inputTensor = tf.browser
+      .fromPixels(currentCanvas)
+      // Resize image to fit neural network input.
+      .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
+      // Normalize.
+      .div(255);
+
+    const prediction = model.predict(
+      // Reshape and add one dimension for the pixel color to match CNN input size
+      inputTensor.reshape([1, modelInputWidth, modelInputHeight, 3]),
+    );
+
+    setRawPredictions(prediction.arraySync()[0]);
+
+    const choiceIndex = prediction.argMax(1).dataSync()[0];
+    return Object.values(choices)[choiceIndex];
+  };
+
   const warmupModel = async () => {
     if (model && !modelIsWarm) {
       const modelInputWidth = model.input.shape[1];
@@ -173,10 +234,12 @@ const RockPaperScissorsCNN = (): Node => {
 
   const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
 
-  const renderVideoSnapshot = () => {
+  const renderVideoSnapshot = (): ?HTMLCanvasElement => {
     if (!snapshotCanvasRef || !snapshotCanvasRef.current) {
-      return;
+      setErrorMessage('Canvas is not rendered');
+      return null;
     }
+
     const canvas: HTMLCanvasElement = snapshotCanvasRef.current;
     const canvasContext: CanvasRenderingContext2D = canvas.getContext('2d');
 
@@ -190,6 +253,8 @@ const RockPaperScissorsCNN = (): Node => {
     canvasContext.drawImage(
       videoFrame, 0, 0, canvas.width, canvas.height,
     );
+
+    return canvas;
   };
 
   const clearVideoSnapshot = () => {
@@ -210,16 +275,25 @@ const RockPaperScissorsCNN = (): Node => {
     setComputerChoice(null);
     setHumanChoice(null);
     setGameState(gameStates.inProgress);
+    setRawPredictions(null);
     clearVideoSnapshot();
   };
 
   const onGameEnd = () => {
+    // Update game state.
+    setGameState(gameStates.predicting);
+    // Make a computer choice.
     const randomIndex: number = Math.floor(Math.random() * 3);
     // $FlowFixMe
     const computerRandomChoice: Choice = Object.values(choices)[randomIndex];
     setComputerChoice(computerRandomChoice);
-    setGameState(gameStates.predicting);
-    renderVideoSnapshot();
+    // Rendering a video snapshot.
+    const currentCanvas: ?HTMLCanvasElement = renderVideoSnapshot();
+    // Prediction user choice from the video snapshot.
+    const humanChoicePrediction: Choice = predictHumanChoice(currentCanvas);
+    setHumanChoice(humanChoicePrediction);
+    // Update game state.
+    setGameState(gameStates.finished);
   };
 
   // Effect for loading the model.
@@ -281,11 +355,27 @@ const RockPaperScissorsCNN = (): Node => {
     </Paper>
   );
 
+  const humanChoiceBackgroundPaper = humanChoice ? (
+    <Paper className={classes.paperHumanChoiceBackground} />
+  ) : null;
+
+  const humanChoicePaper = (
+    <Paper className={classes.paperHumanChoice}>
+      <Zoom in={!!humanChoice} timeout={{ enter: 200 }}>
+        <Box className={classes.choice}>
+          <span role="img" aria-label="Human Choice">
+            {humanChoice && humanChoice.icon}
+          </span>
+        </Box>
+      </Zoom>
+    </Paper>
+  );
+
   const computerChoicePaper = (
     <Paper className={classes.paper}>
       <Zoom in={!!computerChoice} timeout={{ enter: 200 }}>
         <Box className={classes.choice}>
-          <span role="img" aria-label="Choice">
+          <span role="img" aria-label="Computer Choice">
             {computerChoice && computerChoice.icon}
           </span>
         </Box>
@@ -359,6 +449,23 @@ const RockPaperScissorsCNN = (): Node => {
     </ol>
   );
 
+  const oneHotPredictions: DataRecord[] = rawPredictions
+    ? rawPredictions.map((value, index) => ({
+      value,
+      // $FlowFixMe
+      label: Object.values(choices)[index].icon,
+    }))
+    : [];
+
+  const oneHotBars = rawPredictions ? (
+    <Box mt={3} mb={3} width={canvasWidth}>
+      <Box mb={1}>
+        <b>Probabilities</b>
+      </Box>
+      <OneHotBars data={oneHotPredictions} height={100} />
+    </Box>
+  ) : null;
+
   if (!model) {
     return (
       <Box>
@@ -395,6 +502,8 @@ const RockPaperScissorsCNN = (): Node => {
             </Box>
             {cameraPaper}
             {snapshotPaper}
+            {humanChoiceBackgroundPaper}
+            {humanChoicePaper}
           </Grid>
 
           <Grid item>
@@ -414,6 +523,7 @@ const RockPaperScissorsCNN = (): Node => {
         </Grid>
       </Box>
       <Snack severity="error" message={errorMessage} />
+      {oneHotBars}
     </>
   );
 };
