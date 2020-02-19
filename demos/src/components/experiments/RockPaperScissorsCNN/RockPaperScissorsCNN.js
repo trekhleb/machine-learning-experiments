@@ -292,6 +292,22 @@ const RockPaperScissorsCNN = (): Node => {
     // Prediction user choice from the video snapshot.
     const humanChoicePrediction: Choice = predictHumanChoice(currentCanvas);
     setHumanChoice(humanChoicePrediction);
+    // Detect the winner.
+    if (
+      humanChoicePrediction.beats.find(
+        (choiceId: $Values<typeof choiceIDs>) => choiceId === computerRandomChoice.id,
+      )
+    ) {
+      // Human won.
+      setHumanScore(humanScore + 1);
+    } else if (
+      computerRandomChoice.beats.find(
+        (choiceId: $Values<typeof choiceIDs>) => choiceId === humanChoicePrediction.id,
+      )
+    ) {
+      // Computer won.
+      setComputerScore(computerScore + 1);
+    }
     // Update game state.
     setGameState(gameStates.finished);
   };
