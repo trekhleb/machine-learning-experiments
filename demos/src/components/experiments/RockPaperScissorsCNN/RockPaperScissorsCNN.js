@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
@@ -12,6 +14,7 @@ import cover from './cover.jpg';
 import { ML_EXPERIMENTS_DEMO_MODELS_PATH, ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } from '../../../constants/links';
 import type { Experiment } from '../types';
 import CameraStream from '../../shared/CameraStream';
+import Snack from '../../shared/Snack';
 
 const experimentSlug = 'RockPaperScissorsCNN';
 const experimentName = 'Rock Paper Scissors (CNN)';
@@ -143,6 +146,9 @@ const choices: Choices = {
 };
 
 const RockPaperScissorsCNN = (): Node => {
+  const [model, setModel] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
   const [humanChoice, setHumanChoice] = useState(null);
   const [humanScore, setHumanScore] = useState(0);
@@ -150,10 +156,22 @@ const RockPaperScissorsCNN = (): Node => {
   const [counter, setCounter] = useState(null);
   const [videoFrame, setVideoFrame] = useState(null);
   const [gameState, setGameState] = useState(gameStates.notStarted);
+  const [canvasFlipped, setCanvasFlipped] = useState(false);
 
   const snapshotCanvasRef = useRef(null);
 
   const classes = useStyles();
+
+  const warmupModel = async () => {
+    if (model && !modelIsWarm) {
+      const modelInputWidth = model.input.shape[1];
+      const modelInputHeight = model.input.shape[2];
+      const fakeInput = tf.zeros([1, modelInputWidth, modelInputHeight, 3]);
+      model.predict(fakeInput);
+    }
+  };
+
+  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
 
   const renderVideoSnapshot = () => {
     if (!snapshotCanvasRef || !snapshotCanvasRef.current) {
@@ -161,6 +179,14 @@ const RockPaperScissorsCNN = (): Node => {
     }
     const canvas: HTMLCanvasElement = snapshotCanvasRef.current;
     const canvasContext: CanvasRenderingContext2D = canvas.getContext('2d');
+
+    // Flip canvas if needed.
+    if (!canvasFlipped && flipVideoHorizontally) {
+      canvasContext.translate(canvas.width, 0);
+      canvasContext.scale(-1, 1);
+      setCanvasFlipped(true);
+    }
+
     canvasContext.drawImage(
       videoFrame, 0, 0, canvas.width, canvas.height,
     );
@@ -189,25 +215,30 @@ const RockPaperScissorsCNN = (): Node => {
 
   const onGameEnd = () => {
     const randomIndex: number = Math.floor(Math.random() * 3);
+    // $FlowFixMe
     const computerRandomChoice: Choice = Object.values(choices)[randomIndex];
     setComputerChoice(computerRandomChoice);
     setGameState(gameStates.predicting);
     renderVideoSnapshot();
   };
 
-  // Flip canvas horizontally if needed.
+  // Effect for loading the model.
   useEffect(() => {
-    if (!snapshotCanvasRef || !snapshotCanvasRef.current) {
-      return;
+    tf.loadLayersModel(modelPath)
+      .then((layersModel) => {
+        setModel(layersModel);
+      })
+      .catch((e) => {
+        setErrorMessage(e);
+      });
+  }, [setErrorMessage, setModel]);
+
+  // Effect for warming up the model.
+  useEffect(() => {
+    if (model && !modelIsWarm) {
+      warmupModelCallback().then(() => setModelIsWarm(true));
     }
-    if (!flipVideoHorizontally) {
-      return;
-    }
-    const canvas: HTMLCanvasElement = snapshotCanvasRef.current;
-    const canvasContext: CanvasRenderingContext2D = canvas.getContext('2d');
-    canvasContext.translate(canvas.width, 0);
-    canvasContext.scale(-1, 1);
-  }, []);
+  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
 
   // Countdown effect.
   useEffect(() => {
@@ -328,6 +359,27 @@ const RockPaperScissorsCNN = (): Node => {
     </ol>
   );
 
+  if (!model) {
+    return (
+      <Box>
+        <Box>
+          Loading the model
+        </Box>
+        <LinearProgress />
+      </Box>
+    );
+  }
+
+  if (!modelIsWarm) {
+    return (
+      <Box>
+        <Box>
+          Preparing the model...
+        </Box>
+      </Box>
+    );
+  }
+
   return (
     <>
       <Box className={classes.description}>
@@ -361,6 +413,7 @@ const RockPaperScissorsCNN = (): Node => {
           </Grid>
         </Grid>
       </Box>
+      <Snack severity="error" message={errorMessage} />
     </>
   );
 };
