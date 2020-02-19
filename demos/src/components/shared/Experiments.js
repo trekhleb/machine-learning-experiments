@@ -7,6 +7,7 @@ import ExperimentPreview from './ExperimentPreview';
 import experiments from '../experiments';
 import type { Experiment } from '../experiments/types';
 import { WINDOW_TITLE } from '../../constants/copies';
+import ErrorBoundary from './ErrorBoundary';
 
 const Experiments = (): Node => {
   const experimentsPreviews: Node[] = [];
@@ -22,14 +23,14 @@ const Experiments = (): Node => {
   });
 
   return (
-    <>
+    <ErrorBoundary>
       <Helmet>
         <title>{WINDOW_TITLE}</title>
       </Helmet>
       <Grid container spacing={3}>
         {experimentsPreviews}
       </Grid>
-    </>
+    </ErrorBoundary>
   );
 };
 

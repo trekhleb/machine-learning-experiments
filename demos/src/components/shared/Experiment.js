@@ -15,6 +15,7 @@ import { ML_EXPERIMENTS_GITHUB_URL } from '../../constants/links';
 import Badge, { badgeType } from './Badge';
 import { WINDOW_TITLE } from '../../constants/copies';
 import { generateColabLink, generateJupyterLink } from '../../utils/links';
+import ErrorBoundary from './ErrorBoundary';
 
 type ExperimentProps = {
   match: Match,
@@ -71,7 +72,7 @@ const Experiment = (props: ExperimentProps): Node => {
   ) : null;
 
   return (
-    <>
+    <ErrorBoundary>
       <Helmet>
         <title>{`${WINDOW_TITLE} | ${experiment.name}`}</title>
         <meta name="description" content={experiment.description} />
@@ -96,7 +97,7 @@ const Experiment = (props: ExperimentProps): Node => {
       <Box mb={3}>
         <ExperimentElement />
       </Box>
-    </>
+    </ErrorBoundary>
   );
 };
 

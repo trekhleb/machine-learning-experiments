@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
@@ -24,15 +29,6 @@ const experimentDescription = 'Play Rock Paper Scissors game against computer us
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb`;
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/rock_paper_scissors_cnn/model.json`;
-
-const gameStates = {
-  notStarted: 'notStarted',
-  inProgress: 'inProgress',
-  predicting: 'predicting',
-  finished: 'finished',
-};
-
-type GameState = $Values<typeof gameStates>;
 
 const flipVideoHorizontally = true;
 
@@ -184,7 +180,6 @@ const RockPaperScissorsCNN = (): Node => {
   const [computerScore, setComputerScore] = useState(0);
   const [counter, setCounter] = useState(null);
   const [videoFrame, setVideoFrame] = useState(null);
-  const [gameState, setGameState] = useState(gameStates.notStarted);
   const [canvasFlipped, setCanvasFlipped] = useState(false);
 
   const snapshotCanvasRef = useRef(null);
@@ -240,6 +235,11 @@ const RockPaperScissorsCNN = (): Node => {
       return null;
     }
 
+    if (!videoFrame) {
+      setErrorMessage('Cannot generate video snapshot');
+      return null;
+    }
+
     const canvas: HTMLCanvasElement = snapshotCanvasRef.current;
     const canvasContext: CanvasRenderingContext2D = canvas.getContext('2d');
 
@@ -274,14 +274,11 @@ const RockPaperScissorsCNN = (): Node => {
     setCounter(countDownStart);
     setComputerChoice(null);
     setHumanChoice(null);
-    setGameState(gameStates.inProgress);
     setRawPredictions(null);
     clearVideoSnapshot();
   };
 
   const onGameEnd = () => {
-    // Update game state.
-    setGameState(gameStates.predicting);
     // Make a computer choice.
     const randomIndex: number = Math.floor(Math.random() * 3);
     // $FlowFixMe
@@ -293,24 +290,38 @@ const RockPaperScissorsCNN = (): Node => {
     const humanChoicePrediction: Choice = predictHumanChoice(currentCanvas);
     setHumanChoice(humanChoicePrediction);
     // Detect the winner.
+    if (!humanChoicePrediction) {
+      setErrorMessage('Cannot predict human choice');
+      return false;
+    }
+
     if (
-      humanChoicePrediction.beats.find(
-        (choiceId: $Values<typeof choiceIDs>) => choiceId === computerRandomChoice.id,
-      )
+      humanChoicePrediction.beats.find((choiceId: $Values<typeof choiceIDs>) => choiceId === computerRandomChoice.id)
     ) {
       // Human won.
       setHumanScore(humanScore + 1);
     } else if (
-      computerRandomChoice.beats.find(
-        (choiceId: $Values<typeof choiceIDs>) => choiceId === humanChoicePrediction.id,
-      )
+      computerRandomChoice.beats.find((choiceId: $Values<typeof choiceIDs>) => choiceId === humanChoicePrediction.id)
     ) {
       // Computer won.
       setComputerScore(computerScore + 1);
     }
-    // Update game state.
-    setGameState(gameStates.finished);
+
+    return true;
   };
+
+  const onGameEndCallback = useCallback(onGameEnd, [
+    computerScore,
+    computerChoice,
+    humanScore,
+    humanChoice,
+    videoFrame,
+    model,
+    errorMessage,
+    modelIsWarm,
+    rawPredictions,
+    counter,
+  ]);
 
   // Effect for loading the model.
   useEffect(() => {
@@ -339,7 +350,7 @@ const RockPaperScissorsCNN = (): Node => {
     if (counter === 0) {
       // Countdown is finished.
       setCounter(null);
-      onGameEnd();
+      onGameEndCallback();
       return;
     }
     // Do the next tick.
@@ -347,7 +358,7 @@ const RockPaperScissorsCNN = (): Node => {
       () => setCounter(counter - 1),
       countDownTimeout,
     );
-  }, [counter]);
+  }, [onGameEndCallback, counter]);
 
   const cameraPaper = (
     <Paper className={classes.paper}>
