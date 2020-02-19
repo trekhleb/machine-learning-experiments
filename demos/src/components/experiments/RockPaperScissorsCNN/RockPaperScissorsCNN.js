@@ -22,6 +22,11 @@ import CameraStream from '../../shared/CameraStream';
 import Snack from '../../shared/Snack';
 import OneHotBars from '../../shared/OneHotBars';
 import type { DataRecord } from '../../shared/OneHotBars';
+import InputImagesExample from '../../shared/InputImagesExample';
+
+import inputImageExample1 from './input-examples/rock.png';
+import inputImageExample2 from './input-examples/paper.png';
+import inputImageExample3 from './input-examples/scissors.png';
 
 const experimentSlug = 'RockPaperScissorsCNN';
 const experimentName = 'Rock Paper Scissors (CNN)';
@@ -168,6 +173,12 @@ const choices: Choices = {
     beats: [choiceIDs.paper],
   },
 };
+
+const inputImagesExample = [
+  inputImageExample1,
+  inputImageExample2,
+  inputImageExample3,
+];
 
 const RockPaperScissorsCNN = (): Node => {
   const [model, setModel] = useState(null);
@@ -519,6 +530,7 @@ const RockPaperScissorsCNN = (): Node => {
       <Box className={classes.description}>
         {description}
       </Box>
+
       <Box>
         <Grid container spacing={4} alignItems="center" justify="flex-start">
           <Grid item>
@@ -549,8 +561,19 @@ const RockPaperScissorsCNN = (): Node => {
           </Grid>
         </Grid>
       </Box>
+
+      <Box mb={3}>
+        {oneHotBars}
+      </Box>
+
+      <Box>
+        <InputImagesExample
+          title="Input image examples for better model performance"
+          images={inputImagesExample}
+        />
+      </Box>
+
       <Snack severity="error" message={errorMessage} />
-      {oneHotBars}
     </>
   );
 };
