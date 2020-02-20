@@ -18,6 +18,13 @@ import cover from './cover.png';
 import Snack from '../../shared/Snack';
 import ImageInput from '../../shared/ImageInput';
 import imageNetLabels from './imageNetLabels.json';
+import inputImageExample0 from './input-examples/0.png';
+import inputImageExample1 from './input-examples/1.png';
+import inputImageExample2 from './input-examples/2.png';
+import inputImageExample3 from './input-examples/3.png';
+import inputImageExample4 from './input-examples/4.png';
+import inputImageExample5 from './input-examples/5.png';
+import InputImagesExample from '../../shared/InputImagesExample';
 
 const experimentSlug = 'ImageClassificationMobilenetV2';
 const experimentName = 'Image Classification (MobileNetV2)';
@@ -27,6 +34,15 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/image_classification
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/image_classification_mobilenet_v2/model.json`;
 
 const maxPreviewWidth = 400;
+
+const inputImagesExamples = [
+  inputImageExample0,
+  inputImageExample1,
+  inputImageExample2,
+  inputImageExample3,
+  inputImageExample4,
+  inputImageExample5,
+];
 
 type Prediction = {
   label: string,
@@ -237,6 +253,12 @@ const ImageClassificationMobilenetV2 = (): Node => {
         {imagesPreview}
       </Box>
       <Snack severity="error" message={errorMessage} />
+      <Box mt={3}>
+        <InputImagesExample
+          imageWidth={87}
+          images={inputImagesExamples}
+        />
+      </Box>
     </Box>
   );
 };
