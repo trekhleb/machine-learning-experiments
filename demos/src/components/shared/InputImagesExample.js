@@ -10,12 +10,13 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 
 const defaultProps = {
-  imageWidth: 200,
+  title: 'Input image examples',
+  imageWidth: 150,
 };
 
 type InputImagesExampleProps = {
-  title: string,
   images: string[],
+  title?: string,
   imageWidth?: number,
 };
 
@@ -28,7 +29,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 const InputImagesExample = (props: InputImagesExampleProps): Node => {
-  const { images, title, imageWidth = defaultProps.imageWidth } = props;
+  const {
+    images,
+    title = defaultProps.title,
+    imageWidth = defaultProps.imageWidth,
+  } = props;
 
   const classes = useStyles();
 
@@ -43,9 +48,12 @@ const InputImagesExample = (props: InputImagesExampleProps): Node => {
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Box className={classes.heading}>
-            <EmojiObjectsIcon />
-            {' '}
-            {title}
+            <Box mr={1}>
+              <EmojiObjectsIcon />
+            </Box>
+            <Box>
+              {title}
+            </Box>
           </Box>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>

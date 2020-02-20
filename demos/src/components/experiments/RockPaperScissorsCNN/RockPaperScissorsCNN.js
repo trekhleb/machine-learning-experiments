@@ -568,7 +568,6 @@ const RockPaperScissorsCNN = (): Node => {
 
       <Box>
         <InputImagesExample
-          title="Input image examples for better model performance"
           images={inputImagesExample}
         />
       </Box>
