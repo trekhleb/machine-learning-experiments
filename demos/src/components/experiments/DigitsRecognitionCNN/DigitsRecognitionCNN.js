@@ -20,6 +20,13 @@ import {
 } from '../../../constants/links';
 import type { Experiment } from '../types';
 import cover from './cover.png';
+import InputImagesExample from '../../shared/InputImagesExample';
+import inputImageExample0 from './input-examples/0.png';
+import inputImageExample1 from './input-examples/1.png';
+import inputImageExample2 from './input-examples/2.png';
+import inputImageExample3 from './input-examples/3.png';
+import inputImageExample4 from './input-examples/4.png';
+import inputImageExample9 from './input-examples/9.png';
 
 const experimentSlug = 'DigitsRecognitionCNN';
 const experimentName = 'Digits Recognition (CNN)';
@@ -47,6 +54,15 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
 }));
+
+const inputImagesExamples = [
+  inputImageExample0,
+  inputImageExample1,
+  inputImageExample2,
+  inputImageExample3,
+  inputImageExample4,
+  inputImageExample9,
+];
 
 const DigitsRecognitionCNN = (): Node => {
   const classes = useStyles();
@@ -219,6 +235,13 @@ const DigitsRecognitionCNN = (): Node => {
           {oneHotBars}
         </Grid>
       </Grid>
+
+      <Box mt={3}>
+        <InputImagesExample
+          imageWidth={50}
+          images={inputImagesExamples}
+        />
+      </Box>
     </Box>
   );
 };

@@ -174,7 +174,7 @@ const choices: Choices = {
   },
 };
 
-const inputImagesExample = [
+const inputImagesExamples = [
   inputImageExample1,
   inputImageExample2,
   inputImageExample3,
@@ -568,7 +568,8 @@ const RockPaperScissorsCNN = (): Node => {
 
       <Box>
         <InputImagesExample
-          images={inputImagesExample}
+          imageWidth={150}
+          images={inputImagesExamples}
         />
       </Box>
 

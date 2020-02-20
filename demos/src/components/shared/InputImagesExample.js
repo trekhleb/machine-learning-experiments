@@ -11,13 +11,13 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 
 const defaultProps = {
   title: 'Input image examples',
-  imageWidth: 150,
+  imageWidth: 'auto',
 };
 
 type InputImagesExampleProps = {
   images: string[],
   title?: string,
-  imageWidth?: number,
+  imageWidth?: string | number,
 };
 
 const useStyles = makeStyles(() => ({
@@ -39,7 +39,9 @@ const InputImagesExample = (props: InputImagesExampleProps): Node => {
 
   const imageList = images.map((imageSrc) => (
     <Grid item xs key={imageSrc}>
-      <img src={imageSrc} alt="Input example" width={imageWidth} />
+      <Box overflow="hidden">
+        <img src={imageSrc} alt="Input example" width={imageWidth} />
+      </Box>
     </Grid>
   ));
 
