@@ -307,12 +307,16 @@ const RockPaperScissorsCNN = (): Node => {
     }
 
     if (
-      humanChoicePrediction.beats.find((choiceId: $Values<typeof choiceIDs>) => choiceId === computerRandomChoice.id)
+      humanChoicePrediction.beats.find(
+        (choiceId: $Values<typeof choiceIDs>) => choiceId === computerRandomChoice.id,
+      )
     ) {
       // Human won.
       setHumanScore(humanScore + 1);
     } else if (
-      computerRandomChoice.beats.find((choiceId: $Values<typeof choiceIDs>) => choiceId === humanChoicePrediction.id)
+      computerRandomChoice.beats.find(
+        (choiceId: $Values<typeof choiceIDs>) => choiceId === humanChoicePrediction.id,
+      )
     ) {
       // Computer won.
       setComputerScore(computerScore + 1);
