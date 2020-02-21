@@ -17,7 +17,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.4.0",
     "recharts": "^2.0.0-beta.1",
     "typeface-roboto": "^0.0.75"
   },
@@ -31,8 +31,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "flow-bin": "^0.114.0",
-    "flow-typed": "^2.6.2",
+    "flow-bin": "^0.118.0",
+    "flow-typed": "^3.0.0",
     "gh-pages": "^2.1.1"
   },
   "scripts": {
