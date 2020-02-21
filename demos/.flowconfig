@@ -1,6 +1,6 @@
 [ignore]
-.*/node_modules/.*
 .*/build/.*
+.*/node_modules/.*
 
 [include]
 
@@ -13,3 +13,8 @@ flow-typed
 all=true
 
 [strict]
+
+[untyped]
+;.*/node_modules/.*
+
+[declarations]
