@@ -117,7 +117,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
     for (let detectionIndex = 0; detectionIndex < numDetections; detectionIndex += 1) {
       if (importantDetectionIndices.includes(detectionIndex)) {
         const cocoClassId = detectionClasses[detectionIndex];
-        const cocoClass = CocoClasses[detectionClasses[detectionIndex]];
+        const cocoClass = CocoClasses[detectionClasses[`${detectionIndex}`]];
 
         if (!cocoClass) {
           setErrorMessage(`Unknown COCO class ID: ${cocoClassId} ${detectionClasses.slice(0, 4).toString()}`);
