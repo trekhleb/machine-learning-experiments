@@ -11,7 +11,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 
 const defaultProps = {
-  title: 'Input image examples',
+  title: 'Input image examples (for better model performance)',
   imageWidth: 'auto',
 };
 
