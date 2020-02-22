@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 
 const jupyterBadgeUrl = 'https://mybinder.org/badge_logo.svg';

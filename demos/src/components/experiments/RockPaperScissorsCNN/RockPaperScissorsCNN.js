@@ -1,3 +1,4 @@
+// @flow
 import React, {
   useState,
   useEffect,
@@ -197,7 +198,7 @@ const RockPaperScissorsCNN = (): Node => {
 
   const classes = useStyles();
 
-  const predictHumanChoice = (currentCanvas: ?HTMLCanvasElement) => {
+  const predictHumanChoice = (currentCanvas: ?HTMLCanvasElement): ?Choice => {
     if (!model) {
       setErrorMessage('Model is not loaded');
       return null;
@@ -298,7 +299,7 @@ const RockPaperScissorsCNN = (): Node => {
     // Rendering a video snapshot.
     const currentCanvas: ?HTMLCanvasElement = renderVideoSnapshot();
     // Prediction user choice from the video snapshot.
-    const humanChoicePrediction: Choice = predictHumanChoice(currentCanvas);
+    const humanChoicePrediction: ?Choice = predictHumanChoice(currentCanvas);
     setHumanChoice(humanChoicePrediction);
     // Detect the winner.
     if (!humanChoicePrediction) {

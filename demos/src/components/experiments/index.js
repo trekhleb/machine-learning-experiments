@@ -1,3 +1,4 @@
+// @flow
 import type { ExperimentsMap } from './types';
 import DigitsRecognitionMLP from './DigitsRecognitionMLP/DigitsRecognitionMLP';
 import DigitsRecognitionCNN from './DigitsRecognitionCNN/DigitsRecognitionCNN';

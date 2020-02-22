@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useEffect } from 'react';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
@@ -8,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-// $FlowFixMe
 import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';

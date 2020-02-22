@@ -1,3 +1,4 @@
+// @flow
 import React, {
   useCallback,
   useEffect,
@@ -95,25 +96,27 @@ const CameraStream = (props: CameraStreamProps): Node => {
       audio: false,
     };
 
-    navigator.mediaDevices
-      .getUserMedia(userMediaConstraints)
-      .then((stream: MediaStream) => {
-        if (!videoRef.current) {
-          return;
-        }
-        localStream = stream;
-        videoRef.current.srcObject = stream;
-        videoRef.current.onloadedmetadata = () => {
-          throttledOnFrame();
-        };
-      })
-      .catch((e) => {
-        let message = 'Video cannot be started';
-        if (e && e.message) {
-          message += `: ${e.message}`;
-        }
-        setErrorMessage(message);
-      });
+    if (navigator.mediaDevices) {
+      navigator.mediaDevices
+        .getUserMedia(userMediaConstraints)
+        .then((stream: MediaStream) => {
+          if (!videoRef.current) {
+            return;
+          }
+          localStream = stream;
+          videoRef.current.srcObject = stream;
+          videoRef.current.onloadedmetadata = () => {
+            throttledOnFrame();
+          };
+        })
+        .catch((e) => {
+          let message = 'Video cannot be started';
+          if (e && e.message) {
+            message += `: ${e.message}`;
+          }
+          setErrorMessage(message);
+        });
+    }
 
     return () => {
       // Stop animation frames.

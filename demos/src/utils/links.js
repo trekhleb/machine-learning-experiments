@@ -1,3 +1,4 @@
+// @flow
 import { GOOGLE_COLAB_URL, NB_VIEWER_URL } from '../constants/links';
 
 // @see: https://mybinder.org/

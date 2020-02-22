@@ -1,19 +1,20 @@
+// @flow
 import React from 'react';
 import ErrorIcon from '@material-ui/icons/Error';
 import Box from '@material-ui/core/Box';
 
 class ErrorBoundary extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: any) {
     // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: any) {
     /* eslint-disable-next-line no-console */
     console.error(error, errorInfo);
   }

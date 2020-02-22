@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import type { Node } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';

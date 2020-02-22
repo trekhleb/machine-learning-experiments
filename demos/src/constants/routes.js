@@ -1,3 +1,4 @@
+// @flow
 import { ML_EXPERIMENTS_GITHUB_REPO_NAME } from './links';
 
 export const ROOT_ROUTE = '/';

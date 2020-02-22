@@ -1,3 +1,4 @@
+// @flow
 import React, { useRef, useEffect, useCallback } from 'react';
 import type { Node } from 'react';
 

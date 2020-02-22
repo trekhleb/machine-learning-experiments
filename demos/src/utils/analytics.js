@@ -1,3 +1,4 @@
+// @flow
 import type { Location } from 'history';
 import { GOOGLE_ANALYTICS_ID } from '../constants/analytics';
 

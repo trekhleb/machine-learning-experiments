@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useEffect } from 'react';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';

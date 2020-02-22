@@ -1,6 +1,6 @@
 [ignore]
 .*/build/.*
-.*/node_modules/.*
+;.*/node_modules/.*
 
 [include]
 
@@ -10,11 +10,12 @@ flow-typed
 [lints]
 
 [options]
-all=true
+all=false
+emoji=true
 
 [strict]
 
 [untyped]
-;.*/node_modules/.*
+.*/node_modules/.*
 
 [declarations]
