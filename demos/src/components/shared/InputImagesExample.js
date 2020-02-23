@@ -47,25 +47,23 @@ const InputImagesExample = (props: InputImagesExampleProps): Node => {
   ));
 
   return (
-    <Box>
-      <ExpansionPanel>
-        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Box className={classes.heading}>
-            <Box mr={1}>
-              <EmojiObjectsIcon />
-            </Box>
-            <Box>
-              {title}
-            </Box>
+    <ExpansionPanel>
+      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        <Box className={classes.heading}>
+          <Box mr={1}>
+            <EmojiObjectsIcon />
           </Box>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Grid container spacing={1}>
-            {imageList}
-          </Grid>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-    </Box>
+          <Box>
+            {title}
+          </Box>
+        </Box>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails>
+        <Grid container spacing={1}>
+          {imageList}
+        </Grid>
+      </ExpansionPanelDetails>
+    </ExpansionPanel>
   );
 };
 
