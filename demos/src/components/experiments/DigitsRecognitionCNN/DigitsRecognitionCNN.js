@@ -27,6 +27,7 @@ import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample9 from './input-examples/9.png';
+import InfoPanel from '../../shared/InfoPanel';
 
 const experimentSlug = 'DigitsRecognitionCNN';
 const experimentName = 'Digits Recognition (CNN)';
@@ -236,11 +237,12 @@ const DigitsRecognitionCNN = (): Node => {
         </Grid>
       </Grid>
 
-      <Box mt={3}>
+      <Box mt={4} mb={3}>
         <InputImagesExample
           imageWidth={50}
           images={inputImagesExamples}
         />
+        <InfoPanel />
       </Box>
     </Box>
   );
