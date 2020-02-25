@@ -1,12 +1,10 @@
-# 🤖 Machine Learning Experiments
+# 🤖 Interactive Machine Learning Experiments
 
-Collection of interactive machine-learning experiments.
+This is a collection of interactive machine-learning experiments. Each experiment consists of Jupyter/Colab notebook and demo page. 
 
-_☝ Remember the notebooks and demos in this repository are just **experiments** or playgrounds and **not** a production ready, fine-tuned, super-performant re-usable code_
+> ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms, data-sets.
 
 **How to use this repo**
-
-**@TODO:** Finish this list
 
 - See demo (how to apply models)
 - See notebooks (how to train models)
