@@ -203,7 +203,7 @@ source .virtualenvs/experiments/bin/activate
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-ℹ️ To quit an environment run `deactivate`.
+To quit an environment run `deactivate`.
 
 ### Install dependencies
 
@@ -215,7 +215,7 @@ pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-ℹ️  To install new packages run `pip install package-name`. To add new packages to the requirements run `pip freeze > requirements.txt`.
+To install new packages run `pip install package-name`. To add new packages to the requirements run `pip freeze > requirements.txt`.
 
 ### Launch Jupyter locally
 
