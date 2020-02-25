@@ -274,5 +274,7 @@ tensorflowjs_converter --input_format keras \
 ### Requirements
 
 - Recommended Python version: `> 3.7.3`.
+- Recommended Node version: `>= 12.4.0`.
+- Recommended Yarn version: `>= 1.13.0`.
 
 In case if you have Python version `3.7.3` you might experience `RuntimeError: dictionary changed size during iteration` error when trying to `import tensorflow` (see the [issue](https://github.com/tensorflow/tensorflow/issues/33183)).
