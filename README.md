@@ -271,14 +271,8 @@ tensorflowjs_converter --input_format keras \
   ./demos/public/models/digits_recognition_mlp
 ```
 
-### Known Issues
+### Requirements
 
-[Issue](https://github.com/tensorflow/tensorflow/issues/33183)
+Recommended Python version is `> 3.7.3`.
 
-Recommended Python versions: `> 3.7.3`.
-
-In case if you have Python version `3.7.3` you might experience the following error when trying to `import tensorflow`:
-
-```
-RuntimeError: dictionary changed size during iteration
-```
+In case if you have Python version `3.7.3` you might experience `RuntimeError: dictionary changed size during iteration` error when trying to `import tensorflow` (see the [issue](https://github.com/tensorflow/tensorflow/issues/33183)).
