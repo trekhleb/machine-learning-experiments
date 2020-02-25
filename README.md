@@ -220,6 +220,7 @@ To install new packages run `pip install package-name`. To add new packages to t
 ### Launch Jupyter locally
 
 ```bash
+# Launch Jupyter server.
 jupyter notebook
 ```
 
