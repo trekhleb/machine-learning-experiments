@@ -2,7 +2,7 @@
 
 This is a collection of interactive machine-learning experiments. Each experiment consists of 🏋️ Jupyter/Colab _notebook_ (to see how models were trained) and 🎨 _demo page_ (to try models in action right in your browser).
 
-[▶️ Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
+[▶️ 🎨 Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
 
 > ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets.
 
