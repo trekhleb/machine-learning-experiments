@@ -261,7 +261,7 @@ source .virtualenvs/converter/bin/activate.fish
 pip install -r requirements.converter.txt
 ```
 
-The conversion of `.h5` model to `.json` and `.bin` formats for is done by using [tfjs-converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter):
+The conversion of `.h5` model to `.json` and `.bin` formats is done by using [tfjs-converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter):
 
 For example:
 
