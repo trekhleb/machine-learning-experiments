@@ -199,7 +199,7 @@ python3 -m venv .virtualenvs/experiments
 
 # Activate environment.
 source .virtualenvs/experiments/bin/activate
-# or for the Fish shell...
+# or if you use Fish shell...
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
@@ -212,7 +212,7 @@ deactivate
 ### Install dependencies
 
 ```bash
-# Upgrade pip and setuptools to the latest version.
+# Upgrade pip and setuptools to the latest versions.
 pip install --upgrade pip setuptools
 
 # Install packages
@@ -220,8 +220,6 @@ pip install -r requirements.txt
 ```
 
 To add new packages run:
-
-**Add new package (optional)**
 
 ```bash
 # Install new package.
