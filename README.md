@@ -63,7 +63,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
-          ▶️&nbsp;Launch&nbsp;demo
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
@@ -94,7 +94,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN">
-          ▶️&nbsp;Launch&nbsp;demo
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
@@ -125,7 +125,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetectionSSDLiteMobilenetV2">
-          ▶️&nbsp;Launch&nbsp;demo
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
@@ -157,7 +157,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ImageClassificationMobilenetV2">
-          ▶️&nbsp;Launch&nbsp;demo
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
