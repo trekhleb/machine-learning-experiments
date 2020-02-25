@@ -189,16 +189,20 @@ This is a collection of interactive machine-learning experiments. Each experimen
   </tbody>
 </table>
 
-## How to use this repository
+## How to use this repository locally
 
 ### Setup virtual environment for Experiments
 
 This environment is used by default to run Jupyter notebooks with experiments.
 
-**Create environment for Experiments**
-
 ```bash
+# Create environment.
 python3 -m venv .virtualenvs/experiments
+
+# Activate environment.
+source .virtualenvs/experiments/bin/activate
+# or
+source .virtualenvs/experiments/bin/activate.fish
 ```
 
 **Activate environment for Experiments**
