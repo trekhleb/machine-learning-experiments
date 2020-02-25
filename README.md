@@ -246,7 +246,7 @@ Demos will be available locally at `http://localhost:3000/` or at `https://local
 
 ### Convert models
 
-If you train the model in Jupyter notebook and want to use it in the demo app you need to convert the model. The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
+The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
 
 ```bash
 # Create "converter" environment (from the project root folder).
