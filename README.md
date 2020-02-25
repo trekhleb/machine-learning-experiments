@@ -32,6 +32,9 @@ This is a collection of interactive machine-learning experiments. Each experimen
         <b>Handwritten digits recognition (MLP)</b>
       </td>
       <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
@@ -40,9 +43,6 @@ This is a collection of interactive machine-learning experiments. Each experimen
         </a>
       </td>
       <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
-          ▶️&nbsp;Launch&nbsp;demo
-        </a>
       </td>
       <td>
         <code>Multilayer&nbsp;Perceptron</code>,
