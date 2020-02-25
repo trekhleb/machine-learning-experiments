@@ -17,7 +17,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
   <thead>
     <tr>
       <th align="left" width="150" style="width: 150px !important"> </th>
-      <th align="left">Experiment</th>
+      <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model training</th>
       <th align="left">Tags</th>
       <th align="left">Dataset</th>
@@ -64,7 +64,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
   <thead>
     <tr>
       <th align="left" width="150" style="width: 150px !important"> </th>
-      <th align="left">Experiment</th>
+      <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
       <th align="left">Dataset</th>
@@ -205,7 +205,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
   <thead>
     <tr>
       <th align="left" width="150" style="width: 150px !important"> </th>
-      <th align="left">Experiment</th>
+      <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
       <th align="left">Dataset</th>
