@@ -33,7 +33,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
-          ▶️&nbsp;Launch&nbsp;demo
+          <img src="https://img.shields.io/static/v1?label=Launch&message=Demo&color=green&logo=appveyor" alt="Launch demo">
         </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
