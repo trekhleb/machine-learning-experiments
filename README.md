@@ -1,20 +1,10 @@
 # 🤖 Interactive Machine Learning Experiments
 
-This is a collection of interactive machine-learning experiments. Each experiment consists of Jupyter/Colab _notebook_ (to see how the model was trained) and a _demo page_ (to try the model in action right in your browser).
+This is a collection of interactive machine-learning experiments. Each experiment consists of Jupyter/Colab _notebook_ (to see how models were trained) and a _demo page_ (to try models in action right in your browser).
 
 [▶️ Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
 
-> ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms, data-sets.
-
-**How to use this repo**
-
-- See demo (how to apply models)
-- See notebooks (how to train models)
-- Checkout and play around locally
-- Paste charts from https://arxiv.org/pdf/1611.10012.pdf (+ net configurations?)
-- Comparison of CNN computer vision algorithms (Speed, accuracy, etc)
-- Machine learning cycle diagram (Train, Deploy, Evaluate)
-- Add a link to Homemade ML repo (See how to implement ML algorithms without frameworks)
+> ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets.
 
 ## Experiments
 
