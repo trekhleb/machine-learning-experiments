@@ -193,33 +193,17 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 ### Setup virtual environment for Experiments
 
-This environment is used by default to run Jupyter notebooks with experiments.
-
 ```bash
-# Create environment.
+# Create environment (launch it in the repository root folder).
 python3 -m venv .virtualenvs/experiments
 
 # Activate environment.
 source .virtualenvs/experiments/bin/activate
-# or
+# or for the Fish shell...
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-**Activate environment for Experiments**
-
-For `shell`:
-
-```bash
-source .virtualenvs/experiments/bin/activate
-```
-
-For `fish`:
-
-```bash
-source .virtualenvs/experiments/bin/activate.fish
-```
-
-***Quitting virtual environments**
+To quit an environment just run:
 
 ```bash
 deactivate
@@ -227,28 +211,24 @@ deactivate
 
 ### Install dependencies
 
-**Upgrade `pip` and `setuptools`**
-
 ```bash
+# Upgrade pip and setuptools to the latest version.
 pip install --upgrade pip setuptools
+
+# Install packages
+pip install -r requirements.txt
 ```
+
+To add new packages run:
 
 **Add new package (optional)**
 
 ```bash
-pip install package
-```
+# Install new package.
+pip install package-name
 
-**Save added package to `requirements.txt`**
-
-```bash
+# Add new package to requirements.
 pip freeze > requirements.txt
-```
-
-**Install packages**
-
-```bash
-pip install -r requirements.txt
 ```
 
 ### Launch Jupyter locally
