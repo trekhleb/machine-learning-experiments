@@ -194,12 +194,12 @@ This is a collection of interactive machine-learning experiments. Each experimen
 ### Setup virtual environment for Experiments
 
 ```bash
-# Create environment in project root folder.
+# Create "experiments" environment (from the project root folder).
 python3 -m venv .virtualenvs/experiments
 
 # Activate environment.
 source .virtualenvs/experiments/bin/activate
-# or if you use Fish shell...
+# or if you use Fish...
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
@@ -244,53 +244,24 @@ yarn start-https
 
 Demos will be available locally at `http://localhost:3000/` or at `https://localhost:3000/`.
 
-## Converting Keras models into web-format for Demo app
+### Convert models
 
-The `converter` environment is used to convert the models that were trained during the experiments from `.h5` format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
-
-### Create environment for Converter
+If you train the model in Jupyter notebook and want to use it in the demo app you need to convert the model. The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
 
 ```bash
+# Create "converter" environment (from the project root folder).
 python3 -m venv .virtualenvs/converter
-```
 
-**Activate environment for Converter**
-
-For `shell`:
-
-```bash
+# Activate "converter" environment.
 source .virtualenvs/converter/bin/activate
-```
-
-For `fish`:
-
-```bash
+# or if you use Fish...
 source .virtualenvs/converter/bin/activate.fish
-```
 
-### Install packages
-
-To install packages in `converter` environment run:
-
-```bash
+# Install converter requirements.
 pip install -r requirements.converter.txt
 ```
 
-**Save added package to `requirements.requirements.txt`**
-
-To list installed packages for converter environment you should launch:
-
-```bash
-pip freeze > requirements.converter.txt
-```
-
-### Converting the models
-
-To convert `.h5` model to `.json` and `.bin` formats for further usage in JavaScript Demos you should use [tfjs-converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter):
-
-```bash
-tensorflowjs_converter --input_format keras path/to/my_model.h5 path/to/tfjs_target_dir
-```
+The conversion of `.h5` model to `.json` and `.bin` formats for is done by using [tfjs-converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter):
 
 For example:
 
@@ -300,7 +271,7 @@ tensorflowjs_converter --input_format keras \
   ./demos/public/models/digits_recognition_mlp
 ```
 
-## Known Issues
+### Known Issues
 
 [Issue](https://github.com/tensorflow/tensorflow/issues/33183)
 
