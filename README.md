@@ -223,7 +223,7 @@ To install new packages run `pip install package-name`. To add new packages to t
 jupyter notebook
 ```
 
-Jupyter will be available locally at `http://localhost:8888/`.
+Jupyter will be available locally at `http://localhost:8888/`. Experiments notebooks may be found in `experiments` folder.
 
 ### Launch demos locally
 
