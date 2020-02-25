@@ -215,7 +215,7 @@ pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-To install new packages run `pip install package-name`. To save newly installed package to the requirements file run `pip freeze > requirements.txt`.
+To install new packages run `pip install package-name`. To add new packages to the requirements run `pip freeze > requirements.txt`.
 
 ### Launch Jupyter locally
 
