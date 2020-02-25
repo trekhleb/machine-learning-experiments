@@ -234,11 +234,14 @@ cd demos
 # Install all dependencies.
 yarn install
 
-# Start demo server. 
+# Start demo server on http. 
 yarn start
+
+# Or start demo server on https (for camera access to work locally).
+yarn start-https
 ```
 
-Demos will be available locally at `https://localhost:3000/`.
+Demos will be available locally at `http://localhost:3000/` or at `https://localhost:3000/`.
 
 ## Converting Keras models into web-format for Demo app
 
