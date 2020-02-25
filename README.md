@@ -11,6 +11,8 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 ## Experiments
 
+### Neural Networks (NN)
+
 <table>
   <thead>
     <tr>
@@ -53,6 +55,22 @@ This is a collection of interactive machine-learning experiments. Each experimen
         </a>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### Convolutional Neural Networks (CNN)
+
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="150" style="width: 150px !important"> </th>
+      <th align="left">Experiment</th>
+      <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
+      <th align="left">Tags</th>
+      <th align="left">Dataset</th>
+    </tr>
+  </thead>
+  <tbody>
     <!-- Experiment -->
     <tr>
       <td>
@@ -178,6 +196,22 @@ This is a collection of interactive machine-learning experiments. Each experimen
         </a>
       </td>
     </tr>
+  </tbody>
+</table>
+
+### Recurrent Neural Networks (RNN)
+
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="150" style="width: 150px !important"> </th>
+      <th align="left">Experiment</th>
+      <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
+      <th align="left">Tags</th>
+      <th align="left">Dataset</th>
+    </tr>
+  </thead>
+  <tbody>
   </tbody>
 </table>
 
