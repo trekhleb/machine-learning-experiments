@@ -5,6 +5,8 @@ This is a collection of interactive machine-learning experiments. Each experimen
 - 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
 - 🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
 
+<hr/>
+
 > ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets.
 
 ## Experiments
