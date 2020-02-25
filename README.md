@@ -17,7 +17,6 @@ This is a collection of interactive machine-learning experiments. Each experimen
       <th align="left" width="150" style="width: 150px !important"> </th>
       <th align="left">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model training</th>
-      <th align="left">Model usage</th>
       <th align="left">Tags</th>
       <th align="left">Dataset</th>
     </tr>
@@ -43,8 +42,6 @@ This is a collection of interactive machine-learning experiments. Each experimen
         </a>
       </td>
       <td>
-      </td>
-      <td>
         <code>Multilayer&nbsp;Perceptron</code>,
         <code>MLP</code>,
         <code>Tensorflow</code>,
@@ -65,16 +62,14 @@ This is a collection of interactive machine-learning experiments. Each experimen
         <b>Handwritten digits recognition (CNN)</b>
       </td>
       <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
-        </a>
-      </td>
-      <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
-          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -98,16 +93,14 @@ This is a collection of interactive machine-learning experiments. Each experimen
         <b>Rock Paper Scissors (CNN)</b>
       </td>
       <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
-        </a>
-      </td>
-      <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN">
-          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -131,16 +124,14 @@ This is a collection of interactive machine-learning experiments. Each experimen
         <b>Objects Detection (MobileNetV2)</b>
       </td>
       <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetectionSSDLiteMobilenetV2">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
-        </a>
-      </td>
-      <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetectionSSDLiteMobilenetV2">
-          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
@@ -165,16 +156,14 @@ This is a collection of interactive machine-learning experiments. Each experimen
         <b>Image Classification (MobileNetV2)</b>
       </td>
       <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ImageClassificationMobilenetV2">
+          ▶️&nbsp;Launch&nbsp;demo
+        </a>
         <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
-        </a>
-      </td>
-      <td>
-        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ImageClassificationMobilenetV2">
-          ▶️&nbsp;Launch&nbsp;demo
         </a>
       </td>
       <td>
