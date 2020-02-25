@@ -194,7 +194,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
 ### Setup virtual environment for Experiments
 
 ```bash
-# Create environment (launch from repository root folder).
+# Create environment in project root folder.
 python3 -m venv .virtualenvs/experiments
 
 # Activate environment.
@@ -203,7 +203,7 @@ source .virtualenvs/experiments/bin/activate
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-To quit an environment run `deactivate`.
+ℹ️ To quit an environment run `deactivate`.
 
 ### Install dependencies
 
@@ -215,7 +215,7 @@ pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-To install new packages run `pip install package-name`. To add new packages to the requirements run `pip freeze > requirements.txt`.
+ℹ️  To install new packages run `pip install package-name`. To add new packages to the requirements run `pip freeze > requirements.txt`.
 
 ### Launch Jupyter locally
 
@@ -223,15 +223,22 @@ To install new packages run `pip install package-name`. To add new packages to t
 jupyter notebook
 ```
 
+Jupyter will be available locally at `http://localhost:8888/`.
+
 ### Launch demos locally
 
 ```bash
+# Switch to demos folder from project root.
 cd demos
+
+# Install all dependencies.
 yarn install
+
+# Start demo server. 
 yarn start
 ```
 
-Demos will be available at `https://localhost:3000/`
+Demos will be available locally at `https://localhost:3000/`.
 
 ## Converting Keras models into web-format for Demo app
 
