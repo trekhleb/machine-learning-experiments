@@ -7,7 +7,11 @@ export type Experiment = {|
   description: string,
   component: () => Node,
   cover: string,
-  notebookUrl: ?string,
+  notebookUrl?: ?string,
+  inputImageExamples?: {
+    images: string[],
+    imageWidth?: string | number,
+  },
 |};
 
 export type ExperimentsMap = {

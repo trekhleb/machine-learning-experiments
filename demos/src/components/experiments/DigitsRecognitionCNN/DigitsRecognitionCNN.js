@@ -19,20 +19,27 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
+
 import cover from './cover.png';
-import InputImagesExample from '../../shared/InputImagesExample';
 import inputImageExample0 from './input-examples/0.png';
 import inputImageExample1 from './input-examples/1.png';
 import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample9 from './input-examples/9.png';
-import InfoPanel from '../../shared/InfoPanel';
 
 const experimentSlug = 'DigitsRecognitionCNN';
 const experimentName = 'Digits Recognition (CNN)';
 const experimentDescription = 'Hand-written digits recognition using Convolutional Neural Network (CNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_cnn/digits_recognition_cnn.ipynb`;
+const inputImagesExamples = [
+  inputImageExample0,
+  inputImageExample1,
+  inputImageExample2,
+  inputImageExample3,
+  inputImageExample4,
+  inputImageExample9,
+];
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_cnn/model.json`;
 
@@ -55,15 +62,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
 }));
-
-const inputImagesExamples = [
-  inputImageExample0,
-  inputImageExample1,
-  inputImageExample2,
-  inputImageExample3,
-  inputImageExample4,
-  inputImageExample9,
-];
 
 const DigitsRecognitionCNN = (): Node => {
   const classes = useStyles();
@@ -218,33 +216,23 @@ const DigitsRecognitionCNN = (): Node => {
   ) : null;
 
   return (
-    <Box>
-      <Grid container spacing={3} alignItems="center" justify="flex-start">
-        <Grid item>
-          {canvasPaper}
-        </Grid>
-
-        <Grid item>
-          {buttons}
-        </Grid>
-
-        <Grid item>
-          {digitsPaper}
-        </Grid>
-
-        <Grid item>
-          {oneHotBars}
-        </Grid>
+    <Grid container spacing={3} alignItems="center" justify="flex-start">
+      <Grid item>
+        {canvasPaper}
       </Grid>
 
-      <Box mt={4} mb={3}>
-        <InputImagesExample
-          imageWidth={50}
-          images={inputImagesExamples}
-        />
-        <InfoPanel />
-      </Box>
-    </Box>
+      <Grid item>
+        {buttons}
+      </Grid>
+
+      <Grid item>
+        {digitsPaper}
+      </Grid>
+
+      <Grid item>
+        {oneHotBars}
+      </Grid>
+    </Grid>
   );
 };
 
@@ -255,6 +243,10 @@ const experiment: Experiment = {
   component: DigitsRecognitionCNN,
   notebookUrl,
   cover,
+  inputImageExamples: {
+    images: inputImagesExamples,
+    imageWidth: 50,
+  },
 };
 
 export default experiment;

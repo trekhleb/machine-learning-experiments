@@ -17,6 +17,8 @@ import Badge, { badgeType } from './Badge';
 import { WINDOW_TITLE } from '../../constants/copies';
 import { generateColabLink, generateJupyterLink } from '../../utils/links';
 import ErrorBoundary from './ErrorBoundary';
+import InfoPanel from './InfoPanel';
+import InputImagesExample from './InputImagesExample';
 
 type ExperimentProps = {
   match: Match,
@@ -72,6 +74,13 @@ const Experiment = (props: ExperimentProps): Node => {
     </Grid>
   ) : null;
 
+  const inputImageExamples = experiment.inputImageExamples ? (
+    <InputImagesExample
+      imageWidth={experiment.inputImageExamples.imageWidth}
+      images={experiment.inputImageExamples.images}
+    />
+  ) : null;
+
   return (
     <ErrorBoundary>
       <Helmet>
@@ -95,8 +104,12 @@ const Experiment = (props: ExperimentProps): Node => {
           {githubLink}
         </Grid>
       </Box>
-      <Box mb={3}>
+      <Box mb={4}>
         <ExperimentElement />
+      </Box>
+      <Box mb={3}>
+        {inputImageExamples}
+        <InfoPanel />
       </Box>
     </ErrorBoundary>
   );

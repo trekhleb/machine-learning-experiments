@@ -20,8 +20,8 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
+
 import cover from './cover.png';
-import InputImagesExample from '../../shared/InputImagesExample';
 import inputImageExample0 from './input-examples/0.png';
 import inputImageExample1 from './input-examples/1.png';
 import inputImageExample2 from './input-examples/2.png';
@@ -33,6 +33,14 @@ const experimentSlug = 'DigitsRecognitionMLP';
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_mlp/digits_recognition_mlp.ipynb`;
+const inputImagesExamples = [
+  inputImageExample0,
+  inputImageExample1,
+  inputImageExample2,
+  inputImageExample3,
+  inputImageExample4,
+  inputImageExample9,
+];
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/digits_recognition_mlp/model.json`;
 
@@ -55,15 +63,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
 }));
-
-const inputImagesExamples = [
-  inputImageExample0,
-  inputImageExample1,
-  inputImageExample2,
-  inputImageExample3,
-  inputImageExample4,
-  inputImageExample9,
-];
 
 const DigitsRecognitionMLP = (): Node => {
   const classes = useStyles();
@@ -215,32 +214,23 @@ const DigitsRecognitionMLP = (): Node => {
   ) : null;
 
   return (
-    <Box>
-      <Grid container spacing={3} alignItems="center" justify="flex-start">
-        <Grid item>
-          {canvasPaper}
-        </Grid>
-
-        <Grid item>
-          {buttons}
-        </Grid>
-
-        <Grid item>
-          {digitsPaper}
-        </Grid>
-
-        <Grid item>
-          {oneHotBars}
-        </Grid>
+    <Grid container spacing={3} alignItems="center" justify="flex-start">
+      <Grid item>
+        {canvasPaper}
       </Grid>
 
-      <Box mt={3}>
-        <InputImagesExample
-          imageWidth={50}
-          images={inputImagesExamples}
-        />
-      </Box>
-    </Box>
+      <Grid item>
+        {buttons}
+      </Grid>
+
+      <Grid item>
+        {digitsPaper}
+      </Grid>
+
+      <Grid item>
+        {oneHotBars}
+      </Grid>
+    </Grid>
   );
 };
 
@@ -251,6 +241,10 @@ const experiment: Experiment = {
   component: DigitsRecognitionMLP,
   notebookUrl,
   cover,
+  inputImageExamples: {
+    images: inputImagesExamples,
+    imageWidth: 50,
+  },
 };
 
 export default experiment;

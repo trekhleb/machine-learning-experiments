@@ -33,10 +33,13 @@ const InfoPanel = (): Node => {
         </Box>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        This web-site contains machine learning <b>experiments</b>. It is <b>not</b> a
-        production ready, reusable, optimised and fine-tuned code and models.
-        This is rather a sandbox or a playground for learning and trying different
-        machine learning approaches, algorithms, data-sets.
+        <Box>
+          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+          This web-site contains machine learning <b>experiments</b>. It is <b>not</b> a
+          production ready, reusable, optimised and fine-tuned code and models.
+          This is rather a sandbox or a playground for learning and trying different
+          machine learning approaches, algorithms, data-sets.
+        </Box>
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

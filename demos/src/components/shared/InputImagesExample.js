@@ -18,7 +18,7 @@ const defaultProps = {
 type InputImagesExampleProps = {
   images: string[],
   title?: string,
-  imageWidth?: string | number,
+  imageWidth?: ?(string | number),
 };
 
 const useStyles = makeStyles(() => ({

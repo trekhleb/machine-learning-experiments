@@ -1,5 +1,7 @@
 # Machine Learning Experiments Demo
 
+> ⚠️ Attention. This web-site contains machine learning **experiments**. It is **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms, data-sets.
+
 ## TODO
 
 - Add route titles using `Helmet`
