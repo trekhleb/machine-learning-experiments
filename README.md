@@ -203,11 +203,7 @@ source .virtualenvs/experiments/bin/activate
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-To quit an environment just run:
-
-```bash
-deactivate
-```
+ℹ︎ To quit an environment afterwards just run a `deactivate` command in terminal.
 
 ### Install dependencies
 
