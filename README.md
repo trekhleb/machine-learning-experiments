@@ -194,7 +194,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
 ### Setup virtual environment for Experiments
 
 ```bash
-# Create environment (launch it in the repository root folder).
+# Create environment (launch from repository root folder).
 python3 -m venv .virtualenvs/experiments
 
 # Activate environment.
@@ -203,7 +203,7 @@ source .virtualenvs/experiments/bin/activate
 source .virtualenvs/experiments/bin/activate.fish
 ```
 
-To quit an environment afterwards just run a `deactivate` command in terminal.
+To quit an environment run `deactivate`.
 
 ### Install dependencies
 
@@ -215,15 +215,7 @@ pip install --upgrade pip setuptools
 pip install -r requirements.txt
 ```
 
-To add new packages run:
-
-```bash
-# Install new package.
-pip install package-name
-
-# Add new package to requirements.
-pip freeze > requirements.txt
-```
+To install new packages run `pip install package-name`. To save newly installed package to the requirements file run `pip freeze > requirements.txt`.
 
 ### Launch Jupyter locally
 
