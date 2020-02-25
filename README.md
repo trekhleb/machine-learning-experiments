@@ -243,6 +243,8 @@ yarn install
 yarn start
 ```
 
+Demos will be available at `https://localhost:3000/`
+
 ## Converting Keras models into web-format for Demo app
 
 The `converter` environment is used to convert the models that were trained during the experiments from `.h5` format to Javascript understandable formats (`.json` and `.bin`) for further usage in Demo application.
