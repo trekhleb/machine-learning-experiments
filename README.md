@@ -47,9 +47,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       </td>
       <td>
         <code>Multilayer&nbsp;Perceptron</code>,
-        <code>MLP</code>,
-        <code>Tensorflow</code>,
-        <code>Keras</code>
+        <code>MLP</code>
       </td>
       <td>
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">
@@ -94,9 +92,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       </td>
       <td>
         <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>CNN</code>,
-        <code>Tensorflow</code>,
-        <code>Keras</code>
+        <code>CNN</code>
       </td>
       <td>
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">
@@ -125,9 +121,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       </td>
       <td>
         <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>CNN</code>,
-        <code>Tensorflow</code>,
-        <code>Keras</code>
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
@@ -189,8 +183,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       <td>
         <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>MobileNetV2</code>,
-        <code>CNN</code>,
-        <code>Tensorflow</code>,
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://image-net.org/explore">
