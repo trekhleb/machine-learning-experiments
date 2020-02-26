@@ -276,7 +276,7 @@ Demos will be available locally at `http://localhost:3000/` or at `https://local
 
 ### Convert models
 
-The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`tfjs_layers_model` or `tfjs_graph_model` with `.json` and `.bin` files) for further usage with [TensorFlow.js](https://www.tensorflow.org/js) in Demo application.
+The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`tfjs_layers_model` or `tfjs_graph_model` formats with `.json` and `.bin` files) for further usage with [TensorFlow.js](https://www.tensorflow.org/js) in Demo application.
 
 ```bash
 # Create "converter" environment (from the project root folder).
