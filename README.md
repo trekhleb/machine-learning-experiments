@@ -60,7 +60,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
 
 ### Convolutional Neural Networks (CNN)
 
-A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN, or ConvNet) is a class of deep neural networks, most commonly applied to analyzing visual imagery. They are used for detecting and classifying objects on photos and videos, style transfer, face recognition etc.
+A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN, or ConvNet) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
 
 <table>
   <thead>
@@ -188,6 +188,8 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
 </table>
 
 ### Recurrent Neural Networks (RNN)
+
+A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network) (RNN) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
 
 <table>
   <thead>
