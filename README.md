@@ -22,7 +22,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
-      <th align="left">Dataset</th>
+      <th align="left" width="140" style="width: 140px !important">Dataset</th>
     </tr>
   </thead>
   <tbody>
@@ -67,7 +67,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
-      <th align="left">Dataset</th>
+      <th align="left" width="140" style="width: 140px !important">Dataset</th>
     </tr>
   </thead>
   <tbody>
@@ -194,7 +194,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
       <th align="left" width="200" style="width: 200px !important">Experiment</th>
       <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
-      <th align="left">Dataset</th>
+      <th align="left" width="140" style="width: 140px !important">Dataset</th>
     </tr>
   </thead>
   <tbody>
