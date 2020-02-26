@@ -15,9 +15,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
 
 ### Multilayer Perceptron (MLP)
 
-A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (MLP) is a class of feedforward artificial neural network (ANN). The term MLP is used ambiguously, sometimes loosely to refer to any feedforward ANN, sometimes strictly to refer to networks composed of multiple layers of perceptrons. Multilayer perceptrons are sometimes referred to as "vanilla" neural networks, especially when they have a single hidden layer.
-
-An MLP consists of at least three layers of nodes: an _input_ layer, a _hidden_ layer and an _output_ layer. Except for the input nodes, each node is a neuron that uses a nonlinear activation function. MLP utilizes a supervised learning technique called backpropagation for training. It can distinguish data that is not linearly separable.
+A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (MLP) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer. It can distinguish data that is not linearly separable.
 
 <table>
   <thead>
