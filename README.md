@@ -20,7 +20,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
     <tr>
       <th align="left" width="150" style="width: 150px !important"> </th>
       <th align="left" width="200" style="width: 200px !important">Experiment</th>
-      <th align="left" width="140" style="width: 140px !important">Model training</th>
+      <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
       <th align="left">Tags</th>
       <th align="left">Dataset</th>
     </tr>
@@ -91,8 +91,6 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>CNN</code>
       </td>
       <td>
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">
@@ -120,8 +118,6 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>CNN</code>
       </td>
       <td>
         <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
@@ -149,11 +145,8 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
         <code>MobileNetV2</code>,
-        <code>SSDLite</code>,
-        <code>CNN</code>,
-        <code>Tensorflow</code>,
+        <code>SSDLite</code>
       </td>
       <td>
         <a href="http://cocodataset.org/#home">
@@ -181,9 +174,7 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
         </a>
       </td>
       <td>
-        <code>Convolutional&nbsp;Neural&nbsp;Network</code>,
-        <code>MobileNetV2</code>,
-        <code>CNN</code>
+        <code>MobileNetV2</code>
       </td>
       <td>
         <a href="http://image-net.org/explore">
