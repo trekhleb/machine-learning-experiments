@@ -245,12 +245,14 @@ To install new packages run `pip install package-name`. To add new packages to t
 
 ### Launch Jupyter locally
 
+In order to play around with Jupyter notebooks and see how models were trained you need to launch a [Jupyter Notebook](https://jupyter.org/) server.
+
 ```bash
 # Launch Jupyter server.
 jupyter notebook
 ```
 
-Jupyter will be available locally at `http://localhost:8888/`. Experiments notebooks may be found in `experiments` folder.
+Jupyter will be available locally at `http://localhost:8888/`. Notebooks with experiments may be found in `experiments` folder.
 
 ### Launch demos locally
 
