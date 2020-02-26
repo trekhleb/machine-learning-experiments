@@ -28,6 +28,9 @@ const Experiments = (): Node => {
       <Helmet>
         <title>{WINDOW_TITLE}</title>
       </Helmet>
+      <Box>
+        Blah blah blah
+      </Box>
       <Grid container spacing={3}>
         {experimentsPreviews}
       </Grid>
