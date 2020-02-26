@@ -60,6 +60,8 @@ Most of the model in these experiments were trained using [TensorFlow 2](https:/
 
 ### Convolutional Neural Networks (CNN)
 
+A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN, or ConvNet) is a class of deep neural networks, most commonly applied to analyzing visual imagery.
+
 <table>
   <thead>
     <tr>
