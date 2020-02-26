@@ -256,6 +256,8 @@ Jupyter will be available locally at `http://localhost:8888/`. Notebooks with ex
 
 ### Launch demos locally
 
+Demo application is made on React by means of [create-react-app](https://github.com/facebook/create-react-app).
+
 ```bash
 # Switch to demos folder from project root.
 cd demos
@@ -266,7 +268,7 @@ yarn install
 # Start demo server on http. 
 yarn start
 
-# Or start demo server on https (for camera access to work locally).
+# Or start demo server on https (for camera access in browser to work on localhost).
 yarn start-https
 ```
 
