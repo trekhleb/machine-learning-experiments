@@ -191,7 +191,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/previews/image_classification_mobilenet_v2.png" alt="Objects detection" width="150" />
+        <img src="assets/images/previews/image_classification_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
         <b>Image Classification (MobileNetV2)</b>
