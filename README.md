@@ -130,6 +130,38 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
+        <img src="assets/images/previews/rock_paper_scissors_mobilenet_v2.png" alt="Rock Paper Scissors" width="150" />
+      </td>
+      <td>
+        <b>Rock Paper Scissors (MobilenetV2)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsMobilenetV2">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+        <code>MobileNetV2</code>,
+        <code>Transfer learning</code>,
+      <td>
+      </td>
+      <td>
+        <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
+          RPS
+        </a>,
+        <a href="http://image-net.org/explore">
+          ImageNet
+        </a>
+      </td>
+    </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
         <img src="assets/images/previews/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
