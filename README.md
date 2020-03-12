@@ -103,7 +103,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/covers/rock_paper_scissors_cnn.png" alt="Rock Paper Scissors" width="150" />
+        <img src="assets/images/covers/rock_paper_scissors_cnn.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
         <b>Rock Paper Scissors (CNN)</b>
