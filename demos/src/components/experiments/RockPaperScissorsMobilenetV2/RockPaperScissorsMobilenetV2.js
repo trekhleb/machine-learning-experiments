@@ -14,7 +14,7 @@ import cover from './cover.png';
 import inputImageExample1 from './input-examples/rock.png';
 import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';
-import RockPaperScissors from '../RockPaperScissors/RockPaperScissors';
+import RockPaperScissors from '../../shared/RockPaperScissors';
 
 const experimentSlug = 'RockPaperScissorsMobilenetV2';
 const experimentName = 'Rock Paper Scissors (MobilenetV2)';

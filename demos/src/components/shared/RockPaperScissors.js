@@ -17,10 +17,10 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom';
 
-import CameraStream from '../../shared/CameraStream';
-import Snack from '../../shared/Snack';
-import OneHotBars from '../../shared/OneHotBars';
-import type { DataRecord } from '../../shared/OneHotBars';
+import CameraStream from './CameraStream';
+import Snack from './Snack';
+import OneHotBars from './OneHotBars';
+import type { DataRecord } from './OneHotBars';
 
 const flipVideoHorizontally = true;
 
