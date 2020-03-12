@@ -146,9 +146,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
           <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
         </a>
       </td>
+      <td>
         <code>MobileNetV2</code>,
         <code>Transfer learning</code>,
-      <td>
       </td>
       <td>
         <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
