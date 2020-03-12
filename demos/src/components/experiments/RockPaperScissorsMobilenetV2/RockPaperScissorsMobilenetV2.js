@@ -10,26 +10,26 @@ import { ML_EXPERIMENTS_DEMO_MODELS_PATH, ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } 
 import type { Experiment } from '../types';
 import Snack from '../../shared/Snack';
 
-import cover from './cover.jpg';
+import cover from './cover.png';
 import inputImageExample1 from './input-examples/rock.png';
 import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';
 import RockPaperScissors from '../RockPaperScissors/RockPaperScissors';
 
-const experimentSlug = 'RockPaperScissorsCNN';
-const experimentName = 'Rock Paper Scissors (CNN)';
-const experimentDescription = 'Play Rock Paper Scissors game against computer using Convolutional Neural Network (CNN)';
-const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb`;
+const experimentSlug = 'RockPaperScissorsMobilenetV2';
+const experimentName = 'Rock Paper Scissors (MobilenetV2)';
+const experimentDescription = 'Play Rock Paper Scissors game against computer using Convolutional Neural Network (MobilenetV2)';
+const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb`;
 const inputImagesExamples = [
   inputImageExample1,
   inputImageExample2,
   inputImageExample3,
 ];
 
-const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/rock_paper_scissors_cnn/model.json`;
+const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/rock_paper_scissors_mobilenet_v2/model.json`;
 
 /* eslint-disable react/jsx-one-expression-per-line */
-const RockPaperScissorsCNN = (): Node => {
+const RockPaperScissorsMobilenetV2 = (): Node => {
   const [model, setModel] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -56,7 +56,7 @@ const experiment: Experiment = {
   slug: experimentSlug,
   name: experimentName,
   description: experimentDescription,
-  component: RockPaperScissorsCNN,
+  component: RockPaperScissorsMobilenetV2,
   notebookUrl,
   cover,
   inputImageExamples: {
