@@ -15,7 +15,7 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
-import cover from './cover.png';
+import cover from './image_classification_mobilenet_v2.png';
 import Snack from '../../shared/Snack';
 import ImageInput from '../../shared/ImageInput';
 import imageNetLabels from './imageNetLabels.json';

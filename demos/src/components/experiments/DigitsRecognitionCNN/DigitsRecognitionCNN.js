@@ -20,7 +20,7 @@ import {
 } from '../../../constants/links';
 import type { Experiment } from '../types';
 
-import cover from './cover.png';
+import cover from './digits_recognition_cnn.png';
 import inputImageExample0 from './input-examples/0.png';
 import inputImageExample1 from './input-examples/1.png';
 import inputImageExample2 from './input-examples/2.png';

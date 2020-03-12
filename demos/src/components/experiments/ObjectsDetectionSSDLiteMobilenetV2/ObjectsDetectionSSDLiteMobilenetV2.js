@@ -18,7 +18,7 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
-import cover from './cover.jpg';
+import cover from './objects_detection_ssdlite_mobilenet_v2.jpg';
 import CanvasShapes from '../../shared/CanvasShapes';
 import CameraStream from '../../shared/CameraStream';
 import Snack from '../../shared/Snack';
