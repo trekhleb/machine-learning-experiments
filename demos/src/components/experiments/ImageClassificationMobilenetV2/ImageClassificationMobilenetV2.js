@@ -15,10 +15,11 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import type { Experiment } from '../types';
-import cover from './image_classification_mobilenet_v2.jpg';
 import Snack from '../../shared/Snack';
 import ImageInput from '../../shared/ImageInput';
 import imageNetLabels from './imageNetLabels.json';
+
+import cover from '../../../images/image_classification_mobilenet_v2.jpg';
 import inputImageExample0 from './input-examples/0.png';
 import inputImageExample1 from './input-examples/1.png';
 import inputImageExample2 from './input-examples/2.png';

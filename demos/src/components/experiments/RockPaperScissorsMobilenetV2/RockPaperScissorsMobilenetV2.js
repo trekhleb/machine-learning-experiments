@@ -10,7 +10,7 @@ import { ML_EXPERIMENTS_DEMO_MODELS_PATH, ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } 
 import type { Experiment } from '../types';
 import Snack from '../../shared/Snack';
 
-import cover from './rock_paper_scissors_mobilenet_v2.png';
+import cover from '../../../images/rock_paper_scissors_mobilenet_v2.jpg';
 import inputImageExample1 from './input-examples/rock.png';
 import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';

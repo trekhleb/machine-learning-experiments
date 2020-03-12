@@ -31,7 +31,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
+        <img src="demos/src/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
         <b>Handwritten digits recognition (MLP)</b>
@@ -76,7 +76,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
+        <img src="demos/src/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
       </td>
       <td>
         <b>Handwritten digits recognition (CNN)</b>
@@ -103,7 +103,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/rock_paper_scissors_cnn.jpg" alt="Rock Paper Scissors" width="150" />
+        <img src="demos/src/images/rock_paper_scissors_cnn.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
         <b>Rock Paper Scissors (CNN)</b>
@@ -130,7 +130,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/rock_paper_scissors_mobilenet_v2.jpg" alt="Rock Paper Scissors" width="150" />
+        <img src="demos/src/images/rock_paper_scissors_mobilenet_v2.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
         <b>Rock Paper Scissors (MobilenetV2)</b>
@@ -162,7 +162,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
+        <img src="demos/src/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
         <b>Objects Detection (MobileNetV2)</b>
@@ -191,7 +191,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="assets/images/image_classification_mobilenet_v2.jpg" alt="Objects detection" width="150" />
+        <img src="demos/src/images/image_classification_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
         <b>Image Classification (MobileNetV2)</b>
