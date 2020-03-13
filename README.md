@@ -48,6 +48,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         </a>
       </td>
       <td>
+        <code>MLP</code>
       </td>
       <td>
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">
@@ -93,6 +94,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         </a>
       </td>
       <td>
+        <code>CNN</code>
       </td>
       <td>
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">
@@ -120,6 +122,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         </a>
       </td>
       <td>
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
@@ -149,6 +152,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
       <td>
         <code>MobileNetV2</code>,
         <code>Transfer learning</code>,
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://www.laurencemoroney.com/rock-paper-scissors-dataset/">
@@ -180,7 +184,8 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
       </td>
       <td>
         <code>MobileNetV2</code>,
-        <code>SSDLite</code>
+        <code>SSDLite</code>,
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://cocodataset.org/#home">
@@ -208,7 +213,8 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         </a>
       </td>
       <td>
-        <code>MobileNetV2</code>
+        <code>MobileNetV2</code>,
+        <code>CNN</code>
       </td>
       <td>
         <a href="http://image-net.org/explore">
