@@ -11,7 +11,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 ## Experiments
 
-Most of the model in these experiments were trained using [TensorFlow 2](https://www.tensorflow.org/) with [Keras](https://www.tensorflow.org/guide/keras/overview) support.
+Most of the models in these experiments were trained using [TensorFlow 2](https://www.tensorflow.org/) with [Keras](https://www.tensorflow.org/guide/keras/overview) support.
 
 ### Multilayer Perceptron (MLP)
 
