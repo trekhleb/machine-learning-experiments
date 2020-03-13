@@ -38,7 +38,8 @@ const InfoPanel = (): Node => {
           This web-site contains machine learning <b>experiments</b> and <b>not</b> a
           production ready, reusable, optimised and fine-tuned code and models.
           This is rather a sandbox or a playground for learning and trying different
-          machine learning approaches, algorithms and data-sets.
+          machine learning approaches, algorithms and data-sets. Models might not
+          perform well and there is a place for overfitting/underfitting.
         </Box>
       </ExpansionPanelDetails>
     </ExpansionPanel>

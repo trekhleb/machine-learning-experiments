@@ -104,12 +104,12 @@ const Experiment = (props: ExperimentProps): Node => {
           {githubLink}
         </Grid>
       </Box>
-      <Box mb={4}>
-        <ExperimentElement />
-      </Box>
       <Box mb={3}>
         {inputImageExamples}
         <InfoPanel />
+      </Box>
+      <Box mb={3}>
+        <ExperimentElement />
       </Box>
     </ErrorBoundary>
   );
