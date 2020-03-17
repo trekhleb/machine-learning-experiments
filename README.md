@@ -260,7 +260,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         </a>
       </td>
       <td>
-        <code>RNN</code>
+        <code>GRU</code>
       </td>
       <td>
         <a href="https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt">
