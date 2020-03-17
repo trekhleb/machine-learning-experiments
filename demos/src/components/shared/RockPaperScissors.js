@@ -213,6 +213,7 @@ const RockPaperScissors = (props: RockPaperScissorsProps): Node => {
     setRawPredictions(prediction.arraySync()[0]);
 
     const choiceIndex = prediction.argMax(1).dataSync()[0];
+    // $FlowFixMe
     return Object.values(choices)[choiceIndex];
   };
 
