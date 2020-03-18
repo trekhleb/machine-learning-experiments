@@ -246,7 +246,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <img src="demos/src/images/text_generation_shakespeare_rnn.jpg" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
-        <b>Shakespeare Text Generation</b>
+        <b>Shakespeare Text Generation (RNN)</b>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationShakespeareRNN">
@@ -260,7 +260,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         </a>
       </td>
       <td>
-        <code>GRU</code>,
+        <code>LSTM</code>,
         <code>Character-based RNN</code>
       </td>
       <td>
