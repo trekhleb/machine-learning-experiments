@@ -1,6 +1,7 @@
 // @flow
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Node } from 'react';
+import * as tf from '@tensorflow/tfjs';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -11,12 +12,18 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import type { Experiment } from '../types';
 import cover from '../../../images/text_generation_shakespeare_rnn.jpg';
-import { ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } from '../../../constants/links';
+import {
+  ML_EXPERIMENTS_DEMO_MODELS_PATH,
+  ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
+} from '../../../constants/links';
+import Snack from '../../shared/Snack';
 
 const experimentSlug = 'TextGenerationShakespeareRNN';
 const experimentName = 'Shakespeare Text Generation (RNN)';
 const experimentDescription = 'Write like Shakespeare. Generate a text using Recurrent Neural Network (RNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb`;
+
+const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/text_generation_shakespeare_rnn/model.json`;
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -30,11 +37,24 @@ const useStyles = makeStyles(() => ({
 const TextGenerationShakespeareRNN = (): Node => {
   const maxInputLength = 100;
 
+  const [model, setModel] = useState(null);
   const [inputText, setInputText] = useState('');
   const [generatedText, setGeneratedText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const classes = useStyles();
+
+  // Effect for loading the model.
+  useEffect(() => {
+    tf.loadLayersModel(modelPath)
+      .then((layersModel) => {
+        setModel(layersModel);
+      })
+      .catch((e) => {
+        setErrorMessage(e.message);
+      });
+  }, [setErrorMessage, setModel]);
 
   const onInputTextChange = (event) => {
     setInputText(event.target.value);
@@ -60,6 +80,21 @@ const TextGenerationShakespeareRNN = (): Node => {
       {generatedText}
     </Box>
   ) : null;
+
+  if (!model) {
+    if (errorMessage) {
+      return <Snack severity="error" message={errorMessage} />;
+    }
+
+    return (
+      <Box>
+        <Box>
+          Loading the model
+        </Box>
+        <LinearProgress />
+      </Box>
+    );
+  }
 
   return (
     <form onSubmit={onGenerate}>
@@ -102,6 +137,8 @@ const TextGenerationShakespeareRNN = (): Node => {
         {generatedTextSpinner}
         {generatedTextElement}
       </Box>
+
+      <Snack severity="error" message={errorMessage} />
     </form>
   );
 };

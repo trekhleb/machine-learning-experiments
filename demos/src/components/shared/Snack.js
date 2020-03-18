@@ -5,7 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import type { Color } from '@material-ui/lab';
 
-const autoHideDuration = 6000;
+const autoHideDuration = 7000;
 
 type SnackProps = {
   message: ?string,

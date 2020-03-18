@@ -40,7 +40,7 @@ const RockPaperScissorsMobilenetV2 = (): Node => {
         setModel(layersModel);
       })
       .catch((e) => {
-        setErrorMessage(e);
+        setErrorMessage(e.message);
       });
   }, [setErrorMessage, setModel]);
 
