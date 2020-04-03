@@ -6,9 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { makeStyles } from '@material-ui/core/styles';
 
 import type { Experiment } from '../types';
 import cover from '../../../images/text_generation_shakespeare_rnn.jpg';
@@ -25,15 +27,6 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/text_generation_shak
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/text_generation_shakespeare_rnn/model.json`;
 
-const useStyles = makeStyles(() => ({
-  header: {
-    display: 'flex',
-    fontSize: '20px',
-    fontWeight: 400,
-    marginBottom: '10px',
-  },
-}));
-
 const TextGenerationShakespeareRNN = (): Node => {
   const maxInputLength = 100;
 
@@ -42,8 +35,6 @@ const TextGenerationShakespeareRNN = (): Node => {
   const [generatedText, setGeneratedText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const classes = useStyles();
 
   // Effect for loading the model.
   useEffect(() => {
@@ -63,22 +54,26 @@ const TextGenerationShakespeareRNN = (): Node => {
   const onGenerate = (event) => {
     event.preventDefault();
     setIsGenerating(true);
-  };
 
-  const generatedTextHeader = generatedText ? (
-    <Box className={classes.header}>
-      Generated text
-    </Box>
-  ) : null;
+    setGeneratedText('Here is generated text');
+    setIsGenerating(false);
+  };
 
   const generatedTextSpinner = isGenerating ? (
     <LinearProgress />
   ) : null;
 
   const generatedTextElement = generatedText ? (
-    <Box>
-      {generatedText}
-    </Box>
+    <Card>
+      <CardContent>
+        <Typography variant="h5" component="h2">
+          Generated text
+        </Typography>
+        <Typography variant="body2" component="p">
+          {generatedText}
+        </Typography>
+      </CardContent>
+    </Card>
   ) : null;
 
   if (!model) {
@@ -111,6 +106,7 @@ const TextGenerationShakespeareRNN = (): Node => {
               value={inputText}
               onChange={onInputTextChange}
               variant="outlined"
+              size="small"
               inputProps={{
                 maxLength: maxInputLength,
               }}
@@ -133,7 +129,6 @@ const TextGenerationShakespeareRNN = (): Node => {
       </Grid>
 
       <Box mt={3}>
-        {generatedTextHeader}
         {generatedTextSpinner}
         {generatedTextElement}
       </Box>
