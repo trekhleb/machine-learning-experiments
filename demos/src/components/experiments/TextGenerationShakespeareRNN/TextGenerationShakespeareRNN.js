@@ -92,11 +92,11 @@ const TextGenerationShakespeareRNN = (): Node => {
   }
 
   return (
-    <form onSubmit={onGenerate}>
+    <form onSubmit={onGenerate} className="mt-5">
       <Grid
         container
         spacing={3}
-        alignItems="center"
+        alignItems="flex-start"
         justify="flex-start"
       >
         <Grid item xs={12} sm={8}>
@@ -107,6 +107,7 @@ const TextGenerationShakespeareRNN = (): Node => {
               onChange={onInputTextChange}
               variant="outlined"
               size="small"
+              helperText="Start like Shakespeare and RNN will continue like Shakespeare"
               inputProps={{
                 maxLength: maxInputLength,
               }}
