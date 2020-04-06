@@ -53,10 +53,43 @@ const TextGenerationShakespeareRNN = (): Node => {
 
   const onGenerate = (event) => {
     event.preventDefault();
+    if (!model) {
+      return;
+    }
+
     setIsGenerating(true);
 
-    setGeneratedText('Here is generated text');
-    setIsGenerating(false);
+    const sequenceLength = 100;
+
+    // @TODO: Make it configurable.
+    const numberOfChars = 1;
+
+    // @TODO: Make it configurable.
+    const temperature = 1;
+
+    const vocabulary = ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+    const inputTextIndices = Array.from(inputText)
+      .map(
+        (inputChar: string) => vocabulary.findIndex((vocabChar: string) => vocabChar === inputChar)
+      )
+      .filter((inputCharIndex: number) => inputCharIndex >= 0);
+
+    // Here batch size == 1.
+    const inputTextTensor = tf.expandDims(inputTextIndices, 0);
+
+    const textGenerated = [];
+
+    console.log({ inputTextIndices, inputTextTensor });
+
+    for (let charIndex = 0; charIndex < numberOfChars; charIndex += 1) {
+      const prediction = model.predict(inputTextTensor);
+
+      console.log({
+        prediction,
+        arr: prediction.arraySync(),
+      });
+    }
   };
 
   const generatedTextSpinner = isGenerating ? (
@@ -93,6 +126,9 @@ const TextGenerationShakespeareRNN = (): Node => {
 
   return (
     <form onSubmit={onGenerate} className="mt-5">
+      <Box mb={2}>
+        Start like Shakespeare and RNN will continue like Shakespeare
+      </Box>
       <Grid
         container
         spacing={3}
@@ -107,7 +143,7 @@ const TextGenerationShakespeareRNN = (): Node => {
               onChange={onInputTextChange}
               variant="outlined"
               size="small"
-              helperText="Start like Shakespeare and RNN will continue like Shakespeare"
+              helperText="Only English letters and spaces are allowed"
               inputProps={{
                 maxLength: maxInputLength,
               }}
