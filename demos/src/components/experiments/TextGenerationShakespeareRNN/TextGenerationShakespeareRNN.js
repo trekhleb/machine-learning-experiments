@@ -62,7 +62,7 @@ const TextGenerationShakespeareRNN = (): Node => {
     const sequenceLength = 100;
 
     // @TODO: Make it configurable.
-    const numberOfChars = 100;
+    const numberOfChars = 400;
 
     // @TODO: Make it configurable.
     const temperature = 1;
@@ -104,7 +104,7 @@ const TextGenerationShakespeareRNN = (): Node => {
     }
 
     setIsGenerating(false);
-    setGeneratedText(inputText + textGenerated.join(''));
+    setGeneratedText(`${inputText}${textGenerated.join('')}...`);
   };
 
   const generatedTextSpinner = isGenerating ? (
@@ -117,8 +117,13 @@ const TextGenerationShakespeareRNN = (): Node => {
         <Typography variant="h5" component="h2">
           Generated text
         </Typography>
-        <Typography variant="body2" component="p">
-          {generatedText}
+        <Typography variant="body2" component="div">
+          <TextField
+            value={generatedText}
+            variant="outlined"
+            multiline
+            fullWidth
+          />
         </Typography>
       </CardContent>
     </Card>
