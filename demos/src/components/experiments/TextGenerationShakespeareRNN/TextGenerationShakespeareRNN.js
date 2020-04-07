@@ -62,7 +62,7 @@ const TextGenerationShakespeareRNN = (): Node => {
     const sequenceLength = 100;
 
     // @TODO: Make it configurable.
-    const numberOfChars = 1;
+    const numberOfChars = 100;
 
     // @TODO: Make it configurable.
     const temperature = 1;
@@ -76,20 +76,35 @@ const TextGenerationShakespeareRNN = (): Node => {
       .filter((inputCharIndex: number) => inputCharIndex >= 0);
 
     // Here batch size == 1.
-    const inputTextTensor = tf.expandDims(inputTextIndices, 0);
+    const batchAxis = 0;
+    const inputTextTensor = tf.expandDims(inputTextIndices, batchAxis);
 
     const textGenerated = [];
 
-    console.log({ inputTextIndices, inputTextTensor });
+    model.resetStates();
+
+    let inputTensor = inputTextTensor;
 
     for (let charIndex = 0; charIndex < numberOfChars; charIndex += 1) {
-      const prediction = model.predict(inputTextTensor);
+      let prediction = model.predict(inputTensor);
 
-      console.log({
-        prediction,
-        arr: prediction.arraySync(),
-      });
+      // Remove the batch dimension.
+      prediction = tf.squeeze(prediction, batchAxis);
+
+      // Using a categorical distribution to predict the character returned by the model.
+      prediction = tf.div(prediction, temperature);
+
+      const predictionArray = prediction.arraySync();
+      const lastPrediction = predictionArray[predictionArray.length - 1];
+      const nextCharIndex = lastPrediction.indexOf(Math.max(...lastPrediction));
+
+      textGenerated.push(vocabulary[nextCharIndex]);
+
+      inputTensor = tf.expandDims([nextCharIndex], batchAxis);
     }
+
+    setIsGenerating(false);
+    setGeneratedText(inputText + textGenerated.join(''));
   };
 
   const generatedTextSpinner = isGenerating ? (
