@@ -1,5 +1,5 @@
 // @flow
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import type { Node } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import TextField from '@material-ui/core/TextField';
@@ -31,10 +31,22 @@ const TextGenerationShakespeareRNN = (): Node => {
   const maxInputLength = 100;
 
   const [model, setModel] = useState(null);
+  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [inputText, setInputText] = useState('');
+  const [sequenceLength, setSequenceLength] = useState(400);
+  const [unexpectedness, setUnexpectedness] = useState(1);
   const [generatedText, setGeneratedText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const warmupModel = () => {
+    if (model && !modelIsWarm) {
+      const fakeInput = tf.tensor([[0, 1]]);
+      model.predict(fakeInput);
+    }
+  };
+
+  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
 
   // Effect for loading the model.
   useEffect(() => {
@@ -47,6 +59,14 @@ const TextGenerationShakespeareRNN = (): Node => {
       });
   }, [setErrorMessage, setModel]);
 
+  // Effect for warming up a model.
+  useEffect(() => {
+    if (model && !modelIsWarm) {
+      warmupModelCallback();
+      setModelIsWarm(true);
+    }
+  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
+
   const onInputTextChange = (event) => {
     setInputText(event.target.value);
   };
@@ -58,20 +78,14 @@ const TextGenerationShakespeareRNN = (): Node => {
     }
 
     setIsGenerating(true);
+    setGeneratedText('');
 
-    const sequenceLength = 100;
-
-    // @TODO: Make it configurable.
-    const numberOfChars = 400;
-
-    // @TODO: Make it configurable.
-    const temperature = 1;
-
-    const vocabulary = ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    const modelVocabulary = ['\n', ' ', '!', '$', '&', "'", ',', '-', '.', '3', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
     const inputTextIndices = Array.from(inputText)
       .map(
-        (inputChar: string) => vocabulary.findIndex((vocabChar: string) => vocabChar === inputChar)
+        (inputChar: string) => modelVocabulary
+          .findIndex((vocabChar: string) => vocabChar === inputChar)
       )
       .filter((inputCharIndex: number) => inputCharIndex >= 0);
 
@@ -85,20 +99,20 @@ const TextGenerationShakespeareRNN = (): Node => {
 
     let inputTensor = inputTextTensor;
 
-    for (let charIndex = 0; charIndex < numberOfChars; charIndex += 1) {
+    for (let charIndex = 0; charIndex < sequenceLength; charIndex += 1) {
       let prediction = model.predict(inputTensor);
 
       // Remove the batch dimension.
       prediction = tf.squeeze(prediction, batchAxis);
 
       // Using a categorical distribution to predict the character returned by the model.
-      prediction = tf.div(prediction, temperature);
+      prediction = tf.div(prediction, unexpectedness);
 
       const predictionArray = prediction.arraySync();
       const lastPrediction = predictionArray[predictionArray.length - 1];
       const nextCharIndex = lastPrediction.indexOf(Math.max(...lastPrediction));
 
-      textGenerated.push(vocabulary[nextCharIndex]);
+      textGenerated.push(modelVocabulary[nextCharIndex]);
 
       inputTensor = tf.expandDims([nextCharIndex], batchAxis);
     }
@@ -140,6 +154,16 @@ const TextGenerationShakespeareRNN = (): Node => {
           Loading the model
         </Box>
         <LinearProgress />
+      </Box>
+    );
+  }
+
+  if (!modelIsWarm) {
+    return (
+      <Box>
+        <Box>
+          Preparing the model...
+        </Box>
       </Box>
     );
   }
