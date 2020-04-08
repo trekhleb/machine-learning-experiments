@@ -11,6 +11,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import type { Experiment } from '../types';
 import cover from '../../../images/text_generation_shakespeare_rnn.jpg';
@@ -179,7 +182,7 @@ const TextGenerationShakespeareRNN = (): Node => {
         alignItems="flex-start"
         justify="flex-start"
       >
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <TextField
               label="Type the beginning of the text"
@@ -195,7 +198,26 @@ const TextGenerationShakespeareRNN = (): Node => {
             />
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth variant="outlined" size="small">
+            <InputLabel id="sequence-length-select-label">
+              Text length
+            </InputLabel>
+            <Select
+              labelId="sequence-length-select-label"
+              id="sequence-length-select"
+              value={sequenceLength}
+              onChange={(e) => setSequenceLength(e.target.value)}
+              label="Text length"
+            >
+              <MenuItem value={100}>100</MenuItem>
+              <MenuItem value={200}>200</MenuItem>
+              <MenuItem value={400}>400</MenuItem>
+              <MenuItem value={800}>800</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={3}>
           <FormControl fullWidth>
             <Button
               variant="contained"
