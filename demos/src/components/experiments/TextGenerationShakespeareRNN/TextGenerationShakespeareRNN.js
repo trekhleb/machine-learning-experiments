@@ -244,6 +244,7 @@ const TextGenerationShakespeareRNN = (): Node => {
               color="primary"
               size="large"
               type="submit"
+              disabled={isGenerating}
             >
               Generate
             </Button>
