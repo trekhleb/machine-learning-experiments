@@ -35,7 +35,7 @@ const TextGenerationShakespeareRNN = (): Node => {
   const [modelIsWarm, setModelIsWarm] = useState(null);
   const [inputText, setInputText] = useState('');
   const [sequenceLength, setSequenceLength] = useState(400);
-  const [unexpectedness, setUnexpectedness] = useState(1);
+  const [unexpectedness, setUnexpectedness] = useState(0.1);
   const [generatedText, setGeneratedText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -108,10 +108,9 @@ const TextGenerationShakespeareRNN = (): Node => {
 
       // Using a categorical distribution to predict the character returned by the model.
       prediction = tf.div(prediction, unexpectedness);
-
       const predictionArray = prediction.arraySync();
       const lastPrediction = predictionArray[predictionArray.length - 1];
-      const nextCharIndex = lastPrediction.indexOf(Math.max(...lastPrediction));
+      const nextCharIndex = tf.multinomial(tf.tensor(lastPrediction), 1).arraySync()[0];
 
       textGenerated.push(modelVocabulary[nextCharIndex]);
 
@@ -128,9 +127,11 @@ const TextGenerationShakespeareRNN = (): Node => {
 
   const generatedTextElement = generatedText ? (
     <Box>
-      <Typography variant="h6" component="h3">
-        Generated text
-      </Typography>
+      <Box mb={1}>
+        <Typography variant="h6" component="h3">
+          Generated text
+        </Typography>
+      </Box>
       <Typography variant="body2" component="div">
         <TextField
           value={generatedText}
@@ -170,7 +171,8 @@ const TextGenerationShakespeareRNN = (): Node => {
   return (
     <form onSubmit={onGenerate} className="mt-5">
       <Box mb={2}>
-        Start like Shakespeare and RNN will continue like Shakespeare
+        Start writing (like Shakespeare) and RNN will continue writing (like Shakespeare)
+        by generating the rest of the text for you.
       </Box>
       <Grid
         container
@@ -178,15 +180,15 @@ const TextGenerationShakespeareRNN = (): Node => {
         alignItems="flex-start"
         justify="flex-start"
       >
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <FormControl fullWidth>
             <TextField
-              label="Type the beginning of the text"
+              label="Start the text"
               value={inputText}
               onChange={onInputTextChange}
               variant="outlined"
               size="small"
-              helperText="Only English letters and spaces are allowed"
+              helperText="English letters and spaces allowed"
               inputProps={{
                 maxLength: maxInputLength,
               }}
@@ -194,6 +196,7 @@ const TextGenerationShakespeareRNN = (): Node => {
             />
           </FormControl>
         </Grid>
+
         <Grid item xs={12} sm={3}>
           <FormControl fullWidth variant="outlined" size="small">
             <InputLabel id="sequence-length-select-label">
@@ -213,6 +216,27 @@ const TextGenerationShakespeareRNN = (): Node => {
             </Select>
           </FormControl>
         </Grid>
+
+        <Grid item xs={12} sm={2}>
+          <FormControl fullWidth variant="outlined" size="small">
+            <InputLabel id="unexpectedness-select-label">
+              Fuzziness
+            </InputLabel>
+            <Select
+              labelId="unexpectedness-select-label"
+              id="unexpectedness-select"
+              value={unexpectedness}
+              onChange={(e) => setUnexpectedness(e.target.value)}
+              label="Fuzziness"
+            >
+              <MenuItem value={0.1}>0.1</MenuItem>
+              <MenuItem value={0.5}>0.5</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={1.5}>1.5</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
         <Grid item xs={12} sm={3}>
           <FormControl fullWidth>
             <Button
@@ -221,7 +245,7 @@ const TextGenerationShakespeareRNN = (): Node => {
               size="large"
               type="submit"
             >
-              Generate Text
+              Generate
             </Button>
           </FormControl>
         </Grid>
