@@ -86,7 +86,7 @@ const TextGenerationShakespeareRNN = (): Node => {
     const inputTextIndices = Array.from(inputText)
       .map(
         (inputChar: string) => modelVocabulary
-          .findIndex((vocabChar: string) => vocabChar === inputChar)
+          .findIndex((vocabChar: string) => vocabChar === inputChar),
       )
       .filter((inputCharIndex: number) => inputCharIndex >= 0);
 
