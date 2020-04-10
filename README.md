@@ -13,7 +13,7 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 Most of the models in these experiments were trained using [TensorFlow 2](https://www.tensorflow.org/) with [Keras](https://www.tensorflow.org/guide/keras/overview) support.
 
-### Supervised Learning
+### Supervised Machine Learning
 
 Supervised learning is when you have input variables `X` and an output variable `Y` and you use an algorithm to learn the mapping function from the input to the output: `Y = f(X)`. The goal is to approximate the mapping function so well that when you have new input data `X` that you can predict the output variables `Y` for that data. It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process.
 
@@ -276,7 +276,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
   </tbody>
 </table>
 
-### Unsupervised Learning
+### Unsupervised Machine Learning
 
 Unsupervised learning is when you only have input data `X` and no corresponding output variables. The goal for unsupervised learning is to model the underlying structure or distribution in the data in order to learn more about the data. These are called unsupervised learning because unlike supervised learning above there is no correct answers and there is no teacher. Algorithms are left to their own to discover and present the interesting structure in the data.
 
