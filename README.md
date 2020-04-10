@@ -13,7 +13,11 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 Most of the models in these experiments were trained using [TensorFlow 2](https://www.tensorflow.org/) with [Keras](https://www.tensorflow.org/guide/keras/overview) support.
 
-### Multilayer Perceptron (MLP)
+### Supervised Learning
+
+Supervised learning is when you have input variables `X` and an output variable `Y` and you use an algorithm to learn the mapping function from the input to the output: `Y = f(X)`. The goal is to approximate the mapping function so well that when you have new input data `X` that you can predict the output variables `Y` for that data. It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process.
+
+#### Multilayer Perceptron (MLP)
 
 A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (MLP) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer. It can distinguish data that is not linearly separable.
 
@@ -59,7 +63,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
   </tbody>
 </table>
 
-### Convolutional Neural Networks (CNN)
+#### Convolutional Neural Networks (CNN)
 
 A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN, or ConvNet) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
 
@@ -225,7 +229,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
   </tbody>
 </table>
 
-### Recurrent Neural Networks (RNN)
+#### Recurrent Neural Networks (RNN)
 
 A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_network) (RNN) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
 
@@ -271,6 +275,10 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
     </tr>
   </tbody>
 </table>
+
+### Unsupervised Learning
+
+Unsupervised learning is when you only have input data `X` and no corresponding output variables. The goal for unsupervised learning is to model the underlying structure or distribution in the data in order to learn more about the data. These are called unsupervised learning because unlike supervised learning above there is no correct answers and there is no teacher. Algorithms are left to their own to discover and present the interesting structure in the data.
 
 ## How to use this repository locally
 
