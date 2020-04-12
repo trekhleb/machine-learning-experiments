@@ -1,5 +1,5 @@
 // @flow
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { Node } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import TextField from '@material-ui/core/TextField';
@@ -14,6 +14,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import Snack from './Snack';
+import useLayersModel from '../../hooks/useLayersModel';
 
 type SequenceLength = 100 | 200 | 400 | 800;
 type Unexpectedness = 0.1 | 0.5 | 1 | 1.5;
@@ -47,42 +48,15 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     defaultUnexpectedness = defaultUnexpectednessValue,
   } = props;
 
-  const [model, setModel] = useState(null);
-  const [modelIsWarm, setModelIsWarm] = useState(null);
+  const { model, modelErrorMessage } = useLayersModel({
+    modelPath,
+    warmup: true,
+  });
   const [inputText, setInputText] = useState('');
   const [sequenceLength, setSequenceLength] = useState(defaultSequenceLength);
   const [unexpectedness, setUnexpectedness] = useState(defaultUnexpectedness);
   const [generatedText, setGeneratedText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const warmupModel = () => {
-    if (model && !modelIsWarm) {
-      const fakeInput = tf.tensor([[0, 1]]);
-      model.predict(fakeInput);
-    }
-  };
-
-  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
-
-  // Effect for loading the model.
-  useEffect(() => {
-    tf.loadLayersModel(modelPath)
-      .then((layersModel) => {
-        setModel(layersModel);
-      })
-      .catch((e) => {
-        setErrorMessage(e.message);
-      });
-  }, [modelPath, setErrorMessage, setModel]);
-
-  // Effect for warming up a model.
-  useEffect(() => {
-    if (model && !modelIsWarm) {
-      warmupModelCallback();
-      setModelIsWarm(true);
-    }
-  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
 
   const onInputTextChange = (event) => {
     setInputText(event.target.value);
@@ -158,8 +132,8 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
   ) : null;
 
   if (!model) {
-    if (errorMessage) {
-      return <Snack severity="error" message={errorMessage} />;
+    if (modelErrorMessage) {
+      return <Snack severity="error" message={modelErrorMessage} />;
     }
 
     return (
@@ -168,16 +142,6 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
           Loading the model
         </Box>
         <LinearProgress />
-      </Box>
-    );
-  }
-
-  if (!modelIsWarm) {
-    return (
-      <Box>
-        <Box>
-          Preparing the model...
-        </Box>
       </Box>
     );
   }
@@ -277,7 +241,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
         {generatedTextElement}
       </Box>
 
-      <Snack severity="error" message={errorMessage} />
+      <Snack severity="error" message={modelErrorMessage} />
     </form>
   );
 };
