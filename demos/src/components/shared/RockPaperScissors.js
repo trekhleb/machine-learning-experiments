@@ -170,7 +170,6 @@ const RockPaperScissors = (props: RockPaperScissorsProps): Node => {
   const { model } = props;
 
   const [errorMessage, setErrorMessage] = useState(null);
-  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [rawPredictions, setRawPredictions] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
   const [humanChoice, setHumanChoice] = useState(null);
@@ -216,17 +215,6 @@ const RockPaperScissors = (props: RockPaperScissorsProps): Node => {
     // $FlowFixMe
     return Object.values(choices)[choiceIndex];
   };
-
-  const warmupModel = async () => {
-    if (model && !modelIsWarm) {
-      const modelInputWidth = model.input.shape[1];
-      const modelInputHeight = model.input.shape[2];
-      const fakeInput = tf.zeros([1, modelInputWidth, modelInputHeight, 3]);
-      model.predict(fakeInput);
-    }
-  };
-
-  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
 
   const renderVideoSnapshot = (): ?HTMLCanvasElement => {
     if (!snapshotCanvasRef || !snapshotCanvasRef.current) {
@@ -321,17 +309,9 @@ const RockPaperScissors = (props: RockPaperScissorsProps): Node => {
     videoFrame,
     model,
     errorMessage,
-    modelIsWarm,
     rawPredictions,
     counter,
   ]);
-
-  // Effect for warming up the model.
-  useEffect(() => {
-    if (model && !modelIsWarm) {
-      warmupModelCallback().then(() => setModelIsWarm(true));
-    }
-  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
 
   // Countdown effect.
   useEffect(() => {
@@ -474,16 +454,6 @@ const RockPaperScissors = (props: RockPaperScissorsProps): Node => {
           Loading the model
         </Box>
         <LinearProgress />
-      </Box>
-    );
-  }
-
-  if (!modelIsWarm) {
-    return (
-      <Box>
-        <Box>
-          Preparing the model...
-        </Box>
       </Box>
     );
   }
