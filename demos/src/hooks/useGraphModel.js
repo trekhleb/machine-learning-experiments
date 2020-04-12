@@ -1,19 +1,19 @@
 // @flow
 import { useState, useEffect, useCallback } from 'react';
 import * as tf from '@tensorflow/tfjs';
-import { LayersModel } from '@tensorflow/tfjs-layers';
+import { GraphModel } from '@tensorflow/tfjs-converter';
 
-type UseLayersModelProps = {
+type UseGraphModelProps = {
   modelPath: string,
   warmup?: boolean,
 };
 
-type UseLayersModelOutput = {
-  model: ?LayersModel,
+type UseGraphModelOutput = {
+  model: ?GraphModel,
   modelErrorMessage: ?string,
 };
 
-const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
+const useGraphModel = (props: UseGraphModelProps): UseGraphModelOutput => {
   const { modelPath, warmup = false } = props;
 
   const [model, setModel] = useState(null);
@@ -22,7 +22,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
 
   const warmupModel = async () => {
     if (warmup && model && !modelIsWarm) {
-      const inputShapeWithNulls = model.input.shape;
+      const inputShapeWithNulls = model.inputs[0].shape;
       const inputShape = inputShapeWithNulls.map((dimension) => {
         if (dimension === null || dimension === -1) {
           return 1;
@@ -31,7 +31,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
       });
 
       const fakeInput = tf.zeros(inputShape);
-      model.predict(fakeInput);
+      await model.executeAsync(fakeInput);
     }
   };
 
@@ -39,9 +39,9 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
 
   // Effect for loading the model.
   useEffect(() => {
-    tf.loadLayersModel(modelPath)
-      .then((layersModel: LayersModel) => {
-        setModel(layersModel);
+    tf.loadGraphModel(modelPath)
+      .then((graphModel: GraphModel) => {
+        setModel(graphModel);
       })
       .catch((e) => {
         setModelErrorMessage(e.message);
@@ -63,7 +63,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
     warmupModelCallback,
   ]);
 
-  let finalModel: ?LayersModel = model;
+  let finalModel: ?GraphModel = model;
   if (warmup) {
     finalModel = modelIsWarm ? model : null;
   }
@@ -74,4 +74,4 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
   };
 };
 
-export default useLayersModel;
+export default useGraphModel;

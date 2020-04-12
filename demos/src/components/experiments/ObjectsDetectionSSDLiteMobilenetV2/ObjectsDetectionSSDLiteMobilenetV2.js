@@ -3,7 +3,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useCallback,
 } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import type { Node } from 'react';
@@ -25,6 +24,7 @@ import CocoClasses from './classes';
 import type { Box as BoxType } from '../../shared/CanvasShapes';
 
 import cover from '../../../images/objects_detection_ssdlite_mobilenet_v2.jpg';
+import useGraphModel from '../../../hooks/useGraphModel';
 
 const experimentSlug = 'ObjectsDetectionSSDLiteMobilenetV2';
 const experimentName = 'Objects Detection (MobileNetV2)';
@@ -50,20 +50,14 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
 
   const cameraStreamWrapper = useRef(null);
 
+  const { model, modelErrorMessage } = useGraphModel({
+    modelPath,
+    warmup: true,
+  });
   const [width, setWidth] = useState(defaultCameraStreamSize);
   const [height, setHeight] = useState(defaultCameraStreamSize);
-  const [model, setModel] = useState(null);
-  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [boxes, setBoxes] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const warmupModel = async () => {
-    if (model && !modelIsWarm) {
-      const result = await model.executeAsync(tf.zeros([1, 300, 300, 3]));
-      await Promise.all(result.map((tensor) => tensor.data()));
-      result.map((tensor) => tensor.dispose());
-    }
-  };
 
   const executeModel = async (video?: ?HTMLVideoElement) => {
     if (!model || !video) {
@@ -156,35 +150,13 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
     await executeModel(video);
   };
 
-  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
-
-  // Load the model.
   useEffect(() => {
     if (cameraStreamWrapper.current && cameraStreamWrapper.current.offsetWidth) {
       const size = Math.min(maxCameraStreamSize, cameraStreamWrapper.current.offsetWidth);
       setWidth(size);
       setHeight(size);
     }
-
-    if (model) {
-      return;
-    }
-
-    tf.loadGraphModel(modelPath)
-      .then((graphModel) => {
-        setModel(graphModel);
-      })
-      .catch((e) => {
-        setErrorMessage('Model cannot be loaded');
-      });
-  }, [model, setErrorMessage, setModel]);
-
-  // Warmup the model.
-  useEffect(() => {
-    if (model && !modelIsWarm) {
-      warmupModelCallback().then(() => setModelIsWarm(true));
-    }
-  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
+  }, []);
 
   if (!model) {
     return (
@@ -201,11 +173,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
     marginTop: -1 * height,
   };
 
-  const notificationElement = modelIsWarm === null ? (
-    <>
-      Preparing the model...
-    </>
-  ) : (
+  const notificationElement = (
     <>
       <PhoneIphoneIcon />
       {' '}
@@ -234,7 +202,7 @@ const ObjectsDetectionSSDLiteMobilenetV2 = (): Node => {
           boxes={boxes}
         />
       </Box>
-      <Snack severity="error" message={errorMessage} />
+      <Snack severity="error" message={errorMessage || modelErrorMessage} />
     </Box>
   );
 };
