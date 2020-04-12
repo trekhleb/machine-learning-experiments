@@ -1515,7 +1515,7 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@tensorflow/tfjs-converter@1.7.2":
+"@tensorflow/tfjs-converter@1.7.2", "@tensorflow/tfjs-converter@^1.7.2":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@tensorflow/tfjs-converter/-/tfjs-converter-1.7.2.tgz#a2bb479f271aa9a5bb2909b3b8d90c431996893d"
   integrity sha512-6ckNQ3n36X20/+YDCTictfKftPH3urf5I+wc0QNlsSJhik3QiliYJy+v5hmjQGSJ4ow2oyW5T2lUsy9aNoNaTg==
