@@ -1,9 +1,5 @@
 // @flow
-import React, {
-  useState,
-  useEffect,
-} from 'react';
-import * as tf from '@tensorflow/tfjs';
+import React from 'react';
 import type { Node } from 'react';
 
 import { ML_EXPERIMENTS_DEMO_MODELS_PATH, ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL } from '../../../constants/links';
@@ -15,6 +11,7 @@ import inputImageExample1 from './input-examples/rock.png';
 import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';
 import RockPaperScissors from '../../shared/RockPaperScissors';
+import useLayersModel from '../../../hooks/useLayersModel';
 
 const experimentSlug = 'RockPaperScissorsCNN';
 const experimentName = 'Rock Paper Scissors (CNN)';
@@ -28,26 +25,16 @@ const inputImagesExamples = [
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/rock_paper_scissors_cnn/model.json`;
 
-/* eslint-disable react/jsx-one-expression-per-line */
 const RockPaperScissorsCNN = (): Node => {
-  const [model, setModel] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  // Effect for loading the model.
-  useEffect(() => {
-    tf.loadLayersModel(modelPath)
-      .then((layersModel) => {
-        setModel(layersModel);
-      })
-      .catch((e) => {
-        setErrorMessage(e.message);
-      });
-  }, [setErrorMessage, setModel]);
+  const { model, modelErrorMessage } = useLayersModel({
+    modelPath,
+    warmup: true,
+  });
 
   return (
     <>
       <RockPaperScissors model={model} />
-      <Snack severity="error" message={errorMessage} />
+      <Snack severity="error" message={modelErrorMessage} />
     </>
   );
 };

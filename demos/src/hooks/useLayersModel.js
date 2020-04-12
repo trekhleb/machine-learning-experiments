@@ -1,6 +1,7 @@
 // @flow
 import { useState, useEffect, useCallback } from 'react';
 import * as tf from '@tensorflow/tfjs';
+import { LayersModel } from '@tensorflow/tfjs-layers';
 
 type UseLayersModelProps = {
   modelPath: string,
@@ -8,7 +9,7 @@ type UseLayersModelProps = {
 };
 
 type UseLayersModelOutput = {
-  model: ?any,
+  model: ?LayersModel,
   modelErrorMessage: ?string,
 };
 
@@ -21,20 +22,6 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
 
   const warmupModel = async () => {
     if (warmup && model && !modelIsWarm) {
-      // const result = await model.executeAsync(tf.zeros([1, 300, 300, 3]));
-      // await Promise.all(result.map((tensor) => tensor.data()));
-      // result.map((tensor) => tensor.dispose());
-
-      // const modelInputWidth = model.layers[0].input.shape[1];
-      // const modelInputHeight = model.layers[0].input.shape[2];
-      // model.predict(
-      //   tf.zeros([1, modelInputWidth, modelInputHeight, 3]),
-      // );
-
-      // const modelInputWidth = model.input.shape[1];
-      // const modelInputHeight = model.input.shape[2];
-      // const fakeInput = tf.zeros([1, modelInputWidth, modelInputHeight, 3]);
-
       const inputShapeWithNulls = model.input.shape;
       const inputShape = inputShapeWithNulls.map((dimension) => {
         if (dimension === null) {
@@ -53,7 +40,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
   // Effect for loading the model.
   useEffect(() => {
     tf.loadLayersModel(modelPath)
-      .then((layersModel) => {
+      .then((layersModel: LayersModel) => {
         setModel(layersModel);
       })
       .catch((e) => {
@@ -76,7 +63,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
     warmupModelCallback,
   ]);
 
-  let finalModel = model;
+  let finalModel: ?LayersModel = model;
   if (warmup) {
     finalModel = modelIsWarm ? model : null;
   }
