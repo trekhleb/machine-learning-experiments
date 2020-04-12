@@ -26,6 +26,7 @@ import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample5 from './input-examples/5.png';
+import useLayersModel from '../../../hooks/useLayersModel';
 
 const experimentSlug = 'ImageClassificationMobilenetV2';
 const experimentName = 'Image Classification (MobileNetV2)';
@@ -66,11 +67,12 @@ const useStyles = makeStyles((theme) => ({
 const ImageClassificationMobilenetV2 = (): Node => {
   const classes = useStyles();
 
+  const { model, modelErrorMessage } = useLayersModel({
+    modelPath,
+    warmup: true,
+  });
   const experimentWrapper = useRef(null);
   const imagePreviewRef = useRef(null);
-  const [model, setModel] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [modelIsWarm, setModelIsWarm] = useState(null);
   const [images, setImages] = useState(null);
   const [previewWidth, setPreviewWidth] = useState(maxPreviewWidth);
   const [predictions, setPredictions] = useState([]);
@@ -117,40 +119,6 @@ const ImageClassificationMobilenetV2 = (): Node => {
     [model],
   );
 
-  const warmupModel = async () => {
-    if (model && !modelIsWarm) {
-      const modelInputWidth = model.layers[0].input.shape[1];
-      const modelInputHeight = model.layers[0].input.shape[2];
-      model.predict(
-        tf.zeros([1, modelInputWidth, modelInputHeight, 3]),
-      );
-    }
-  };
-
-  const warmupModelCallback = useCallback(warmupModel, [model, modelIsWarm]);
-
-  // Load the model.
-  useEffect(() => {
-    if (model) {
-      return;
-    }
-    tf.loadLayersModel(modelPath)
-      .then((layersModel) => {
-        setModel(layersModel);
-      })
-      .catch((e) => {
-        setErrorMessage('Model cannot be loaded');
-      });
-  }, [model, setErrorMessage, setModel]);
-
-  // Warmup the model.
-  useEffect(() => {
-    if (model && !modelIsWarm) {
-      warmupModelCallback();
-      setModelIsWarm(true);
-    }
-  }, [model, modelIsWarm, setModelIsWarm, warmupModelCallback]);
-
   // Setup preview width.
   useEffect(() => {
     if (!experimentWrapper.current) {
@@ -175,11 +143,7 @@ const ImageClassificationMobilenetV2 = (): Node => {
     };
   }, [images, classifyImageCallback]);
 
-  const notificationElement = modelIsWarm === null ? (
-    <Box>
-      Preparing the model...
-    </Box>
-  ) : (
+  const notificationElement = (
     <Box display="flex">
       Select an image or take a photo that you want to be tagged (classified).
       Try to have one distinct object on the photo.
@@ -246,13 +210,13 @@ const ImageClassificationMobilenetV2 = (): Node => {
       <Box mb={2}>
         {notificationElement}
       </Box>
-      <ImageInput onSelect={setImages} disabled={!modelIsWarm} />
+      <ImageInput onSelect={setImages} disabled={!model} />
       {tagsContainer}
       {tagsError}
       <Box mt={2}>
         {imagesPreview}
       </Box>
-      <Snack severity="error" message={errorMessage} />
+      <Snack severity="error" message={modelErrorMessage} />
     </Box>
   );
 };
