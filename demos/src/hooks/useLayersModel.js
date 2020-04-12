@@ -30,7 +30,7 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
         return dimension;
       });
 
-      const fakeInput = tf.zeros(inputShape);
+      const fakeInput = tf.zeros(inputShape, 'int32');
       model.predict(fakeInput);
     }
   };

@@ -30,7 +30,7 @@ const useGraphModel = (props: UseGraphModelProps): UseGraphModelOutput => {
         return dimension;
       });
 
-      const fakeInput = tf.zeros(inputShape);
+      const fakeInput = tf.zeros(inputShape, 'int32');
       await model.executeAsync(fakeInput);
     }
   };
