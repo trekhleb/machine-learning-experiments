@@ -1,5 +1,5 @@
 // @flow
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { Node } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -28,6 +28,7 @@ import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample9 from './input-examples/9.png';
+import useLayersModel from '../../../hooks/useLayersModel';
 
 const experimentSlug = 'DigitsRecognitionMLP';
 const experimentName = 'Digits Recognition (MLP)';
@@ -67,23 +68,14 @@ const useStyles = makeStyles(() => ({
 const DigitsRecognitionMLP = (): Node => {
   const classes = useStyles();
 
-  const [model, setModel] = useState(null);
-  const [modelError, setModelError] = useState(null);
+  const { model, modelErrorMessage } = useLayersModel({
+    modelPath,
+    warmup: true,
+  });
   const [recognizedDigit, setRecognizedDigit] = useState(null);
   const [probabilities, setProbabilities] = useState(null);
   const [digitImageData, setDigitImageData] = useState(null);
   const [canvasRevision, setCanvasRevision] = useState(0);
-
-  useEffect(() => {
-    tf.loadLayersModel(modelPath)
-      .then((layersModel) => {
-        setModel(layersModel);
-      })
-      .catch((e) => {
-        // @TODO: Display an error in a snackbar.
-        setModelError(e);
-      });
-  }, [setModelError, setModel]);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
     if (!canvasImages.imageData) {
@@ -129,7 +121,7 @@ const DigitsRecognitionMLP = (): Node => {
     })));
   };
 
-  if (!model && !modelError) {
+  if (!model && !modelErrorMessage) {
     return (
       <Box>
         <Box>
