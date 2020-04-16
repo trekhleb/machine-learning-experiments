@@ -12,6 +12,7 @@ export type Experiment = {|
     images: string[],
     imageWidth?: string | number,
   },
+  inputTextExamples?: ?string[],
 |};
 
 export type ExperimentsMap = {

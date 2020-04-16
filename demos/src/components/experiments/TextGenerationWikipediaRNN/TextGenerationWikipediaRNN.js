@@ -37,6 +37,7 @@ const experiment: Experiment = {
   component: TextGenerationWikipediaRNN,
   notebookUrl,
   cover,
+  inputTextExamples: ['Science is', 'Philosophy is', 'Event'],
 };
 
 export default experiment;

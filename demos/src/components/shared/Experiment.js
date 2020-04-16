@@ -19,6 +19,7 @@ import { generateColabLink, generateJupyterLink } from '../../utils/links';
 import ErrorBoundary from './ErrorBoundary';
 import InfoPanel from './InfoPanel';
 import InputImagesExample from './InputImagesExample';
+import InputTextsExample from './InputTextsExample';
 
 type ExperimentProps = {
   match: Match,
@@ -81,6 +82,10 @@ const Experiment = (props: ExperimentProps): Node => {
     />
   ) : null;
 
+  const inputTextExamples = experiment.inputTextExamples ? (
+    <InputTextsExample texts={experiment.inputTextExamples} />
+  ) : null;
+
   return (
     <ErrorBoundary>
       <Helmet>
@@ -106,6 +111,7 @@ const Experiment = (props: ExperimentProps): Node => {
       </Box>
       <Box mb={3}>
         {inputImageExamples}
+        {inputTextExamples}
         <InfoPanel />
       </Box>
       <Box mb={3}>

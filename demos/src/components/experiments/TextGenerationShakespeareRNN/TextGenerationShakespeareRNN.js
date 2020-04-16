@@ -36,6 +36,7 @@ const experiment: Experiment = {
   component: TextGenerationShakespeareRNN,
   notebookUrl,
   cover,
+  inputTextExamples: ['Hello, ', 'I love you', 'How come'],
 };
 
 export default experiment;
