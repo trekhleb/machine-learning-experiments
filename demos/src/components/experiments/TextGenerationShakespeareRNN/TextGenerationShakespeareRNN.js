@@ -18,12 +18,16 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/text_generation_shak
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/text_generation_shakespeare_rnn/model.json`;
 
-const TextGenerationShakespeareRNN = (): Node => (
-  <TextGenerator
-    modelPath={modelPath}
-    modelVocabulary={modelVocabulary}
-  />
-);
+const TextGenerationShakespeareRNN = (): Node => {
+  const description = 'Start writing (like Shakespeare) and RNN will continue writing (like Shakespeare) by generating the rest of the text for you.';
+  return (
+    <TextGenerator
+      modelPath={modelPath}
+      modelVocabulary={modelVocabulary}
+      description={description}
+    />
+  );
+};
 
 const experiment: Experiment = {
   slug: experimentSlug,

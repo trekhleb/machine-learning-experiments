@@ -33,6 +33,7 @@ const defaultProps = {
 
 type TextGeneratorProps = {
   modelPath: string,
+  description: string,
   modelVocabulary: string[],
   maxInputLength?: number,
   defaultSequenceLength?: SequenceLength,
@@ -44,6 +45,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     modelPath,
     modelVocabulary,
     maxInputLength,
+    description,
     defaultSequenceLength = defaultSequenceLengthValue,
     defaultUnexpectedness = defaultUnexpectednessValue,
   } = props;
@@ -149,8 +151,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
   return (
     <form onSubmit={onGenerate} className="mt-5">
       <Box mb={2}>
-        Start writing (like Shakespeare) and RNN will continue writing (like Shakespeare)
-        by generating the rest of the text for you.
+        {description}
       </Box>
       <Grid
         container
