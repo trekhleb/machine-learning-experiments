@@ -3,7 +3,7 @@ import React from 'react';
 import type { Node } from 'react';
 
 import type { Experiment } from '../types';
-import cover from '../../../images/text_generation_wikipedia_rnn.jpg';
+import cover from '../../../images/text_generation_wikipedia_rnn.png';
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,

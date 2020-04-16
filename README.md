@@ -276,7 +276,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="demos/src/images/text_generation_wikipedia_rnn.jpg" alt="Wikipedia Text Generation (RNN)" width="150" />
+        <img src="demos/src/images/text_generation_wikipedia_rnn.png" alt="Wikipedia Text Generation (RNN)" width="150" />
       </td>
       <td>
         <b>Wikipedia Text Generation (RNN)</b>
