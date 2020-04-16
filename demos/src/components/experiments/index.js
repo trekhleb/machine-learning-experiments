@@ -7,6 +7,7 @@ import ImageClassificationMobilenetV2 from './ImageClassificationMobilenetV2/Ima
 import RockPaperScissorsCNN from './RockPaperScissorsCNN/RockPaperScissorsCNN';
 import RockPaperScissorsMobilenetV2 from './RockPaperScissorsMobilenetV2/RockPaperScissorsMobilenetV2';
 import TextGenerationShakespeareRNN from './TextGenerationShakespeareRNN/TextGenerationShakespeareRNN';
+import TextGenerationWikipediaRNN from './TextGenerationWikipediaRNN/TextGenerationWikipediaRNN';
 
 const experiments: ExperimentsMap = {
   DigitsRecognitionMLP,
@@ -16,6 +17,7 @@ const experiments: ExperimentsMap = {
   ObjectsDetectionSSDLiteMobilenetV2,
   ImageClassificationMobilenetV2,
   TextGenerationShakespeareRNN,
+  TextGenerationWikipediaRNN,
 };
 
 export default experiments;
