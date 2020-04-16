@@ -247,7 +247,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
     <!-- Experiment -->
     <tr>
       <td>
-        <img src="demos/src/images/text_generation_shakespeare_rnn.jpg" alt="Handwritten digits recognition (MLP)" width="150" />
+        <img src="demos/src/images/text_generation_shakespeare_rnn.jpg" alt="Shakespeare Text Generation (RNN)" width="150" />
       </td>
       <td>
         <b>Shakespeare Text Generation (RNN)</b>
@@ -270,6 +270,35 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
       <td>
         <a href="https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt">
           Shakespeare
+        </a>
+      </td>
+    </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="demos/src/images/text_generation_wikipedia_rnn.jpg" alt="Wikipedia Text Generation (RNN)" width="150" />
+      </td>
+      <td>
+        <b>Wikipedia Text Generation (RNN)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationWikipediaRNN">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>LSTM</code>,
+        <code>Character-based RNN</code>
+      </td>
+      <td>
+        <a href="https://www.tensorflow.org/datasets/catalog/wikipedia">
+          Wikipedia
         </a>
       </td>
     </tr>
