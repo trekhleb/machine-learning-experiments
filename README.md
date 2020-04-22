@@ -38,7 +38,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <img src="demos/src/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
-        <b>Handwritten digits recognition (MLP)</b>
+        <b>Handwritten Digits Recognition (MLP)</b>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
@@ -84,7 +84,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
       </td>
       <td>
-        <b>Handwritten digits recognition (CNN)</b>
+        <b>Handwritten Digits Recognition (CNN)</b>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
@@ -244,6 +244,33 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
     </tr>
   </thead>
   <tbody>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="demos/src/images/numbers_summation_rnn.png" alt="Numbers summation (RNN)" width="150" />
+      </td>
+      <td>
+        <b>Numbers Summation (RNN)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/NumbersSummationRNN">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>LSTM</code>,
+        <code>Sequence-to-sequence</code>
+      </td>
+      <td>
+        Auto-generated
+      </td>
+    </tr>
     <!-- Experiment -->
     <tr>
       <td>

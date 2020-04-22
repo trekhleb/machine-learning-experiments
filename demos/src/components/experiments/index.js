@@ -8,6 +8,7 @@ import RockPaperScissorsCNN from './RockPaperScissorsCNN/RockPaperScissorsCNN';
 import RockPaperScissorsMobilenetV2 from './RockPaperScissorsMobilenetV2/RockPaperScissorsMobilenetV2';
 import TextGenerationShakespeareRNN from './TextGenerationShakespeareRNN/TextGenerationShakespeareRNN';
 import TextGenerationWikipediaRNN from './TextGenerationWikipediaRNN/TextGenerationWikipediaRNN';
+import NumbersSummationRNN from './NumbersSummationRNN/NumbersSummationRNN';
 
 const experiments: ExperimentsMap = {
   DigitsRecognitionMLP,
@@ -16,6 +17,7 @@ const experiments: ExperimentsMap = {
   RockPaperScissorsMobilenetV2,
   ObjectsDetectionSSDLiteMobilenetV2,
   ImageClassificationMobilenetV2,
+  NumbersSummationRNN,
   TextGenerationShakespeareRNN,
   TextGenerationWikipediaRNN,
 };
