@@ -17,7 +17,7 @@ Most of the models in these experiments were trained using [TensorFlow 2](https:
 
 [Supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) is when you have input variables `X` and an output variable `Y` and you use an algorithm to learn the mapping function from the input to the output: `Y = f(X)`. The goal is to approximate the mapping function so well that when you have new input data `X` that you can predict the output variables `Y` for that data. It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process.
 
-#### Multilayer Perceptron (MLP) or Simple Neural Network (NN)
+#### Multilayer Perceptron (MLP) or simple Neural Network (NN)
 
 A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (MLP) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer. It can distinguish data that is not linearly separable.
 
