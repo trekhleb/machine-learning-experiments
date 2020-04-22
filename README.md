@@ -1,6 +1,6 @@
 # 🤖 Interactive Machine Learning Experiments
 
-This is a collection of interactive machine-learning experiments. Each experiment consists of 🏋️ Jupyter/Colab _notebook_ (to see how model was trained) and 🎨 _demo page_ (to see model in action right in your browser).
+This is a collection of interactive machine-learning experiments. Each experiment consists of 🏋️ Jupyter/Colab _notebook_ (to see how the model was trained) and 🎨 _demo page_ (to see the model in action right in your browser).
 
 - 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
 - 🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
