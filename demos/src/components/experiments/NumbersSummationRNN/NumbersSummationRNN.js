@@ -19,6 +19,8 @@ import {
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
 } from '../../../constants/links';
 import modelVocabulary from './vocabulary';
+import OneHotBars from '../../shared/OneHotBars';
+import type { DataRecord } from '../../shared/OneHotBars';
 
 const experimentSlug = 'NumbersSummationRNN';
 const experimentName = 'Numbers Summation (RNN)';
@@ -42,6 +44,7 @@ const NumbersSummationRNN = (): Node => {
   const [inputTextError, setInputTextError] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedText, setGeneratedText] = useState('');
+  const [predictionOneHots, setPredictionOneHots] = useState(null);
 
   const inputFormat = /^[1-9][0-9]?\+[1-9][0-9]?$/;
 
@@ -50,6 +53,7 @@ const NumbersSummationRNN = (): Node => {
     setInputTextError(!inputFormat.test(inputString));
     setInputText(inputString);
     setGeneratedText('');
+    setPredictionOneHots(null);
   };
 
   const onGenerate = (event) => {
@@ -103,6 +107,7 @@ const NumbersSummationRNN = (): Node => {
 
     setIsGenerating(false);
     setGeneratedText(predictionText);
+    setPredictionOneHots(prediction.arraySync())
   };
 
   const generatedTextSpinner = isGenerating ? (
@@ -128,6 +133,36 @@ const NumbersSummationRNN = (): Node => {
           Loading the model
         </Box>
         <LinearProgress />
+      </Box>
+    );
+  }
+
+  let oneHots = null;
+  if (predictionOneHots && predictionOneHots.length) {
+    const bars = predictionOneHots.map((predictionOneHot, predictionIndex) => {
+      const data: DataRecord[] = modelVocabulary.map((label, labelIndex) => ({
+        value: predictionOneHot[labelIndex],
+        label: label === ' ' ? '␣' : label,
+      }));
+      const title = `Char #${predictionIndex + 1} prediction`;
+      // eslint-disable react/no-array-index-key
+      return (
+        <Grid item xs={12} sm={4} key={predictionIndex}>
+          <Box mb={1}>{title}</Box>
+          <OneHotBars data={data} />
+        </Grid>
+      );
+    });
+    oneHots = (
+      <Box mt={5}>
+        <Grid
+          container
+          spacing={3}
+          alignItems="flex-start"
+          justify="flex-start"
+        >
+          {bars}
+        </Grid>
       </Box>
     );
   }
@@ -193,6 +228,7 @@ const NumbersSummationRNN = (): Node => {
         {generatedTextSpinner}
         {generatedTextElement}
       </Box>
+      {oneHots}
       <Snack severity="error" message={modelErrorMessage} />
     </>
   );
