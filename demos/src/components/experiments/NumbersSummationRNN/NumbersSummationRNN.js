@@ -107,7 +107,7 @@ const NumbersSummationRNN = (): Node => {
 
     setIsGenerating(false);
     setGeneratedText(predictionText);
-    setPredictionOneHots(prediction.arraySync())
+    setPredictionOneHots(prediction.arraySync());
   };
 
   const generatedTextSpinner = isGenerating ? (
