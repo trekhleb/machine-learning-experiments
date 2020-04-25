@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from 'react';
 import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
@@ -145,7 +146,6 @@ const NumbersSummationRNN = (): Node => {
         label: label === ' ' ? '␣' : label,
       }));
       const title = `Char #${predictionIndex + 1} prediction`;
-      // eslint-disable react/no-array-index-key
       return (
         <Grid item xs={12} sm={4} key={predictionIndex}>
           <Box mb={1}>{title}</Box>
