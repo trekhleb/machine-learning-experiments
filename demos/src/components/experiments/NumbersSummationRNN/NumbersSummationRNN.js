@@ -116,7 +116,7 @@ const NumbersSummationRNN = (): Node => {
 
   const generatedTextElement = generatedText ? (
     <Box mb={1}>
-      <Typography variant="h3" component="h3">
+      <Typography variant="h2" component="h2">
         {`${inputText} = ${generatedText}`}
       </Typography>
     </Box>
