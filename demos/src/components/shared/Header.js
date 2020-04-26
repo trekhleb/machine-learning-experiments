@@ -56,7 +56,7 @@ const Header = (): Node => {
               </MaterialLink>
             </Typography>
 
-            <Tooltip title="ML Experiments List">
+            <Tooltip title="Machine Learning Experiments List">
               <MaterialLink component={RouterLink} to={HOME_ROUTE} color="inherit">
                 <IconButton color="inherit">
                   <HomeIcon />
@@ -64,7 +64,7 @@ const Header = (): Node => {
               </MaterialLink>
             </Tooltip>
 
-            <Tooltip title="ML Experiments on GitHub">
+            <Tooltip title="Machine Learning Experiments on GitHub">
               <MaterialLink href={ML_EXPERIMENTS_GITHUB_URL} color="inherit">
                 <IconButton color="inherit">
                   <GitHubIcon />
