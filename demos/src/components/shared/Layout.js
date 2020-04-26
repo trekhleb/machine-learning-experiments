@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'typeface-roboto';
 
 import Header from './Header';
+import Footer from './Footer';
 import theme from '../../constants/theme';
 
 type LayoutProps = {
@@ -27,6 +28,9 @@ const Layout = (props: LayoutProps): Node => {
           </Grid>
           <Grid item xs={12}>
             {children}
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
           </Grid>
         </Grid>
       </Container>

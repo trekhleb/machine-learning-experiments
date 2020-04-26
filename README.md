@@ -434,7 +434,7 @@ Recommended versions:
 
 In case if you have Python version `3.7.3` you might experience `RuntimeError: dictionary changed size during iteration` error when trying to `import tensorflow` (see the [issue](https://github.com/tensorflow/tensorflow/issues/33183)).
 
-## You might be interested in
+## You might also be interested in
 
 - [Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning) - Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained.
 - [NanoNeuron](https://github.com/trekhleb/nano-neuron) - 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
