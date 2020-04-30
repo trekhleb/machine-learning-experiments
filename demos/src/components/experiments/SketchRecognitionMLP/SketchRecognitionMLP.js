@@ -154,7 +154,7 @@ const SketchRecognitionMLP = (): Node => {
           height={canvasHeight}
           onDrawEnd={onDrawEnd}
           revision={canvasRevision}
-          lineWidth={7}
+          lineWidth={8}
         />
       </Paper>
     </>
