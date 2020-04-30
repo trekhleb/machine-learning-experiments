@@ -21,6 +21,8 @@ import {
 } from '../../../constants/links';
 import type { Experiment } from '../types';
 
+import labels from './labels';
+
 import cover from '../../../images/sketch_recognition_mlp.png';
 import inputImageExample0 from './input-examples/0.png';
 import inputImageExample1 from './input-examples/1.png';
@@ -28,6 +30,7 @@ import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import useLayersModel from '../../../hooks/useLayersModel';
+import Typography from '@material-ui/core/Typography';
 
 const experimentSlug = 'SketchRecognitionMLP';
 const experimentName = 'Sketch Recognition (MLP)';
@@ -70,27 +73,27 @@ const SketchRecognitionMLP = (): Node => {
     modelPath,
     warmup: true,
   });
-  const [recognizedDigit, setRecognizedDigit] = useState(null);
+  const [recognizedCategoryIndex, setRecognizedCategoryIndex] = useState(null);
   const [probabilities, setProbabilities] = useState(null);
-  const [digitImageData, setDigitImageData] = useState(null);
+  const [sketchImageData, setSketchImageData] = useState(null);
   const [canvasRevision, setCanvasRevision] = useState(0);
 
   const onDrawEnd = (canvasImages: CanvasImages) => {
     if (!canvasImages.imageData) {
       return;
     }
-    setDigitImageData(canvasImages.imageData);
+    setSketchImageData(canvasImages.imageData);
   };
 
   const onClearCanvas = () => {
-    setRecognizedDigit(null);
-    setDigitImageData(null);
+    setRecognizedCategoryIndex(null);
+    setSketchImageData(null);
     setProbabilities(null);
     setCanvasRevision(canvasRevision + 1);
   };
 
   const onRecognize = () => {
-    if (!digitImageData || !model) {
+    if (!sketchImageData || !model) {
       return;
     }
 
@@ -99,7 +102,7 @@ const SketchRecognitionMLP = (): Node => {
     const colorsAxis = 2;
 
     const tensor = tf.browser
-      .fromPixels(digitImageData)
+      .fromPixels(sketchImageData)
       // Resize image to fit neural network input.
       .resizeNearestNeighbor([modelInputWidth, modelInputHeight])
       // Calculate grey-scale average across channels.
@@ -108,15 +111,17 @@ const SketchRecognitionMLP = (): Node => {
       .mul(-1)
       .add(255)
       // Normalize.
-      .div(255);
+      .div(255)
+      // Reshape.
+      .reshape([1, modelInputWidth, modelInputHeight, 1]);
 
-    const prediction = model.predict(tensor.reshape([1, modelInputWidth, modelInputHeight]));
-    const digit = prediction.argMax(1).dataSync()[0];
-    setRecognizedDigit(digit);
-    setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
-      [valueKey]: Math.floor(10 * probability) / 10,
-      [labelKey]: index,
-    })));
+    const prediction = model.predict(tensor);
+    const categoryIndex = prediction.argMax(1).dataSync()[0];
+    setRecognizedCategoryIndex(categoryIndex);
+    // setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
+    //   [valueKey]: Math.floor(10 * probability) / 10,
+    //   [labelKey]: index,
+    // })));
   };
 
   if (!model && !modelErrorMessage) {
@@ -137,7 +142,7 @@ const SketchRecognitionMLP = (): Node => {
         {' '}
         <b>one BIG</b>
         {' '}
-        digit here
+        sketch figure here
       </Box>
       <Paper className={classes.paper}>
         <Canvas
@@ -149,6 +154,19 @@ const SketchRecognitionMLP = (): Node => {
       </Paper>
     </>
   );
+
+  const recognizedCategory =
+    recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
+      ? labels[recognizedCategoryIndex]
+      : null;
+
+  const recognizedCategoryElement = recognizedCategory ? (
+    <Box>
+      <Typography variant="h2" component="h2">
+        {recognizedCategory}
+      </Typography>
+    </Box>
+  ) : null;
 
   const buttons = (
     <Box
@@ -162,7 +180,7 @@ const SketchRecognitionMLP = (): Node => {
           color="primary"
           onClick={onRecognize}
           startIcon={<PlayArrowIcon />}
-          disabled={!digitImageData}
+          disabled={!sketchImageData}
         >
           Recognize
         </Button>
@@ -173,25 +191,12 @@ const SketchRecognitionMLP = (): Node => {
           color="secondary"
           onClick={onClearCanvas}
           startIcon={<DeleteIcon />}
-          disabled={!digitImageData}
+          disabled={!sketchImageData}
         >
           Clear
         </Button>
       </Box>
     </Box>
-  );
-
-  const digitsPaper = (
-    <>
-      <Box mb={1} whiteSpace="nowrap">
-        Recognized digit appears here
-      </Box>
-      <Paper className={classes.paper}>
-        <Box className={classes.recognizedDigit}>
-          {recognizedDigit}
-        </Box>
-      </Paper>
-    </>
   );
 
   const oneHotBars = probabilities ? (
@@ -214,7 +219,7 @@ const SketchRecognitionMLP = (): Node => {
       </Grid>
 
       <Grid item>
-        {digitsPaper}
+        {recognizedCategoryElement}
       </Grid>
 
       <Grid item>
