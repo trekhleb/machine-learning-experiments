@@ -9,12 +9,12 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import Typography from '@material-ui/core/Typography';
 // $FlowFixMe
 import * as tf from '@tensorflow/tfjs';
 
 import Canvas from '../../shared/Canvas';
 import type { CanvasImages } from '../../shared/Canvas';
-import OneHotBars, { valueKey, labelKey } from '../../shared/OneHotBars';
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
@@ -30,7 +30,6 @@ import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import useLayersModel from '../../../hooks/useLayersModel';
-import Typography from '@material-ui/core/Typography';
 
 const experimentSlug = 'SketchRecognitionMLP';
 const experimentName = 'Sketch Recognition (MLP)';
@@ -44,12 +43,12 @@ const inputImagesExamples = [
   inputImageExample4,
 ];
 
+const additionalGuessesNum = 3;
+
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/sketch_recognition_mlp/model.json`;
 
 const canvasWidth = 200;
 const canvasHeight = 200;
-const oneHotBarWidth = 200;
-const oneHotBarHeight = 90;
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -74,7 +73,7 @@ const SketchRecognitionMLP = (): Node => {
     warmup: true,
   });
   const [recognizedCategoryIndex, setRecognizedCategoryIndex] = useState(null);
-  const [probabilities, setProbabilities] = useState(null);
+  const [guessIndices, setGuessIndices] = useState(null);
   const [sketchImageData, setSketchImageData] = useState(null);
   const [canvasRevision, setCanvasRevision] = useState(0);
 
@@ -87,8 +86,8 @@ const SketchRecognitionMLP = (): Node => {
 
   const onClearCanvas = () => {
     setRecognizedCategoryIndex(null);
+    setGuessIndices(null);
     setSketchImageData(null);
-    setProbabilities(null);
     setCanvasRevision(canvasRevision + 1);
   };
 
@@ -118,10 +117,8 @@ const SketchRecognitionMLP = (): Node => {
     const prediction = model.predict(tensor);
     const categoryIndex = prediction.argMax(1).dataSync()[0];
     setRecognizedCategoryIndex(categoryIndex);
-    // setProbabilities(prediction.arraySync()[0].map((probability, index) => ({
-    //   [valueKey]: Math.floor(10 * probability) / 10,
-    //   [labelKey]: index,
-    // })));
+
+    const probs = prediction.arraySync()[0];
   };
 
   if (!model && !modelErrorMessage) {
@@ -150,7 +147,7 @@ const SketchRecognitionMLP = (): Node => {
           height={canvasHeight}
           onDrawEnd={onDrawEnd}
           revision={canvasRevision}
-          lineWidth={8}
+          lineWidth={6}
         />
       </Paper>
     </>
@@ -158,13 +155,33 @@ const SketchRecognitionMLP = (): Node => {
 
   const recognizedCategory =
     recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
-      ? labels[recognizedCategoryIndex] : null;
+      ? labels[recognizedCategoryIndex]
+      : null;
+
+  const additionalGuesses = guessIndices ? guessIndices.map((guessIndex) => (
+    <Typography variant="h4" component="h4" key={guessIndex}>
+      {labels[guessIndex]}
+    </Typography>
+  )) : null;
 
   const recognizedCategoryElement = recognizedCategory ? (
-    <Box>
-      <Typography variant="h2" component="h2">
-        {recognizedCategory}
-      </Typography>
+    <Box mt={2}>
+      <Grid container spacing={2} alignItems="center" justify="flex-start">
+        <Grid item>
+          It looks like
+        </Grid>
+        <Grid item>
+          <Typography variant="h2" component="h2">
+            {recognizedCategory}
+          </Typography>
+        </Grid>
+        <Grid item>
+          or
+        </Grid>
+        <Grid item>
+          {additionalGuesses}
+        </Grid>
+      </Grid>
     </Box>
   ) : null;
 
@@ -199,33 +216,20 @@ const SketchRecognitionMLP = (): Node => {
     </Box>
   );
 
-  const oneHotBars = probabilities ? (
-    <Box width={oneHotBarWidth}>
-      <Box mb={1}>
-        Probabilities
-      </Box>
-      <OneHotBars data={probabilities} height={oneHotBarHeight} />
-    </Box>
-  ) : null;
-
   return (
-    <Grid container spacing={3} alignItems="center" justify="flex-start">
-      <Grid item>
-        {canvasPaper}
+    <Box>
+      <Grid container spacing={3} alignItems="center" justify="flex-start">
+        <Grid item>
+          {canvasPaper}
+        </Grid>
+
+        <Grid item>
+          {buttons}
+        </Grid>
       </Grid>
 
-      <Grid item>
-        {buttons}
-      </Grid>
-
-      <Grid item>
-        {recognizedCategoryElement}
-      </Grid>
-
-      <Grid item>
-        {oneHotBars}
-      </Grid>
-    </Grid>
+      {recognizedCategoryElement}
+    </Box>
   );
 };
 
