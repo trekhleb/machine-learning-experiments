@@ -60,6 +60,34 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         </a>
       </td>
     </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="demos/src/images/sketch_recognition_mlp.png" alt="Handwritten sketch recognition (MLP)" width="150" />
+      </td>
+      <td>
+        <b>Handwritten Sketch Recognition (MLP)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionMLP">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>MLP</code>
+      </td>
+      <td>
+        <a href="https://github.com/googlecreativelab/quickdraw-dataset">
+          QuickDraw
+        </a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
