@@ -150,6 +150,7 @@ const SketchRecognitionMLP = (): Node => {
           height={canvasHeight}
           onDrawEnd={onDrawEnd}
           revision={canvasRevision}
+          lineWidth={8}
         />
       </Paper>
     </>
@@ -157,8 +158,7 @@ const SketchRecognitionMLP = (): Node => {
 
   const recognizedCategory =
     recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
-      ? labels[recognizedCategoryIndex]
-      : null;
+      ? labels[recognizedCategoryIndex] : null;
 
   const recognizedCategoryElement = recognizedCategory ? (
     <Box>
