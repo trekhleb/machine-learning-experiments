@@ -118,7 +118,14 @@ const SketchRecognitionMLP = (): Node => {
     const categoryIndex = prediction.argMax(1).dataSync()[0];
     setRecognizedCategoryIndex(categoryIndex);
 
-    const probs = prediction.arraySync()[0];
+    const probabilities = prediction
+      .arraySync()[0]
+      .map((probability, index) => ({ probability, index }))
+      .sort((probabilityA, probabilityB) => (probabilityB.probability - probabilityA.probability))
+      .map((probability) => probability.index)
+      .slice(1, additionalGuessesNum + 1);
+
+    setGuessIndices(probabilities);
   };
 
   if (!model && !modelErrorMessage) {
@@ -147,7 +154,7 @@ const SketchRecognitionMLP = (): Node => {
           height={canvasHeight}
           onDrawEnd={onDrawEnd}
           revision={canvasRevision}
-          lineWidth={6}
+          lineWidth={7}
         />
       </Paper>
     </>
@@ -158,10 +165,17 @@ const SketchRecognitionMLP = (): Node => {
       ? labels[recognizedCategoryIndex]
       : null;
 
-  const additionalGuesses = guessIndices ? guessIndices.map((guessIndex) => (
-    <Typography variant="h4" component="h4" key={guessIndex}>
-      {labels[guessIndex]}
-    </Typography>
+  const additionalGuesses = guessIndices ? guessIndices.map((guessId, guessIndex) => (
+    <React.Fragment key={guessId}>
+      <Grid item>
+        or
+      </Grid>
+      <Grid item>
+        <Typography variant={`h${3 + guessIndex}`} component={`h${3 + guessIndex}`}>
+          {labels[guessId]}
+        </Typography>
+      </Grid>
+    </React.Fragment>
   )) : null;
 
   const recognizedCategoryElement = recognizedCategory ? (
@@ -171,16 +185,11 @@ const SketchRecognitionMLP = (): Node => {
           It looks like
         </Grid>
         <Grid item>
-          <Typography variant="h2" component="h2">
+          <Typography variant="h1" component="h1">
             {recognizedCategory}
           </Typography>
         </Grid>
-        <Grid item>
-          or
-        </Grid>
-        <Grid item>
-          {additionalGuesses}
-        </Grid>
+        {additionalGuesses}
       </Grid>
     </Box>
   ) : null;
