@@ -227,6 +227,11 @@ const SketchRecognitionMLP = (): Node => {
 
   return (
     <Box>
+      <Box mb={3}>
+        Draw a sketch and pre-trained model will try to recognize what it is among 345 sketch categories.
+        Model is trained on <a href="https://quickdraw.withgoogle.com/data">QuickDraw dataset</a>.
+      </Box>
+
       <Grid container spacing={3} alignItems="center" justify="flex-start">
         <Grid item>
           {canvasPaper}
