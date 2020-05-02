@@ -16,6 +16,14 @@ import inputImageExample1 from './input-examples/1.png';
 import inputImageExample2 from './input-examples/2.png';
 import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
+import inputImageExample5 from './input-examples/5.png';
+import inputImageExample6 from './input-examples/6.png';
+import inputImageExample7 from './input-examples/7.png';
+import inputImageExample8 from './input-examples/8.png';
+import inputImageExample9 from './input-examples/9.png';
+import inputImageExample10 from './input-examples/10.png';
+import inputImageExample11 from './input-examples/11.png';
+import inputImageExample12 from './input-examples/12.png';
 import SketchRecognition from '../../shared/SketchRecognition';
 
 const experimentSlug = 'SketchRecognitionMLP';
@@ -28,6 +36,14 @@ const inputImagesExamples = [
   inputImageExample2,
   inputImageExample3,
   inputImageExample4,
+  inputImageExample5,
+  inputImageExample6,
+  inputImageExample7,
+  inputImageExample8,
+  inputImageExample9,
+  inputImageExample10,
+  inputImageExample11,
+  inputImageExample12,
 ];
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/sketch_recognition_mlp/model.json`;
