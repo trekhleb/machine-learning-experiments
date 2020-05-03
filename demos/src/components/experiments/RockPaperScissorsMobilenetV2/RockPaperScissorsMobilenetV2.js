@@ -52,6 +52,9 @@ const experiment: Experiment = {
     imageWidth: 150,
     images: inputImagesExamples,
   },
+  similarExperiments: [
+    experimentsSlugs.RockPaperScissorsCNN,
+  ],
 };
 
 export default experiment;

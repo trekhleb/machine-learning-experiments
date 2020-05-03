@@ -240,6 +240,9 @@ const experiment: Experiment = {
     images: inputImagesExamples,
     imageWidth: 50,
   },
+  similarExperiments: [
+    experimentsSlugs.DigitsRecognitionMLP,
+  ],
 };
 
 export default experiment;
