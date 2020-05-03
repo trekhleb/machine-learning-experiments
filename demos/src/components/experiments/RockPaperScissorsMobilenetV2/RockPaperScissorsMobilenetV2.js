@@ -12,8 +12,9 @@ import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';
 import RockPaperScissors from '../../shared/RockPaperScissors';
 import useLayersModel from '../../../hooks/useLayersModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'RockPaperScissorsMobilenetV2';
+const experimentSlug = experimentsSlugs.RockPaperScissorsMobilenetV2;
 const experimentName = 'Rock Paper Scissors (MobilenetV2)';
 const experimentDescription = 'Play Rock Paper Scissors game against computer using Convolutional Neural Network (MobilenetV2)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb`;

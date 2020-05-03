@@ -29,8 +29,9 @@ import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample9 from './input-examples/9.png';
 import useLayersModel from '../../../hooks/useLayersModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'DigitsRecognitionMLP';
+const experimentSlug = experimentsSlugs.DigitsRecognitionMLP;
 const experimentName = 'Digits Recognition (MLP)';
 const experimentDescription = 'Hand-written digits recognition using Multilayer Perceptron (MLP)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_mlp/digits_recognition_mlp.ipynb`;

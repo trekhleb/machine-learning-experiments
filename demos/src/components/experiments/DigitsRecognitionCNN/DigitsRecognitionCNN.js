@@ -28,8 +28,9 @@ import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample9 from './input-examples/9.png';
 import useLayersModel from '../../../hooks/useLayersModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'DigitsRecognitionCNN';
+const experimentSlug = experimentsSlugs.DigitsRecognitionCNN;
 const experimentName = 'Digits Recognition (CNN)';
 const experimentDescription = 'Hand-written digits recognition using Convolutional Neural Network (CNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/digits_recognition_cnn/digits_recognition_cnn.ipynb`;

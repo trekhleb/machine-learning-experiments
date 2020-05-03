@@ -25,8 +25,9 @@ import inputImageExample10 from './input-examples/10.png';
 import inputImageExample11 from './input-examples/11.png';
 import inputImageExample12 from './input-examples/12.png';
 import SketchRecognition from '../../shared/SketchRecognition';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'SketchRecognitionCNN';
+const experimentSlug = experimentsSlugs.SketchRecognitionCNN;
 const experimentName = 'Sketch Recognition (CNN)';
 const experimentDescription = 'Hand-written sketch recognition using Convolutional Neural Network (CNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/sketch_recognition_cnn/sketch_recognition_cnn.ipynb`;

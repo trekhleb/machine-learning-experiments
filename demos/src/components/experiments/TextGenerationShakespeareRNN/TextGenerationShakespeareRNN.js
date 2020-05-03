@@ -10,8 +10,9 @@ import {
 } from '../../../constants/links';
 import TextGenerator from '../../shared/TextGenerator';
 import modelVocabulary from './vocabulary';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'TextGenerationShakespeareRNN';
+const experimentSlug = experimentsSlugs.TextGenerationShakespeareRNN;
 const experimentName = 'Shakespeare Text Generation (RNN)';
 const experimentDescription = 'Write like Shakespeare. Generate a text using Recurrent Neural Network (RNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb`;

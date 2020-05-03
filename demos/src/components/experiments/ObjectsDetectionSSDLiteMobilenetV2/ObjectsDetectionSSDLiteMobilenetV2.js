@@ -25,8 +25,9 @@ import type { Box as BoxType } from '../../shared/CanvasShapes';
 
 import cover from '../../../images/objects_detection_ssdlite_mobilenet_v2.jpg';
 import useGraphModel from '../../../hooks/useGraphModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'ObjectsDetectionSSDLiteMobilenetV2';
+const experimentSlug = experimentsSlugs.ObjectsDetectionSSDLiteMobilenetV2;
 const experimentName = 'Objects Detection (MobileNetV2)';
 const experimentDescription = 'Detecting objects in your camera stream (SSDLite, Mobilenet V2, COCO database, 90 object categories)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb`;

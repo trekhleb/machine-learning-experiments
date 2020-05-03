@@ -22,8 +22,9 @@ import {
 import modelVocabulary from './vocabulary';
 import OneHotBars from '../../shared/OneHotBars';
 import type { DataRecord } from '../../shared/OneHotBars';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'NumbersSummationRNN';
+const experimentSlug = experimentsSlugs.NumbersSummationRNN;
 const experimentName = 'Numbers Summation (RNN)';
 const experimentDescription = 'Treat summation expression of two numbers as characters sequence and let RNN sum them up';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/numbers_summation_rnn/numbers_summation_rnn.ipynb`;

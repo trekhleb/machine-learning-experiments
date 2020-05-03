@@ -16,7 +16,7 @@ export const experimentsSlugs = {
 };
 
 export type Experiment = {|
-  slug: string,
+  slug: $Values<typeof experimentsSlugs>,
   name: string,
   description: string,
   component: () => Node,
@@ -27,8 +27,9 @@ export type Experiment = {|
     imageWidth?: string | number,
   },
   inputTextExamples?: ?string[],
+  similarExperiments?: ?Array<$Values<typeof experimentsSlugs>>,
 |};
 
 export type ExperimentsMap = {
-  [string]: Experiment,
+  [$Values<typeof experimentsSlugs>]: Experiment,
 };

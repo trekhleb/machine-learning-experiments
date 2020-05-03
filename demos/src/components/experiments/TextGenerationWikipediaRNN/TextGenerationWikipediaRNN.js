@@ -10,8 +10,9 @@ import {
 } from '../../../constants/links';
 import TextGenerator from '../../shared/TextGenerator';
 import modelVocabulary from './vocabulary';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'TextGenerationWikipediaRNN';
+const experimentSlug = experimentsSlugs.TextGenerationWikipediaRNN;
 const experimentName = 'Wikipedia Text Generation (RNN)';
 const experimentDescription = 'Generate a Wikipedia-like text using Recurrent Neural Network (RNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb`;

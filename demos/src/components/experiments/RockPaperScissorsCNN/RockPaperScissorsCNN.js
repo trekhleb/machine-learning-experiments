@@ -12,8 +12,9 @@ import inputImageExample2 from './input-examples/paper.png';
 import inputImageExample3 from './input-examples/scissors.png';
 import RockPaperScissors from '../../shared/RockPaperScissors';
 import useLayersModel from '../../../hooks/useLayersModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'RockPaperScissorsCNN';
+const experimentSlug = experimentsSlugs.RockPaperScissorsCNN;
 const experimentName = 'Rock Paper Scissors (CNN)';
 const experimentDescription = 'Play Rock Paper Scissors game against computer using Convolutional Neural Network (CNN)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb`;

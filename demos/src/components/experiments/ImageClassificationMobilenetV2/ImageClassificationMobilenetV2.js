@@ -27,8 +27,9 @@ import inputImageExample3 from './input-examples/3.png';
 import inputImageExample4 from './input-examples/4.png';
 import inputImageExample5 from './input-examples/5.png';
 import useLayersModel from '../../../hooks/useLayersModel';
+import { experimentsSlugs } from '../types';
 
-const experimentSlug = 'ImageClassificationMobilenetV2';
+const experimentSlug = experimentsSlugs.ImageClassificationMobilenetV2;
 const experimentName = 'Image Classification (MobileNetV2)';
 const experimentDescription = 'Generate classification tags for the images (Mobilenet V2, ImageNet database, 1000 object categories)';
 const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb`;
