@@ -48,14 +48,12 @@ const inputImagesExamples = [
 
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/sketch_recognition_cnn/model.json`;
 
-const SketchRecognitionCNN = (): Node => {
-  return (
-    <SketchRecognition
-      labels={labels}
-      modelPath={modelPath}
-    />
-  );
-};
+const SketchRecognitionCNN = (): Node => (
+  <SketchRecognition
+    labels={labels}
+    modelPath={modelPath}
+  />
+);
 
 const experiment: Experiment = {
   slug: experimentSlug,

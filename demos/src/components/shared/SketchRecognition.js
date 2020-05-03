@@ -44,7 +44,7 @@ type SketchRecognitionProps = {
 };
 
 const SketchRecognition = (props: SketchRecognitionProps): Node => {
-  const {modelPath, labels} = props;
+  const { modelPath, labels } = props;
 
   const classes = useStyles();
 
@@ -140,10 +140,9 @@ const SketchRecognition = (props: SketchRecognitionProps): Node => {
     </>
   );
 
-  const recognizedCategory =
-    recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
-      ? labels[recognizedCategoryIndex]
-      : null;
+  const recognizedCategory = recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
+    ? labels[recognizedCategoryIndex]
+    : null;
 
   const additionalGuesses = guessIndices ? guessIndices.map((guessId, guessIndex) => (
     <React.Fragment key={guessId}>
@@ -209,7 +208,9 @@ const SketchRecognition = (props: SketchRecognitionProps): Node => {
     <Box>
       <Box mb={3}>
         Draw a sketch and pre-trained model will try to recognize what it is among 345 sketch categories.
-        Model is trained on <a href="https://quickdraw.withgoogle.com/data">QuickDraw dataset</a>.
+        Model is trained on
+        <a href="https://quickdraw.withgoogle.com/data">QuickDraw dataset</a>
+        .
       </Box>
 
       <Grid container spacing={3} alignItems="center" justify="flex-start">
