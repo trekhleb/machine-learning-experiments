@@ -140,6 +140,7 @@ const SketchRecognition = (props: SketchRecognitionProps): Node => {
     </>
   );
 
+  // eslint-disable-next-line max-len
   const recognizedCategory = recognizedCategoryIndex !== null && recognizedCategoryIndex < labels.length
     ? labels[recognizedCategoryIndex]
     : null;
@@ -207,8 +208,8 @@ const SketchRecognition = (props: SketchRecognitionProps): Node => {
   return (
     <Box>
       <Box mb={3}>
-        Draw a sketch and pre-trained model will try to recognize what it is among 345 sketch categories.
-        Model is trained on
+        Draw a sketch and pre-trained model will try to recognize
+        what it is among 345 sketch categories. Model is trained on
         <a href="https://quickdraw.withgoogle.com/data">QuickDraw dataset</a>
         .
       </Box>
