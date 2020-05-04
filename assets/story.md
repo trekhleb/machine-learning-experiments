@@ -33,16 +33,14 @@ But be patient, sometimes the model might get smarter 🤓 and give you this:
 
 ## Background
 
+I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for last several years now I've been doing mostly frontend and backend programming. In my spare time, as a hobby, I decided to dig into machine learning topics to make it less _like a magic_ and _more like a math_ to myself.
+
+Since **Python** might be a good choice to start experimenting with Machine Learning I decided to learn its basic syntax first. As a result a [Playground and Cheatsheet for Learning Python](https://github.com/trekhleb/learn-python) project came out. This was just to practice Python and at the same time to have a cheatsheet of basic syntax once I need it (for things like `dict_via_comprehension = {x: x**2 for x in (2, 4, 6)}` etc.).
+
+After learning some Python I wanted to dig into the basic **math** behind the Machine Learning. So after passing an awesome [Machine Learning course by Andrew Ng](https://www.coursera.org/learn/machine-learning) on Coursera the [Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning) project came out. This time it was about creating a cheatsheet for basic ML math topics like linear regression, logistic regression, k-means, multilayer perceptron etc.
+
 NanoNeuron
 https://github.com/trekhleb/nano-neuron
 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
-
-Playground and Cheatsheet for Learning Python
-https://github.com/trekhleb/learn-python
-Collection of Python scripts that are split by topics and contain code examples with explanations.
-
-Homemade Machine Learning
-https://github.com/trekhleb/homemade-machine-learning
-Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained.
 
 ## Tech-stack
