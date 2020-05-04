@@ -29,7 +29,7 @@ Therefore, sometimes you might see things like this:
 
 But be patient, sometimes the model might get smarter 🤓 and give you this:
 
-![Smart model](./images/story/01-dumb-model.png)
+![Smart model](./images/story/02-smart-model.png)
 
 ## Background
 
