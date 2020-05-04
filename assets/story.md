@@ -19,6 +19,17 @@ I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  a
 
 ![Interactive Machine Learning Experiments](./images/repository-cover.png)
 
+## Models performance
+
+⚠️ First, let's set our expectations.️ The repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets. Models might not perform well and there is a place for overfitting/underfitting.
+
+Therefore, sometimes you might see things like this:
+
+![Dumb model](./images/story/01-dumb-model.png)
+
+But be patient, sometimes the model might get smarter 🤓 and give you this:
+
+![Smart model](./images/story/01-dumb-model.png)
 
 ## Background
 
