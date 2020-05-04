@@ -137,6 +137,34 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
     <!-- Experiment -->
     <tr>
       <td>
+        <img src="demos/src/images/sketch_recognition_cnn.png" alt="Handwritten sketch recognition (CNN)" width="150" />
+      </td>
+      <td>
+        <b>Handwritten Sketch Recognition (CNN)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionCNN">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>CNN</code>
+      </td>
+      <td>
+        <a href="https://github.com/googlecreativelab/quickdraw-dataset">
+          QuickDraw
+        </a>
+      </td>
+    </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
         <img src="demos/src/images/rock_paper_scissors_cnn.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
