@@ -20,6 +20,7 @@ import ErrorBoundary from './ErrorBoundary';
 import InfoPanel from './InfoPanel';
 import InputImagesExample from './InputImagesExample';
 import InputTextsExample from './InputTextsExample';
+import SimilarExperiments from './SimilarExperiments';
 
 type ExperimentProps = {
   match: Match,
@@ -109,13 +110,14 @@ const Experiment = (props: ExperimentProps): Node => {
           {githubLink}
         </Grid>
       </Box>
-      <Box mb={3}>
+      <Box mb={6}>
+        <ExperimentElement />
+      </Box>
+      <Box>
         {inputImageExamples}
         {inputTextExamples}
+        <SimilarExperiments similarExperiments={experiment.similarExperiments || null} />
         <InfoPanel />
-      </Box>
-      <Box mb={3}>
-        <ExperimentElement />
       </Box>
     </ErrorBoundary>
   );

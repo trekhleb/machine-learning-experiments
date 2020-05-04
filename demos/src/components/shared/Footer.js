@@ -11,7 +11,7 @@ import { ML_EXPERIMENTS_GITHUB_URL, ML_EXPERIMENTS_GITHUB_ISSUES_URL } from '../
 
 const Footer = (): Node => (
   <>
-    <Box display="flex" mt={2}>
+    <Box display="flex">
       <Box mr={3}>
         <Tooltip title="Machine Learning Experiments on GitHub">
           <Button
