@@ -35,12 +35,12 @@ But be patient, sometimes the model might get smarter 🤓 and give you this:
 
 I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for last several years now I've been doing mostly frontend and backend programming. In my spare time, as a hobby, I decided to dig into machine learning topics to make it less _like a magic_ and _more like a math_ to myself.
 
-Since **Python** might be a good choice to start experimenting with Machine Learning I decided to learn its basic syntax first. As a result a [Playground and Cheatsheet for Learning Python](https://github.com/trekhleb/learn-python) project came out. This was just to practice Python and at the same time to have a cheatsheet of basic syntax once I need it (for things like `dict_via_comprehension = {x: x**2 for x in (2, 4, 6)}` etc.).
+1. 🗓 Since **Python** might be a good choice to start experimenting with Machine Learning I decided to learn its basic syntax first. As a result a [🐍 Playground and Cheatsheet for Learning Python](https://github.com/trekhleb/learn-python) project came out. This was just to practice Python and at the same time to have a cheatsheet of basic syntax once I need it (for things like `dict_via_comprehension = {x: x**2 for x in (2, 4, 6)}` etc.).
 
-After learning some Python I wanted to dig into the basic **math** behind the Machine Learning. So after passing an awesome [Machine Learning course by Andrew Ng](https://www.coursera.org/learn/machine-learning) on Coursera the [Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning) project came out. This time it was about creating a cheatsheet for basic ML math topics like linear regression, logistic regression, k-means, multilayer perceptron etc.
+2. 🗓 After learning some Python I wanted to dig into the basic **math** behind the Machine Learning. So after passing an awesome [Machine Learning course by Andrew Ng](https://www.coursera.org/learn/machine-learning) on Coursera the [🤖 Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning) project came out. This time it was about creating a cheatsheet for basic ML math topics like linear regression, logistic regression, k-means, multilayer perceptron etc.
 
-NanoNeuron
-https://github.com/trekhleb/nano-neuron
-7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
+3. 🗓 The next attempt to play around with basic Machine Learning math was [🤖 NanoNeuron](https://github.com/trekhleb/nano-neuron) - 7 simple JavaScript functions that supposed to give you a feeling of how machines can actually "learn".
+
+4. 🗓 After finishing yet another awesome [Deep Learning Specialization by Andrew Ng](https://www.coursera.org/specializations/deep-learning) on Coursera I decided to practice a bit more with **multilayer perceptrons**, **convolutional** and **recurrent neural networks** (CNNs and RNNs). This time instead of implementing everything from scratch I decided to start using some machine learning framework. I ended up using [TensorFlow 2](https://www.tensorflow.org/) with [Keras](https://www.tensorflow.org/guide/keras/overview). I also didn't want to focus too much on math (letting the framework doing it for me) and instead I wanted to come up with something more practical, applicable and something I could try to play with in a browser. As a result a new [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) came out that I want to describe a bit more.
 
 ## Tech-stack
