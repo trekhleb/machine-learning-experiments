@@ -78,8 +78,7 @@ So, in short, you may access Demo page and Jupyter notebooks by these links:
 
 #### Handwritten Digits Recognition
 
-- **Action:** You draw a digit, and the model tries to recognize it.
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP)
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP) You draw a digit, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
