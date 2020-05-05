@@ -156,7 +156,7 @@ You upload a picture, and the model tries to classify it depending on what it "s
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 
-[Image Classification (MobileNetV2)](./images/story/08-image-classificationgif.gif)
+[Image Classification (MobileNetV2)](./images/story/08-image-classification.gif)
 
 ### Experiments with Recurring Neural Networks (RNN) 
 
