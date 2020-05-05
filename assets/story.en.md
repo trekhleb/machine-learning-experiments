@@ -98,9 +98,7 @@ You draw a sketch, and the model tries to recognize it.
 
 #### Handwritten digits recognition (CNN)
 
-You draw a digit, and the model tries to recognize it.
-
-This experiment is similar to the one from MLP section, but it uses CNN under the hood.
+You draw a digit, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
 
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
@@ -108,13 +106,27 @@ This experiment is similar to the one from MLP section, but it uses CNN under th
 
 #### Handwritten sketch recognition (CNN)
 
-You draw a sketch, and the model tries to recognize it.
-
-This experiment is similar to the one from MLP section, but it uses CNN under the hood.
+You draw a sketch, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
 
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionCNN)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+
+#### Rock Paper Scissors (CNN)
+
+You play a Rock-Paper-Scissors game with the model. This experiment uses CNN that is trained from scratch.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
+
+#### Rock Paper Scissors (MobilenetV2)
+
+You play a Rock-Paper-Scissors game with the model. This model uses a transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsMobilenetV2)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 
 ### Experiments with Recurring Neural Networks (RNN) 
 
