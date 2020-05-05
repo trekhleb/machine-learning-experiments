@@ -25,11 +25,11 @@ I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  a
 
 Therefore, sometimes you might see things like this:
 
-![Dumb model](./images/story/01-dumb-model.png)
+![Dumb model](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/01-dumb-model.png)
 
 But be patient, sometimes the model might get smarter 🤓 and give you this:
 
-![Smart model](./images/story/02-smart-model.png)
+![Smart model](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/02-smart-model.png)
 
 ## Background
 
@@ -84,7 +84,7 @@ You draw a digit, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
-![Handwritten Digits Recognition](./images/story/03-digits-recognition.gif)
+![Handwritten Digits Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
 
 #### Handwritten Sketch Recognition
 
@@ -94,7 +94,7 @@ You draw a sketch, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 
-![Handwritten Sketch Recognition](./images/story/04-sketch-recognition.gif)
+![Handwritten Sketch Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
 
 ### Experiments with Convolutional Neural Networks (CNN)
 
@@ -108,7 +108,7 @@ You draw a digit, and the model tries to recognize it. This experiment is simila
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
-![Handwritten Digits Recognition (CNN)](./images/story/03-digits-recognition.gif)
+![Handwritten Digits Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
 
 #### Handwritten Sketch Recognition (CNN)
 
@@ -118,7 +118,7 @@ You draw a sketch, and the model tries to recognize it. This experiment is simil
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 
-![Handwritten Sketch Recognition (CNN)](./images/story/04-sketch-recognition.gif)
+![Handwritten Sketch Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
 
 #### Rock Paper Scissors (CNN)
 
@@ -128,7 +128,7 @@ You play a Rock-Paper-Scissors game with the model. This experiment uses CNN tha
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 
-![Rock Paper Scissors (CNN)](./images/story/05-rock-paper-scissors.gif)
+![Rock Paper Scissors (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/05-rock-paper-scissors.gif)
 
 #### Rock Paper Scissors (MobilenetV2)
 
@@ -138,7 +138,7 @@ You play a Rock-Paper-Scissors game with the model. This model uses transfer lea
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 
-![Rock Paper Scissors (MobilenetV2)](./images/story/06-rock-paper-scissors-mobilenet.gif)
+![Rock Paper Scissors (MobilenetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/06-rock-paper-scissors-mobilenet.gif)
 
 #### Objects Detection (MobileNetV2)
 
@@ -148,7 +148,7 @@ You show to the model your environment through your camera, and it will try to d
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 
-![Objects Detection (MobileNetV2)](./images/story/07-objects-detection.gif)
+![Objects Detection (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/07-objects-detection.gif)
 
 #### Image Classification (MobileNetV2)
 
@@ -158,7 +158,7 @@ You upload a picture, and the model tries to classify it depending on what it "s
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 
-![Image Classification (MobileNetV2)](./images/story/08-image-classification.gif)
+![Image Classification (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/08-image-classification.gif)
 
 ### Experiments with Recurrent Neural Networks (RNN) 
 
@@ -172,7 +172,7 @@ You type a summation expression (i.e. `17+38`), and the model predicts the resul
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 
-![Numbers Summation](./images/story/09-numbers-summation.gif)
+![Numbers Summation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/09-numbers-summation.gif)
 
 #### Shakespeare Text Generation
 
@@ -182,7 +182,7 @@ You start typing a poem like Shakespeare, and the model will continue it like Sh
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 
-![Shakespeare Text Generation](./images/story/10-shakespeare-text-generation.gif)
+![Shakespeare Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/10-shakespeare-text-generation.gif)
 
 #### Wikipedia Text Generation
 
@@ -192,7 +192,7 @@ You start typing a Wiki article, and the model tries to continue it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 
-![Wikipedia Text Generation](./images/story/11-wikipedia-text-generation.gif)
+![Wikipedia Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/11-wikipedia-text-generation.gif)
 
 ## Future plans
 
