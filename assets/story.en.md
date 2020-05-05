@@ -76,7 +76,7 @@ So, in short, you may access Demo page and Jupyter notebooks by these links:
 
 > A [multilayer perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer.
 
-#### Handwritten digits recognition
+#### Handwritten Digits Recognition
 
 You draw a digit, and the model tries to recognize it.
 
@@ -84,7 +84,7 @@ You draw a digit, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
-#### Handwritten sketch recognition
+#### Handwritten Sketch Recognition
 
 You draw a sketch, and the model tries to recognize it.
 
@@ -96,7 +96,7 @@ You draw a sketch, and the model tries to recognize it.
 
 > A [convolutional neural network (CNN, or ConvNet)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
 
-#### Handwritten digits recognition (CNN)
+#### Handwritten Digits Recognition (CNN)
 
 You draw a digit, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
 
@@ -104,7 +104,7 @@ You draw a digit, and the model tries to recognize it. This experiment is simila
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
-#### Handwritten sketch recognition (CNN)
+#### Handwritten Sketch Recognition (CNN)
 
 You draw a sketch, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
 
@@ -147,3 +147,27 @@ You upload a picture, and the model tries to classify it depending on what it "s
 ### Experiments with Recurring Neural Networks (RNN) 
 
 > A [recurrent neural network (RNN)](https://en.wikipedia.org/wiki/Recurrent_neural_network) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
+
+#### Numbers Summation
+
+You type a summation expression (i.e. `17+38`), and the model predicts the result (i.e. `55`). The interesting part here is that the model treats the input as a _sequence_, meaning it learned that when you type a sequence `1` → `17` → `17+` → `17+3` → `17+38` it "translates" it to another sequence `55`. You may think about it as of translating a `Hola` sequence to `Hello`.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/NumbersSummationRNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
+
+#### Shakespeare Text Generation
+
+You start typing a poem like Shakespeare, and the model will continue it like Shakespeare. At least it will try to do so 😀.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationShakespeareRNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+
+#### Wikipedia Text Generation
+
+You start typing a Wiki article, and the model tries to continue it.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationWikipediaRNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
