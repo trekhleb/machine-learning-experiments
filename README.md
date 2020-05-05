@@ -44,7 +44,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
@@ -72,7 +72,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionMLP">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
@@ -118,7 +118,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
@@ -146,7 +146,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionCNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
@@ -174,7 +174,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsCNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
@@ -202,7 +202,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsMobilenetV2">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
@@ -235,7 +235,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ObjectsDetectionSSDLiteMobilenetV2">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
@@ -265,7 +265,7 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/ImageClassificationMobilenetV2">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
@@ -312,7 +312,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/NumbersSummationRNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
@@ -339,7 +339,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationShakespeareRNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb">
@@ -368,7 +368,7 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <a href="https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationWikipediaRNN">
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
-        <a href="https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
         <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">

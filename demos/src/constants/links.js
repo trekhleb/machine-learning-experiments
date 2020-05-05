@@ -6,5 +6,5 @@ export const ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL = `${ML_EXPERIMENTS_GITHUB_URL}
 
 export const ML_EXPERIMENTS_DEMO_MODELS_PATH = `/${ML_EXPERIMENTS_GITHUB_REPO_NAME}/models`;
 
-export const NB_VIEWER_URL = 'https://nbviewer.jupyter.org/v2/gh';
+export const NB_VIEWER_URL = 'https://nbviewer.jupyter.org/github';
 export const GOOGLE_COLAB_URL = 'https://colab.research.google.com/github';
