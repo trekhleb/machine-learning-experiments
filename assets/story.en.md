@@ -84,6 +84,8 @@ You draw a digit, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
+![Handwritten Digits Recognition](./images/story/03-digits-recognition.gif)
+
 #### Handwritten Sketch Recognition
 
 You draw a sketch, and the model tries to recognize it.
