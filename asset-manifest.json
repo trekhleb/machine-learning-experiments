@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/machine-learning-experiments/static/js/main.f9801268.chunk.js",
-    "main.js.map": "/machine-learning-experiments/static/js/main.f9801268.chunk.js.map",
+    "main.js": "/machine-learning-experiments/static/js/main.bc18974c.chunk.js",
+    "main.js.map": "/machine-learning-experiments/static/js/main.bc18974c.chunk.js.map",
     "runtime-main.js": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js",
     "runtime-main.js.map": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js.map",
     "static/css/2.9f540eb9.chunk.css": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css",
     "static/js/2.12855cf2.chunk.js": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js",
     "static/js/2.12855cf2.chunk.js.map": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.map",
     "index.html": "/machine-learning-experiments/index.html",
-    "precache-manifest.d77fea56b550dc9b999d8406aceff78a.js": "/machine-learning-experiments/precache-manifest.d77fea56b550dc9b999d8406aceff78a.js",
+    "precache-manifest.b788ee4f350e676cbd677febdcb6009f.js": "/machine-learning-experiments/precache-manifest.b788ee4f350e676cbd677febdcb6009f.js",
     "service-worker.js": "/machine-learning-experiments/service-worker.js",
     "static/css/2.9f540eb9.chunk.css.map": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css.map",
     "static/js/2.12855cf2.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.LICENSE.txt",
@@ -45,6 +45,6 @@
     "static/js/runtime-main.76ba2d2b.js",
     "static/css/2.9f540eb9.chunk.css",
     "static/js/2.12855cf2.chunk.js",
-    "static/js/main.f9801268.chunk.js"
+    "static/js/main.bc18974c.chunk.js"
   ]
 }
