@@ -76,6 +76,13 @@ So, in short, you may access Demo page and Jupyter notebooks by these links:
 
 > A [multilayer perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer.
 
+#### Handwritten Digits Recognition
+
+- **Action:** You draw a digit, and the model tries to recognize it.
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+
 ### Experiments with Convolutional Neural Networks (CNN)
 
 > A [convolutional neural network (CNN, or ConvNet)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
