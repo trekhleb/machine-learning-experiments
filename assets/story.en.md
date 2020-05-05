@@ -186,4 +186,4 @@ Another interesting opportunity would be to **tune existing models to make them 
 
 Anyways, I hope you might find some useful insights for models training from [the repository](https://github.com/trekhleb/machine-learning-experiments) or at least to have some fun playing around with the demos!
 
-Happy coding!
+Happy learning! 🤖
