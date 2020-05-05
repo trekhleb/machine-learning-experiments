@@ -76,13 +76,21 @@ So, in short, you may access Demo page and Jupyter notebooks by these links:
 
 > A [multilayer perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer.
 
-#### Handwritten Digits Recognition
+#### Handwritten digits recognition
 
 You draw a digit, and the model tries to recognize it.
 
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionMLP)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+
+#### Handwritten sketch recognition
+
+You draw a sketch, and the model tries to recognize it.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionMLP)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 
 ### Experiments with Convolutional Neural Networks (CNN)
 
