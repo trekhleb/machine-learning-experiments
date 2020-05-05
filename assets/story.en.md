@@ -128,6 +128,8 @@ You play a Rock-Paper-Scissors game with the model. This experiment uses CNN tha
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 
+![Rock Paper Scissors (CNN)](./images/story/05-rock-paper-scissors.gif)
+
 #### Rock Paper Scissors (MobilenetV2)
 
 You play a Rock-Paper-Scissors game with the model. This model uses a transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
@@ -135,6 +137,8 @@ You play a Rock-Paper-Scissors game with the model. This model uses a transfer l
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/RockPaperScissorsMobilenetV2)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
+
+![Rock Paper Scissors (MobilenetV2)](./images/story/06-rock-paper-scissors-mobilenet.gif)
 
 #### Objects Detection (MobileNetV2)
 
