@@ -2,7 +2,7 @@
 
 This is a collection of interactive machine-learning experiments. Each experiment consists of 🏋️ Jupyter/Colab _notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser).
 
-- 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
+- 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments/)
 - 🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
 
 <hr/>
@@ -453,7 +453,7 @@ Demos will be available locally at `http://localhost:3000/` or at `https://local
 
 ### Convert models
 
-The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`tfjs_layers_model` or `tfjs_graph_model` formats with `.json` and `.bin` files) for further usage with [TensorFlow.js](https://www.tensorflow.org/js) in [Demo application](http://trekhleb.github.io/machine-learning-experiments).
+The `converter` environment is used to convert the models that were trained during the experiments from `.h5` Keras format to Javascript understandable formats (`tfjs_layers_model` or `tfjs_graph_model` formats with `.json` and `.bin` files) for further usage with [TensorFlow.js](https://www.tensorflow.org/js) in [Demo application](http://trekhleb.github.io/machine-learning-experiments/).
 
 ```bash
 # Create "converter" environment (from the project root folder).
@@ -478,7 +478,7 @@ tensorflowjs_converter --input_format keras \
   ./demos/public/models/digits_recognition_mlp
 ```
 
-> ⚠️ Converting the models to JS understandable formats and loading them to the browser directly might not be a good practice since in this case the user might need to load tens or hundreds of megabytes of data to the browser which is not efficient. Normally the model is being served from the back-end (i.e. [TensorFlow Extended](https://www.tensorflow.org/tfx)) and instead of loading it all to the browser the user will do a lightweight HTTP request to do a prediction. But since the [Demo App](http://trekhleb.github.io/machine-learning-experiments) is just an experiment and not a production-ready app and for the sake of simplicity (to avoid having an up and running back-end) we're converting the models to JS understandable formats and loading them directly into the browser.
+> ⚠️ Converting the models to JS understandable formats and loading them to the browser directly might not be a good practice since in this case the user might need to load tens or hundreds of megabytes of data to the browser which is not efficient. Normally the model is being served from the back-end (i.e. [TensorFlow Extended](https://www.tensorflow.org/tfx)) and instead of loading it all to the browser the user will do a lightweight HTTP request to do a prediction. But since the [Demo App](http://trekhleb.github.io/machine-learning-experiments/) is just an experiment and not a production-ready app and for the sake of simplicity (to avoid having an up and running back-end) we're converting the models to JS understandable formats and loading them directly into the browser.
 
 ### Requirements
 
