@@ -495,3 +495,7 @@ In case if you have Python version `3.7.3` you might experience `RuntimeError: d
 - [Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning) - Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained.
 - [NanoNeuron](https://github.com/trekhleb/nano-neuron) - 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
 - [Playground and Cheatsheet for Learning Python](https://github.com/trekhleb/learn-python) - Collection of Python scripts that are split by topics and contain code examples with explanations.
+
+---
+
+[Story behind the project](https://github.com/trekhleb/machine-learning-experiments/blob/master/assets/story.en.md)
