@@ -47,27 +47,30 @@ I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for last se
 
 ### Models training
 
-1. I used [Keras](https://www.tensorflow.org/guide/keras/overview) inside [TensorFlow 2](https://www.tensorflow.org/) for modelling and training. Since I had zero experience with machine learning frameworks, I needed to start with something. One of the selling point in favor of TensorFlow was that it has both Python and [JavaScript flavor](https://www.tensorflow.org/js) of the library with similar API. So eventually I used Python version for training and JavaScript version for demos. 
+1. 🏋🏻‍ I used [Keras](https://www.tensorflow.org/guide/keras/overview) inside [TensorFlow 2](https://www.tensorflow.org/) for modelling and training. Since I had zero experience with machine learning frameworks, I needed to start with something. One of the selling point in favor of TensorFlow was that it has both Python and [JavaScript flavor](https://www.tensorflow.org/js) of the library with similar API. So eventually I used Python version for training and JavaScript version for demos. 
 
-2. I trained TensorFlow models on Python inside [Jupyter](https://jupyter.org/) notebooks locally and sometimes used [Colab](https://colab.research.google.com/) to make the training faster on GPU.
+2. 🏋🏻‍ I trained TensorFlow models on Python inside [Jupyter](https://jupyter.org/) notebooks locally and sometimes used [Colab](https://colab.research.google.com/) to make the training faster on GPU.
 
-3. Most of the models were trained on good old MacBook's Pro CPU (2,9 GHz Dual-Core Intel Core i5).
+3. 💻 Most of the models were trained on good old MacBook's Pro CPU (2,9 GHz Dual-Core Intel Core i5).
 
-4. Of course there is no way you could run away from [NumPy](https://numpy.org/) for matrix/tensors operations.   
+4. 🔢 Of course there is no way you could run away from [NumPy](https://numpy.org/) for matrix/tensors operations.   
 
 ### Models demo
 
-1. I used [TensorFlow.js](https://www.tensorflow.org/js) to do predictions with previously trained models.
+1. 🏋🏻‍ I used [TensorFlow.js](https://www.tensorflow.org/js) to do predictions with previously trained models.
 
-2. To convert _Keras HDF5_ models to _TensorFlow.js Layers_ format I used [TensorFlow.js converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter). This might be inefficient to transfer whole model (megabytes of data) to the browser instead of making predictions through HTTP requests, but again, remember that these are just experiments and not a production-ready code and architecture. I wanted to avoid having a dedicated back-end services to make architecture simpler.
+2. ♻️ To convert _Keras HDF5_ models to _TensorFlow.js Layers_ format I used [TensorFlow.js converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter). This might be inefficient to transfer whole model (megabytes of data) to the browser instead of making predictions through HTTP requests, but again, remember that these are just experiments and not a production-ready code and architecture. I wanted to avoid having a dedicated back-end services to make architecture simpler.
 
-3. The [Demo application](http://trekhleb.github.io/machine-learning-experiments) was created on [React](https://reactjs.org/) using [create-react-app](https://github.com/facebook/create-react-app) starter with a default [Flow](https://flow.org/en/) flavour for type checking.
+3. 👨🏻‍🎨 The [Demo application](http://trekhleb.github.io/machine-learning-experiments) was created on [React](https://reactjs.org/) using [create-react-app](https://github.com/facebook/create-react-app) starter with a default [Flow](https://flow.org/en/) flavour for type checking.
 
-4. For styling, I used [Material UI](https://material-ui.com/). It was, as they say, "to kill two birds" at once and try out a new styling framework (sorry, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍). 
+4. 💅🏻 For styling, I used [Material UI](https://material-ui.com/). It was, as they say, "to kill two birds" at once and try out a new styling framework (sorry, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍). 
 
 ## Experiments
 
+So, in short, you may access Demo page and Jupyter notebooks by these links:
 
+- 🎨 [**Launch ML experiments demo**](http://trekhleb.github.io/machine-learning-experiments)
+- 🏋️ [**Check ML experiments Jupyter notebooks**](https://github.com/trekhleb/machine-learning-experiments)
 
 ### Experiments with Multilayer Perceptron (MLP)
 
@@ -75,6 +78,4 @@ I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for last se
 
 ### Experiments with Recurring Neural Networks (RNN) 
 
-🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
 
-🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
