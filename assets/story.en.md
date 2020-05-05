@@ -170,6 +170,8 @@ You type a summation expression (i.e. `17+38`), and the model predicts the resul
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 
+![Numbers Summation](./images/story/09-numbers-summation.gif)
+
 #### Shakespeare Text Generation
 
 You start typing a poem like Shakespeare, and the model will continue it like Shakespeare. At least it will try to do so 😀.
@@ -177,6 +179,8 @@ You start typing a poem like Shakespeare, and the model will continue it like Sh
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationShakespeareRNN)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+
+![Shakespeare Text Generation](./images/story/10-shakespeare-text-generation.gif)
 
 #### Wikipedia Text Generation
 
