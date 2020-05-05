@@ -174,10 +174,16 @@ You start typing a Wiki article, and the model tries to continue it.
 
 ## Future plans
 
-As I've mentioned above the main purpose of [the repository](https://github.com/trekhleb/machine-learning-experiments) is to be more like a playground for **learning** rather than for production-ready models. Therefore, the main plan is to continue learning and experimenting with deep-learning challenges and approaches. The next interesting challenges to play with might be:
+As I've mentioned above the main purpose of [the repository](https://github.com/trekhleb/machine-learning-experiments) is to be more like a playground for learning rather than for production-ready models. Therefore, the main plan is to **continue learning and experimenting** with deep-learning challenges and approaches. The next interesting challenges to play with might be:
 
 - Emotions detection
 - Style transfer
 - Language translation
 - Generating images (i.e. handwritten numbers)
 - etc.
+
+Another interesting opportunity would be to **tune existing models to make them more performant**. I believe it might give a better understanding of how to overcome overfitting and underfitting and what to do with the model if it just stuck on `60%` accuracy level for both training and validation sets and doesn't want to improve anymore 🤔.
+
+Anyways, I hope you might find some useful insights for models training from [the repository](https://github.com/trekhleb/machine-learning-experiments) or at least to have some fun playing around with the demos!
+
+Happy coding!
