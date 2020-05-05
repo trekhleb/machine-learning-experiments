@@ -171,3 +171,13 @@ You start typing a Wiki article, and the model tries to continue it.
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/TextGenerationWikipediaRNN)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
+
+## Future plans
+
+As I've mentioned above the main purpose of [the repository](https://github.com/trekhleb/machine-learning-experiments) is to be more like a playground for **learning** rather than for production-ready models. Therefore, the main plan is to continue learning and experimenting with deep-learning challenges and approaches. The next interesting challenges to play with might be:
+
+- Emotions detection
+- Style transfer
+- Language translation
+- Generating images (i.e. handwritten numbers)
+- etc.
