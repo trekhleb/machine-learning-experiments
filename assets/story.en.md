@@ -94,6 +94,8 @@ You draw a sketch, and the model tries to recognize it.
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 
+![Handwritten Sketch Recognition](./images/story/04-sketch-recognition.gif)
+
 ### Experiments with Convolutional Neural Networks (CNN)
 
 > A [convolutional neural network (CNN, or ConvNet)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
@@ -106,6 +108,8 @@ You draw a digit, and the model tries to recognize it. This experiment is simila
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
+![Handwritten Digits Recognition (CNN)](./images/story/03-digits-recognition.gif)
+
 #### Handwritten Sketch Recognition (CNN)
 
 You draw a sketch, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
@@ -113,6 +117,8 @@ You draw a sketch, and the model tries to recognize it. This experiment is simil
 - 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionCNN)
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+
+![Handwritten Sketch Recognition (CNN)](./images/story/04-sketch-recognition.gif)
 
 #### Rock Paper Scissors (CNN)
 
