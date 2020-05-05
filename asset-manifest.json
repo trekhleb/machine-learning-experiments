@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/machine-learning-experiments/static/js/main.45a6d0e1.chunk.js",
-    "main.js.map": "/machine-learning-experiments/static/js/main.45a6d0e1.chunk.js.map",
+    "main.js": "/machine-learning-experiments/static/js/main.f9801268.chunk.js",
+    "main.js.map": "/machine-learning-experiments/static/js/main.f9801268.chunk.js.map",
     "runtime-main.js": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js",
     "runtime-main.js.map": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js.map",
     "static/css/2.9f540eb9.chunk.css": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css",
-    "static/js/2.3891b472.chunk.js": "/machine-learning-experiments/static/js/2.3891b472.chunk.js",
-    "static/js/2.3891b472.chunk.js.map": "/machine-learning-experiments/static/js/2.3891b472.chunk.js.map",
+    "static/js/2.12855cf2.chunk.js": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js",
+    "static/js/2.12855cf2.chunk.js.map": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.map",
     "index.html": "/machine-learning-experiments/index.html",
-    "precache-manifest.3849f2cb196dcb8515551354cb4cba2b.js": "/machine-learning-experiments/precache-manifest.3849f2cb196dcb8515551354cb4cba2b.js",
+    "precache-manifest.d77fea56b550dc9b999d8406aceff78a.js": "/machine-learning-experiments/precache-manifest.d77fea56b550dc9b999d8406aceff78a.js",
     "service-worker.js": "/machine-learning-experiments/service-worker.js",
     "static/css/2.9f540eb9.chunk.css.map": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css.map",
-    "static/js/2.3891b472.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.3891b472.chunk.js.LICENSE.txt",
+    "static/js/2.12855cf2.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.LICENSE.txt",
     "static/media/0.png": "/machine-learning-experiments/static/media/0.9aae7831.png",
     "static/media/1.png": "/machine-learning-experiments/static/media/1.c1694175.png",
     "static/media/10.png": "/machine-learning-experiments/static/media/10.32bc9d6b.png",
@@ -44,7 +44,7 @@
   "entrypoints": [
     "static/js/runtime-main.76ba2d2b.js",
     "static/css/2.9f540eb9.chunk.css",
-    "static/js/2.3891b472.chunk.js",
-    "static/js/main.45a6d0e1.chunk.js"
+    "static/js/2.12855cf2.chunk.js",
+    "static/js/main.f9801268.chunk.js"
   ]
 }
