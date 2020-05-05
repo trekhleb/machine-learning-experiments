@@ -96,6 +96,26 @@ You draw a sketch, and the model tries to recognize it.
 
 > A [convolutional neural network (CNN, or ConvNet)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
 
+#### Handwritten digits recognition (CNN)
+
+You draw a digit, and the model tries to recognize it.
+
+This experiment is similar to the one from MLP section, but it uses CNN under the hood.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/DigitsRecognitionCNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
+
+#### Handwritten sketch recognition (CNN)
+
+You draw a sketch, and the model tries to recognize it.
+
+This experiment is similar to the one from MLP section, but it uses CNN under the hood.
+
+- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/experiments/SketchRecognitionCNN)
+- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+
 ### Experiments with Recurring Neural Networks (RNN) 
 
 > A [recurrent neural network (RNN)](https://en.wikipedia.org/wiki/Recurrent_neural_network) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
