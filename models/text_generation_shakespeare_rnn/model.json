@@ -1,0 +1,175 @@
+{
+  "format": "layers-model",
+  "generatedBy": "keras v2.2.4-tf",
+  "convertedBy": "TensorFlow.js Converter v1.4.0",
+  "modelTopology": {
+    "keras_version": "2.2.4-tf",
+    "backend": "tensorflow",
+    "model_config": {
+      "class_name": "Sequential",
+      "config": {
+        "name": "sequential_2",
+        "layers": [
+          {
+            "class_name": "Embedding",
+            "config": {
+              "name": "embedding_2",
+              "trainable": true,
+              "batch_input_shape": [
+                1,
+                null
+              ],
+              "dtype": "float32",
+              "input_dim": 65,
+              "output_dim": 256,
+              "embeddings_initializer": {
+                "class_name": "RandomUniform",
+                "config": {
+                  "minval": -0.05,
+                  "maxval": 0.05,
+                  "seed": null
+                }
+              },
+              "embeddings_regularizer": null,
+              "activity_regularizer": null,
+              "embeddings_constraint": null,
+              "mask_zero": false,
+              "input_length": null
+            }
+          },
+          {
+            "class_name": "LSTM",
+            "config": {
+              "name": "lstm_1",
+              "trainable": true,
+              "dtype": "float32",
+              "return_sequences": true,
+              "return_state": false,
+              "go_backwards": false,
+              "stateful": true,
+              "unroll": false,
+              "time_major": false,
+              "units": 1024,
+              "activation": "tanh",
+              "recurrent_activation": "sigmoid",
+              "use_bias": true,
+              "kernel_initializer": {
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                }
+              },
+              "recurrent_initializer": {
+                "class_name": "GlorotNormal",
+                "config": {
+                  "seed": null
+                }
+              },
+              "bias_initializer": {
+                "class_name": "Zeros",
+                "config": {}
+              },
+              "unit_forget_bias": true,
+              "kernel_regularizer": null,
+              "recurrent_regularizer": null,
+              "bias_regularizer": null,
+              "activity_regularizer": null,
+              "kernel_constraint": null,
+              "recurrent_constraint": null,
+              "bias_constraint": null,
+              "dropout": 0.0,
+              "recurrent_dropout": 0.0,
+              "implementation": 2
+            }
+          },
+          {
+            "class_name": "Dense",
+            "config": {
+              "name": "dense_1",
+              "trainable": true,
+              "dtype": "float32",
+              "units": 65,
+              "activation": "linear",
+              "use_bias": true,
+              "kernel_initializer": {
+                "class_name": "GlorotUniform",
+                "config": {
+                  "seed": null
+                }
+              },
+              "bias_initializer": {
+                "class_name": "Zeros",
+                "config": {}
+              },
+              "kernel_regularizer": null,
+              "bias_regularizer": null,
+              "activity_regularizer": null,
+              "kernel_constraint": null,
+              "bias_constraint": null
+            }
+          }
+        ]
+      }
+    }
+  },
+  "weightsManifest": [
+    {
+      "paths": [
+        "group1-shard1of6.bin",
+        "group1-shard2of6.bin",
+        "group1-shard3of6.bin",
+        "group1-shard4of6.bin",
+        "group1-shard5of6.bin",
+        "group1-shard6of6.bin"
+      ],
+      "weights": [
+        {
+          "name": "dense_1/kernel",
+          "shape": [
+            1024,
+            65
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "dense_1/bias",
+          "shape": [
+            65
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "embedding_2/embeddings",
+          "shape": [
+            65,
+            256
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "lstm_1/kernel",
+          "shape": [
+            256,
+            4096
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "lstm_1/recurrent_kernel",
+          "shape": [
+            1024,
+            4096
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "lstm_1/bias",
+          "shape": [
+            4096
+          ],
+          "dtype": "float32"
+        }
+      ]
+    }
+  ]
+}
