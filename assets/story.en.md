@@ -148,6 +148,8 @@ You show to the model your environment through your camera, and it will try to d
 - 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 - ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 
+![Objects Detection (MobileNetV2)](./images/story/07-objects-detection.gif)
+
 #### Image Classification (MobileNetV2)
 
 You upload a picture, and the model tries to classify it depending on what it "sees" on the picture. This model uses a transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
