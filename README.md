@@ -478,7 +478,7 @@ tensorflowjs_converter --input_format keras \
   ./demos/public/models/digits_recognition_mlp
 ```
 
-> ⚠️ Converting the models to a JS understandable formats and loading them to the browser directly might not be a good practice since in this case the user might need to load tens or hundreds of megabytes of data to the browser which is not efficient. Normally the model is being served from the back-end (i.e. [TensorFlow Extended](https://www.tensorflow.org/tfx)) and instead of loading it all to the browser the user will do a lightweight HTTP request to do a prediction. But since the [Demo App](http://trekhleb.github.io/machine-learning-experiments) is just an experiment and not a production-ready app and for the sake of simplicity (to avoid having an up and running back-end) we're converting the models to JS understandable formats and load them directly into the browser.
+> ⚠️ Converting the models to JS understandable formats and loading them to the browser directly might not be a good practice since in this case the user might need to load tens or hundreds of megabytes of data to the browser which is not efficient. Normally the model is being served from the back-end (i.e. [TensorFlow Extended](https://www.tensorflow.org/tfx)) and instead of loading it all to the browser the user will do a lightweight HTTP request to do a prediction. But since the [Demo App](http://trekhleb.github.io/machine-learning-experiments) is just an experiment and not a production-ready app and for the sake of simplicity (to avoid having an up and running back-end) we're converting the models to JS understandable formats and loading them directly into the browser.
 
 ### Requirements
 
