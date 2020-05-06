@@ -41,7 +41,7 @@
 
 3. 🗓 Моей следующей попыткой "поиграться в машинное обучение" стал [🤖 NanoNeuron](https://github.com/trekhleb/nano-neuron). Это были 7 простых JavaScript функций, которые должны были дать понимание читателю о том, как же машина все-таки может "учиться".
 
-4. 🗓 После окончания очередного прекрасного [курса по Deep Learning](https://www.coursera.org/specializations/deep-learning) от все того-же Andrew Ng на Coursera я решил больше попрактиковаться с **многослойными перцептронами** (multilayer perceptrons), **сверточными** и **рекурентными нейронными сетями** (convolutional and recurrent neural networks). На этот раз, вместо того, чтобы реализовывать их с нуля я решил воспользоваться уже готовым фреймворком. В итоге я начал с [TensorFlow 2](https://www.tensorflow.org/) с поддержкой [Keras](https://www.tensorflow.org/guide/keras/overview). Я так же не хотел фокусироваться на математике (позволив фреймворку сделать свое дело), вместо этого хотелось написать что-то более практичное и интерактивное, что-то, что можно было бы протестировать прямо в браузере телефона. В результате появился новый проект [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments), на котором я и хочу остановиться более детально в этой статье.
+4. 🗓 После окончания очередного прекрасного [курса по Deep Learning](https://www.coursera.org/specializations/deep-learning) от все того-же Andrew Ng на Coursera я решил больше попрактиковаться с **многослойными перцептронами** (multilayer perceptrons), **сверточными** и **рекуррентными нейронными сетями** (convolutional and recurrent neural networks). На этот раз, вместо того, чтобы реализовывать их с нуля я решил воспользоваться уже готовым фреймворком. В итоге я начал с [TensorFlow 2](https://www.tensorflow.org/) с поддержкой [Keras](https://www.tensorflow.org/guide/keras/overview). Я так же не хотел фокусироваться на математике (позволив фреймворку сделать свое дело), вместо этого хотелось написать что-то более практичное и интерактивное, что-то, что можно было бы протестировать прямо в браузере телефона. В результате появился новый проект [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments), на котором я и хочу остановиться более детально в этой статье.
 
 ## Технологический стек
 
@@ -72,140 +72,134 @@
 - 🎨 [**Запустить Демо с машинными экспериментами**](http://trekhleb.github.io/machine-learning-experiments)
 - 🏋️ [**Просмотреть детали тренировки каждой из моделей**](https://github.com/trekhleb/machine-learning-experiments)
 
-### Experiments with Multilayer Perceptron (MLP)
+### Эксперименты с многослойным перцептроном (Multilayer Perceptron, MLP)
 
-> A [multilayer perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron) is a class of feedforward artificial neural network (ANN). Multilayer perceptrons are sometimes referred to as "vanilla" neural networks (composed of multiple layers of perceptrons), especially when they have a single hidden layer.
+#### Распознавание цифр
 
-#### Handwritten Digits Recognition
+Вы рисуете цифру, а модель пытается ее распознать.
 
-You draw a digit, and the model tries to recognize it.
-
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionMLP)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionMLP)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
 ![Handwritten Digits Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
 
-#### Handwritten Sketch Recognition
+#### Распознавание эскизов
 
-You draw a sketch, and the model tries to recognize it.
+Вы рисуете эскиз, а модель пытается его распознать.
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionMLP)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionMLP)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 
 ![Handwritten Sketch Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
 
-### Experiments with Convolutional Neural Networks (CNN)
+### Эксперименты со сверточными нейронными сетями (Convolutional Neural Network, CNN)
 
-> A [convolutional neural network (CNN, or ConvNet)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a class of deep neural networks, most commonly applied to analyzing visual imagery (photos, videos). They are used for detecting and classifying objects on photos and videos, style transfer, face recognition, pose estimation etc.
+#### Распознавание цифр (CNN)
 
-#### Handwritten Digits Recognition (CNN)
+Вы рисуете цифру, а модель пытается ее распознать. Этот эксперимент похож на предыдущий из раздела MLP, но на этот раз модель использует CNN.
 
-You draw a digit, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
-
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionCNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionCNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
 ![Handwritten Digits Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
 
-#### Handwritten Sketch Recognition (CNN)
+#### Распознавание эскизов (CNN)
 
-You draw a sketch, and the model tries to recognize it. This experiment is similar to the one from MLP section, but it uses CNN under the hood.
+Вы рисуете эскиз, а модель пытается его распознать. Этот эксперимент похож на предыдущий из раздела MLP, но на этот раз модель использует CNN.
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionCNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionCNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 
 ![Handwritten Sketch Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
 
-#### Rock Paper Scissors (CNN)
+#### Камень-Ножницы-Бумага (CNN)
 
-You play a Rock-Paper-Scissors game with the model. This experiment uses CNN that is trained from scratch.
+Вы играете в камень-ножницы-бумагу с моделью. Этот эксперимент использует CNN, натренированную с нуля.
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsCNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsCNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 
 ![Rock Paper Scissors (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/05-rock-paper-scissors.gif)
 
 #### Rock Paper Scissors (MobilenetV2)
 
-You play a Rock-Paper-Scissors game with the model. This model uses transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
+Вы играете в камень-ножницы-бумагу с моделью. Эта модель использует трансферное обучение, основанное на сети [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsMobilenetV2)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsMobilenetV2)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 
 ![Rock Paper Scissors (MobilenetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/06-rock-paper-scissors-mobilenet.gif)
 
-#### Objects Detection (MobileNetV2)
+#### Распознавание объектов (MobileNetV2)
 
-You show to the model your environment through your camera, and it will try to detect and recognize the objects. This model uses transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
+Вы показываете модели ваше окружение (используя камеру ноутбука или телефона), а модель пытается определить предметы на видео и распознать их. Эта модель использует сеть [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ObjectsDetectionSSDLiteMobilenetV2)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ObjectsDetectionSSDLiteMobilenetV2)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 
 ![Objects Detection (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/07-objects-detection.gif)
 
-#### Image Classification (MobileNetV2)
+#### Классификация изображений (MobileNetV2)
 
-You upload a picture, and the model tries to classify it depending on what it "sees" on the picture. This model uses transfer learning and is based on [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
+Вы загружаете изображение, а модель пытается его классифицировать в зависимости от того, что она "видит" на картинке. Модель использует сеть [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ImageClassificationMobilenetV2)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ImageClassificationMobilenetV2)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 
 ![Image Classification (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/08-image-classification.gif)
 
-### Experiments with Recurrent Neural Networks (RNN) 
+### Эксперименты с рекуррентными нейронными сетями (Recurrent Neural Networks, RNN) 
 
-> A [recurrent neural network (RNN)](https://en.wikipedia.org/wiki/Recurrent_neural_network) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
+#### Суммирование чисел
 
-#### Numbers Summation
+Вы набираете выражение (например, `17+38`) и модель предсказывает результат (например `55`). Интересность этой модели заключается в том, что она воспринимает выражение на входе, как _последовательность_ символов (как текст). Модель учится "переводить" последовательность `1` → `17` → `17+` → `17+3` → `17+38` на входе в другую текстовую последовательность `55` на выходе. Считайте, что модель скорее делает перевод испанского `Hola` в английское `Hello`, чем оперирует математическими сущностями.
 
-You type a summation expression (i.e. `17+38`), and the model predicts the result (i.e. `55`). The interesting part here is that the model treats the input as a _sequence_, meaning it learned that when you type a sequence `1` → `17` → `17+` → `17+3` → `17+38` it "translates" it to another sequence `55`. You may think about it as translating a Spanish `Hola` sequence to English `Hello`.
-
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/NumbersSummationRNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/NumbersSummationRNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 
 ![Numbers Summation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/09-numbers-summation.gif)
 
-#### Shakespeare Text Generation
+#### Генерация текста в стиле Шекспира
 
-You start typing a poem like Shakespeare, and the model will continue it like Shakespeare. At least it will try to do so 😀.
+Вы начинаете поэму как Шекспир, а модель пытается ее продолжить как Шекспир. Ключевое слово "пытается" 😀.
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationShakespeareRNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationShakespeareRNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 
 ![Shakespeare Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/10-shakespeare-text-generation.gif)
 
-#### Wikipedia Text Generation
+#### Генерация текста в стиле Wikipedia
 
-You start typing a Wiki article, and the model tries to continue it.
+Вы начинаете печатать Wiki статью, а модель продолжает.
 
-- 🎨 [Demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationWikipediaRNN)
-- 🏋️ [Training in Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
-- ️🏋️  [Training in Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
+- 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationWikipediaRNN)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
+- ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 
 ![Wikipedia Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/11-wikipedia-text-generation.gif)
 
-## Future plans
+## Планы
 
-As I've mentioned above the main purpose of [the repository](https://github.com/trekhleb/machine-learning-experiments) is to be more like a playground for learning rather than for production-ready models. Therefore, the main plan is to **continue learning and experimenting** with deep-learning challenges and approaches. The next interesting challenges to play with might be:
+Как я упомянул выше, главная задача [репозитория](https://github.com/trekhleb/machine-learning-experiments) - быть тренировочной площадкой, песочницей для обучения машинному обучению (привет, каламбур 🙌🏻). Поэтому в планах - **продолжать учиться и экспериментировать** с различными задачами в области Deep Learning. Такими интересным задачами могут быть:
 
-- Emotions detection
-- Style transfer
-- Language translation
-- Generating images (i.e. handwritten numbers)
-- etc.
+- Определение эмоций
+- Перенос стиля
+- Машинный перевод
+- Генерация изображения (например тех-же написанных цифр)
+- и пр.
 
-Another interesting opportunity would be to **tune existing models to make them more performant**. I believe it might give a better understanding of how to overcome overfitting and underfitting and what to do with the model if it just stuck on `60%` accuracy level for both training and validation sets and doesn't want to improve anymore 🤔.
+Другой интересной возможностью является **более тонкая настройка уже имеющихся моделей**, чтобы сделать их более точными. Мне кажется это может дать более глубокое понимание того, как преодолевать переученность/недоученность моделей и как поступать в случаях, когда точность модели застревает на `60%` для тренировочных и валидационных данных и не хочет больше улучшаться 🤔.
 
-Anyways, I hope you might find some useful insights for models training from [the repository](https://github.com/trekhleb/machine-learning-experiments) or at least to have some fun playing around with the demos!
+В любом случае, я надеюсь, что вы найдете что-то полезное и интересное в [репозитории](https://github.com/trekhleb/machine-learning-experiments) в контексте обучения машинных моделей, ну или по крайней мере обыграете компьютер в камень-ножницы-бумагу 😀 
 
-Happy learning! 🤖
+Успешного обучения! 🤖
