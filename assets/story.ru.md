@@ -1,10 +1,10 @@
-# 🤖 Interactive Machine Learning Experiments
+# 🤖 Интерактивные эксперименты с машинным обучением
 
-## TL;DR
+## Вкратце
 
-Hey readers!
+Привет, читатели!
 
-I've open-sourced new [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) project on GitHub. Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser). 
+Я создал на GitHub новый проект [**🤖 Интерактивные эксперименты с мышинным обучением**](https://github.com/trekhleb/machine-learning-experiments). Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser). 
 
 Although the models may be a little dumb (remember, these are just experiments, not a production ready code), they will try to do their best to:
 
