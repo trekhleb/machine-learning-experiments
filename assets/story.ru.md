@@ -45,32 +45,32 @@
 
 ## Технологический стек
 
-### Models training
+### Тренировка моделей
 
-- 🏋🏻‍ I used [Keras](https://www.tensorflow.org/guide/keras/overview) inside [TensorFlow 2](https://www.tensorflow.org/) for modelling and training. Since I had zero experience with machine learning frameworks, I needed to start with something. One of the selling points in favor of TensorFlow was that it has both Python and [JavaScript flavor](https://www.tensorflow.org/js) of the library with similar API. So eventually I used Python version for training and JavaScript version for demos. 
+- 🏋🏻‍ Для тренировки моделей я использовал [Keras](https://www.tensorflow.org/guide/keras/overview), как часть [TensorFlow 2](https://www.tensorflow.org/). Поскольку до этого у меня не было опыта с фреймворками для машинного обучения мне нужно было с какого-то из них начать. Один из ключевых факторов, который мне понравился в TensorFlow было наличие сразу двух его версий: версии на Python и [версии на JavaScript](https://www.tensorflow.org/js), у которых был схожий API. В итоге я использовал Python версия для тренировки, а JavaScript версию библиотека для демо-приложения. 
 
-- 🏋🏻‍ I trained TensorFlow models on Python inside [Jupyter](https://jupyter.org/) notebooks locally and sometimes used [Colab](https://colab.research.google.com/) to make the training faster on GPU.
+- 🏋🏻‍ Я тренировал модели на Python внутри [Jupyter](https://jupyter.org/) ноутбуков локально. Иногда использовал [Colab](https://colab.research.google.com/), чтобы воспользоваться GPU и тем самым ускорить тренировку.
 
-- 💻 Most of the models were trained on good old MacBook's Pro CPU (2,9 GHz Dual-Core Intel Core i5).
+- 💻 Большинство моделей были натренированны на CPU старого доброго MacBook Pro (2,9 GHz Dual-Core Intel Core i5).
 
-- 🔢 Of course there is no way you could run away from [NumPy](https://numpy.org/) for matrix/tensors operations.   
+- 🔢 И конечно же было никак не обойтись без [NumPy](https://numpy.org/) для матричных (тензорных) операций.   
 
-### Models demo
+### Демонстрация моделей
 
-- 🏋🏻‍ I used [TensorFlow.js](https://www.tensorflow.org/js) to do predictions with previously trained models.
+- 🏋🏻‍ Я использовал [TensorFlow.js](https://www.tensorflow.org/js) для того, чтобы воспользоваться в браузере заранее натренированными на предыдущем шаге (в Jupyter ноутбуке) моделями.
 
-- ♻️ To convert _Keras HDF5_ models to _TensorFlow.js Layers_ format I used [TensorFlow.js converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter). This might be inefficient to transfer the whole model (megabytes of data) to the browser instead of making predictions through HTTP requests, but again, remember that these are just experiments and not production-ready code and architecture. I wanted to avoid having a dedicated back-end service to make architecture simpler.
+- ♻️ Для конвертирования моделей из формата _HDF5_ в формат _TensorFlow.js Layers_ я использовал [TensorFlow.js converter](https://github.com/tensorflow/tfjs/tree/master/tfjs-converter). Это конечно же может быть неэффективно загружать всю модель в браузер целиком (речь ведь идет о мегабайтах данных) вместо того, чтобы делать предсказания вызывая модель удаленно через HTTP запросы, но, снова-таки, вспомним, что речь идет об _экспериментах_, а не о зрелой и оптимизированной архитектуре, которую можно брать и сразу же использовать для "продакшна". С точки зрения простоты подхода я так же хотел избежать развертывания отдельного сервера с HTTP API дле предсказаний моделей.
 
-- 👨🏻‍🎨 The [Demo application](http://trekhleb.github.io/machine-learning-experiments) was created on [React](https://reactjs.org/) using [create-react-app](https://github.com/facebook/create-react-app) starter with a default [Flow](https://flow.org/en/) flavour for type checking.
+- 👨🏻‍🎨 [Демонстрационное приложение](http://trekhleb.github.io/machine-learning-experiments) было создано на [React](https://reactjs.org/) с использованием [create-react-app](https://github.com/facebook/create-react-app) стартера с поддержкой [Flow](https://flow.org/en/) по умолчания для проверки типов.
 
-- 💅🏻 For styling, I used [Material UI](https://material-ui.com/). It was, as they say, "to kill two birds" at once and try out a new styling framework (sorry, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍). 
+- 💅🏻 Для стайлинга я воспользовался библиотекой [Material UI](https://material-ui.com/). Я хотел, как говориться, "убить двух зайцев сразу" и заодно попробовать новый для себя фреймворк для пользовательских интерфейсов (прости, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍). 
 
-## Experiments
+## Эксперименты
 
-So, in short, you may access Demo page and Jupyter notebooks by these links:
+Демо-страничка с экспериментами, а так же Jupyter ноутбуки с деталями тренировки доступны по следующим ссылкам:
 
-- 🎨 [**Launch ML experiments demo**](http://trekhleb.github.io/machine-learning-experiments)
-- 🏋️ [**Check ML experiments Jupyter notebooks**](https://github.com/trekhleb/machine-learning-experiments)
+- 🎨 [**Запустить Демо с машинными экспериментами**](http://trekhleb.github.io/machine-learning-experiments)
+- 🏋️ [**Просмотреть детали тренировки каждой из моделей**](https://github.com/trekhleb/machine-learning-experiments)
 
 ### Experiments with Multilayer Perceptron (MLP)
 
