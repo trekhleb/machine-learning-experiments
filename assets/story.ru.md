@@ -1,37 +1,37 @@
 # 🤖 Интерактивные эксперименты с машинным обучением
 
-## Вкратце
-
 Привет, читатели!
 
-Я создал на GitHub новый проект [**🤖 Интерактивные эксперименты с мышинным обучением**](https://github.com/trekhleb/machine-learning-experiments). Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser). 
+## Если вкратце
 
-Although the models may be a little dumb (remember, these are just experiments, not a production ready code), they will try to do their best to:
+Я создал новый проект [**🤖 Интерактивные эксперименты с мышинным обучением**](https://github.com/trekhleb/machine-learning-experiments) на GitHub. Каждый эксперимент состоит из 🏋️ _Jupyter/Colab ноутбука_, показывающего как модель тренировалась, и 🎨 _Демо странички_, показывающей модель в действии прямо в вашем браузере. 
 
-- 🖌 Recognize digits or sketches you draw in your browser
-- 📸 Detect and recognize the objects you'll show to your camera
-- 🌅 Classify your uploaded image
-- 📝 Write a Shakespeare poem with you
-- ✊🖐✌️ Play with you in Rock-Paper-Scissors game
-- etc. 
+Несмотря на то, что машинные модели в репозитории могут быть немного "туповатенькими" (помните, это всего-лишь эксперименты, а не вылезанный код, готовый к заливке на продакшн и дальнейшему управлению новыми Tesla), они будут стараться как могут чтобы:
 
-I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  and then consumed them for a demo in a browser using _React_ and _JavaScript_ version of _Tensorflow_. 
+- 🖌 Распознать цифры и прочие экскизы, которые вы нарисуете в браузере
+- 📸 Определить и распознать объекты на видео из вашей камеры
+- 🌅 Классифицировать изображения, загруженные вами
+- 📝 Написать с вами поэму в стиле Шекспира
+- ✊🖐✌️ И даже поиграть с вами в камень-ножницы-бумага
+- и пр. 
 
-![Interactive Machine Learning Experiments](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/repository-cover.png)
+Я тренировал модели на _Python_ с использованием _TensorFlow 2_ с поддержкой _Keras_. Для демо-приложения я использовал _React_ и _JavaScript_ версию _Tensorflow_. 
 
-## Models performance
+![Интерактивные эксперименты с машинным обучением](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/repository-cover.png)
 
-⚠️ First, let's set our expectations.️ The repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets. Models might not perform well and there is a place for overfitting/underfitting.
+## Производительность моделей
 
-Therefore, sometimes you might see things like this:
+⚠️ Для начала, давайте определимся с нашими ожиданиями.️ Репозиторий содержит **эксперименты** с машинным обученем, а **не** готовые к "заливке на продакшн", оптимизированные и тонко настроенные модели. Этот проект скорее похож на песочницу, в которой можно учиться и тренироваться работе с алгоритмами машинного обучения и разными наборами данных. Обученные модели могут быть недостаточно точными (например, иметь 60% точности вместо ожидаемых, пускай, 97%), а также могу быть переученными и недоученными (overfitting vs underfitting).
 
-![Dumb model](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/01-dumb-model.png)
+Поэтому иногда вы можете увидеть что-то вроде:
 
-But be patient, sometimes the model might get smarter 🤓 and give you this:
+![Тупенькая машиная модель](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/01-dumb-model.png)
 
-![Smart model](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/02-smart-model.png)
+Но будьте терпеливы, иногда эта же модель может выдавать что-то более "умное" 🤓:
 
-## Background
+![Более умная машинная модель](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/02-smart-model.png)
+
+## Предыстория
 
 I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for the last several years now I've been doing mostly frontend and backend programming. In my spare time, as a hobby, I decided to dig into machine learning topics to make it less _like magic_ and _more like math_ to myself.
 
