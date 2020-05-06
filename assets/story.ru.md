@@ -1,4 +1,4 @@
-# 🤖 Интерактивные эксперименты с машинным обучением
+# 🤖 Интерактивные эксперименты с машинным обучением (на TensorFlow)
 
 Привет, читатели!
 
@@ -79,7 +79,7 @@
 Вы рисуете цифру, а модель пытается ее распознать.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionMLP)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb)
 
 ![Handwritten Digits Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
@@ -89,7 +89,7 @@
 Вы рисуете эскиз, а модель пытается его распознать.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionMLP)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb)
 
 ![Handwritten Sketch Recognition](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
@@ -101,7 +101,7 @@
 Вы рисуете цифру, а модель пытается ее распознать. Этот эксперимент похож на предыдущий из раздела MLP, но на этот раз модель использует CNN.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionCNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb)
 
 ![Handwritten Digits Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/03-digits-recognition.gif)
@@ -111,7 +111,7 @@
 Вы рисуете эскиз, а модель пытается его распознать. Этот эксперимент похож на предыдущий из раздела MLP, но на этот раз модель использует CNN.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionCNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb)
 
 ![Handwritten Sketch Recognition (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/04-sketch-recognition.gif)
@@ -121,7 +121,7 @@
 Вы играете в камень-ножницы-бумагу с моделью. Этот эксперимент использует CNN, натренированную с нуля.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsCNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb)
 
 ![Rock Paper Scissors (CNN)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/05-rock-paper-scissors.gif)
@@ -131,7 +131,7 @@
 Вы играете в камень-ножницы-бумагу с моделью. Эта модель использует трансферное обучение, основанное на сети [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsMobilenetV2)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb)
 
 ![Rock Paper Scissors (MobilenetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/06-rock-paper-scissors-mobilenet.gif)
@@ -141,7 +141,7 @@
 Вы показываете модели ваше окружение (используя камеру ноутбука или телефона), а модель пытается определить предметы на видео и распознать их. Эта модель использует сеть [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ObjectsDetectionSSDLiteMobilenetV2)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb)
 
 ![Objects Detection (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/07-objects-detection.gif)
@@ -151,7 +151,7 @@
 Вы загружаете изображение, а модель пытается его классифицировать в зависимости от того, что она "видит" на картинке. Модель использует сеть [MobilenetV2](https://www.tensorflow.org/api_docs/python/tf/keras/applications/MobileNetV2).
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/ImageClassificationMobilenetV2)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb)
 
 ![Image Classification (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/08-image-classification.gif)
@@ -163,7 +163,7 @@
 Вы набираете выражение (например, `17+38`) и модель предсказывает результат (например `55`). Интересность этой модели заключается в том, что она воспринимает выражение на входе, как _последовательность_ символов (как текст). Модель учится "переводить" последовательность `1` → `17` → `17+` → `17+3` → `17+38` на входе в другую текстовую последовательность `55` на выходе. Считайте, что модель скорее делает перевод испанского `Hola` в английское `Hello`, чем оперирует математическими сущностями.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/NumbersSummationRNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb)
 
 ![Numbers Summation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/09-numbers-summation.gif)
@@ -173,7 +173,7 @@
 Вы начинаете поэму как Шекспир, а модель пытается ее продолжить как Шекспир. Ключевое слово "пытается" 😀.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationShakespeareRNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb)
 
 ![Shakespeare Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/10-shakespeare-text-generation.gif)
@@ -183,7 +183,7 @@
 Вы начинаете печатать Wiki статью, а модель продолжает.
 
 - 🎨 [Демо](https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationWikipediaRNN)
-- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/v2/gh/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
+- 🏋️ [Тренировка модели в Jupyter](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 - ️🏋️  [Тренировка модели в Colab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb)
 
 ![Wikipedia Text Generation](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/11-wikipedia-text-generation.gif)
