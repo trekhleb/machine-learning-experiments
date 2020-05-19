@@ -20,12 +20,19 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/recipe_generation_rn
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/recipe_generation_rnn/model.json`;
 
 const RecipeGenerationRNN = (): Node => {
+  const stopWordTitle = '📗 ';
   const description = 'Let Recurrent Neural Network generate a randomly weird recipe for you. This is just for fun and not for actual cooking.';
   return (
     <TextGenerator
       modelPath={modelPath}
       modelVocabulary={modelVocabulary}
       description={description}
+      defaultSequenceLength={800}
+      defaultUnexpectedness={0.4}
+      sequencePrefix={stopWordTitle}
+      inputRequired={false}
+      inputDisabled
+      modelStrict
     />
   );
 };

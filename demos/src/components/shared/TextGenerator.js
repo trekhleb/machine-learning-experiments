@@ -21,7 +21,10 @@ type Unexpectedness = 0.1 | 0.2 | 0.4 | 0.6 | 0.8 | 1 | 1.2 | 1.4;
 
 const defaultSequenceLengthValue: SequenceLength = 400;
 const defaultUnexpectednessValue: Unexpectedness = 0.1;
-const defaultStrictValue: boolean = true;
+const defaultModelStrictValue: boolean = true;
+const defaultInputRequiredValue: boolean = true;
+const defaultInputDisabledValue: boolean = false;
+const defaultSequencePrefix: string = '';
 
 const sequenceLengths: SequenceLength[] = [100, 200, 400, 800];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
@@ -30,7 +33,10 @@ const defaultProps = {
   maxInputLength: 100,
   defaultSequenceLength: defaultSequenceLengthValue,
   defaultUnexpectedness: defaultUnexpectednessValue,
-  strict: defaultStrictValue,
+  modelStrict: defaultModelStrictValue,
+  sequencePrefix: defaultSequencePrefix,
+  inputRequired: defaultInputRequiredValue,
+  inputDisabled: defaultInputDisabledValue,
 };
 
 type TextGeneratorProps = {
@@ -40,7 +46,10 @@ type TextGeneratorProps = {
   maxInputLength?: number,
   defaultSequenceLength?: SequenceLength,
   defaultUnexpectedness?: Unexpectedness,
-  strict?: boolean,
+  sequencePrefix?: ?string,
+  modelStrict?: boolean,
+  inputRequired?: boolean,
+  inputDisabled?: boolean,
 };
 
 const TextGenerator = (props: TextGeneratorProps): Node => {
@@ -51,13 +60,16 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     description,
     defaultSequenceLength = defaultSequenceLengthValue,
     defaultUnexpectedness = defaultUnexpectednessValue,
-    strict = defaultStrictValue,
+    modelStrict = defaultModelStrictValue,
+    sequencePrefix = defaultSequencePrefix,
+    inputRequired = defaultInputRequiredValue,
+    inputDisabled = defaultInputDisabledValue,
   } = props;
 
   const { model, modelErrorMessage } = useLayersModel({
     modelPath,
     warmup: true,
-    strict,
+    strict: modelStrict,
   });
   const [inputText, setInputText] = useState('');
   const [sequenceLength, setSequenceLength] = useState(defaultSequenceLength);
@@ -66,7 +78,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const onInputTextChange = (event) => {
-    setInputText(event.target.value);
+    setInputText(event.target.value || '');
   };
 
   const onGenerate = (event) => {
@@ -78,7 +90,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     setIsGenerating(true);
     setGeneratedText('');
 
-    const inputTextIndices = Array.from(inputText)
+    const inputTextIndices = Array.from((sequencePrefix || '') + (inputText || ''))
       .map(
         (inputChar: string) => modelVocabulary
           .findIndex((vocabChar: string) => vocabChar === inputChar),
@@ -113,7 +125,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     }
 
     setIsGenerating(false);
-    setGeneratedText(`${inputText}${textGenerated.join('')}...`);
+    setGeneratedText(`${(sequencePrefix || '')}${inputText}${textGenerated.join('')}...`);
   };
 
   const generatedTextSpinner = isGenerating ? (
@@ -176,7 +188,8 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
               inputProps={{
                 maxLength: maxInputLength,
               }}
-              required
+              required={inputRequired}
+              disabled={inputDisabled}
             />
           </FormControl>
         </Grid>
