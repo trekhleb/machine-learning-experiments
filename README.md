@@ -385,6 +385,35 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         </a>
       </td>
     </tr>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="demos/src/images/recipe_generation_rnn.jpg" alt="Recipe Generation (RNN)" width="150" />
+      </td>
+      <td>
+        <b>Recipe Generation (RNN)</b>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>LSTM</code>,
+        <code>Character-based RNN</code>
+      </td>
+      <td>
+        <a href="https://eightportions.com/datasets/Recipes/">
+          Recipe box
+        </a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
