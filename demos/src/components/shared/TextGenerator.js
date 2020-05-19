@@ -21,6 +21,7 @@ type Unexpectedness = 0.1 | 0.2 | 0.4 | 0.6 | 0.8 | 1 | 1.2 | 1.4;
 
 const defaultSequenceLengthValue: SequenceLength = 400;
 const defaultUnexpectednessValue: Unexpectedness = 0.1;
+const defaultStrictValue: boolean = true;
 
 const sequenceLengths: SequenceLength[] = [100, 200, 400, 800];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
@@ -29,6 +30,7 @@ const defaultProps = {
   maxInputLength: 100,
   defaultSequenceLength: defaultSequenceLengthValue,
   defaultUnexpectedness: defaultUnexpectednessValue,
+  strict: defaultStrictValue,
 };
 
 type TextGeneratorProps = {
@@ -38,6 +40,7 @@ type TextGeneratorProps = {
   maxInputLength?: number,
   defaultSequenceLength?: SequenceLength,
   defaultUnexpectedness?: Unexpectedness,
+  strict?: boolean,
 };
 
 const TextGenerator = (props: TextGeneratorProps): Node => {
@@ -48,11 +51,13 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     description,
     defaultSequenceLength = defaultSequenceLengthValue,
     defaultUnexpectedness = defaultUnexpectednessValue,
+    strict = defaultStrictValue,
   } = props;
 
   const { model, modelErrorMessage } = useLayersModel({
     modelPath,
     warmup: true,
+    strict,
   });
   const [inputText, setInputText] = useState('');
   const [sequenceLength, setSequenceLength] = useState(defaultSequenceLength);

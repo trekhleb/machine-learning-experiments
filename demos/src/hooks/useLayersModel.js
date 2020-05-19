@@ -6,15 +6,16 @@ import { LayersModel } from '@tensorflow/tfjs-layers';
 type UseLayersModelProps = {
   modelPath: string,
   warmup?: boolean,
+  strict?: boolean,
 };
 
 type UseLayersModelOutput = {
   model: ?LayersModel,
-  modelErrorMessage: ?string,
+  modelErrorMessage: ?string
 };
 
 const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
-  const { modelPath, warmup = false } = props;
+  const { modelPath, warmup = false, strict = true } = props;
 
   const [model, setModel] = useState(null);
   const [modelIsWarm, setModelIsWarm] = useState(null);
@@ -39,14 +40,14 @@ const useLayersModel = (props: UseLayersModelProps): UseLayersModelOutput => {
 
   // Effect for loading the model.
   useEffect(() => {
-    tf.loadLayersModel(modelPath)
+    tf.loadLayersModel(modelPath, { strict })
       .then((layersModel: LayersModel) => {
         setModel(layersModel);
       })
       .catch((e) => {
         setModelErrorMessage(e.message);
       });
-  }, [modelPath, setModelErrorMessage, setModel]);
+  }, [modelPath, setModelErrorMessage, setModel, strict]);
 
   // Effect for warming up a model.
   useEffect(() => {
