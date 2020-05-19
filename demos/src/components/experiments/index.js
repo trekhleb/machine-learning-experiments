@@ -11,6 +11,7 @@ import RockPaperScissorsMobilenetV2 from './RockPaperScissorsMobilenetV2/RockPap
 import TextGenerationShakespeareRNN from './TextGenerationShakespeareRNN/TextGenerationShakespeareRNN';
 import TextGenerationWikipediaRNN from './TextGenerationWikipediaRNN/TextGenerationWikipediaRNN';
 import NumbersSummationRNN from './NumbersSummationRNN/NumbersSummationRNN';
+import RecipeGenerationRNN from './RecipeGenerationRNN/RecipeGenerationRNN';
 
 const experiments: ExperimentsMap = {
   DigitsRecognitionMLP,
@@ -24,6 +25,7 @@ const experiments: ExperimentsMap = {
   NumbersSummationRNN,
   TextGenerationShakespeareRNN,
   TextGenerationWikipediaRNN,
+  RecipeGenerationRNN,
 };
 
 export default experiments;

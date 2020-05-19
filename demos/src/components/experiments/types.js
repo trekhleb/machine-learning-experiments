@@ -13,6 +13,7 @@ export const experimentsSlugs = {
   NumbersSummationRNN: 'NumbersSummationRNN',
   TextGenerationShakespeareRNN: 'TextGenerationShakespeareRNN',
   TextGenerationWikipediaRNN: 'TextGenerationWikipediaRNN',
+  RecipeGenerationRNN: 'RecipeGenerationRNN',
 };
 
 export type Experiment = {|
