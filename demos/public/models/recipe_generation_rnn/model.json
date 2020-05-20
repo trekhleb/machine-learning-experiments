@@ -151,7 +151,7 @@
           "dtype": "float32"
         },
         {
-          "name": "lstm_5/lstm_cell_5/kernel",
+          "name": "lstm_5/kernel",
           "shape": [
             256,
             4096
@@ -159,7 +159,7 @@
           "dtype": "float32"
         },
         {
-          "name": "lstm_5/lstm_cell_5/recurrent_kernel",
+          "name": "lstm_5/recurrent_kernel",
           "shape": [
             1024,
             4096
@@ -167,7 +167,7 @@
           "dtype": "float32"
         },
         {
-          "name": "lstm_5/lstm_cell_5/bias",
+          "name": "lstm_5/bias",
           "shape": [
             4096
           ],
