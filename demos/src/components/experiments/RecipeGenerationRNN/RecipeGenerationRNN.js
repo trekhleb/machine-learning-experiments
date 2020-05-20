@@ -69,7 +69,7 @@ const RecipeGenerationRNN = (): Node => {
         modelVocabulary={modelVocabulary}
         preProcessOutput={preProcessOutput}
         description={description}
-        defaultSequenceLength={800}
+        defaultSequenceLength={1000}
         defaultUnexpectedness={0.4}
         sequencePrefix={stopWordTitle}
         inputRequired={false}

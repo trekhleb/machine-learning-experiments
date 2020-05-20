@@ -16,7 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snack from './Snack';
 import useLayersModel from '../../hooks/useLayersModel';
 
-type SequenceLength = 100 | 200 | 400 | 800;
+type SequenceLength = 100 | 200 | 400 | 800 | 1000;
 type Unexpectedness = 0.1 | 0.2 | 0.4 | 0.6 | 0.8 | 1 | 1.2 | 1.4;
 
 const defaultSequenceLengthValue: SequenceLength = 400;
@@ -27,7 +27,7 @@ const defaultInputDisabledValue: boolean = false;
 const defaultSequencePrefix: string = '';
 const defaultPreprocessOutput = (output: string) => output;
 
-const sequenceLengths: SequenceLength[] = [100, 200, 400, 800];
+const sequenceLengths: SequenceLength[] = [100, 200, 400, 800, 1000];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
 
 const defaultProps = {
