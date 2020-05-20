@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
+import Box from '@material-ui/core/Box';
 
 import type { Experiment } from '../types';
 import cover from '../../../images/recipe_generation_rnn.jpg';
@@ -20,20 +21,58 @@ const notebookUrl = `${ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL}/recipe_generation_rn
 const modelPath = `${ML_EXPERIMENTS_DEMO_MODELS_PATH}/recipe_generation_rnn/model.json`;
 
 const RecipeGenerationRNN = (): Node => {
+  const description = '';
+
+  const stopSign = '␣';
   const stopWordTitle = '📗 ';
-  const description = 'Let Recurrent Neural Network generate a randomly weird recipe for you. This is just for fun and not for actual cooking.';
+  const stopWordIngredients = '\n🥕\n\n';
+  const stopWordInstructions = '\n📝\n\n';
+
+  const preProcessOutput = (generatedText: string): string => {
+    let preProcessedText = generatedText;
+    preProcessedText = preProcessedText.replace(new RegExp(stopSign, 'g'), '');
+    preProcessedText = preProcessedText.replace(new RegExp(stopWordTitle), '📗 [NAME]\n\n');
+    preProcessedText = preProcessedText.replace(new RegExp(stopWordInstructions), '\n📝 [INSTRUCTIONS]\n\n');
+    preProcessedText = preProcessedText.replace(new RegExp(stopWordIngredients), '\n🥕 [INGREDIENTS]\n\n');
+    return preProcessedText;
+  };
+
   return (
-    <TextGenerator
-      modelPath={modelPath}
-      modelVocabulary={modelVocabulary}
-      description={description}
-      defaultSequenceLength={800}
-      defaultUnexpectedness={0.4}
-      sequencePrefix={stopWordTitle}
-      inputRequired={false}
-      inputDisabled
-      modelStrict
-    />
+    <Box>
+      <p>
+        Let Recurrent Neural Network generate a randomly weird recipe for you.
+      </p>
+
+      <Box mb={4}>
+        <ul>
+          <li>
+            ⚠️ This is just for fun and not for real cooking
+          </li>
+          <li>
+            ℹ️ It is ok to leave start text blank
+          </li>
+          <li>
+            ℹ️ Generator is case-sensitive
+          </li>
+          <li>
+            💡 If recipe looks like a garbage, try to generate it one more time or change
+            the parameters, the result might become more meaningful afterwards.
+          </li>
+        </ul>
+      </Box>
+
+      <TextGenerator
+        modelPath={modelPath}
+        modelVocabulary={modelVocabulary}
+        preProcessOutput={preProcessOutput}
+        description={description}
+        defaultSequenceLength={800}
+        defaultUnexpectedness={0.4}
+        sequencePrefix={stopWordTitle}
+        inputRequired={false}
+        inputDisabled={false}
+      />
+    </Box>
   );
 };
 
@@ -44,6 +83,7 @@ const experiment: Experiment = {
   component: RecipeGenerationRNN,
   notebookUrl,
   cover,
+  inputTextExamples: ['Mushroom', 'O', ''],
 };
 
 export default experiment;

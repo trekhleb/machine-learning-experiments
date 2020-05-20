@@ -25,6 +25,7 @@ const defaultModelStrictValue: boolean = true;
 const defaultInputRequiredValue: boolean = true;
 const defaultInputDisabledValue: boolean = false;
 const defaultSequencePrefix: string = '';
+const defaultPreprocessOutput = (output: string) => output;
 
 const sequenceLengths: SequenceLength[] = [100, 200, 400, 800];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
@@ -37,6 +38,7 @@ const defaultProps = {
   sequencePrefix: defaultSequencePrefix,
   inputRequired: defaultInputRequiredValue,
   inputDisabled: defaultInputDisabledValue,
+  preProcessOutput: defaultPreprocessOutput,
 };
 
 type TextGeneratorProps = {
@@ -50,6 +52,7 @@ type TextGeneratorProps = {
   modelStrict?: boolean,
   inputRequired?: boolean,
   inputDisabled?: boolean,
+  preProcessOutput?: (output: string) => string,
 };
 
 const TextGenerator = (props: TextGeneratorProps): Node => {
@@ -64,6 +67,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     sequencePrefix = defaultSequencePrefix,
     inputRequired = defaultInputRequiredValue,
     inputDisabled = defaultInputDisabledValue,
+    preProcessOutput = defaultPreprocessOutput,
   } = props;
 
   const { model, modelErrorMessage } = useLayersModel({
@@ -124,8 +128,11 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
       inputTensor = tf.expandDims([nextCharIndex], batchAxis);
     }
 
+    const generatedOutput = `${(sequencePrefix || '')}${inputText}${textGenerated.join('')}...`;
+    const preProcessedOutput = preProcessOutput(generatedOutput);
+
     setIsGenerating(false);
-    setGeneratedText(`${(sequencePrefix || '')}${inputText}${textGenerated.join('')}...`);
+    setGeneratedText(preProcessedOutput);
   };
 
   const generatedTextSpinner = isGenerating ? (
