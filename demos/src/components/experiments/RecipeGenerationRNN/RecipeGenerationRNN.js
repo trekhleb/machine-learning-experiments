@@ -86,7 +86,7 @@ const experiment: Experiment = {
   component: RecipeGenerationRNN,
   notebookUrl,
   cover,
-  inputTextExamples: ['Mushroom', 'O', ''],
+  inputTextExamples: ['Mushroom', 'Sweet', 'O', ''],
 };
 
 export default experiment;
