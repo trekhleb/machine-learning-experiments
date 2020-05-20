@@ -49,14 +49,17 @@ const RecipeGenerationRNN = (): Node => {
             ⚠️ This is just for fun and not for real cooking
           </li>
           <li>
-            ℹ️ It is ok to leave start text blank
+            ℹ️ It is ok to leave start text blank (you may experiment and try something like <code>Mushroom</code> though)
           </li>
           <li>
             ℹ️ Generator is case-sensitive
           </li>
           <li>
             💡 If recipe looks like a garbage, try to generate it one more time or change
-            the parameters, the result might become more meaningful afterwards.
+            the parameters, the result might become more meaningful afterwards
+          </li>
+          <li>
+            🥑 If still no luck, check <a href="https://www.instagram.com/home_full_of_recipes/">real recipes here</a>
           </li>
         </ul>
       </Box>
