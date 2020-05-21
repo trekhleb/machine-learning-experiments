@@ -68,7 +68,9 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <img src="demos/src/images/sketch_recognition_mlp.png" alt="Handwritten sketch recognition (MLP)" width="150" />
       </td>
       <td>
-        <b>Handwritten Sketch Recognition (MLP)</b>
+        <a href="experiments/sketch_recognition_mlp/sketch_recognition_mlp.ipynb">
+          <b>Handwritten Sketch Recognition (MLP)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionMLP">
@@ -114,7 +116,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/digits_recognition_cnn.png" alt="Handwritten digits recognition (CNN)" />
       </td>
       <td>
-        <b>Handwritten Digits Recognition (CNN)</b>
+        <a href="experiments/digits_recognition_cnn/digits_recognition_cnn.ipynb">
+          <b>Handwritten Digits Recognition (CNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionCNN">
@@ -142,7 +146,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/sketch_recognition_cnn.png" alt="Handwritten sketch recognition (CNN)" width="150" />
       </td>
       <td>
-        <b>Handwritten Sketch Recognition (CNN)</b>
+        <a href="experiments/sketch_recognition_cnn/sketch_recognition_cnn.ipynb">
+          <b>Handwritten Sketch Recognition (CNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/SketchRecognitionCNN">
@@ -170,7 +176,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/rock_paper_scissors_cnn.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
-        <b>Rock Paper Scissors (CNN)</b>
+        <a href="experiments/rock_paper_scissors_cnn/rock_paper_scissors_cnn.ipynb">
+          <b>Rock Paper Scissors (CNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsCNN">
@@ -198,7 +206,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/rock_paper_scissors_mobilenet_v2.jpg" alt="Rock Paper Scissors" width="150" />
       </td>
       <td>
-        <b>Rock Paper Scissors (MobilenetV2)</b>
+        <a href="experiments/rock_paper_scissors_mobilenet_v2/rock_paper_scissors_mobilenet_v2.ipynb">
+          <b>Rock Paper Scissors (MobilenetV2)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/RockPaperScissorsMobilenetV2">
@@ -231,7 +241,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/objects_detection_ssdlite_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
-        <b>Objects Detection (MobileNetV2)</b>
+        <a href="experiments/objects_detection_ssdlite_mobilenet_v2/objects_detection_ssdlite_mobilenet_v2.ipynb">
+          <b>Objects Detection (MobileNetV2)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/ObjectsDetectionSSDLiteMobilenetV2">
@@ -261,7 +273,9 @@ A [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neu
         <img src="demos/src/images/image_classification_mobilenet_v2.jpg" alt="Objects detection" width="150" />
       </td>
       <td>
-        <b>Image Classification (MobileNetV2)</b>
+        <a href="experiments/image_classification_mobilenet_v2/image_classification_mobilenet_v2.ipynb">
+          <b>Image Classification (MobileNetV2)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/ImageClassificationMobilenetV2">
@@ -308,7 +322,9 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <img src="demos/src/images/numbers_summation_rnn.png" alt="Numbers summation (RNN)" width="150" />
       </td>
       <td>
-        <b>Numbers Summation (RNN)</b>
+        <a href="experiments/numbers_summation_rnn/numbers_summation_rnn.ipynb">
+          <b>Numbers Summation (RNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/NumbersSummationRNN">
@@ -335,7 +351,9 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <img src="demos/src/images/text_generation_shakespeare_rnn.jpg" alt="Shakespeare Text Generation (RNN)" width="150" />
       </td>
       <td>
-        <b>Shakespeare Text Generation (RNN)</b>
+        <a href="experiments/text_generation_shakespeare_rnn/text_generation_shakespeare_rnn.ipynb">
+          <b>Shakespeare Text Generation (RNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationShakespeareRNN">
@@ -364,7 +382,9 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <img src="demos/src/images/text_generation_wikipedia_rnn.png" alt="Wikipedia Text Generation (RNN)" width="150" />
       </td>
       <td>
-        <b>Wikipedia Text Generation (RNN)</b>
+        <a href="experiments/text_generation_wikipedia_rnn/text_generation_wikipedia_rnn.ipynb">
+          <b>Wikipedia Text Generation (RNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/TextGenerationWikipediaRNN">
@@ -393,7 +413,9 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
         <img src="demos/src/images/recipe_generation_rnn.jpg" alt="Recipe Generation (RNN)" width="150" />
       </td>
       <td>
-        <b>Recipe Generation (RNN)</b>
+        <a href="experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb">
+          <b>Recipe Generation (RNN)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN">
