@@ -38,7 +38,9 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <img src="demos/src/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
-        <b>Handwritten Digits Recognition (MLP)</b>
+        <a href="experiments/digits_recognition_mlp">
+          <b>Handwritten Digits Recognition (MLP)</b>
+        </a>
       </td>
       <td>
         <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/DigitsRecognitionMLP">
