@@ -26,6 +26,8 @@ const defaultInputRequiredValue: boolean = true;
 const defaultInputDisabledValue: boolean = false;
 const defaultSequencePrefix: string = '';
 const defaultPreprocessOutput = (output: string) => output;
+const defaultTextLabel: string = 'Start the text';
+const defaultTextHelper: string = 'English letters and spaces allowed';
 
 const sequenceLengths: SequenceLength[] = [100, 200, 400, 800, 1000];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
@@ -39,6 +41,8 @@ const defaultProps = {
   inputRequired: defaultInputRequiredValue,
   inputDisabled: defaultInputDisabledValue,
   preProcessOutput: defaultPreprocessOutput,
+  textLabel: defaultTextLabel,
+  textHelper: defaultTextHelper,
 };
 
 type TextGeneratorProps = {
@@ -53,6 +57,8 @@ type TextGeneratorProps = {
   inputRequired?: boolean,
   inputDisabled?: boolean,
   preProcessOutput?: (output: string) => string,
+  textLabel?: string,
+  textHelper?: string,
 };
 
 const TextGenerator = (props: TextGeneratorProps): Node => {
@@ -68,6 +74,8 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     inputRequired = defaultInputRequiredValue,
     inputDisabled = defaultInputDisabledValue,
     preProcessOutput = defaultPreprocessOutput,
+    textLabel = defaultTextLabel,
+    textHelper = defaultTextHelper,
   } = props;
 
   const { model, modelErrorMessage } = useLayersModel({
@@ -186,12 +194,12 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
         <Grid item xs={12} sm={4}>
           <FormControl fullWidth>
             <TextField
-              label="Start the text"
+              label={textLabel}
               value={inputText}
               onChange={onInputTextChange}
               variant="outlined"
               size="small"
-              helperText="English letters and spaces allowed"
+              helperText={textHelper}
               inputProps={{
                 maxLength: maxInputLength,
               }}

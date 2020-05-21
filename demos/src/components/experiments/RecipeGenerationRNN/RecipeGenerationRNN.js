@@ -46,20 +46,33 @@ const RecipeGenerationRNN = (): Node => {
       <Box mb={4}>
         <ul>
           <li>
-            ⚠️ This is just for fun and not for real cooking
+            <span role="img" aria-label="Warning">⚠️</span>
+            ️
+            {' '}
+            This is just for fun and not for real cooking
           </li>
           <li>
-            ℹ️ It is ok to leave start text blank (you may experiment and try something like <code>Mushroom</code> though)
+            <span role="img" aria-label="Info">ℹ️</span>
+            ️
+            {' '}
+            It is ok to leave recipe name blank (but you may experiment and try something like
+            {' '}
+            <i>Mushroom</i>
+            {' '}
+            though)
           </li>
           <li>
-            ℹ️ Generator is case-sensitive
-          </li>
-          <li>
-            💡 If recipe looks like a garbage, try to generate it one more time or change
+            <span role="img" aria-label="Idea">💡</span>
+            {' '}
+            If recipe looks like a garbage, try to generate it one more time or change
             the parameters, the result might become more meaningful afterwards
           </li>
           <li>
-            🥑 If still no luck, check <a href="https://www.instagram.com/home_full_of_recipes/">real recipes here</a>
+            <span role="img" aria-label="Recipes">🥑</span>
+            {' '}
+            If still no luck, check
+            {' '}
+            <a href="https://www.instagram.com/home_full_of_recipes/">real recipes here</a>
           </li>
         </ul>
       </Box>
@@ -74,6 +87,8 @@ const RecipeGenerationRNN = (): Node => {
         sequencePrefix={stopWordTitle}
         inputRequired={false}
         inputDisabled={false}
+        textLabel="Start recipe title"
+        textHelper="Case-sensitive. Might be empty."
       />
     </Box>
   );
@@ -86,7 +101,7 @@ const experiment: Experiment = {
   component: RecipeGenerationRNN,
   notebookUrl,
   cover,
-  inputTextExamples: ['Banana', 'Mushroom', 'Sweet', 'A', 'O', ''],
+  inputTextExamples: ['Banana', 'Mushroom', 'Sweet', 'A', 'O', 'L', ''],
 };
 
 export default experiment;
