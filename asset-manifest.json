@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/machine-learning-experiments/static/js/main.bc18974c.chunk.js",
-    "main.js.map": "/machine-learning-experiments/static/js/main.bc18974c.chunk.js.map",
+    "main.js": "/machine-learning-experiments/static/js/main.a073177b.chunk.js",
+    "main.js.map": "/machine-learning-experiments/static/js/main.a073177b.chunk.js.map",
     "runtime-main.js": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js",
     "runtime-main.js.map": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js.map",
     "static/css/2.9f540eb9.chunk.css": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css",
-    "static/js/2.12855cf2.chunk.js": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js",
-    "static/js/2.12855cf2.chunk.js.map": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.map",
+    "static/js/2.eb5f039f.chunk.js": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js",
+    "static/js/2.eb5f039f.chunk.js.map": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js.map",
     "index.html": "/machine-learning-experiments/index.html",
-    "precache-manifest.b788ee4f350e676cbd677febdcb6009f.js": "/machine-learning-experiments/precache-manifest.b788ee4f350e676cbd677febdcb6009f.js",
+    "precache-manifest.f2b7c99c4c90f035dc07050f970bc2c5.js": "/machine-learning-experiments/precache-manifest.f2b7c99c4c90f035dc07050f970bc2c5.js",
     "service-worker.js": "/machine-learning-experiments/service-worker.js",
     "static/css/2.9f540eb9.chunk.css.map": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css.map",
-    "static/js/2.12855cf2.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.12855cf2.chunk.js.LICENSE.txt",
+    "static/js/2.eb5f039f.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js.LICENSE.txt",
     "static/media/0.png": "/machine-learning-experiments/static/media/0.9aae7831.png",
     "static/media/1.png": "/machine-learning-experiments/static/media/1.c1694175.png",
     "static/media/10.png": "/machine-learning-experiments/static/media/10.32bc9d6b.png",
@@ -31,6 +31,7 @@
     "static/media/numbers_summation_rnn.png": "/machine-learning-experiments/static/media/numbers_summation_rnn.28902845.png",
     "static/media/objects_detection_ssdlite_mobilenet_v2.jpg": "/machine-learning-experiments/static/media/objects_detection_ssdlite_mobilenet_v2.7a41603e.jpg",
     "static/media/paper.png": "/machine-learning-experiments/static/media/paper.dc31f9ef.png",
+    "static/media/recipe_generation_rnn.jpg": "/machine-learning-experiments/static/media/recipe_generation_rnn.bd0d3256.jpg",
     "static/media/index.css": "/machine-learning-experiments/static/media/roboto-latin-900italic.ebf6d164.woff2",
     "static/media/rock.png": "/machine-learning-experiments/static/media/rock.eeb8c8a7.png",
     "static/media/rock_paper_scissors_cnn.jpg": "/machine-learning-experiments/static/media/rock_paper_scissors_cnn.878f5e6a.jpg",
@@ -44,7 +45,7 @@
   "entrypoints": [
     "static/js/runtime-main.76ba2d2b.js",
     "static/css/2.9f540eb9.chunk.css",
-    "static/js/2.12855cf2.chunk.js",
-    "static/js/main.bc18974c.chunk.js"
+    "static/js/2.eb5f039f.chunk.js",
+    "static/js/main.a073177b.chunk.js"
   ]
 }
