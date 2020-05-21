@@ -28,6 +28,16 @@ const RecipeGenerationRNN = (): Node => {
   const stopWordIngredients = '\n🥕\n\n';
   const stopWordInstructions = '\n📝\n\n';
 
+  const preProcessInput = (inputText: ?string): string => {
+    let text = inputText || '';
+    text = text.trim();
+    if (text.length) {
+      text = text[0].toUpperCase() + text.slice(1);
+    }
+    text = stopWordTitle + text;
+    return text;
+  };
+
   const preProcessOutput = (generatedText: string): string => {
     let preProcessedText = generatedText;
     preProcessedText = preProcessedText.replace(new RegExp(stopSign, 'g'), '');
@@ -74,7 +84,7 @@ const RecipeGenerationRNN = (): Node => {
             {' '}
             If still no luck, check
             {' '}
-            <a href="https://www.instagram.com/home_full_of_recipes/" target="_blank">real recipes here</a>
+            <a href="https://www.instagram.com/home_full_of_recipes/">real recipes here</a>
           </li>
         </ul>
       </Box>
@@ -83,12 +93,11 @@ const RecipeGenerationRNN = (): Node => {
         modelPath={modelPath}
         modelVocabulary={modelVocabulary}
         preProcessOutput={preProcessOutput}
+        preProcessInput={preProcessInput}
         description={description}
         defaultSequenceLength={1000}
-        defaultUnexpectedness={0.4}
-        sequencePrefix={stopWordTitle}
+        defaultUnexpectedness={0.6}
         inputRequired={false}
-        inputDisabled={false}
         textLabel="Start recipe title"
         textHelper="Case-sensitive. Might be empty."
       />
@@ -103,7 +112,7 @@ const experiment: Experiment = {
   component: RecipeGenerationRNN,
   notebookUrl,
   cover,
-  inputTextExamples: ['Banana', 'Mushroom', 'Sweet', 'A', 'O', 'L', ''],
+  inputTextExamples: ['Banana', 'Mushroom', 'Sweet', 'Orange', 'A', 'O', 'L', ''],
 };
 
 export default experiment;

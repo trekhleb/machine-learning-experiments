@@ -24,8 +24,8 @@ const defaultUnexpectednessValue: Unexpectedness = 0.1;
 const defaultModelStrictValue: boolean = true;
 const defaultInputRequiredValue: boolean = true;
 const defaultInputDisabledValue: boolean = false;
-const defaultSequencePrefix: string = '';
 const defaultPreprocessOutput = (output: string) => output;
+const defaultPreprocessInput = (input: string) => input;
 const defaultTextLabel: string = 'Start the text';
 const defaultTextHelper: string = 'English letters and spaces allowed';
 
@@ -37,10 +37,10 @@ const defaultProps = {
   defaultSequenceLength: defaultSequenceLengthValue,
   defaultUnexpectedness: defaultUnexpectednessValue,
   modelStrict: defaultModelStrictValue,
-  sequencePrefix: defaultSequencePrefix,
   inputRequired: defaultInputRequiredValue,
   inputDisabled: defaultInputDisabledValue,
   preProcessOutput: defaultPreprocessOutput,
+  preProcessInput: defaultPreprocessInput,
   textLabel: defaultTextLabel,
   textHelper: defaultTextHelper,
 };
@@ -52,11 +52,11 @@ type TextGeneratorProps = {
   maxInputLength?: number,
   defaultSequenceLength?: SequenceLength,
   defaultUnexpectedness?: Unexpectedness,
-  sequencePrefix?: ?string,
   modelStrict?: boolean,
   inputRequired?: boolean,
   inputDisabled?: boolean,
   preProcessOutput?: (output: string) => string,
+  preProcessInput?: (input: string) => string,
   textLabel?: string,
   textHelper?: string,
 };
@@ -70,10 +70,10 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     defaultSequenceLength = defaultSequenceLengthValue,
     defaultUnexpectedness = defaultUnexpectednessValue,
     modelStrict = defaultModelStrictValue,
-    sequencePrefix = defaultSequencePrefix,
     inputRequired = defaultInputRequiredValue,
     inputDisabled = defaultInputDisabledValue,
     preProcessOutput = defaultPreprocessOutput,
+    preProcessInput = defaultPreprocessInput,
     textLabel = defaultTextLabel,
     textHelper = defaultTextHelper,
   } = props;
@@ -102,7 +102,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
     setIsGenerating(true);
     setGeneratedText('');
 
-    const inputTextIndices = Array.from((sequencePrefix || '') + (inputText || ''))
+    const inputTextIndices = Array.from(preProcessInput(inputText || ''))
       .map(
         (inputChar: string) => modelVocabulary
           .findIndex((vocabChar: string) => vocabChar === inputChar),
@@ -136,7 +136,7 @@ const TextGenerator = (props: TextGeneratorProps): Node => {
       inputTensor = tf.expandDims([nextCharIndex], batchAxis);
     }
 
-    const generatedOutput = `${(sequencePrefix || '')}${inputText}${textGenerated.join('')}...`;
+    const generatedOutput = `${preProcessInput(inputText || '')}${textGenerated.join('')}...`;
     const preProcessedOutput = preProcessOutput(generatedOutput);
 
     setIsGenerating(false);
