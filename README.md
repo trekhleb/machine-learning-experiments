@@ -38,7 +38,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
         <img src="demos/src/images/digits_recognition_mlp.png" alt="Handwritten digits recognition (MLP)" width="150" />
       </td>
       <td>
-        <a href="experiments/digits_recognition_mlp">
+        <a href="experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
           <b>Handwritten Digits Recognition (MLP)</b>
         </a>
       </td>
