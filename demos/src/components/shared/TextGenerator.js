@@ -16,7 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snack from './Snack';
 import useLayersModel from '../../hooks/useLayersModel';
 
-type SequenceLength = 100 | 200 | 400 | 800 | 1000 | 1200 | 1400;
+type SequenceLength = 100 | 200 | 400 | 600 | 800 | 1000 | 1200 | 1400;
 type Unexpectedness = 0.1 | 0.2 | 0.4 | 0.6 | 0.8 | 1 | 1.2 | 1.4;
 
 const defaultSequenceLengthValue: SequenceLength = 400;
@@ -29,7 +29,7 @@ const defaultPreprocessOutput = (output: string) => output;
 const defaultTextLabel: string = 'Start the text';
 const defaultTextHelper: string = 'English letters and spaces allowed';
 
-const sequenceLengths: SequenceLength[] = [100, 200, 400, 800, 1000, 1200, 1400];
+const sequenceLengths: SequenceLength[] = [100, 200, 400, 600, 800, 1000, 1200, 1400];
 const unexpectednessList: Unexpectedness[] = [0.1, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4];
 
 const defaultProps = {
