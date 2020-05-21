@@ -49,30 +49,32 @@ const RecipeGenerationRNN = (): Node => {
             <span role="img" aria-label="Warning">⚠️</span>
             ️
             {' '}
-            This is just for fun and not for real cooking
+            This is just for fun and not for cooking
           </li>
           <li>
             <span role="img" aria-label="Info">ℹ️</span>
             ️
             {' '}
-            It is ok to leave recipe name blank (but you may experiment and try something like
+            You may leave recipe name blank. You may also try something like
             {' '}
             <i>Mushroom</i>
+            ,
             {' '}
-            though)
+            <i>Sweet</i>
+            {' '}
+            etc.
           </li>
           <li>
             <span role="img" aria-label="Idea">💡</span>
             {' '}
-            If recipe looks like a garbage, try to generate it one more time or change
-            the parameters, the result might become more meaningful afterwards
+            If recipe looks like a garbage, try different title start or fuzziness
           </li>
           <li>
             <span role="img" aria-label="Recipes">🥑</span>
             {' '}
             If still no luck, check
             {' '}
-            <a href="https://www.instagram.com/home_full_of_recipes/">real recipes here</a>
+            <a href="https://www.instagram.com/home_full_of_recipes/" target="_blank">real recipes here</a>
           </li>
         </ul>
       </Box>
