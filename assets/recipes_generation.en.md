@@ -2,4 +2,7 @@
 
 ## TL;DR
 
+I trained Recurrent Neural Network (RNN) using TensorFlow:
+
+🎨 [Recipes generator demo]()
 
