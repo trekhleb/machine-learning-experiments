@@ -13,7 +13,14 @@ This article contains details of model training with TensorFlow code examples (P
 
 ## Experiment overview
 
-I'm a complete beginner in Machine Learning 👶🏻. Creating a _Recipe Generator_ was yet another attempt to play around with _Recurrent Neural Networks_ in my [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository.
+I'm a complete beginner in Machine Learning 👶🏻. Creating a _Recipe Generator_ was yet another attempt to play around with _Recurrent Neural Networks_ in my [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository and to learn how those RNNs are implemented in TensorFlow in particular.
 
+I was curious to see:
+
+- what weird recipes names and ingredients combination the RNN would suggest
+- will it learn that each recipe consists of several blocks (name, ingredients, cooking instructions)
+- will it learn English grammar and punctuation from scratch just for several hours of training (I wish I had this skill)
+
+I decided to experiment with **character-based RNN** this time. It means that I will not teach my RNN to understand words and sentences but rather to understand letters and theirs sequences.
 
 
