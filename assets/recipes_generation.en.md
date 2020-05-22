@@ -13,7 +13,7 @@ This article contains details of model training with TensorFlow code examples (P
 
 ## Experiment overview
 
-I'm a complete beginner in Machine Learning 👶🏻. Creating a Recipe Generator was yet another attempt in my [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository to play around with Recurrent Neural Networks and how they're implemented in TensorFlow in particular.
+I'm a complete beginner in Machine Learning 👶🏻. Creating a _Recipe Generator_ was yet another attempt in my [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository to play around with _Recurrent Neural Networks_, and the way they're implemented in TensorFlow in particular.
 
 
 
