@@ -95,7 +95,7 @@ const RecipeGenerationRNN = (): Node => {
         preProcessOutput={preProcessOutput}
         preProcessInput={preProcessInput}
         description={description}
-        defaultSequenceLength={1000}
+        defaultSequenceLength={800}
         defaultUnexpectedness={0.6}
         inputRequired={false}
         textLabel="Start recipe title"
