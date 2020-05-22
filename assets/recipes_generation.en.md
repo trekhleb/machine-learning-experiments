@@ -8,3 +8,5 @@ I've trained Recurrent Neural Network (RNN) on _~100k_ recipes using [TensorFlow
 - 🏋🏻‍ [Model training process](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
 
 This article contains details of model training with TensorFlow code examples (Python).
+
+
