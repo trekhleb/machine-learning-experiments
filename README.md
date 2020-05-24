@@ -47,6 +47,7 @@ A [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) (
           <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
         </a>
         <br/><br/>
+        <hr/>
         <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/digits_recognition_mlp/digits_recognition_mlp.ipynb">
           <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
         </a>
