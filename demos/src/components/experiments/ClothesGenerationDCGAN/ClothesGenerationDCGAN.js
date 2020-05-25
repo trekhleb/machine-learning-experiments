@@ -4,7 +4,7 @@ import type { Node } from 'react';
 import Box from '@material-ui/core/Box';
 
 import type { Experiment } from '../types';
-import cover from '../../../images/clothes_generation_dcgan.jpeg';
+import cover from '../../../images/clothes_generation_dcgan.jpg';
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
