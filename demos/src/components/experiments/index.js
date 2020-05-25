@@ -12,6 +12,7 @@ import TextGenerationShakespeareRNN from './TextGenerationShakespeareRNN/TextGen
 import TextGenerationWikipediaRNN from './TextGenerationWikipediaRNN/TextGenerationWikipediaRNN';
 import NumbersSummationRNN from './NumbersSummationRNN/NumbersSummationRNN';
 import RecipeGenerationRNN from './RecipeGenerationRNN/RecipeGenerationRNN';
+import ClothesGenerationDCGAN from './ClothesGenerationDCGAN/ClothesGenerationDCGAN';
 
 const experiments: ExperimentsMap = {
   DigitsRecognitionMLP,
@@ -26,6 +27,7 @@ const experiments: ExperimentsMap = {
   TextGenerationShakespeareRNN,
   TextGenerationWikipediaRNN,
   RecipeGenerationRNN,
+  ClothesGenerationDCGAN,
 };
 
 export default experiments;

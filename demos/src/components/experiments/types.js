@@ -14,6 +14,7 @@ export const experimentsSlugs = {
   TextGenerationShakespeareRNN: 'TextGenerationShakespeareRNN',
   TextGenerationWikipediaRNN: 'TextGenerationWikipediaRNN',
   RecipeGenerationRNN: 'RecipeGenerationRNN',
+  ClothesGenerationDCGAN: 'ClothesGenerationDCGAN',
 };
 
 export type Experiment = {|
