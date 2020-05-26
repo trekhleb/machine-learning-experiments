@@ -14,6 +14,7 @@ import TextureIcon from '@material-ui/icons/Texture';
 
 import type { Experiment } from '../types';
 import cover from '../../../images/clothes_generation_dcgan.jpg';
+import demoImage from '../../../images/clothes_generation_dcgan.gif';
 import {
   ML_EXPERIMENTS_DEMO_MODELS_PATH,
   ML_EXPERIMENTS_GITHUB_NOTEBOOKS_URL,
@@ -261,6 +262,14 @@ const ClothesGenerationDCGAN = (): Node => {
           {outputCanvasPaper}
         </Grid>
       </Grid>
+
+      <Box mt={4}>
+        Here is an example of how this model was trained to generate more and more realistic image clothes out of random noise inputs.
+      </Box>
+
+      <Box mt={3}>
+        <img src={demoImage} alt="DCGAN training process demo" />
+      </Box>
     </Box>
   );
 };
