@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/machine-learning-experiments/static/js/main.6caed352.chunk.js",
-    "main.js.map": "/machine-learning-experiments/static/js/main.6caed352.chunk.js.map",
+    "main.js": "/machine-learning-experiments/static/js/main.bf7defea.chunk.js",
+    "main.js.map": "/machine-learning-experiments/static/js/main.bf7defea.chunk.js.map",
     "runtime-main.js": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js",
     "runtime-main.js.map": "/machine-learning-experiments/static/js/runtime-main.76ba2d2b.js.map",
     "static/css/2.9f540eb9.chunk.css": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css",
-    "static/js/2.eb5f039f.chunk.js": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js",
-    "static/js/2.eb5f039f.chunk.js.map": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js.map",
+    "static/js/2.642a4d82.chunk.js": "/machine-learning-experiments/static/js/2.642a4d82.chunk.js",
+    "static/js/2.642a4d82.chunk.js.map": "/machine-learning-experiments/static/js/2.642a4d82.chunk.js.map",
     "index.html": "/machine-learning-experiments/index.html",
-    "precache-manifest.986902487d5ea00cb1dd3dfe476f0bdd.js": "/machine-learning-experiments/precache-manifest.986902487d5ea00cb1dd3dfe476f0bdd.js",
+    "precache-manifest.4c0e3fb45b0cdb00888edb6ddfde1973.js": "/machine-learning-experiments/precache-manifest.4c0e3fb45b0cdb00888edb6ddfde1973.js",
     "service-worker.js": "/machine-learning-experiments/service-worker.js",
     "static/css/2.9f540eb9.chunk.css.map": "/machine-learning-experiments/static/css/2.9f540eb9.chunk.css.map",
-    "static/js/2.eb5f039f.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.eb5f039f.chunk.js.LICENSE.txt",
+    "static/js/2.642a4d82.chunk.js.LICENSE.txt": "/machine-learning-experiments/static/js/2.642a4d82.chunk.js.LICENSE.txt",
     "static/media/0.png": "/machine-learning-experiments/static/media/0.9aae7831.png",
     "static/media/1.png": "/machine-learning-experiments/static/media/1.c1694175.png",
     "static/media/10.png": "/machine-learning-experiments/static/media/10.32bc9d6b.png",
@@ -25,6 +25,8 @@
     "static/media/7.png": "/machine-learning-experiments/static/media/7.c4b5286a.png",
     "static/media/8.png": "/machine-learning-experiments/static/media/8.2695500c.png",
     "static/media/9.png": "/machine-learning-experiments/static/media/9.ebec50d4.png",
+    "static/media/clothes_generation_dcgan.jpg": "/machine-learning-experiments/static/media/clothes_generation_dcgan.1892c562.jpg",
+    "static/media/clothes_generation_dcgan.gif": "/machine-learning-experiments/static/media/clothes_generation_dcgan.da20797b.gif",
     "static/media/digits_recognition_cnn.png": "/machine-learning-experiments/static/media/digits_recognition_cnn.4955eeae.png",
     "static/media/digits_recognition_mlp.png": "/machine-learning-experiments/static/media/digits_recognition_mlp.85e0e55c.png",
     "static/media/image_classification_mobilenet_v2.jpg": "/machine-learning-experiments/static/media/image_classification_mobilenet_v2.1b5a2477.jpg",
@@ -45,7 +47,7 @@
   "entrypoints": [
     "static/js/runtime-main.76ba2d2b.js",
     "static/css/2.9f540eb9.chunk.css",
-    "static/js/2.eb5f039f.chunk.js",
-    "static/js/main.6caed352.chunk.js"
+    "static/js/2.642a4d82.chunk.js",
+    "static/js/main.bf7defea.chunk.js"
   ]
 }
