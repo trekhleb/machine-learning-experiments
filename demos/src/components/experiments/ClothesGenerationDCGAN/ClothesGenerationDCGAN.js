@@ -83,12 +83,30 @@ const ClothesGenerationDCGAN = (): Node => {
   };
 
   const onGenerateFromNoise = () => {
+    if (!model) {
+      return;
+    }
+
     const colorChannels = 1;
     const noise = tf
       .randomNormal([inputCanvasWidth, inputCanvasHeight, colorChannels])
       .mul(127.5)
       .add(255);
     setNoiseImage(noise.arraySync());
+
+    const modelInputSize = model.layers[0].input.shape[1];
+    const normalNoise = tf.randomNormal([1, modelInputSize]);
+    const outputTensor = model.predict(normalNoise);
+    const outputImage = outputTensor
+      // Denormalize.
+      .mul(127.5)
+      .add(127.5)
+      // Invert colors.
+      .mul(-1)
+      .add(255)
+      .arraySync()[0];
+
+    setGeneratedImage(outputImage);
   };
 
   const onGenerate = () => {
