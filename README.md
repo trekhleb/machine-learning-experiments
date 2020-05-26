@@ -445,6 +445,10 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
 
 [Unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) is when you only have input data `X` and no corresponding output variables. The goal for unsupervised learning is to model the underlying structure or distribution in the data in order to learn more about the data. These are called unsupervised learning because unlike supervised learning above there is no correct answers and there is no teacher. Algorithms are left to their own to discover and present the interesting structure in the data.
 
+#### Generative Adversarial Networks (GANs)
+
+A [generative adversarial network](https://en.wikipedia.org/wiki/Generative_adversarial_network) (GAN) is a class of machine learning frameworks where two neural networks contest with each other in a game. Two models are trained simultaneously by an adversarial process. For example a _generator_ ("the artist") learns to create images that look real, while a _discriminator_ ("the art critic") learns to tell real images apart from fakes.
+
 ## How to use this repository locally
 
 ### Setup virtual environment for Experiments
