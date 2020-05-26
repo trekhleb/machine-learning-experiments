@@ -449,6 +449,50 @@ A [recurrent neural network](https://en.wikipedia.org/wiki/Recurrent_neural_netw
 
 A [generative adversarial network](https://en.wikipedia.org/wiki/Generative_adversarial_network) (GAN) is a class of machine learning frameworks where two neural networks contest with each other in a game. Two models are trained simultaneously by an adversarial process. For example a _generator_ ("the artist") learns to create images that look real, while a _discriminator_ ("the art critic") learns to tell real images apart from fakes.
 
+<table>
+  <thead>
+    <tr>
+      <th align="left" width="150" style="width: 150px !important"> </th>
+      <th align="left" width="200" style="width: 200px !important">Experiment</th>
+      <th align="left" width="140" style="width: 140px !important">Model demo & training</th>
+      <th align="left">Tags</th>
+      <th align="left" width="140" style="width: 140px !important">Dataset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Experiment -->
+    <tr>
+      <td>
+        <img src="demos/src/images/clothes_generation_dcgan.jpg" alt="Clothes Generation (DCGAN)" width="150" />
+      </td>
+      <td>
+        <a href="experiments/clothes_generation_dcgan/clothes_generation_dcgan.ipynb">
+          <b>Clothes Generation (DCGAN)</b>
+        </a>
+      </td>
+      <td>
+        <a href="https://trekhleb.github.io/machine-learning-experiments/#/experiments/ClothesGenerationDCGAN">
+          <img src="https://img.shields.io/static/v1?label=%F0%9F%8E%A8%20Launch&message=Demo&color=green" alt="Launch demo">
+        </a>
+        <a href="https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/blob/master/experiments/clothes_generation_dcgan/clothes_generation_dcgan.ipynb">
+          <img src="https://mybinder.org/badge_logo.svg" alt="Open in Binder"/>
+        </a>
+        <a href="https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/clothes_generation_dcgan/clothes_generation_dcgan.ipynb">
+          <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"/>
+        </a>
+      </td>
+      <td>
+        <code>DCGAN</code>
+      </td>
+      <td>
+        <a href="https://www.tensorflow.org/datasets/catalog/fashion_mnist">
+          Fashion MNIST
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## How to use this repository locally
 
 ### Setup virtual environment for Experiments
