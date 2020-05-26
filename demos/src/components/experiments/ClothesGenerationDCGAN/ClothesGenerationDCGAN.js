@@ -264,7 +264,8 @@ const ClothesGenerationDCGAN = (): Node => {
       </Grid>
 
       <Box mt={4}>
-        Here is an example of how this model was trained to generate more and more realistic image clothes out of random noise inputs.
+        Here is an example of how this model was trained to generate more and more realistic
+        image clothes out of random noise inputs.
       </Box>
 
       <Box mt={3}>
