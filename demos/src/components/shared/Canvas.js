@@ -10,6 +10,8 @@ import type { Node } from 'react';
 const defaultBackgroundColor = '#FFFFFF';
 
 const defaultProps = {
+  image: null,
+  disabled: false,
   width: 200,
   height: 200,
   lineColor: '#000000',
@@ -30,6 +32,8 @@ type Coordinate = {
 };
 
 type CanvasProps = {
+  image?: ?(number[][][]),
+  disabled?: boolean,
   width?: number,
   height?: number,
   lineWidth?: number,
@@ -43,6 +47,8 @@ type CanvasProps = {
 // @see: https://dev.to/ankursheel/react-component-to-fraw-on-a-page-using-hooks-and-typescript-2ahp
 const Canvas = (props: CanvasProps): Node => {
   const {
+    image,
+    disabled,
     width,
     height,
     lineColor,
@@ -69,17 +75,20 @@ const Canvas = (props: CanvasProps): Node => {
   };
 
   const startPaint = useCallback((event: MouseEvent) => {
+    if (disabled) {
+      return;
+    }
     const coordinates = getCoordinates(event);
     if (coordinates) {
       setMousePosition(coordinates);
       setIsPainting(true);
     }
-  }, []);
+  }, [disabled]);
 
   const paint = useCallback(
     (event: MouseEvent) => {
       const drawLine = (originalMousePosition: Coordinate, newMousePosition: Coordinate) => {
-        if (!canvasRef.current) {
+        if (!canvasRef.current || disabled) {
           return;
         }
         const canvas: HTMLCanvasElement = canvasRef.current;
@@ -104,12 +113,12 @@ const Canvas = (props: CanvasProps): Node => {
         }
       }
     },
-    [isPainting, mousePosition, lineColor, lineJoin, lineWidth],
+    [isPainting, mousePosition, lineColor, lineJoin, lineWidth, disabled],
   );
 
   const exitPaint = useCallback(() => {
     const onDrawEnd = () => {
-      if (!canvasRef.current) {
+      if (!canvasRef.current || disabled) {
         return;
       }
 
@@ -125,7 +134,7 @@ const Canvas = (props: CanvasProps): Node => {
     onDrawEnd();
     setIsPainting(false);
     setMousePosition(undefined);
-  }, [onDrawEndCallback]);
+  }, [onDrawEndCallback, disabled]);
 
   // Effect for MouseDown.
   useEffect(() => {
@@ -201,6 +210,58 @@ const Canvas = (props: CanvasProps): Node => {
     context.fillStyle = backgroundColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
   }, [revision, backgroundColor]);
+
+  // Effect for drawing a predefined image on canvas.
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return;
+    }
+
+    if (!image) {
+      // Cleanup canvas.
+      const canvas: HTMLCanvasElement = canvasRef.current;
+      const context = canvas.getContext('2d');
+      context.fillStyle = backgroundColor;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
+
+    const imageWidth = image[0].length;
+    const imageHeight = image.length;
+
+    const tmpCanvas: HTMLCanvasElement = document.createElement('canvas');
+    tmpCanvas.width = imageWidth;
+    tmpCanvas.height = imageHeight;
+    const tmpCanvasContext = tmpCanvas.getContext('2d');
+
+    const imageData = tmpCanvasContext.createImageData(imageWidth, imageHeight);
+
+    // Populate image data.
+    for (let pixelIndex = 0; pixelIndex < imageData.data.length; pixelIndex += 4) {
+      const column = (pixelIndex / 4) % imageWidth;
+      const row = Math.floor(pixelIndex / (4 * imageWidth));
+      // Red.
+      // eslint-disable-next-line prefer-destructuring
+      imageData.data[pixelIndex] = image[row][column][0];
+      // Green.
+      // eslint-disable-next-line prefer-destructuring
+      imageData.data[pixelIndex + 1] = image[row][column][0];
+      // Blue.
+      // eslint-disable-next-line prefer-destructuring
+      imageData.data[pixelIndex + 2] = image[row][column][0];
+      // Alpha?
+      imageData.data[pixelIndex + 3] = 255;
+    }
+
+    tmpCanvasContext.putImageData(imageData, 0, 0);
+
+    // Resize image to canvas size.
+    const canvas: ?HTMLCanvasElement = canvasRef.current;
+    if (canvas && width && height) {
+      const context = canvas.getContext('2d');
+      context.drawImage(tmpCanvas, 0, 0, imageWidth, imageHeight, 0, 0, width, height);
+    }
+  }, [backgroundColor, image, width, height, disabled]);
 
   return (
     <canvas
