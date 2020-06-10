@@ -92,3 +92,114 @@ drwxr-xr-x  4 trekhleb  staff       128 May 18 18:00 ..
 -rw-r--r--  1 trekhleb  staff  61133971 May 20 06:46 recipes_raw_nosource_epi.json
 -rw-r--r--  1 trekhleb  staff  93702755 May 20 06:46 recipes_raw_nosource_fn.json
 ```
+
+
+```python
+def load_dataset(silent=False):
+    dataset_file_names = [
+        'recipes_raw_nosource_ar.json',
+        'recipes_raw_nosource_epi.json',
+        'recipes_raw_nosource_fn.json',
+    ]
+    
+    dataset = []
+
+    for dataset_file_name in dataset_file_names:
+        dataset_file_path = f'{cache_dir}/datasets/{dataset_file_name}'
+
+        with open(dataset_file_path) as dataset_file:
+            json_data_dict = json.load(dataset_file)
+            json_data_list = list(json_data_dict.values())
+            dict_keys = [key for key in json_data_list[0]]
+            dict_keys.sort()
+            dataset += json_data_list
+
+            if silent == False:
+                print(dataset_file_path)
+                print('===========================================')
+                print('Number of examples: ', len(json_data_list), '\n')
+                print('Example object keys:\n', dict_keys, '\n')
+                print('Example object:\n', json_data_list[0], '\n')
+                print('Required keys:\n')
+                print('  title: ', json_data_list[0]['title'], '\n')
+                print('  ingredients: ', json_data_list[0]['ingredients'], '\n')
+                print('  instructions: ', json_data_list[0]['instructions'])
+                print('\n\n')
+
+    return dataset  
+```
+
+```python
+dataset_raw = load_dataset() 
+```
+
+```
+./tmp/datasets/recipes_raw_nosource_ar.json
+===========================================
+Number of examples:  39802 
+
+Example object keys:
+ ['ingredients', 'instructions', 'picture_link', 'title'] 
+
+Example object:
+ {'title': 'Slow Cooker Chicken and Dumplings', 'ingredients': ['4 skinless, boneless chicken breast halves ADVERTISEMENT', '2 tablespoons butter ADVERTISEMENT', '2 (10.75 ounce) cans condensed cream of chicken soup ADVERTISEMENT', '1 onion, finely diced ADVERTISEMENT', '2 (10 ounce) packages refrigerated biscuit dough, torn into pieces ADVERTISEMENT', 'ADVERTISEMENT'], 'instructions': 'Place the chicken, butter, soup, and onion in a slow cooker, and fill with enough water to cover.\nCover, and cook for 5 to 6 hours on High. About 30 minutes before serving, place the torn biscuit dough in the slow cooker. Cook until the dough is no longer raw in the center.\n', 'picture_link': '55lznCYBbs2mT8BTx6BTkLhynGHzM.S'} 
+
+Required keys:
+
+  title:  Slow Cooker Chicken and Dumplings 
+
+  ingredients:  ['4 skinless, boneless chicken breast halves ADVERTISEMENT', '2 tablespoons butter ADVERTISEMENT', '2 (10.75 ounce) cans condensed cream of chicken soup ADVERTISEMENT', '1 onion, finely diced ADVERTISEMENT', '2 (10 ounce) packages refrigerated biscuit dough, torn into pieces ADVERTISEMENT', 'ADVERTISEMENT'] 
+
+  instructions:  Place the chicken, butter, soup, and onion in a slow cooker, and fill with enough water to cover.
+Cover, and cook for 5 to 6 hours on High. About 30 minutes before serving, place the torn biscuit dough in the slow cooker. Cook until the dough is no longer raw in the center.
+
+
+
+
+./tmp/datasets/recipes_raw_nosource_epi.json
+===========================================
+Number of examples:  25323 
+
+Example object keys:
+ ['ingredients', 'instructions', 'picture_link', 'title'] 
+
+Example object:
+ {'ingredients': ['12 egg whites', '12 egg yolks', '1 1/2 cups sugar', '3/4 cup rye whiskey', '12 egg whites', '3/4 cup brandy', '1/2 cup rum', '1 to 2 cups heavy cream, lightly whipped', 'Garnish: ground nutmeg'], 'picture_link': None, 'instructions': 'Beat the egg whites until stiff, gradually adding in 3/4 cup sugar. Set aside. Beat the egg yolks until they are thick and pale and add the other 3/4 cup sugar and stir in rye whiskey. Blend well. Fold the egg white mixture into the yolk mixture and add the brandy and the rum. Beat the mixture well. To serve, fold the lightly whipped heavy cream into the eggnog. (If a thinner mixture is desired, add the heavy cream unwhipped.) Sprinkle the top of the eggnog with the nutmeg to taste.\nBeat the egg whites until stiff, gradually adding in 3/4 cup sugar. Set aside. Beat the egg yolks until they are thick and pale and add the other 3/4 cup sugar and stir in rye whiskey. Blend well. Fold the egg white mixture into the yolk mixture and add the brandy and the rum. Beat the mixture well. To serve, fold the lightly whipped heavy cream into the eggnog. (If a thinner mixture is desired, add the heavy cream unwhipped.) Sprinkle the top of the eggnog with the nutmeg to taste.', 'title': 'Christmas Eggnog '} 
+
+Required keys:
+
+  title:  Christmas Eggnog  
+
+  ingredients:  ['12 egg whites', '12 egg yolks', '1 1/2 cups sugar', '3/4 cup rye whiskey', '12 egg whites', '3/4 cup brandy', '1/2 cup rum', '1 to 2 cups heavy cream, lightly whipped', 'Garnish: ground nutmeg'] 
+
+  instructions:  Beat the egg whites until stiff, gradually adding in 3/4 cup sugar. Set aside. Beat the egg yolks until they are thick and pale and add the other 3/4 cup sugar and stir in rye whiskey. Blend well. Fold the egg white mixture into the yolk mixture and add the brandy and the rum. Beat the mixture well. To serve, fold the lightly whipped heavy cream into the eggnog. (If a thinner mixture is desired, add the heavy cream unwhipped.) Sprinkle the top of the eggnog with the nutmeg to taste.
+Beat the egg whites until stiff, gradually adding in 3/4 cup sugar. Set aside. Beat the egg yolks until they are thick and pale and add the other 3/4 cup sugar and stir in rye whiskey. Blend well. Fold the egg white mixture into the yolk mixture and add the brandy and the rum. Beat the mixture well. To serve, fold the lightly whipped heavy cream into the eggnog. (If a thinner mixture is desired, add the heavy cream unwhipped.) Sprinkle the top of the eggnog with the nutmeg to taste.
+
+
+
+./tmp/datasets/recipes_raw_nosource_fn.json
+===========================================
+Number of examples:  60039 
+
+Example object keys:
+ ['ingredients', 'instructions', 'picture_link', 'title'] 
+
+Example object:
+ {'instructions': 'Toss ingredients lightly and spoon into a buttered baking dish. Top with additional crushed cracker crumbs, and brush with melted butter. Bake in a preheated at 350 degrees oven for 25 to 30 minutes or until delicately browned.', 'ingredients': ['1/2 cup celery, finely chopped', '1 small green pepper finely chopped', '1/2 cup finely sliced green onions', '1/4 cup chopped parsley', '1 pound crabmeat', '1 1/4 cups coarsely crushed cracker crumbs', '1/2 teaspoon salt', '3/4 teaspoons dry mustard', 'Dash hot sauce', '1/4 cup heavy cream', '1/2 cup melted butter'], 'title': "Grammie Hamblet's Deviled Crab", 'picture_link': None} 
+
+Required keys:
+
+  title:  Grammie Hamblet's Deviled Crab 
+
+  ingredients:  ['1/2 cup celery, finely chopped', '1 small green pepper finely chopped', '1/2 cup finely sliced green onions', '1/4 cup chopped parsley', '1 pound crabmeat', '1 1/4 cups coarsely crushed cracker crumbs', '1/2 teaspoon salt', '3/4 teaspoons dry mustard', 'Dash hot sauce', '1/4 cup heavy cream', '1/2 cup melted butter'] 
+
+  instructions:  Toss ingredients lightly and spoon into a buttered baking dish. Top with additional crushed cracker crumbs, and brush with melted butter. Bake in a preheated at 350 degrees oven for 25 to 30 minutes or until delicately browned.
+```
+
+```python
+print('Total number of raw examples: ', len(dataset_raw))
+```
+
+```
+Total number of raw examples:  125164
+```
