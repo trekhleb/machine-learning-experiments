@@ -649,3 +649,28 @@ plt.show()
 ```
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/recipes-length-2.png)
+
+```python
+# Looks like a limit of 2000 characters for the recipes will cover 80+% cases.
+# We may try to train RNN with this maximum recipe length limit.
+MAX_RECIPE_LENGTH = 2000
+```
+
+```python
+def filter_recipes_by_length(recipe_test):
+    return len(recipe_test) <= MAX_RECIPE_LENGTH 
+```
+
+```python
+dataset_filtered = [recipe_text for recipe_text in dataset_stringified if filter_recipes_by_length(recipe_text)]
+
+print('Dataset size BEFORE filtering: ', len(dataset_stringified))
+print('Dataset size AFTER filtering: ', len(dataset_filtered))
+print('Number of etiminated recipes: ', len(dataset_stringified) - len(dataset_filtered))
+```
+
+```
+Dataset size BEFORE filtering:  122938
+Dataset size AFTER filtering:  100212
+Number of etiminated recipes:  22726
+```
