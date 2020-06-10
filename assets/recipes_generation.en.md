@@ -1,5 +1,7 @@
 # 🏋🏻‍ I've trained Recurrent Neural Network to generate recipes, and it suggested me to cook 🥤 Cream Soda with 🧅 Onions
 
+# A step-by-step guide on how to generate recipes using TensorFlow and Recurrent Neural Network
+
 ## TL;DR
 
 I've trained Recurrent Neural Network (RNN) on _~100k_ recipes using [TensorFlow](https://www.tensorflow.org/). Here is what I ended up with:
