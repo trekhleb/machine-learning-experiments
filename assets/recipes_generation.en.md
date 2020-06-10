@@ -24,3 +24,32 @@ I was curious to see:
 I decided to experiment with **character-based RNN** this time. It means that I will not teach my RNN to understand words and sentences but rather to understand letters and theirs sequences.
 
 
+
+
+
+
+```python
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+import platform
+import time
+import pathlib
+import os
+import json
+import zipfile
+```
+
+@TODO: Explain why do we need these dependencies.
+
+```python
+print('Python version:', platform.python_version())
+print('Tensorflow version:', tf.__version__)
+print('Keras version:', tf.keras.__version__)
+```
+
+```
+Python version: 3.7.6
+Tensorflow version: 2.1.0
+Keras version: 2.2.4-tf
+```
