@@ -11,7 +11,7 @@ I've trained Recurrent Neural Network (RNN) on _~100k_ recipes using [TensorFlow
 
 This article contains details of model training with TensorFlow code examples (Python).
 
-![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/demp.gif)
+![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
 ## Experiment overview
 
@@ -36,7 +36,7 @@ For this experiment we will use [Tensorflow v2](https://www.tensorflow.org/) wit
 
 ⚠️ _The recipes in this notebook are generated just for fun and for learning purposes. The recipes are **not** for actual cooking!_
 
-![recipe_generation_rnn.jpg](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/cover.jpg)
+![recipe_generation_rnn.jpg](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
 
 Photo source: 🥦[home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/)
 
@@ -641,14 +641,14 @@ plt.hist(recipes_lengths, bins=50)
 plt.show()
 ```
 
-![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/recipes-length-1.png)
+![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/02-recipes-length.png)
 
 ```python
 plt.hist(recipes_lengths, range=(0, 8000), bins=50)
 plt.show()
 ```
 
-![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/recipes-length-2.png)
+![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
 ```python
 # Looks like a limit of 2000 characters for the recipes will cover 80+% cases.
@@ -674,3 +674,15 @@ Dataset size BEFORE filtering:  122938
 Dataset size AFTER filtering:  100212
 Number of etiminated recipes:  22726
 ```
+
+### Summarizing dataset parameters
+
+```python
+TOTAL_RECIPES_NUM = len(dataset_filtered)
+
+print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
+print('TOTAL_RECIPES_NUM: ', TOTAL_RECIPES_NUM)
+```
+
+    MAX_RECIPE_LENGTH:  2000
+    TOTAL_RECIPES_NUM:  100212
