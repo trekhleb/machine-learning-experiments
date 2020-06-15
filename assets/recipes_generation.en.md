@@ -1,4 +1,4 @@
-# A step-by-step guide on how to generate recipes using TensorFlow and LSTM Recurrent Neural Network
+# 🏋🏻 A step-by-step guide on how to generate recipes using TensorFlow and LSTM Recurrent Neural Network
 
 ## TL;DR
 
