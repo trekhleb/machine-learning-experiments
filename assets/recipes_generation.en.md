@@ -7,16 +7,16 @@ I've trained _LSTM_ Recurrent Neural Network on _~100k_ recipes dataset using Te
 Here you may find more examples of what I ended up with:
 
 - 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN)
-- 🏋🏻‍ [**Model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
-- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository with other experiments
+- 🏋🏻‍ [**LSTM model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
+- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository
 
-This article contains details of how the LSTM model was actually trained (on [TensorFlow 2](https://www.tensorflow.org/) and Python, using Keras API).
+This article contains details of how the LSTM model was actually trained (on [TensorFlow 2](https://www.tensorflow.org/) and Python, using [Keras API](https://www.tensorflow.org/guide/keras)).
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
 ## What our model will eventually learn
 
-For a couple of hours of training our model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
+For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
 
 Here are couple of generated recipes examples: 
 
@@ -61,19 +61,6 @@ Cannellopide Popsicles with Fiesta Salt
 ▪︎ In a small saucepan over medium heat, add butter and sugar. Stir until melted and just starting to caramelize. Remove from heat and stir in brown sugar and vanilla. Set aside to cool. In a large saucepan of boiling salted water, boil flavors and remove from heat. Drain peas and peel and discard the seeds. Add the raspberries to a large bowl and add espresso beans and stir...
 ```
 
-## Experiment overview
-
-
-
-
-
-
-In this experiment we will use character-based [Recurrent Neural Network](https://en.wikipedia.org/wiki/Recurrent_neural_network) (RNN) to generate cooking recipes. We will try to teach our RNN to generate recipe _name_, _ingredients_ and _cooking instructions_ for us.
-
-I don't expect the RNN to do a strong connection between list of ingredients and cooking instructions but I do expect RNN to learn English grammar and punctuation in couple of hours and to generate some meaningful recipe names along with real food ingredients and cooking instructions.
-
-For this experiment we will use [Tensorflow v2](https://www.tensorflow.org/) with its [Keras API](https://www.tensorflow.org/guide/keras).
-
 ⚠️ _The recipes in this notebook are generated just for fun and for learning purposes. The recipes are **not** for actual cooking!_
 
 ![recipe_generation_rnn.jpg](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
@@ -82,34 +69,54 @@ Photo source: 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of
 
 ## Exploring datasets
 
-Let's go through several available dataset and explore their pros and cons. One of the requirement I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities of each ingredient.
+Let's go through several available datasets and explore their pros and cons. One of the requirement I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities of each ingredient.
+
+Here are several cooking recipes datasets I've found:
 
 - 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) _(doesn't have ingredients proportions)_
-- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(requires registration to download)_
+- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(a lot of recipes but requires registration to download)_
 - 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) _(~20k recipes only, it would be nice to find more)_
 - 👍🏻 [**Recipe box**](https://eightportions.com/datasets/Recipes/) _(~125,000 recipes with ingredients proportions, good)_
 
+Let's try to use the "Recipe box" dataset. The number of recipes looks big enough, also it contains both ingredients and cooking instructions. It is interesting to see if RNN will be able to learn a connection between ingredients and instructions.
+
+## Setting TensorFlow/Python sandbox for training
+
+There are several options you may follow to experiment with the code in this tutorial:
+
+1. You may experiment by using [GoogleColab right in your browser](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) (no local setup is needed).
+2. You may experiment by using [Jupyter notebook in Binder right in your browser](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) (no local setup is needed)
+3. You may [setup Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally)
+
+I would suggest going with GoogleColab option since it doesn't require any local setup for you (you may experiment right in your browser), and it also provides a powerful GPU support for training that will make the model to train faster.
+
 ## Importing dependencies
 
-@TODO: Explain why do we need these dependencies.
+Let's start with importing some packages that we will use afterwards.
 
 ```python
+# Packages for training the model and working with dataset.
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
+import json
+
+# Utility/helper pacakges.
 import platform
 import time
 import pathlib
 import os
-import json
-import zipfile
 ```
+
+First, let's make sure our environment is properly set up and that we're using a _2nd_ version of Tensorflow.
 
 ```python
 print('Python version:', platform.python_version())
 print('Tensorflow version:', tf.__version__)
 print('Keras version:', tf.keras.__version__)
 ```
+
+➔ output: 
 
 ```
 Python version: 3.7.6
@@ -119,23 +126,25 @@ Keras version: 2.2.4-tf
 
 ## Loading the dataset
 
-Let's load the dataset using [tf.keras.utils.get_file](https://www.tensorflow.org/api_docs/python/tf/keras/utils/get_file). Using `get_file()` utility is convenient because it handles caching for you out of the box. It means that you will download the dataset files only once and then even if you launch the same code block once again it will use cache and the download code will be executed faster.
+Let's load the dataset using [tf.keras.utils.get_file](https://www.tensorflow.org/api_docs/python/tf/keras/utils/get_file). Using `get_file()` utility is convenient because it handles caching for you out of the box. It means that you will download the dataset files only once and then even if you launch the same code block in the notebook once again it will use cache, and the code block will be executed faster.
+
+Create cache folder if it not exists:
 
 ```python
-# Create cache folder.
-cache_dir = './tmp'
-pathlib.Path(cache_dir).mkdir(exist_ok=True)
+CACHE_DIR = './tmp'
+pathlib.Path(CACHE_DIR).mkdir(exist_ok=True)
 ```
 
+Download and unpack the dataset: 
+
 ```python
-# Download and unpack the dataset.
 dataset_file_name = 'recipes_raw.zip'
 dataset_file_origin = 'https://storage.googleapis.com/recipe-box/recipes_raw.zip'
 
 dataset_file_path = tf.keras.utils.get_file(
     fname=dataset_file_name,
     origin=dataset_file_origin,
-    cache_dir=cache_dir,
+    cache_dir=CACHE_DIR,
     extract=True,
     archive_format='zip'
 )
@@ -143,31 +152,38 @@ dataset_file_path = tf.keras.utils.get_file(
 print(dataset_file_path)
 ```
 
+Here is a path to dataset file after it has been downloaded:
+
 ```
 ./tmp/datasets/recipes_raw.zip
 ```
+
+Let's print the cache folder and see what exactly has been downloaded:
 
 ```bash
 !ls -la ./tmp/datasets/
 ```
 
+➔ output: 
+
 ```
 total 521128
-drwxr-xr-x  7 trekhleb  staff       224 May 13 18:10 .
-drwxr-xr-x  4 trekhleb  staff       128 May 18 18:00 ..
--rw-r--r--  1 trekhleb  staff     20437 May 20 06:46 LICENSE
--rw-r--r--  1 trekhleb  staff  53355492 May 13 18:10 recipes_raw.zip
--rw-r--r--  1 trekhleb  staff  49784325 May 20 06:46 recipes_raw_nosource_ar.json
--rw-r--r--  1 trekhleb  staff  61133971 May 20 06:46 recipes_raw_nosource_epi.json
--rw-r--r--  1 trekhleb  staff  93702755 May 20 06:46 recipes_raw_nosource_fn.json
+drwxr-xr-x  7        224 May 13 18:10 .
+drwxr-xr-x  4        128 May 18 18:00 ..
+-rw-r--r--  1      20437 May 20 06:46 LICENSE
+-rw-r--r--  1   53355492 May 13 18:10 recipes_raw.zip
+-rw-r--r--  1   49784325 May 20 06:46 recipes_raw_nosource_ar.json
+-rw-r--r--  1   61133971 May 20 06:46 recipes_raw_nosource_epi.json
+-rw-r--r--  1   93702755 May 20 06:46 recipes_raw_nosource_fn.json
 ```
 
-As you may see, the dataset consists of 3 files. We need to merge information from those 3 files into one dataset later.
+As you may see, the dataset consists of _3_ files. We need to merge information from those _3_ files into one dataset later.
 
-Let's download a datasets and preview examples from them.
+Let's load datasets data from `json` files and preview examples from them.
 
 ```python
 def load_dataset(silent=False):
+    # List of dataset files we want to merge.
     dataset_file_names = [
         'recipes_raw_nosource_ar.json',
         'recipes_raw_nosource_epi.json',
@@ -177,7 +193,7 @@ def load_dataset(silent=False):
     dataset = []
 
     for dataset_file_name in dataset_file_names:
-        dataset_file_path = f'{cache_dir}/datasets/{dataset_file_name}'
+        dataset_file_path = f'{CACHE_DIR}/datasets/{dataset_file_name}'
 
         with open(dataset_file_path) as dataset_file:
             json_data_dict = json.load(dataset_file)
@@ -186,6 +202,7 @@ def load_dataset(silent=False):
             dict_keys.sort()
             dataset += json_data_list
 
+            # This code blocks outputs the summary for each dataset.
             if silent == False:
                 print(dataset_file_path)
                 print('===========================================')
@@ -204,6 +221,8 @@ def load_dataset(silent=False):
 ```python
 dataset_raw = load_dataset() 
 ```
+
+➔ output:
 
 ```
 ./tmp/datasets/recipes_raw_nosource_ar.json
@@ -268,9 +287,13 @@ Required keys:
   instructions:  Toss ingredients lightly and spoon into a buttered baking dish. Top with additional crushed cracker crumbs, and brush with melted butter. Bake in a preheated at 350 degrees oven for 25 to 30 minutes or until delicately browned.
 ```
 
+Let's count the total number of examples after we merged the files:
+
 ```python
 print('Total number of raw examples: ', len(dataset_raw))
 ```
+
+➔ output: 
 
 ```
 Total number of raw examples:  125164
@@ -280,8 +303,11 @@ Total number of raw examples:  125164
 
 ### Filtering out incomplete examples
 
+It is possible that some recipes don't have some required fields (_name_, _ingredients_ or _instructions_). We need to clean our dataset from those incomplete examples.
+
+The following function will help us filter out recipes which don't have either title or ingredients or instructions:
+
 ```python
-# Filters out recipes which don't have either title or ingredients or instructions.
 def recipe_validate_required_fields(recipe):
     required_keys = ['title', 'ingredients', 'instructions']
     
@@ -298,19 +324,25 @@ def recipe_validate_required_fields(recipe):
     return True
 ```
 
+Let's do the filtering now using `recipe_validate_required_fields()` function:
+
 ```
 dataset_validated = [recipe for recipe in dataset_raw if recipe_validate_required_fields(recipe)]
 
 print('Dataset size BEFORE validation', len(dataset_raw))
 print('Dataset size AFTER validation', len(dataset_validated))
-print('Number of invalide recipes', len(dataset_raw) - len(dataset_validated))
+print('Number of invalid recipes', len(dataset_raw) - len(dataset_validated))
 ```
+
+➔ output: 
 
 ```
 Dataset size BEFORE validation 125164
 Dataset size AFTER validation 122938
-Number of invalide recipes 2226
+Number of invalid recipes 2226
 ```
+
+As you may see among `125164` recipes we had `2226` invalid ones.
 
 ### Converting recipes objects into strings
 
