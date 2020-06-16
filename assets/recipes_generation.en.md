@@ -342,7 +342,7 @@ Dataset size AFTER validation 122938
 Number of invalid recipes 2226
 ```
 
-As you may see among `125164` recipes we had `2226` invalid ones.
+As you may see among `125164` recipes we had `2226` somehow incomplete.
 
 ### Converting recipes objects into strings
 
