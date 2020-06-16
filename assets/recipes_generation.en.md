@@ -1,27 +1,69 @@
-# 🏋🏻 A step-by-step guide on how to generate recipes using TensorFlow and LSTM Recurrent Neural Network
+# Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network (a step-by-step guide)
 
 ## TL;DR
 
-I've trained Recurrent Neural Network on _~100k_ recipes dataset using [TensorFlow](https://www.tensorflow.org/) to generate recipes, and it suggested me to cook 🥤 Cream Soda with 🧅 Onions. Here are more examples of what I ended up with:
+I've trained _LSTM_ Recurrent Neural Network on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_.
 
-- 🎨 [Recipes generator demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN)
-- 🏋🏻‍ [Model training process](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
+Here you may find more examples of what I ended up with:
 
-This article contains details of model training with TensorFlow code examples (Python).
+- 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN)
+- 🏋🏻‍ [**Model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
+- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository with other experiments
+
+This article contains details of how the LSTM model was actually trained (on [TensorFlow 2](https://www.tensorflow.org/) and Python, using Keras API).
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
+## What our model will eventually learn
+
+For a couple of hours of training our model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
+
+Here are couple of generated recipes examples: 
+
+```
+📗 [NAME]
+
+Orange Club Tea Sandwich Cookies
+
+🥕 [INGREDIENTS]
+
+• 1 cup (2 sticks) unsalted butter, softened
+• 1 cup confectioners' sugar
+• 1/2 cup flaxseed meal
+• 1/2 cup shelled pumpkin seeds (pecans, blanched and sliced)
+• 2 teaspoons vanilla extract
+
+📝 [INSTRUCTIONS]
+
+▪︎ Preheat oven to 350 degrees F.
+▪︎ Combine cake mix, milk, egg and sugar in a large bowl. Stir until combined and smooth but not sticky. Using a spatula, sprinkle the dough biscuits over the bottom of the pan. Sprinkle with sugar, and spread evenly. Bake for 20 minutes. Remove from the oven and cool on a rack. To serve, add the chocolate.
+```
+
+Or another one:
+
+```
+📗 [NAME]
+
+Cannellopide Popsicles with Fiesta Salt
+
+🥕 [INGREDIENTS]
+
+• 1 cup cream
+• 1 cup sugar
+• 1 cup all-purpose flour
+• 1/2 cup finely chopped pecans
+• 1/4 cup powdered sugar
+• 1/4 teaspoon vanilla extract
+
+📝 [INSTRUCTIONS]
+
+▪︎ Preheat oven to 200 degrees F.
+▪︎ In a small saucepan over medium heat, add butter and sugar. Stir until melted and just starting to caramelize. Remove from heat and stir in brown sugar and vanilla. Set aside to cool. In a large saucepan of boiling salted water, boil flavors and remove from heat. Drain peas and peel and discard the seeds. Add the raspberries to a large bowl and add espresso beans and stir...
+```
+
 ## Experiment overview
 
-I'm a complete beginner in Machine Learning 👶🏻. Creating a _Recipe Generator_ was yet another attempt to play around with _Recurrent Neural Networks_ in my [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository and to learn how those RNNs are implemented in TensorFlow in particular.
 
-I was curious to see:
-
-- what weird recipes names and ingredients combination the RNN would suggest
-- will it learn that each recipe consists of several blocks (name, ingredients, cooking instructions)
-- will it learn English grammar and punctuation from scratch just for several hours of training (I wish I had this skill)
-
-I decided to experiment with **character-based RNN** this time. It means that I will not teach my RNN to understand words and sentences but rather to understand letters and theirs sequences.
 
 
 
