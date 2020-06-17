@@ -848,15 +848,21 @@ recipe_sequence_to_string(dataset_vectorized_padded[0])
 
 ### Create TensorFlow dataset 
 
+Up until now we were working with the dataset as with NumPy array. It will be more convenient during the training process if we will convert a dataset NumPy array to a [TensorFlow dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset). It will give us an ability to use such helpers functions as `batch()`, `shuffle()`, `repeat()`, `prefecth()` etc.:
+
 ```python
 dataset = tf.data.Dataset.from_tensor_slices(dataset_vectorized_padded)
 
 print(dataset)
 ```
 
+➔ output:
+
 ```
 <TensorSliceDataset shapes: (2001,), types: tf.int32>
 ```
+
+Let's see what the first recipe in the dataset looks like by using a TensorFlow dataset API this time:
 
 ```python
 for recipe in dataset.take(1):
@@ -864,6 +870,8 @@ for recipe in dataset.take(1):
     print('Stringified recipe:\n')
     recipe_sequence_to_string(recipe.numpy())
 ```
+
+➔ output:
 
 ```
 Raw recipe:
@@ -890,7 +898,7 @@ Stringified recipe:
 
 ### Split examples on `input` and `target` texts
 
-For each sequence, duplicate and shift it to form the input and target text. For example, say sequence_length is 4 and our text is `Hello`. The input sequence would be `Hell`, and the target sequence `ello`.
+For each sequence we need to duplicate and shift it to form the `input` and `target` text. For example, say the `sequence_length` is `4` and our text is `Hello`. The input sequence would be `Hell`, and the target sequence `ello`.
 
 ```python
 def split_input_target(recipe):
@@ -898,17 +906,19 @@ def split_input_target(recipe):
     target_text = recipe[1:]
     
     return input_text, target_text
-```
 
-```python
 dataset_targeted = dataset.map(split_input_target)
 
 print(dataset_targeted)
 ```
 
+➔ output:
+
 ```
 <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
 ```
+
+You may notice from the line above, that now each example in the dataset consists of two tuples: input and target one. Let's print an example:
 
 ```python
 for input_example, target_example in dataset_targeted.take(1):
@@ -923,6 +933,8 @@ for input_example, target_example in dataset_targeted.take(1):
     print('Target: ', repr(''.join(target_stringified)))
 ```
 
+➔ output:
+
 ```
 Input sequence size: 2000
 Target sequence size: 2000
@@ -931,7 +943,7 @@ Input:   '📗   S l o w   C o o k e r   C h i c k e n   a n d   D u m p l i n g
 Target:  '  S l o w   C o o k e r   C h i c k e n   a n d   D u m p l i n g s \n \n 🥕 \n \n •   4   s k i n l e s'
 ```
 
-Each index of these vectors are processed as one time step. For the input at time step 0, the model receives the index for `[` and tries to predict the index for `T` as the next character. At the next time-step, it does the same thing but the RNN considers the previous step context in addition to the current input character.
+Each index of these vectors are processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
 
 ```python
 for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_example[:10])):
@@ -939,6 +951,8 @@ for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_examp
     print('  input: {} ({:s})'.format(input_idx, repr(tokenizer.sequences_to_texts([[input_idx.numpy()]])[0])))
     print('  expected output: {} ({:s})'.format(target_idx, repr(tokenizer.sequences_to_texts([[target_idx.numpy()]])[0])))
 ```
+
+➔ output:
 
 ```
 Step  1
@@ -975,9 +989,13 @@ Step 10
 
 ### Split up the dataset into batches
 
+We have `~100k` recipes in the dataset, and each recipe has two `2000` characters long tuples.
+
 ```python
 print(dataset_targeted)
 ```
+
+➔ output:
 
 ```
 <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
@@ -989,18 +1007,19 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
+➔ output:
+
 ```
 TOTAL_RECIPES_NUM:  100212
 MAX_RECIPE_LENGTH:  2000
 VOCABULARY_SIZE:  176
 ```
 
+If we will feed the complete dataset during the training process to the model and then will try to do a back-propagation for all examples at once we might run out of memory and each training epoch may take too long to execute. To avoid the situation like this we need to split our dataset into batches.
+
 ```python
 # Batch size.
 BATCH_SIZE = 64
-
-if DEBUG:
-    BATCH_SIZE = DEBUG_EXAMPLES
 
 # Buffer size to shuffle the dataset (TF data is designed to work
 # with possibly infinite sequences, so it doesn't attempt to shuffle
@@ -1008,27 +1027,21 @@ if DEBUG:
 # which it shuffles elements).
 SHUFFLE_BUFFER_SIZE = 1000
 
-if DEBUG:
-    SHUFFLE_BUFFER_SIZE = 1
-```
-
-```python
-if DEBUG:
-    dataset_train = dataset_targeted \
-        .repeat() \
-        .batch(BATCH_SIZE, drop_remainder=True)
-else:
-    dataset_train = dataset_targeted \
-      .shuffle(SHUFFLE_BUFFER_SIZE) \
-      .batch(BATCH_SIZE, drop_remainder=True) \
-      .repeat()
+dataset_train = dataset_targeted \
+  .shuffle(SHUFFLE_BUFFER_SIZE) \
+  .batch(BATCH_SIZE, drop_remainder=True) \
+  .repeat()
 
 print(dataset_train)
 ```
 
+➔ output:
+
 ```
 <RepeatDataset shapes: ((64, 2000), (64, 2000)), types: (tf.int32, tf.int32)>
 ```
+
+From the line above you may notice that our dataset now consists of the same two `2000` characters long tuples but now they are grouped in the batches by `64`.
 
 ```python
 for input_text, target_text in dataset_train.take(1):
@@ -1036,6 +1049,8 @@ for input_text, target_text in dataset_train.take(1):
     print()
     print('1st batch: target_text:', target_text)
 ```
+
+➔ output:
 
 ```
 1st batch: input_text: tf.Tensor(
@@ -1059,25 +1074,26 @@ for input_text, target_text in dataset_train.take(1):
 
 ## Build the model
 
-Use [tf.keras.Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) to define the model. For this experiment we will use the following layer types:
+We will use [tf.keras.Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) to define the model. For this experiment we will use the following layer types:
 
-- [tf.keras.layers.Embedding](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding): The input layer. A trainable lookup table that will map the numbers of each character to a vector with `embedding_dim` dimensions;
-- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM): A type of RNN with size units=rnn_units (You can also use a GRU layer here.)
-- [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense): The output layer, with vocab_size outputs.
+- [tf.keras.layers.Embedding](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding) - the input layer (a trainable lookup table that will map the numbers of each character to a vector with `embedding_dim` dimensions),
+- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - a type of RNN with size units=rnn_units (you can also use a [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU) layer here),
+- [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense) - the output layer, with `VOCABULARY_SIZE` outputs.
+
+### Figuring out how the Embedding Layer works
+
+Let's do a quick detour and see how Embedding Layer works. It takes several char indices sequences (batch) as an input. It encodes every character of every sequence to a vector of `tmp_embedding_size` length.
 
 ```python
-# Let's do a quick detour and see how Embeding layer works.
-# It takes several char indices sequences (batch) as an input.
-# It encodes every character of every sequence to a vector of tmp_embeding_size length.
 tmp_vocab_size = 10
-tmp_embeding_size = 5
+tmp_embedding_size = 5
 tmp_input_length = 8
 tmp_batch_size = 2
 
 tmp_model = tf.keras.models.Sequential()
 tmp_model.add(tf.keras.layers.Embedding(
   input_dim=tmp_vocab_size,
-  output_dim=tmp_embeding_size,
+  output_dim=tmp_embedding_size,
   input_length=tmp_input_length
 ))
 # The model will take as input an integer matrix of size (batch, input_length).
@@ -1099,6 +1115,8 @@ print('tmp_output_array shape:', tmp_output_array.shape)
 print('tmp_output_array:')
 print(tmp_output_array)
 ```
+
+➔ output:
 
 ```
 tmp_input_array shape: (2, 8)
@@ -1127,21 +1145,12 @@ tmp_output_array:
   [-0.02229502 -0.02800617 -0.0120693  -0.01681594 -0.00650246]]]
 ```
 
-### Model 1
+### LSTM Model
+
+Let's assemble the model:
 
 ```python
-# Length of the vocabulary in chars.
-vocab_size = VOCABULARY_SIZE
-
-# The embedding dimension.
-embedding_dim = 256
-
-# Number of RNN units.
-rnn_units = 1024
-```
-
-```python
-def build_model_1(vocab_size, embedding_dim, rnn_units, batch_size):
+def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
     model = tf.keras.models.Sequential()
 
     model.add(tf.keras.layers.Embedding(
@@ -1160,13 +1169,18 @@ def build_model_1(vocab_size, embedding_dim, rnn_units, batch_size):
     model.add(tf.keras.layers.Dense(vocab_size))
     
     return model
+
+model = build_model(
+  vocab_size=VOCABULARY_SIZE,
+  embedding_dim=256,
+  rnn_units=1024,
+  batch_size=BATCH_SIZE
+)
+
+model.summary()
 ```
 
-```python
-model_1 = build_model_1(vocab_size, embedding_dim, rnn_units, BATCH_SIZE)
-
-model_1.summary()
-```
+➔ output:
 
 ```
 Model: "sequential_13"
@@ -1185,6 +1199,8 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 
+Let's visualize the model:
+
 ```python
 tf.keras.utils.plot_model(
     model_1,
@@ -1194,6 +1210,8 @@ tf.keras.utils.plot_model(
 )
 ```
 
+➔ output:
+
 ![Model architecture](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/04-model.png)
 
 For each character the model looks up the embedding, runs the LSTM one time-step with the embedding as input, and applies the dense layer to generate logits predicting the log-likelihood of the next character:
@@ -1202,7 +1220,9 @@ For each character the model looks up the embedding, runs the LSTM one time-step
 
 Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
 
-## Trying the model
+The picture above illustrates GRU network, but you may easily replace GRU with LSTM.
+
+## Trying the model before training
 
 ```python
 for input_example_batch, target_example_batch in dataset_train.take(1):
