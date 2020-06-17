@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-I've trained _LSTM_ Recurrent Neural Network on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_.
+I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_.
 
 Here you may find more examples of what I ended up with:
 
@@ -536,30 +536,34 @@ plt.show()
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
+Looks like a limit of `2000` characters for the recipes will cover `80+%` of the cases. We may try to train RNN with this maximum recipe length limit.
+
 ```python
-# Looks like a limit of 2000 characters for the recipes will cover 80+% cases.
-# We may try to train RNN with this maximum recipe length limit.
 MAX_RECIPE_LENGTH = 2000
 ```
+
+Therefore, let's filter out all the recipes that are longer than `MAX_RECIPE_LENGTH`:
 
 ```python
 def filter_recipes_by_length(recipe_test):
     return len(recipe_test) <= MAX_RECIPE_LENGTH 
-```
 
-```python
 dataset_filtered = [recipe_text for recipe_text in dataset_stringified if filter_recipes_by_length(recipe_text)]
 
 print('Dataset size BEFORE filtering: ', len(dataset_stringified))
 print('Dataset size AFTER filtering: ', len(dataset_filtered))
-print('Number of etiminated recipes: ', len(dataset_stringified) - len(dataset_filtered))
+print('Number of eliminated recipes: ', len(dataset_stringified) - len(dataset_filtered))
 ```
+
+➔ output: 
 
 ```
 Dataset size BEFORE filtering:  122938
 Dataset size AFTER filtering:  100212
-Number of etiminated recipes:  22726
+Number of eliminated recipes:  22726
 ```
+
+We lost `22726` recipes but now the dataset looks more complete and uniform.
 
 ### Summarizing dataset parameters
 
@@ -570,6 +574,8 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('TOTAL_RECIPES_NUM: ', TOTAL_RECIPES_NUM)
 ```
 
+➔ output: 
+
 ```
 MAX_RECIPE_LENGTH:  2000
 TOTAL_RECIPES_NUM:  100212
@@ -577,34 +583,35 @@ TOTAL_RECIPES_NUM:  100212
 
 ## Creating vocabulary
 
+Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipes texts to numbers.
+
+In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network learn _"what letter should go after the letter "o""_ concept (as opposed to learning a _"what word should go after the word "orange""_ concept).
+
+You may find more details about character-level RNNs explanation in the following article by Andrej Karpathy: [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+
 To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer)
 
-```python
-# Indicator of the end of the recipe.
-STOP_SIGN = '␣'
-```
+We also need to come with some unique character that will be like a _stop-character_ and will indicate the end of a recipe. We need it for recipes generation afterwards since without this stop-character we won't know where is the end of a recipe that we're generating.
 
 ```python
+STOP_SIGN = '␣'
+
 tokenizer = tf.keras.preprocessing.text.Tokenizer(
     char_level=True,
     filters='',
     lower=False,
     split=''
 )
-```
 
-```python
 # Stop word is not a part of recipes, but tokenizer must know about it as well.
 tokenizer.fit_on_texts([STOP_SIGN])
-```
 
-```python
 tokenizer.fit_on_texts(dataset_filtered)
-```
 
-```python
 tokenizer.get_config()
 ```
+
+➔ output: 
 
 ```
 {'num_words': None,
@@ -621,22 +628,28 @@ tokenizer.get_config()
  'word_index': '{" ": 1, "e": 2, "a": 3, "t": 4, "o": 5, "n": 6, "i": 7, "r": 8, "s": 9, "l": 10, "d": 11, "h": 12, "c": 13, "u": 14, "p": 15, "\\n": 16, "m": 17, "g": 18, "b": 19, ",": 20, ".": 21, "f": 22, "w": 23, "\\u2022": 24, "k": 25, "1": 26, "v": 27, "y": 28, "2": 29, "/": 30, "\\u25aa": 31, "\\ufe0e": 32, "S": 33, "4": 34, "C": 35, "-": 36, "3": 37, "x": 38, "P": 39, "5": 40, "0": 41, "(": 42, ")": 43, "A": 44, "B": 45, "z": 46, "j": 47, "F": 48, "T": 49, "R": 50, "\\ud83d\\udcd7": 51, "\\ud83e\\udd55": 52, "\\ud83d\\udcdd": 53, "I": 54, "M": 55, ";": 56, "q": 57, "D": 58, "W": 59, "8": 60, "G": 61, "6": 62, "L": 63, "H": 64, ":": 65, "7": 66, "O": 67, "\'": 68, "E": 69, "K": 70, "9": 71, "U": 72, "N": 73, "V": 74, "J": 75, "\\u00ae": 76, "\\u00b0": 77, "\\u00e9": 78, "\\"": 79, "Y": 80, "Q": 81, "*": 82, "!": 83, "Z": 84, "\\u2013": 85, "&": 86, "%": 87, "\\u00f1": 88, "\\u00e8": 89, "\\u2122": 90, "\\u00ee": 91, "X": 92, "?": 93, "\\u00bf": 94, "\\u2014": 95, "\\u00e7": 96, "#": 97, "\\u00bd": 98, "\\u00ed": 99, "=": 100, "\\u2019": 101, "\\u00e2": 102, "\\u00a9": 103, "\\u00bc": 104, "+": 105, ">": 106, "$": 107, "<": 108, "\\u00e1": 109, "\\u00f3": 110, "\\u00fa": 111, "\\u00ef": 112, "\\u00c9": 113, "\\u00fb": 114, "]": 115, "[": 116, "\\u00fc": 117, "\\u00ea": 118, "\\u00e0": 119, "_": 120, "\\u00ad": 121, "\\u00be": 122, "\\u201a": 123, "\\ufffd": 124, "\\u00ba": 125, "\\u2044": 126, "\\u00e4": 127, "\\u00da": 128, "\\u00f9": 129, "\\u0301": 130, "}": 131, "\\u00f6": 132, "{": 133, "\\u00ec": 134, "\\u00f4": 135, "\\u0096": 136, "\\u201d": 137, "\\u00d7": 138, "\\u02da": 139, "\\u00bb": 140, "@": 141, "\\u00a7": 142, "\\\\": 143, "\\u25ca": 144, "\\u2031": 145, "\\u201c": 146, "\\u2027": 147, "\\u202d": 148, "\\u215b": 149, "\\u00e5": 150, "\\ufb02": 151, "`": 152, "\\u00c1": 153, "\\u00eb": 154, "\\u0097": 155, "\\u001a": 156, "\\u00f8": 157, "\\u2153": 158, "|": 159, "\\u01b0": 160, "\\u0092": 161, "\\u00b4": 162, "\\u2012": 163, "\\u00c2": 164, "\\u2423": 165, "\\u00a4": 166, "\\u201f": 167, "\\u00a0": 168, "\\u01a1": 169, "\\u0103": 170, "\\u0300": 171, "\\u215e": 172, "\\u20ac": 173, "~": 174, "\\u0095": 175}'}
 ```
 
+To get a full size of a vocabulary we need to add `+1` to the number of already registered characters because [`0`-index is a reserved index that won't be assigned to any word](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer).
+
 ```python
-# Adding +1 to take into account a special unassigned 0 index.
-# @see: https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer
 VOCABULARY_SIZE = len(tokenizer.word_counts) + 1
 
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
+➔ output: 
+
 ```
 VOCABULARY_SIZE:  176
 ```
+
+Let's play around with tokenizer dictionaries to see how we may convert characters to indices and vice-versa:
 
 ```python
 print(tokenizer.index_word[5])
 print(tokenizer.index_word[20])
 ```
+
+➔ output: 
 
 ```
 o
@@ -647,25 +660,34 @@ o
 tokenizer.word_index['r']
 ```
 
+➔ output: 
+
 ```
 8
 ```
 
+To illustrate what kind of characters form all the recipes in our dataset we may print all of them as an array:
+
 ```python
-# For demo application we need to have an array of characters as vocabulary.
-js_vocabulary = tokenizer.sequences_to_texts([[word_index] for word_index in range(VOCABULARY_SIZE)])
-print([char for char in js_vocabulary])
+array_vocabulary = tokenizer.sequences_to_texts([[word_index] for word_index in range(VOCABULARY_SIZE)])
+print([char for char in array_vocabulary])
 ```
+
+➔ output:
 
 ```
 ['', ' ', 'e', 'a', 't', 'o', 'n', 'i', 'r', 's', 'l', 'd', 'h', 'c', 'u', 'p', '\n', 'm', 'g', 'b', ',', '.', 'f', 'w', '•', 'k', '1', 'v', 'y', '2', '/', '▪', '︎', 'S', '4', 'C', '-', '3', 'x', 'P', '5', '0', '(', ')', 'A', 'B', 'z', 'j', 'F', 'T', 'R', '📗', '🥕', '📝', 'I', 'M', ';', 'q', 'D', 'W', '8', 'G', '6', 'L', 'H', ':', '7', 'O', "'", 'E', 'K', '9', 'U', 'N', 'V', 'J', '®', '°', 'é', '"', 'Y', 'Q', '*', '!', 'Z', '–', '&', '%', 'ñ', 'è', '™', 'î', 'X', '?', '¿', '—', 'ç', '#', '½', 'í', '=', '’', 'â', '©', '¼', '+', '>', '$', '<', 'á', 'ó', 'ú', 'ï', 'É', 'û', ']', '[', 'ü', 'ê', 'à', '_', '\xad', '¾', '‚', '�', 'º', '⁄', 'ä', 'Ú', 'ù', '́', '}', 'ö', '{', 'ì', 'ô', '\x96', '”', '×', '˚', '»', '@', '§', '\\', '◊', '‱', '“', '‧', '\u202d', '⅛', 'å', 'ﬂ', '`', 'Á', 'ë', '\x97', '\x1a', 'ø', '⅓', '|', 'ư', '\x92', '´', '‒', 'Â', '␣', '¤', '‟', '\xa0', 'ơ', 'ă', '̀', '⅞', '€', '~', '\x95']
 ```
 
+These are all the characters our RNN model will work with. It will try to learn how to assemble these characters into sequences that will look like recipes.
+
+Let's see how we may use `tokenizer` functions to convert text to indices:
+
 ```python
-# Test proper conversion from text to indices.
-# This is needed for debugging a demo app.
 tokenizer.texts_to_sequences(['📗 yes'])
 ```
+
+➔ output:
 
 ```
 [[51, 1, 28, 2, 9]]
@@ -676,45 +698,40 @@ tokenizer.texts_to_sequences(['📗 yes'])
 Now, once we have a vocabulary (`character --> code` and `code --> character` relations) we may convert the set of recipes from text to numbers (RNN works with numbers as an input and not with the texts).
 
 ```python
-def recipe_sequence_to_string(recipe_sequence):
-    recipe_stringified = tokenizer.sequences_to_texts([recipe_sequence])[0]
-    recipe_stringified = recipe_stringified.replace('   ', '_').replace(' ', '').replace('_', ' ')
-    print(recipe_stringified)
-```
-
-```python
 dataset_vectorized = tokenizer.texts_to_sequences(dataset_filtered)
-```
 
-```python
 print('Vectorized dataset size', len(dataset_vectorized))
 ```
+
+➔ output:
 
 ```
 Vectorized dataset size 100212
 ```
 
+This is how the beginning of the first vectorized recipe looks like:
+
 ```python
 print(dataset_vectorized[0][:10], '...')
 ```
+
+➔ output:
 
 ```
 [51, 1, 33, 10, 5, 23, 1, 35, 5, 5] ...
 ```
 
-```python
-max_index_example = np.max(dataset_vectorized)
-
-print('max_index_example: ', max_index_example)
-```
-
-```
-max_index_example:  [51, 1, 97, 26, 1, 39, 2, 3, 1, 33, 3, 10, 3, 11, 1, 55, 5, 9, 4, 1, 50, 2, 57, 14, 2, 9, 4, 2, 11, 83, 16, 16, 52, 16, 16, 24, 1, 29, 1, 42, 26, 62, 1, 5, 14, 6, 13, 2, 43, 1, 15, 3, 13, 25, 3, 18, 2, 9, 1, 22, 8, 5, 46, 2, 6, 1, 15, 2, 4, 7, 4, 2, 1, 15, 2, 3, 9, 1, 16, 24, 1, 62, 1, 5, 14, 6, 13, 2, 9, 1, 9, 17, 5, 25, 2, 36, 22, 10, 3, 27, 5, 8, 2, 11, 1, 3, 10, 17, 5, 6, 11, 9, 20, 1, 22, 7, 6, 2, 10, 28, 1, 13, 12, 5, 15, 15, 2, 11, 1, 16, 24, 1, 26, 1, 5, 6, 7, 5, 6, 20, 1, 22, 7, 6, 2, 10, 28, 1, 13, 12, 5, 15, 15, 2, 11, 1, 16, 24, 1, 26, 1, 13, 14, 15, 1, 17, 3, 28, 5, 6, 6, 3, 7, 9, 2, 20, 1, 5, 8, 1, 17, 5, 8, 2, 1, 4, 5, 1, 4, 3, 9, 4, 2, 1, 16, 24, 1, 18, 8, 5, 14, 6, 11, 1, 19, 10, 3, 13, 25, 1, 15, 2, 15, 15, 2, 8, 1, 4, 5, 1, 4, 3, 9, 4, 2, 1, 16, 16, 53, 16, 16, 31, 32, 1, 39, 10, 3, 13, 2, 1, 22, 8, 5, 46, 2, 6, 1, 15, 2, 3, 9, 1, 7, 6, 1, 3, 1, 13, 5, 10, 3, 6, 11, 2, 8, 56, 1, 8, 7, 6, 9, 2, 1, 14, 6, 11, 2, 8, 1, 13, 5, 10, 11, 1, 23, 3, 4, 2, 8, 1, 14, 6, 4, 7, 10, 1, 4, 12, 3, 23, 2, 11, 21, 1, 58, 8, 3, 7, 6, 1, 3, 6, 11, 1, 4, 8, 3, 6, 9, 22, 2, 8, 1, 4, 5, 1, 3, 1, 10, 3, 8, 18, 2, 1, 19, 5, 23, 10, 21, 1, 44, 11, 11, 1, 3, 10, 17, 5, 6, 11, 9, 1, 3, 6, 11, 1, 5, 6, 7, 5, 6, 9, 56, 1, 17, 7, 38, 1, 23, 2, 10, 10, 21, 1, 48, 5, 10, 11, 1, 17, 3, 28, 5, 6, 6, 3, 7, 9, 2, 1, 3, 6, 11, 1, 19, 10, 3, 13, 25, 1, 15, 2, 15, 15, 2, 8, 1, 7, 6, 4, 5, 1, 15, 2, 3, 1, 17, 7, 38, 4, 14, 8, 2, 1, 14, 6, 4, 7, 10, 1, 2, 27, 2, 6, 10, 28, 1, 13, 5, 3, 4, 2, 11, 21, 1, 35, 5, 27, 2, 8, 1, 3, 6, 11, 1, 8, 2, 22, 8, 7, 18, 2, 8, 3, 4, 2, 1, 14, 6, 4, 7, 10, 1, 9, 2, 8, 27, 7, 6, 18, 21, 16]
-```
+Let's see how can we convert vectorized recipe back to text representation:
 
 ```python
+def recipe_sequence_to_string(recipe_sequence):
+    recipe_stringified = tokenizer.sequences_to_texts([recipe_sequence])[0]
+    print(recipe_stringified)
+
 recipe_sequence_to_string(dataset_vectorized[0])
 ```
+
+➔ output:
 
 ```
 📗 Slow Cooker Chicken and Dumplings
@@ -737,10 +754,14 @@ recipe_sequence_to_string(dataset_vectorized[0])
 
 We need all recipes to have the same length for training. To do that we'll use [tf.keras.preprocessing.sequence.pad_sequences](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/sequence/pad_sequences) utility to add a stop word to the end of each recipe and to make them have the same length.
 
+Let's check the recipes lengths:
+
 ```python
 for recipe_index, recipe in enumerate(dataset_vectorized[:10]):
     print('Recipe #{} length: {}'.format(recipe_index + 1, len(recipe)))
 ```
+
+➔ output:
 
 ```
 Recipe #1 length: 546
@@ -755,19 +776,21 @@ Recipe #9 length: 1264
 Recipe #10 length: 854
 ```
 
+Let's pad all recipes with a `STOP_SIGN`:
+
 ```python
 dataset_vectorized_padded_without_stops = tf.keras.preprocessing.sequence.pad_sequences(
     dataset_vectorized,
     padding='post',
     truncating='post',
-    # We use -1 here and +1 in the next step to make sure that all recipes will have at least 1 stops
-    # sign at the end, since each sequence will be shifted and truncated afterwards (to generate X and Y sequences).
+    # We use -1 here and +1 in the next step to make sure
+    # that all recipes will have at least 1 stops sign at the end,
+    # since each sequence will be shifted and truncated afterwards
+    # (to generate X and Y sequences).
     maxlen=MAX_RECIPE_LENGTH-1,
     value=tokenizer.texts_to_sequences([STOP_SIGN])[0]
 )
-```
 
-```python
 dataset_vectorized_padded = tf.keras.preprocessing.sequence.pad_sequences(
     dataset_vectorized_padded_without_stops,
     padding='post',
@@ -775,12 +798,12 @@ dataset_vectorized_padded = tf.keras.preprocessing.sequence.pad_sequences(
     maxlen=MAX_RECIPE_LENGTH+1,
     value=tokenizer.texts_to_sequences([STOP_SIGN])[0]
 )
-```
 
-```python
 for recipe_index, recipe in enumerate(dataset_vectorized_padded[:10]):
     print('Recipe #{} length: {}'.format(recipe_index, len(recipe)))
 ```
+
+➔ output:
 
 ```
 Recipe #0 length: 2001
@@ -795,9 +818,15 @@ Recipe #8 length: 2001
 Recipe #9 length: 2001
 ```
 
+After the padding all recipes in the dataset now have the same length and RNN will also be able to learn where each recipe stops (by observing a presence of a `STOP_SIGN`).
+
+Here is an example of how a first recipe looks like after the padding.
+
 ```python
 recipe_sequence_to_string(dataset_vectorized_padded[0])
 ```
+
+➔ output:
 
 ```
 📗 Slow Cooker Chicken and Dumplings
@@ -815,16 +844,6 @@ recipe_sequence_to_string(dataset_vectorized_padded[0])
 ▪︎ Place the chicken, butter, soup, and onion in a slow cooker, and fill with enough water to cover.
 ▪︎ Cover, and cook for 5 to 6 hours on High. About 30 minutes before serving, place the torn biscuit dough in the slow cooker. Cook until the dough is no longer raw in the center.
 ␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣
-```
-
-```python
-max_index_example = np.max(dataset_vectorized_padded)
-
-print('max_index_example: ', max_index_example)
-```
-
-```
-max_index_example:  175
 ```
 
 ### Create TensorFlow dataset 
