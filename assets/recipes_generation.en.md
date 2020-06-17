@@ -1303,7 +1303,7 @@ tf.Tensor(
 
 For each input character the `example_batch_predictions` array contains a vector of probabilities of what the next character might be. If probability at position `15` in that vector is, lets say, `0.3` and the probability at position `25` is `1.1` it means that we should better pick the character with the index `25` as next following character.
 
-Since we want our network to generate different recipes (even for the same input), we can't just pick the maximum probability value. In this case we will end up with the same recipe being predicted by the network over and over again. What we will do instead is we will draw **samples** from predictions (like the one printed above) by using [tf.random.categorical()](https://www.tensorflow.org/api_docs/python/tf/random/categorical) function. It will bring some fuzziness to the network. For example, let's say we have character `H` as an input, then, by sampling from categorical distribution, our network may predict not only the word `He`, but also `Hello`, and `Hi` etc.
+Since we want our network to generate different recipes (even for the same input), we can't just pick the maximum probability value. In this case we will end up with the same recipe being predicted by the network over and over again. What we will do instead is drawing **samples** from predictions (like the one printed above) by using [tf.random.categorical()](https://www.tensorflow.org/api_docs/python/tf/random/categorical) function. It will bring some fuzziness to the network. For example, let's say we have character `H` as an input, then, by sampling from categorical distribution, our network may predict not only the word `He`, but also words `Hello`, and `Hi` etc.
 
 ### Understanding how `tf.random.categorical` works
 
@@ -1334,24 +1334,12 @@ tf.Tensor([[2 1 2 2 1]], shape=(1, 5), dtype=int64)
 
 ### Sampling from LSTM predictions
 
-
-
 ```python
 sampled_indices = tf.random.categorical(
     logits=example_batch_predictions[0],
     num_samples=1
 )
 
-print(sampled_indices.shape)
-```
-
-➔ output:
-
-```
-TensorShape([2000, 1])
-```
-
-```python
 sampled_indices = tf.squeeze(
     input=sampled_indices,
     axis=-1
@@ -1360,13 +1348,19 @@ sampled_indices = tf.squeeze(
 sampled_indices.shape
 ```
 
+➔ output:
+
 ```
 (2000,)
 ```
 
+Let's see some sampled predictions for the first `100` chars of the recipe:
+
 ```python
 sampled_indices[:100]
 ```
+
+➔ output:
 
 ```
 array([ 64,  21,  91, 126, 170,  42, 146,  54, 125, 164,  60, 171,   9,
@@ -1379,21 +1373,27 @@ array([ 64,  21,  91, 126, 170,  42, 146,  54, 125, 164,  60, 171,   9,
        160, 158, 119, 173,  50,  78,  45, 121, 118])
 ```
 
+We may see now what our untrained model actually predicts:
+
 ```python
 print('Input:\n', repr(''.join(tokenizer.sequences_to_texts([input_example_batch[0].numpy()[:50]]))))
 print()
 print('Next char prediction:\n', repr(''.join(tokenizer.sequences_to_texts([sampled_indices[:50]]))))
 ```
 
-    Input:
-     '📗   R e s t a u r a n t - S t y l e   C o l e s l a w   I \n \n 🥕 \n \n •   1   ( 1 6   o u n c e )   p'
-    
-    Next char prediction:
-     'H . î ⁄ ă ( “ I º Â 8 ̀ s % ù y “ © 0 ’ ‧ a ì ̀ r ă + o A € o + m × ␣ ︎ ñ ç ‱ ! S : ⅞ ´ r 2 ‧ D Q Á'
+➔ output:
 
+```
+Input:
+ '📗   R e s t a u r a n t - S t y l e   C o l e s l a w   I \n \n 🥕 \n \n •   1   ( 1 6   o u n c e )   p'
+
+Next char prediction:
+ 'H . î ⁄ ă ( “ I º Â 8 ̀ s % ù y “ © 0 ’ ‧ a ì ̀ r ă + o A € o + m × ␣ ︎ ñ ç ‱ ! S : ⅞ ´ r 2 ‧ D Q Á'
+```
+
+As you may see, the model suggests some meaningless predictions, but this is because it wasn't trained yet.
 
 ### Trying the model with variable input
-
 
 ```python
 for input_example_batch_custom, target_example_batch_custom in dataset_train.take(1):
