@@ -959,7 +959,7 @@ _<small>➔ output:</small>_
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
 > ```
 
-You may notice from the line above, that now each example in the dataset consists of two tuples: input and target one. Let's print an example:
+You may notice from the line above, that now each example in the dataset consists of two tuples: input and target. Let's print an example:
 
 ```python
 for input_example, target_example in dataset_targeted.take(1):
