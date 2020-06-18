@@ -562,7 +562,7 @@ _<small>➔ output:</small>_
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
-Looks like a limit of `2000` characters for the recipes will cover `80+%` of the cases. We may try to train RNN with this maximum recipe length limit.
+Looks like a limit of `2000` characters for the recipes will cover most of the cases. We may try to train RNN with this maximum recipe length limit.
 
 ```python
 MAX_RECIPE_LENGTH = 2000
