@@ -1651,8 +1651,6 @@ def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
     return (padded_start_string + ''.join(text_generated))
 ```
 
-### Model evolution
-
 ### Figuring out proper temperature for prediction loop
 
 Now, let's use `generate_text()` to actually generate some new recipes. The `generate_combinations()` function goes trough all possible combinations of the first recipe letters and temperatures. It generates `56` different combinations to help us figure out how model performs and what temperature is better to use.
