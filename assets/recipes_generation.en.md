@@ -536,7 +536,7 @@ _<small>➔ output:</small>_
 
 ### Filtering out large recipes
 
-Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipes sequences to RNN. We need to find out what recipe length will cover most of the recipes use-cases and at the same time we want to keep it as small as possible for training performance.
+Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipes sequences to RNN. We need to find out what recipe length will cover most of the recipes use-cases and at the same time we want to keep it as small as possible to speed up training process.
 
 ```python
 recipes_lengths = []
