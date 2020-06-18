@@ -38,8 +38,21 @@ const RecipeGenerationRNN = (): Node => {
     return text;
   };
 
+  const removeDuplicateIngredients = (recipe: string): string => {
+    const ingredientsSeparator = '•';
+
+    return Object.keys(recipe
+      .split(ingredientsSeparator)
+      .reduce((map: Object, str: string) => {
+        // eslint-disable-next-line no-param-reassign
+        map[str] = true;
+        return map;
+      }, {}))
+      .join(ingredientsSeparator);
+  };
+
   const preProcessOutput = (generatedText: string): string => {
-    let preProcessedText = generatedText;
+    let preProcessedText = removeDuplicateIngredients(generatedText);
     preProcessedText = preProcessedText.replace(new RegExp(stopSign, 'g'), '');
     preProcessedText = preProcessedText.replace(new RegExp(stopWordTitle), '📗 [NAME]\n\n');
     preProcessedText = preProcessedText.replace(new RegExp(stopWordInstructions), '\n📝 [INSTRUCTIONS]\n\n');
