@@ -621,9 +621,9 @@ In this experiment we're going to use a **character-level** language model based
 
 ℹ️ You may find more details about character-level RNNs explanation in the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_:
 
-To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer)
+To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer).
 
-We also need to come with some unique character that will be like a _stop-character_ and will indicate the end of a recipe. We need it for recipes generation afterwards since without this stop-character we won't know where is the end of a recipe that we're generating.
+We also need to come with some unique character that will be treated as a _stop-character_ and will indicate the end of a recipe. We need it for recipes generation afterwards since without this stop-character we won't know where is the end of a recipe that we're generating.
 
 ```python
 STOP_SIGN = '␣'
