@@ -1,22 +1,22 @@
-# Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network (a step-by-step guide)
+# Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network (step-by-step)
 
 ## TL;DR
 
-I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_.
+I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_ .
 
 Here you may find more examples of what I ended up with:
 
-- 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN)
-- 🏋🏻‍ [**LSTM model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb)
-- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository
+- 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) - to try the model interactively right in your browser.
+- 🏋🏻‍ [**LSTM model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) - to see how the model was trained.
+- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository - to see more experiments with "Objects detection", "Sketch Recognition", "Image Classification" etc.
 
-This article contains details of how the LSTM model was actually trained (on [TensorFlow 2](https://www.tensorflow.org/) and Python, using [Keras API](https://www.tensorflow.org/guide/keras)).
+This article contains details of how the LSTM model was actually trained on Python using [TensorFlow 2](https://www.tensorflow.org/) with [Keras API](https://www.tensorflow.org/guide/keras).
 
-![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
+![Cooking recipes generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
 ## What our model will eventually learn
 
-For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
+For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn how to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
 
 Here are couple of generated recipes examples: 
 
@@ -44,21 +44,31 @@ Or another one:
 ```text
 📗 [NAME]
 
-Cannellopide Popsicles with Fiesta Salt
+Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 🥕 [INGREDIENTS]
 
-• 1 cup cream
-• 1 cup sugar
-• 1 cup all-purpose flour
-• 1/2 cup finely chopped pecans
-• 1/4 cup powdered sugar
-• 1/4 teaspoon vanilla extract
+• 1 tablespoon olive oil
+• 3 cloves garlic, smashed
+• Kosher salt
+• 1 1/2 pounds lean ground turkey
+• 1 cup coarsely peeled tart apples
+• 2 tablespoons chopped garlic
+• 1 teaspoon ground cumin
+• 1/2 teaspoon cayenne pepper
+• 1 teaspoon chopped fresh thyme
+• 3/4 cup chopped fresh basil
+• 1/2 small carrot, halved lengthwise and cut into 1/2-inch pieces
+• 1 roasted red pepper, halved and sliced vertically diced and separated into rough chops
+• 3 tablespoons unsalted butter
+• 2 cups shredded mozzarella
+• 1/4 cup grated parmesan cheese
+• 1/4 cup prepared basil pesto
 
 📝 [INSTRUCTIONS]
 
-▪︎ Preheat oven to 200 degrees F.
-▪︎ In a small saucepan over medium heat, add butter and sugar. Stir until melted and just starting to caramelize. Remove from heat and stir in brown sugar and vanilla. Set aside to cool. In a large saucepan of boiling salted water, boil flavors and remove from heat. Drain peas and peel and discard the seeds. Add the raspberries to a large bowl and add espresso beans and stir...
+▪︎ Stir the olive oil, garlic, thyme and 1 teaspoon salt in a saucepan; bring to a simmer over medium heat. Remove from the heat. Add the basil and toast the soup for 2 minutes.
+▪︎ Meanwhile, heat 4 to 4 inches vegetable oil in the skillet over medium-high heat. Add the olive oil, garlic, 1/2 teaspoon salt and 1/2 teaspoon pepper and cook, stirring often, until cooked through, a
 ```
 
 ⚠️ _The recipes in this notebook are generated just for fun and for learning purposes. The recipes are **not** for actual cooking!_
