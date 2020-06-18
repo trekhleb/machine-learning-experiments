@@ -939,7 +939,7 @@ _<small>➔ output:</small>_
 
 ### Split examples on `input` and `target` texts
 
-For each sequence we need to duplicate and shift it to form the `input` and `target` text. For example, say the `sequence_length` is `4` and our text is `Hello`. The input sequence would be `Hell`, and the target sequence `ello`.
+For each sequence we need to duplicate and shift it to form the `input` and `target` texts. For example, say the `sequence_length` is `4` and our text is `Hello`. The input sequence would be `Hell`, and the target sequence `ello`.
 
 ```python
 def split_input_target(recipe):
