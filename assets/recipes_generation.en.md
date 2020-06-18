@@ -123,13 +123,13 @@ I would suggest going with GoogleColab option since it doesn't require any local
 Let's start with importing some packages that we will use afterwards.
 
 ```python
-# Packages for training the model and working with dataset.
+# Packages for training the model and working with the dataset.
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 import json
 
-# Utility/helper pacakges.
+# Utility/helper packages.
 import platform
 import time
 import pathlib
@@ -232,7 +232,7 @@ def load_dataset(silent=False):
             dict_keys.sort()
             dataset += json_data_list
 
-            # This code blocks outputs the summary for each dataset.
+            # This code block outputs the summary for each dataset.
             if silent == False:
                 print(dataset_file_path)
                 print('===========================================')
@@ -376,7 +376,7 @@ As you may see among `125164` recipes we had `2226` somehow incomplete.
 
 RNN doesn't understand objects. Therefore, we need to convert recipes objects to string and then to numbers (indices). Let's start with converting recipes objects to strings.
 
-To help our RNN learn the structure of the text faster let's add 3 "landmarks" to it. We will use these unique "title", "ingredients" and "instruction" landmarks to separate a logic sections of each recipe.
+To help our RNN learn the structure of the text faster let's add 3 "landmarks" to it. We will use these unique "title", "ingredients" and "instruction" landmarks to separate the logic sections of each recipe.
 
 ```python
 STOP_WORD_TITLE = '📗 '
@@ -384,7 +384,7 @@ STOP_WORD_INGREDIENTS = '\n🥕\n\n'
 STOP_WORD_INSTRUCTIONS = '\n📝\n\n'
 ```
 
-The following function converts recipe object to string (sequence of characters) for later usage in RNN input.
+The following function converts the recipe object to a string (sequence of characters) for later usage in RNN input.
 
 ```python
 def recipe_to_string(recipe):
@@ -540,7 +540,7 @@ _<small>➔ output:</small>_
 
 ### Filtering out large recipes
 
-Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipes sequences to RNN. We need to find out what recipe length will cover most of the recipes use-cases and at the same time we want to keep it as small as possible to speed up training process.
+Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipe sequences to RNN. We need to find out what recipe length will cover most of the recipe use-cases and at the same time we want to keep it as small as possible to speed up the training process.
 
 ```python
 recipes_lengths = []
