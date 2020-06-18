@@ -114,7 +114,7 @@ There are several options you may follow to experiment with the code in this tut
 
 1. You may experiment by using [GoogleColab right in your browser](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
 2. You may experiment by using [Jupyter notebook in Binder right in your browser](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
-3. You may [setup Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
+3. You may [setup a Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
 
 I would suggest going with GoogleColab option since it doesn't require any local setup for you (you may experiment right in your browser), and it also provides a powerful GPU support for training that will make the model to train faster. You will be able to experiment with training parameters as well.
 
