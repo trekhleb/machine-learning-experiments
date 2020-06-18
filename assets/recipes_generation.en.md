@@ -1193,7 +1193,9 @@ _<small>➔ output:</small>_
 
 ### LSTM Model
 
-Let's assemble the model:
+Let's assemble the model.
+
+ℹ️ You may check [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook from TensorFlow documentation for more details on model components.
 
 ```python
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
