@@ -1123,7 +1123,7 @@ _<small>➔ output:</small>_
 We will use [tf.keras.Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) to define the model. For this experiment we will use the following layer types:
 
 - [tf.keras.layers.Embedding](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding) - the input layer (a trainable lookup table that will map the numbers of each character to a vector with `embedding_dim` dimensions),
-- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - a type of RNN with size units=rnn_units (you can also use a [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU) layer here),
+- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - a type of RNN with size `units=rnn_units` (you can also use a [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU) layer here),
 - [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense) - the output layer, with `VOCABULARY_SIZE` outputs.
 
 ### Figuring out how the Embedding Layer works
