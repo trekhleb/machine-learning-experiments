@@ -534,7 +534,7 @@ _<small>➔ output:</small>_
 > ▪︎ Add white beans and stock and simmer, covered, stirring occasionally, 10 minutes. Add haricots verts and edamame and simmer, uncovered, until heated through, 2 to 3 minutes. Add butter, parsley, and chervil (if using) and stir gently until butter is melted. Discard bay leaf and rosemary sprigs.
 > ```
 
-### Filtering out large receipts
+### Filtering out large recipes
 
 Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipes sequences to RNN. We need to find out what recipe length will cover most of the recipes use-cases and at the same time we want to keep it as small as possible for training performance.
 
