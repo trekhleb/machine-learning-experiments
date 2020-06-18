@@ -1030,7 +1030,7 @@ _<small>➔ output:</small>_
 
 ### Split up the dataset into batches
 
-We have `~100k` recipes in the dataset, and each recipe has two `2000` characters long tuples.
+We have `~100k` recipes in the dataset, and each recipe has two tuples of `2000` characters length.
 
 ```python
 print(dataset_targeted)
