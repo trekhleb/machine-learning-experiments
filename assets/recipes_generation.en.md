@@ -71,22 +71,20 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 ▪︎ Meanwhile, heat 4 to 4 inches vegetable oil in the skillet over medium-high heat. Add the olive oil, garlic, 1/2 teaspoon salt and 1/2 teaspoon pepper and cook, stirring often, until cooked through, a
 ```
 
-⚠️ _The recipes in this notebook are generated just for fun and for learning purposes. The recipes are **not** for actual cooking!_
-
 ![Cook real recipes, not with generated ones](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
 
-> Image source: 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/)
+⚠️ _The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel._
 
-## Exploring datasets
+## Exploring the datasets
 
-Let's go through several available datasets and explore their pros and cons. One of the requirement I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities of each ingredient.
+Let's go through several available datasets and explore their pros and cons. One of the requirement I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities for each ingredient.
 
 Here are several cooking recipes datasets I've found:
 
 - 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) _(doesn't have ingredients proportions)_
 - 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(a lot of recipes but requires registration to download)_
 - 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) _(~20k recipes only, it would be nice to find more)_
-- 👍🏻 [**Recipe box**](https://eightportions.com/datasets/Recipes/) _(~125,000 recipes with ingredients proportions, good)_
+- 👍🏻 [Recipe box](https://eightportions.com/datasets/Recipes/) _(~125,000 recipes with ingredients proportions, good)_
 
 Let's try to use the "Recipe box" dataset. The number of recipes looks big enough, also it contains both ingredients and cooking instructions. It is interesting to see if RNN will be able to learn a connection between ingredients and instructions.
 
