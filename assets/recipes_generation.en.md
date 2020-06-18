@@ -75,6 +75,22 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 ⚠️ _The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel._
 
+## Prior knowledge
+
+It is assumed that you're already familiar with concepts of [Recurrent Neural Networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) and with [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture in particular.
+
+ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by Andrew Ng.
+
+On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs that is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
+
+![Recurrent Neural Network](https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg)
+
+> _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
+
+![Basic architectures of GRU and LSTM cells](https://miro.medium.com/max/1400/1*yBXV9o5q7L_CvY7quJt3WQ.png)
+
+> _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
+
 ## Exploring the datasets
 
 Let's go through several available datasets and explore their pros and cons. One of the requirement I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities for each ingredient.
@@ -97,22 +113,6 @@ There are several options you may follow to experiment with the code in this tut
 3. You may [setup Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
 
 I would suggest going with GoogleColab option since it doesn't require any local setup for you (you may experiment right in your browser), and it also provides a powerful GPU support for training that will make the model to train faster. You will be able to experiment with training parameters as well.
-
-## Prior knowledge
-
-It is assumed that you're already familiar with concepts of [Recurrent Neural Networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) and with [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture in particular.
-
-ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by Andrew Ng.
-
-On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs that is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
-
-![Recurrent Neural Network](https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg)
-
-> _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
-
-![Basic architectures of GRU and LSTM cells](https://miro.medium.com/max/1400/1*yBXV9o5q7L_CvY7quJt3WQ.png)
-
-> _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
 
 ## Importing dependencies
 
