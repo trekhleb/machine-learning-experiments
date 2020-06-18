@@ -1540,9 +1540,9 @@ _<small>➔ output:</small>_
 
 We can see from the chart that model performance is getting better during the training. It means that model learns to predict next characters in a way that the final sequence looks similar to some real recipes texts.
 
-## Generating text
+## Generating recipes
 
-### Restore the latest checkpoint
+### Restore the model from the latest checkpoint
 
 To keep this prediction step simple, we will restore the saved model and re-build it with a batch size of 1. Because of the way the RNN state is passed from time-step to time-step, the model only accepts a fixed batch size once built. To run the model with a different `batch_size`, we need to rebuild the model and restore the weights from the checkpoint.
 
@@ -1612,7 +1612,6 @@ To use our trained model for recipes generation we need to implement a so called
 
 Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
 
-
 ```python
 # num_generate
 # - number of characters to generate.
@@ -1657,7 +1656,11 @@ def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
     return (padded_start_string + ''.join(text_generated))
 ```
 
-Now, let's use `generate_text()` to actually generate some new recipes:
+### Model evolution
+
+### Figuring out proper temperature for prediction loop
+
+Now, let's use `generate_text()` to actually generate some new recipes. The `generate_combinations()` function go trough all possible combinations of the first recipe letters and temperatures. It generates `56` different combinations to help us figure out how model performs and what temperature is better to use.
 
 ```python
 def generate_combinations(model):
@@ -2988,3 +2991,5 @@ _<small>➔ output:</small>_
 > ▪︎ Cook the bacon in a large saucepan over medium heat until soft, about 5 minutes. Add the sugar and stir until the sugar is dissolved. Remove from heat and stir in the cornstarch mixture. Serve warm or cold.
 > ␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣
 > ```    
+
+## Interactive model demo
