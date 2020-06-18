@@ -1071,8 +1071,11 @@ BATCH_SIZE = 64
 SHUFFLE_BUFFER_SIZE = 1000
 
 dataset_train = dataset_targeted \
+  # Shuffling examples first.
   .shuffle(SHUFFLE_BUFFER_SIZE) \
+  # Splitting examples on batches.
   .batch(BATCH_SIZE, drop_remainder=True) \
+  # Making a dataset to be repeatable (it will never ends). 
   .repeat()
 
 print(dataset_train)
