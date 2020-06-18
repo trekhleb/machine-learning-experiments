@@ -984,7 +984,7 @@ _<small>➔ output:</small>_
 > Target:  '  S l o w   C o o k e r   C h i c k e n   a n d   D u m p l i n g s \n \n 🥕 \n \n •   4   s k i n l e s'
 > ```
 
-Each index of these vectors are processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` (space character) as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
+Each index of these vectors are processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` (a space character) as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
 
 ```python
 for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_example[:10])):
