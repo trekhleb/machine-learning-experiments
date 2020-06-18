@@ -615,7 +615,7 @@ Finally, we ended up with `~100k` recipes. Each recipe has `2000` characters len
 
 ## Creating vocabulary
 
-Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipes texts to numbers.
+Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipe texts to numbers.
 
 In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next _character_ instead of the next _word_ in a sequence.
 
@@ -623,7 +623,7 @@ In this experiment we're going to use a **character-level** language model based
 
 To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer).
 
-We also need to come with some unique character that will be treated as a _stop-character_ and will indicate the end of a recipe. We need it for recipes generation afterwards since without this stop-character we won't know where is the end of a recipe that we're generating.
+We also need to come with some unique character that will be treated as a _stop-character_ and will indicate the end of a recipe. We need it for recipe generation afterwards since without this stop-character we won't know where the end of a recipe that we're generating is.
 
 ```python
 STOP_SIGN = '␣'
@@ -857,7 +857,7 @@ _<small>➔ output:</small>_
 > Recipe #9 length: 2001
 > ```
 
-After the padding all recipes in the dataset now have the same length and RNN will also be able to learn where each recipe stops (by observing a presence of a `STOP_SIGN`).
+After the padding all recipes in the dataset now have the same length and RNN will also be able to learn where each recipe stops (by observing the presence of a `STOP_SIGN`).
 
 Here is an example of how a first recipe looks like after the padding.
 
@@ -885,11 +885,11 @@ _<small>➔ output:</small>_
 > ␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣
 > ```
 
-All recipes now ends with one or many `␣` signs. We expect our LSTM model to learn that whenever it sees the `␣` stop-character it means that recipe is ended. Once the network will learn this concept it will put stop-character at the end of every newly generated recipe. 
+All recipes now end with one or many `␣` signs. We expect our LSTM model to learn that whenever it sees the `␣` stop-character it means that the recipe is ended. Once the network will learn this concept it will put stop-character at the end of every newly generated recipe. 
 
 ### Create TensorFlow dataset 
 
-Up until now we were working with the dataset as with NumPy array. It will be more convenient during the training process if we will convert a dataset NumPy array to a [TensorFlow dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset). It will give us an ability to use such helpers functions as `batch()`, `shuffle()`, `repeat()`, `prefecth()` etc.:
+Up until now we were working with the dataset as with the NumPy array. It will be more convenient during the training process if we will convert a dataset NumPy array to a [TensorFlow dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset). It will give us an ability to use such helpers functions as `batch()`, `shuffle()`, `repeat()`, `prefecth()` etc.:
 
 ```python
 dataset = tf.data.Dataset.from_tensor_slices(dataset_vectorized_padded)
@@ -984,7 +984,7 @@ _<small>➔ output:</small>_
 > Target:  '  S l o w   C o o k e r   C h i c k e n   a n d   D u m p l i n g s \n \n 🥕 \n \n •   4   s k i n l e s'
 > ```
 
-Each index of these vectors are processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` (a space character) as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
+Each index of these vectors is processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` (a space character) as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
 
 ```python
 for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_example[:10])):
@@ -1517,7 +1517,7 @@ checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
 
 Let's train our model for `500` epochs with `1500` steps per each epoch. For each epoch step the batch of `64` recipes will be fetched and gradient descent will be executed for those `64` recipes of length `2000` step by step.
 
-If you're experimenting with training parameters it might make sense to reduce the number of epochs to, let's say `20` along with number of steps per epoch and then see how the model performs under that conditions. If the model improves its performance you may add more data (steps and epochs) to the training process. It might save you some time while you adjust parameters.
+If you're experimenting with training parameters it might make sense to reduce the number of epochs to, let's say `20` along with the number of steps per epoch and then see how the model performs under that conditions. If the model improves its performance you may add more data (steps and epochs) to the training process. It might save you some time while you adjust parameters.
 
 ```python
 EPOCHS = 500
@@ -1579,13 +1579,13 @@ _<small>➔ output:</small>_
 
 ℹ️ _On the chart above only first 10 epochs are presented._
 
-We can see from the chart that model performance is getting better during the training. It means that model learns to predict next characters in a way that the final sequence looks similar to some real recipes texts.
+We can see from the chart that model performance is getting better during the training. It means that the model learns to predict next characters in a way that the final sequence looks similar to some real recipe texts.
 
 ## Generating recipes
 
 ### Restore the model from the latest checkpoint
 
-To keep this prediction step simple, we will restore the saved model and re-build it with a batch size of 1. Because of the way the RNN state is passed from time-step to time-step, the model only accepts a fixed batch size once built. To run the model with a different `batch_size`, we need to rebuild the model and restore the weights from the checkpoint.
+To keep this prediction step simple, we will restore the saved model and rebuild it with a batch size of 1. Because of the way the RNN state is passed from time-step to time-step, the model only accepts a fixed batch size once built. To run the model with a different `batch_size`, we need to rebuild the model and restore the weights from the checkpoint.
 
 ```python
 tf.train.latest_checkpoint(checkpoint_dir)
@@ -1597,7 +1597,7 @@ _<small>➔ output:</small>_
 > 'tmp/checkpoints/ckpt_1'
 > ```
 
-Lets re-build the model with batch size of `1` and load trained weights to it:
+Let's rebuild the model with batch size of `1` and load trained weights to it:
 
 ```python
 simplified_batch_size = 1
@@ -1642,18 +1642,18 @@ _<small>➔ output:</small>_
 
 ### The prediction loop
 
-To use our trained model for recipes generation we need to implement a so called prediction loop. The following code block generates the text using the loop:
+To use our trained model for recipe generation we need to implement a so-called prediction loop. The following code block generates the text using the loop:
 
 - It starts by choosing a start string, initializing the RNN state and setting the number of characters to generate.
 - It gets the prediction distribution of the next character using the start string, and the RNN state.
-- Then, it uses a categorical distribution to calculate the index of the predicted character. It uses this predicted character as next input to the model.
-- The RNN state returned by the model is fed back into the model so that it now has more context, instead than only one character. After predicting the next character, the modified RNN states are again fed back into the model, which is how it learns as it gets more context from the previously predicted characters.
+- Then, it uses a categorical distribution to calculate the index of the predicted character. It uses this predicted character as the next input to the model.
+- The RNN state returned by the model is fed back into the model so that it now has more context, instead of only one character. After predicting the next character, the modified RNN states are again fed back into the model, which is how it learns as it gets more context from the previously predicted characters.
 
 ![Prediction loop](https://www.tensorflow.org/tutorials/text/images/text_generation_sampling.png)
 
 > Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
 
-The `temperature` parameter here defines how fuzzy or how unexpected the generated recipe is going to be. Low temperatures results in more predictable text. Higher temperatures results in more surprising text. You need to experiment to find the best setting. We will do some experimentation with different temperatures below.
+The `temperature` parameter here defines how fuzzy or how unexpected the generated recipe is going to be. Low temperatures results in more predictable text. Higher temperatures result in more surprising text. You need to experiment to find the best setting. We will do some experimentation with different temperatures below.
 
 ```python
 def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
@@ -1694,7 +1694,7 @@ def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
 
 ### Figuring out proper temperature for prediction loop
 
-Now, let's use `generate_text()` to actually generate some new recipes. The `generate_combinations()` function goes trough all possible combinations of the first recipe letters and temperatures. It generates `56` different combinations to help us figure out how model performs and what temperature is better to use.
+Now, let's use `generate_text()` to actually generate some new recipes. The `generate_combinations()` function goes through all possible combinations of the first recipe letters and temperatures. It generates `56` different combinations to help us figure out how the model performs and what temperature is better to use.
 
 ```python
 def generate_combinations(model):
@@ -2064,4 +2064,4 @@ You may use 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io
 This out of scope for this article but model still has the following issues that need to be addressed:
 
 - We need to get rid of duplicates on the ingredients section.
-- Recipe sections (name, ingredients and cooking steps) are disconnected in most of the times, meaning, that we may see, let's say, `mushrooms` in the ingredients section by they are not mentioned in the name of the recipe or in the cooking steps.
+- Recipe sections (name, ingredients and cooking steps) are disconnected most of the time, meaning that we may see, let's say, `mushrooms` in the ingredients section, but they are not mentioned in the name of the recipe or in the cooking steps.
