@@ -2058,3 +2058,10 @@ _<small>➔ output:</small>_
 You may use 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser. 
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
+
+## Things to improve
+
+This out of scope for this article but model still has the following issues that need to be addressed:
+
+- We need to get rid of duplicates on the ingredients section.
+- Recipe sections (name, ingredients and cooking steps) are disconnected in most of the times, meaning, that we may see, let's say, `mushrooms` in the ingredients section by they are not mentioned in the name of the recipe or in the cooking steps.
