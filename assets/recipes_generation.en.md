@@ -355,7 +355,7 @@ dataset_validated = [recipe for recipe in dataset_raw if recipe_validate_require
 
 print('Dataset size BEFORE validation', len(dataset_raw))
 print('Dataset size AFTER validation', len(dataset_validated))
-print('Number of invalid recipes', len(dataset_raw) - len(dataset_validated))
+print('Number of incomplete recipes', len(dataset_raw) - len(dataset_validated))
 ```
 
 _<small>➔ output:</small>_ 
@@ -363,14 +363,16 @@ _<small>➔ output:</small>_
 > ```text
 > Dataset size BEFORE validation 125164
 > Dataset size AFTER validation 122938
-> Number of invalid recipes 2226
+> Number of incomplete recipes 2226
 > ```
 
 As you may see among `125164` recipes we had `2226` somehow incomplete.
 
 ### Converting recipes objects into strings
 
-To help our RNN learn the structure of the text let's add 3 "landmarks" to it. We will use these unique "title", "ingredients" and "instruction" landmarks to separate a logic sections of each recipe.
+RNN doesn't understand objects. Therefore, we need to convert recipes objects to string and then to numbers (indices). Let's start with converting recipes objects to strings.
+
+To help our RNN learn the structure of the text faster let's add 3 "landmarks" to it. We will use these unique "title", "ingredients" and "instruction" landmarks to separate a logic sections of each recipe.
 
 ```python
 STOP_WORD_TITLE = '📗 '
