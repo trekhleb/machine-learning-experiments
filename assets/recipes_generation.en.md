@@ -589,7 +589,7 @@ _<small>➔ output:</small>_
 > Number of eliminated recipes:  22726
 > ```
 
-We lost `22726` recipes but now the dataset looks more complete and uniform.
+We lost `22726` recipes during this filtering but now the recipes data is more dense. 
 
 ### Summarizing dataset parameters
 
