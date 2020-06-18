@@ -79,7 +79,7 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 It is assumed that you're already familiar with concepts of [Recurrent Neural Networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) and with [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture in particular.
 
-ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by Andrew Ng.
+ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by _Andrew Ng_. It also might be beneficial to go through the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_.
 
 On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs that is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
 
