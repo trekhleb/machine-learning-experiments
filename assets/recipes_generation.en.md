@@ -1030,7 +1030,7 @@ _<small>➔ output:</small>_
 
 ### Split up the dataset into batches
 
-We have `~100k` recipes in the dataset, and each recipe has two tuples of `2000` characters length.
+We have `~100k` recipes in the dataset, and each recipe has two tuples of `2000` characters.
 
 ```python
 print(dataset_targeted)
@@ -1087,7 +1087,7 @@ _<small>➔ output:</small>_
 > <RepeatDataset shapes: ((64, 2000), (64, 2000)), types: (tf.int32, tf.int32)>
 > ```
 
-From the line above you may notice that our dataset now consists of the same two `2000` characters long tuples but now they are grouped in the batches by `64`.
+From the line above you may notice that our dataset now consists of the same two tuples of `2000` characters but now they are grouped in the batches by `64`.
 
 ```python
 for input_text, target_text in dataset_train.take(1):
