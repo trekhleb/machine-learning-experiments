@@ -83,10 +83,6 @@ It is assumed that you're already familiar with concepts of [Recurrent Neural Ne
 
 On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs that is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
 
-Exciting part is that RNN (and LSTM in particular) could memorize not only _word-to-word_ dependencies but also _character-to-character_ dependencies! It doesn't really matter what sequence consists of: it might be words it might be characters. What is important is that they form a time-distributed sequence. For example, we have a sequence of characters `['H', 'e']`. If we ask LSTM what may go next it may suggest a `<stop_word>` (meaning, that the sequence that forms word `He` is already complete, and we may stop), or it may also suggest a character `l` (meaning, that it tries to build a `Hello` sequence for us). This type of RNNs are called **character-level RNNs** (as opposed to **word-level RNNs**).
-
-In this tutorial we will rely on this memorization feature of RNN networks, and we will use character-level version of LSTM to genereate cooking recipes.
-
 ![Recurrent Neural Network](https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg)
 
 > _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
@@ -94,6 +90,10 @@ In this tutorial we will rely on this memorization feature of RNN networks, and 
 ![Basic architectures of GRU and LSTM cells](https://miro.medium.com/max/1400/1*yBXV9o5q7L_CvY7quJt3WQ.png)
 
 > _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
+
+Exciting part is that RNN (and LSTM in particular) could memorize not only _word-to-word_ dependencies but also _character-to-character_ dependencies! It doesn't really matter what sequence consists of: it might be words it might be characters. What is important is that they form a time-distributed sequence. For example, we have a sequence of characters `['H', 'e']`. If we ask LSTM what may go next it may suggest a `<stop_word>` (meaning, that the sequence that forms word `He` is already complete, and we may stop), or it may also suggest a character `l` (meaning, that it tries to build a `Hello` sequence for us). This type of RNNs are called **character-level RNNs** (as opposed to **word-level RNNs**).
+
+In this tutorial we will rely on this memorization feature of RNN networks, and we will use character-level version of LSTM to generate cooking recipes.
 
 ## Exploring the datasets
 
