@@ -1577,7 +1577,7 @@ _<small>➔ output:</small>_
 
 ![Model training progress (first 10 epochs)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/05-training.png)
 
-ℹ️ On the chart above only first 10 epochs are presented.
+ℹ️ _On the chart above only first 10 epochs are presented._
 
 We can see from the chart that model performance is getting better during the training. It means that model learns to predict next characters in a way that the final sequence looks similar to some real recipes texts.
 
