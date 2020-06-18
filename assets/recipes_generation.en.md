@@ -617,9 +617,9 @@ Finally, we ended up with `~100k` recipes. Each recipe has `2000` characters len
 
 Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipes texts to numbers.
 
-In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next character instead of the next word in a sequence.
+In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next _character_ instead of the next _word_ in a sequence.
 
-You may find more details about character-level RNNs explanation in the following article by Andrej Karpathy: [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+You may find more details about character-level RNNs explanation in the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_:
 
 To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer)
 
