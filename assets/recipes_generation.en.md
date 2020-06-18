@@ -589,7 +589,7 @@ _<small>➔ output:</small>_
 > Number of eliminated recipes:  22726
 > ```
 
-We lost `22726` recipes during this filtering but now the recipes data is more dense. 
+We lost `22726` recipes during this filtering but now recipes' data is more dense. 
 
 ### Summarizing dataset parameters
 
@@ -606,6 +606,8 @@ _<small>➔ output:</small>_
 > MAX_RECIPE_LENGTH:  2000
 > TOTAL_RECIPES_NUM:  100212
 > ```
+
+Finally, we ended up with `~100k` recipes. Each recipe has `2000` characters length.
 
 ## Creating vocabulary
 
