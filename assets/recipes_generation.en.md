@@ -617,7 +617,7 @@ Finally, we ended up with `~100k` recipes. Each recipe has `2000` characters len
 
 Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipes texts to numbers.
 
-In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network learn _"what letter should go after the letter "o""_ concept (as opposed to learning a _"what word should go after the word "orange""_ concept).
+In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next character instead of the next word in a sequence.
 
 You may find more details about character-level RNNs explanation in the following article by Andrej Karpathy: [The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 
