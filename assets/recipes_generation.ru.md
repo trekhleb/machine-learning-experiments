@@ -1,14 +1,14 @@
-# Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network: A step-by-step guide
+# Генерируем странные кулинарные рецепты с помощью TensorFlow и рекуррентной нейронной сети (пошаговая инструкция)
 
 ## TL;DR
 
-I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_ .
+Я натренировал LSTM _(Long short-term memory)_ рекуррентную нейронную сеть _(RNN)_ на наборе данных, состоящих из _~100k_ рецептов, используя TensorFlow. В итоге нейронная сеть предложила мне приготовить _"Сливочную соду с луком"_, _"Клубничный суп из слоеного теста"_, _"Чай со вкусом цуккини"_ и _"Лососевый мусс из говядины"_ .
 
-Here you may find more examples of what I ended up with:
+По следующим ссылкам вы сможете найти другие примеры рецептов и детали тренировки модели:
 
-- 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) - to try the model interactively right in your browser.
-- 🏋🏻‍ [**LSTM model training process**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) - to see how the model was trained.
-- [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) repository - to see more experiments with "Objects detection", "Sketch Recognition", "Image Classification" etc.
+- 🎨 [**Демо генератора рецептов**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) - позволяет сгенерировать рецепт прямо в браузере.
+- 🏋🏻‍ [**Тренировка генератора рецептов**](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) - Jupyter ноутбук с деталями тренировки.
+- Репозиторий [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) - здесь вы сможете найти другие эксперименты связанные с машинным обучением, такие как "Распознавание объектов", "Распознавание эскизов", "Классификация изображений" и т.д.
 
 This article contains details of how the LSTM model was actually trained on Python using [TensorFlow 2](https://www.tensorflow.org/) with [Keras API](https://www.tensorflow.org/guide/keras).
 
