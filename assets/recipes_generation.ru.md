@@ -39,7 +39,7 @@ Orange Club Tea Sandwich Cookies
 ▪︎ Combine cake mix, milk, egg and sugar in a large bowl. Stir until combined and smooth but not sticky. Using a spatula, sprinkle the dough biscuits over the bottom of the pan. Sprinkle with sugar, and spread evenly. Bake for 20 minutes. Remove from the oven and cool on a rack. To serve, add the chocolate.
 ```
 
-Or another one:
+Вот еще один пример:
 
 ```text
 📗 [NAME]
@@ -71,9 +71,13 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 ▪︎ Meanwhile, heat 4 to 4 inches vegetable oil in the skillet over medium-high heat. Add the olive oil, garlic, 1/2 teaspoon salt and 1/2 teaspoon pepper and cook, stirring often, until cooked through, a
 ```
 
-![Cook real recipes, not with generated ones](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
+Модель умеет "писать" на узконаправленном кулинарном английском, придумывает имена рецептов, разбивает их на секции и даже использует списки внутри секций.
 
-⚠️ _The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel._
+Первый недостаток модели, который может бросится в глаза - это то, что ингредиенты зачастую никак не связаны с инструкцией по приготовлению. Например в списке ингредиентов могут быть апельсины, но в пошаговой инструкции мы будем готовить лосося. Это будет следующим шагом по улучшению модели, в данной статье мы его опустим.
+
+![Готовьте реальные рецепты, а не сгенерированные](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
+
+⚠️ _На всякий случай отмечу, что рецепты в этой статье сгенерированы исключительно с обучающей целью. Эти рецепты **не** для готовки! Для готовки лучше используйте что-то [более проверенное](https://www.instagram.com/home_full_of_recipes/)._
 
 ## Prior knowledge
 
