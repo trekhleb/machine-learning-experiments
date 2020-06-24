@@ -544,7 +544,7 @@ _<small>➔ вывод:</small>_
 
 ### Отфильтровываем большие рецепты
 
-Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipe sequences to RNN. We need to find out what recipe length will cover most of the recipe use-cases and at the same time we want to keep it as small as possible to speed up the training process.
+Перед началом тренировки RNN нам необходимо привести все тексты рецептов к одной длине. Чем больше эта длина, тем больше информации из каждого рецепта будет участвовать в тренировке (в случае если все рецепты будут подогнаны по длине к самому большому из них). С другой стороны длинные последовательности замедлят скорость обучения. Также возможна ситуация, когда у нас, пускай `99` рецептов имеют длину `1000` символов, а `1` рецепт имеет длину `5000` символов. Подгонка `99` рецептов по длине к `5000` символам (путем добавления стоп-символов в конец рецепта) из-за одного другого рецепта вряд ли сильно улучшит точность модели, но уж точно замедлит ее тренировку. Поэтому давайте проанализируем длины рецептов, которые есть у нас в наборе данных и выберем подходящую:
 
 ```python
 recipes_lengths = []
@@ -559,7 +559,7 @@ _<small>➔ вывод:</small>_
 
 ![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/02-recipes-length.png)
 
-Most of the recipes have length less than `5000` characters. Let's zoom in to see more detailed picture:
+Большинство рецептов имеют длину меньше `5000` символов. Давайте приблизим график, чтобы увидеть более детальную картину:
 
 ```python
 plt.hist(recipes_lengths, range=(0, 8000), bins=50)
@@ -570,13 +570,13 @@ _<small>➔ вывод:</small>_
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
-Looks like a limit of `2000` characters for the recipes will cover most of the cases. We may try to train RNN with this maximum recipe length limit.
+Похоже на то, что ограничение в `2000` символов для текста рецептов может быть оптимальным в нашем случае.
 
 ```python
 MAX_RECIPE_LENGTH = 2000
 ```
 
-Therefore, let's filter out all the recipes that are longer than `MAX_RECIPE_LENGTH`:
+Теперь мы можем отфильтровать все рецепты, которые длиннее `MAX_RECIPE_LENGTH`:
 
 ```python
 def filter_recipes_by_length(recipe_test):
