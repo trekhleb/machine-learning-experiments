@@ -122,25 +122,25 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 Я бы предложил воспользоваться GoogleColab, поскольку эта опция не требует никаких локальных установок (вы можете экспериментировать прямо в браузере), а также GoogleColab предоставляет поддержку GPU для обучения, что может значительно ускорить тренировку модели.
 
-## Importing dependencies
+## Импортируем зависимости
 
-Let's start with importing some packages that we will use afterwards.
+Давайте начнем с импорта библиотек, которые нам понадобятся в дальнейшем.
 
 ```python
-# Packages for training the model and working with the dataset.
+# Библиотеки для тренировки и работы с дннаыми.
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 import json
 
-# Utility/helper packages.
+# Утилиты.
 import platform
 import time
 import pathlib
 import os
 ```
 
-First, let's make sure our environment is properly set up and that we're using a _2nd_ version of Tensorflow.
+Для начала давайте убедимся, что мы работаем именно со _2-й_ версией Tensorflow.
 
 ```python
 print('Python version:', platform.python_version())
