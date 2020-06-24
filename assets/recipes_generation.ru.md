@@ -319,7 +319,7 @@ _<small>➔ вывод:</small>_
 >   instructions:  Toss ingredients lightly and spoon into a buttered baking dish. Top with additional crushed cracker crumbs, and brush with melted butter. Bake in a preheated at 350 degrees oven for 25 to 30 minutes or until delicately browned.
 > ```
 
-Let's count the total number of examples after we merged the files:
+Давайте посчитаем общее количество рецептов после слияния файлов с данными:
 
 ```python
 print('Total number of raw examples: ', len(dataset_raw))
@@ -331,13 +331,11 @@ _<small>➔ вывод:</small>_
 > Total number of raw examples:  125164
 > ```
 
-## Preprocessing the dataset
+## Предварительная обработка набора данных
 
-### Filtering out incomplete examples
+### Отфильтровываем неполные рецепты
 
-It is possible that some recipes don't have some required fields (_name_, _ingredients_ or _instructions_). We need to clean our dataset from those incomplete examples.
-
-The following function will help us filter out recipes which don't have either title or ingredients or instructions:
+Возможно, что некоторые рецепты не имеют обязательных полей (_name_, _ingredients_ или _instructions_). Нам необходимо очистить наш набор данных от этих неполных рецептов. Следующая функция поможет нам это сделать:
 
 ```python
 def recipe_validate_required_fields(recipe):
@@ -356,7 +354,7 @@ def recipe_validate_required_fields(recipe):
     return True
 ```
 
-Let's do the filtering now using `recipe_validate_required_fields()` function:
+Теперь воспользуемся функцией `recipe_validate_required_fields()` для фильтрации неполных рецептов:
 
 ```python
 dataset_validated = [recipe for recipe in dataset_raw if recipe_validate_required_fields(recipe)]
@@ -374,13 +372,13 @@ _<small>➔ вывод:</small>_
 > Number of incomplete recipes 2226
 > ```
 
-As you may see among `125164` recipes we had `2226` somehow incomplete.
+Как вы можете увидеть, из `125164` рецептов `2226` были неполными.
 
-### Converting recipes objects into strings
+### Конвертирование рецептов из объектов в строки
 
-RNN doesn't understand objects. Therefore, we need to convert recipes objects to string and then to numbers (indices). Let's start with converting recipes objects to strings.
+RNN не умеет работать с объектами, она понимает только числа. Поэтому нам нужно сначала преобразовывать наши рецепты из объектов в строки, а затем в числа (индексы). Начнем с преобразования рецептов в строки.
 
-To help our RNN learn the structure of the text faster let's add 3 "landmarks" to it. We will use these unique "title", "ingredients" and "instruction" landmarks to separate the logic sections of each recipe.
+Чтобы RNN было легче распознать секции (имя, ингредиенты и шаги приготовления) в тексте рецептов, мы можем расставить  уникальные "маячки" или "ориентиры", которые будут разделять эти секции.
 
 ```python
 STOP_WORD_TITLE = '📗 '
@@ -390,9 +388,11 @@ STOP_WORD_INSTRUCTIONS = '\n📝\n\n'
 
 The following function converts the recipe object to a string (sequence of characters) for later usage in RNN input.
 
+Следующая функция преобразует объект в строку (последовательность символов) для последующего использования на входе RNN.
+
 ```python
 def recipe_to_string(recipe):
-    # This string is presented as a part of recipes so we need to clean it up.
+    # Эта рекламная строка присутсвует в рецептах, поэтому нам необходимо ее очистить.
     noize_string = 'ADVERTISEMENT'
     
     title = recipe['title']
@@ -414,7 +414,7 @@ def recipe_to_string(recipe):
     return f'{STOP_WORD_TITLE}{title}\n{STOP_WORD_INGREDIENTS}{ingredients_string}{STOP_WORD_INSTRUCTIONS}{instructions_string}'
 ```
 
-Let's apply `recipe_to_string()` function to `dataset_validated`:
+Применяем функцию `recipe_to_string()` к `dataset_validated`:
 
 ```python
 dataset_stringified = [recipe_to_string(recipe) for recipe in dataset_validated]
@@ -428,7 +428,7 @@ _<small>➔ вывод:</small>_
 > Stringified dataset size:  122938
 > ```
 
-Let's preview first several recipes:
+Давайте выведем первые несколько рецептов:
 
 ```python
 for recipe_index, recipe_string in enumerate(dataset_stringified[:3]):
@@ -502,7 +502,7 @@ _<small>➔ вывод:</small>_
 > ▪︎ Bake in preheated oven for 1 hour or until juices are clear.
 > ```
 
-Just out of curiosity let's preview the recipe somewhere from the middle of the dataset to see that it has expected data structure:
+Исключительно из любопытства давайте просмотрим на рецепт где-то из середины набора данных, чтобы увидеть, что он имеет ожидаемую структуру:
 
 ```python
 print(dataset_stringified[50000])
@@ -542,7 +542,7 @@ _<small>➔ вывод:</small>_
 > ▪︎ Add white beans and stock and simmer, covered, stirring occasionally, 10 minutes. Add haricots verts and edamame and simmer, uncovered, until heated through, 2 to 3 minutes. Add butter, parsley, and chervil (if using) and stir gently until butter is melted. Discard bay leaf and rosemary sprigs.
 > ```
 
-### Filtering out large recipes
+### Отфильтровываем большие рецепты
 
 Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipe sequences to RNN. We need to find out what recipe length will cover most of the recipe use-cases and at the same time we want to keep it as small as possible to speed up the training process.
 
