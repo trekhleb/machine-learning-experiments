@@ -99,18 +99,18 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 В этой статье мы воспользуемся умением рекуррентной сети запоминать контекст для последовательности и будем генерировать кулинарные рецепты, используя архитектуру LSTM на символьном уровне (модель будет учиться на последовательности букв, а не слов).
 
-## Exploring the datasets
+## Набор данных для тренировки
 
-Let's go through several available datasets and explore their pros and cons. One of the requirements I want the dataset to meet is that it should have not only a list of ingredients but also a cooking instruction. I also want it to have a measures and quantities for each ingredient.
+Давайте пройдемся по нескольким доступным наборам данных и исследуем их плюсы и минусы. Одними из требований, которым я хочу, чтобы набор данных соответствовал, это то, что каждый рецепт должен иметь не только список ингредиентов, но и инструкцию по приготовлению вместе с пропорциями.
 
-Here are several cooking recipes datasets I've found:
+Вот несколько наборов данных, который удалось найти:
 
-- 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) _(doesn't have ingredients proportions)_
-- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(a lot of recipes but requires registration to download)_
-- 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) _(~20k recipes only, it would be nice to find more)_
-- 👍🏻 [Recipe box](https://eightportions.com/datasets/Recipes/) _(~125,000 recipes with ingredients proportions, good)_
+- 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) _(отсутствуют пропорции для ингредиентов)_
+- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(большое количество рецептов, но необходимо регистрироваться, чтобы скачать данные)_
+- 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) _(около ~20000 рецептов, было бы неплохо найти больше)_
+- 👍🏻 [Recipe box](https://eightportions.com/datasets/Recipes/) _(около ~125,000 рецептов с ингредиентами и инструкциями по приготовлению - то, что надо)_
 
-Let's try to use the "Recipe box" dataset. The number of recipes looks big enough, also it contains both ingredients and cooking instructions. It is interesting to see if RNN will be able to learn a connection between ingredients and instructions.
+Попробуем использовать набор данных "Recipe box". Количество рецептов выглядит достаточно большим, также он содержит как ингредиенты, так и инструкции по приготовлению. 
 
 ## Setting TensorFlow/Python sandbox for training
 
