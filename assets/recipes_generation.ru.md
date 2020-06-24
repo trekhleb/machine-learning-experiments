@@ -79,25 +79,25 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 ⚠️ _На всякий случай отмечу, что рецепты в этой статье сгенерированы исключительно с обучающей целью. Эти рецепты **не** для готовки! Для готовки лучше используйте что-то [более проверенное](https://www.instagram.com/home_full_of_recipes/)._
 
-## Prior knowledge
+## Теоретическая база
 
-It is assumed that you're already familiar with concepts of [Recurrent Neural Networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) and with [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture in particular.
+Предполагается, что читатель знаком с концепцией [рекуррентных нейронных сетей (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) и, в частности, с архитектурой [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory). 
 
-ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by _Andrew Ng_. It also might be beneficial to go through the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_.
+ℹ️ Если эти концепции для вас незнакомы, я бы порекомендовал пройти курс [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) на Coursera от _Andrew Ng_. Также статья [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) от _Andrej Karpathy_ может быть интересной и полезной в данном случае.
 
-On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
-
+В общих чертах, **рекуррентные нейронные сети (RNN)** представляют собой класс глубоких нейронных сетей, наиболее часто применяемых к данным, основанным на последовательности, таким как речь, голос, текст или музыка. Они используются для машинного перевода, распознавания речи, синтеза голоса и т.д. Ключевая особенность RNN состоит в том, что они имеют внутреннюю память (state, состояние), в которой может храниться некоторый контекст для последовательности. Например, если первым словом последовательности было `He`, то RNN может предложить, что следующим словом будет `speaks` вместо `speak`, чтобы сформировать фразу `He speaks`, потому что предшествующее знание о первом слове `He` уже находится во внутренней памяти.
+ 
 ![Recurrent Neural Network](https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg)
 
-> _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
+> _Изображение взято с [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
 
 ![Basic architectures of GRU and LSTM cells](https://miro.medium.com/max/1400/1*yBXV9o5q7L_CvY7quJt3WQ.png)
 
-> _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
+> _Изображение взято с [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
 
-Exciting part is that RNN (and LSTM in particular) could memorize not only _word-to-word_ dependencies but also _character-to-character_ dependencies! It doesn't really matter what sequence consists of: it might be words it might be characters. What is important is that they form a time-distributed sequence. For example, we have a sequence of characters `['H', 'e']`. If we ask LSTM what may go next it may suggest a `<stop_word>` (meaning, that the sequence that forms word `He` is already complete, and we may stop), or it may also suggest a character `l` (meaning, that it tries to build a `Hello` sequence for us). This type of RNNs are called **character-level RNNs** (as opposed to **word-level RNNs**).
+Интересный момент заключается в том, что RNN (и LSTM в частности) может запоминать не только зависимости _слово-слово_, но и зависимости _символ-символ_! Не важно, что образует последовательность: это могут быть слова, могут быть символы. Важно то, что эти данные распределены во времени и идут один за другим. Например, мы имеем последовательность символов `['H', 'e']`. Если мы спросим LSTM модель, какой символ может быть следующим, она может предложить `<stop_word>` (имея в виду, что последовательность, которая формирует слово `He`, уже завершена, и мы можем остановиться), или она может предложить `l` (имея в виду, что она пытается построить для нас последовательность `Hello`). Такой тип RNN называется **символьной RNN** (character-level RNN).
 
-In this tutorial we will rely on this memorization feature of RNN networks, and we will use a character-level version of LSTM to generate cooking recipes.
+В этой статье мы воспользуемся умением рекуррентной сети запоминать контекст для последовательности и будем генерировать кулинарные рецепты, используя архитектуру LSTM на символьном уровне (модель будет учиться на последовательности букв, а не слов).
 
 ## Exploring the datasets
 
