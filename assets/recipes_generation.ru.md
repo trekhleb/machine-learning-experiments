@@ -112,15 +112,15 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 Попробуем использовать набор данных "Recipe box". Количество рецептов выглядит достаточно большим, также он содержит как ингредиенты, так и инструкции по приготовлению. 
 
-## Setting TensorFlow/Python sandbox for training
+## Настраиваем песочницу для тренировки на TensorFlow и Python
 
-There are several options you may follow to experiment with the code in this tutorial:
+Есть несколько способов, как вы можете экспериментировать с Python кодом данной статьи:
 
-1. You may experiment by using [GoogleColab right in your browser](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
-2. You may experiment by using [Jupyter notebook in Binder right in your browser](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
-3. You may [setup a Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
+1. Вы можете открыть код (Jupyter notebook) в [GoogleColab](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(непосредственно в браузере, никакой локальной установки не требуется)_.
+2. Вы можете открыть код (Jupyter notebook) в [Binder](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(непосредственно в браузере, никакой локальной установки не требуется)_.
+3. Вы также можете [установить Jupyter notebook локально](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
 
-I would suggest going with GoogleColab option since it doesn't require any local setup for you (you may experiment right in your browser), and it also provides a powerful GPU support for training that will make the model to train faster. You will be able to experiment with training parameters as well.
+Я бы предложил воспользоваться GoogleColab, поскольку эта опция не требует никаких локальных установок (вы можете экспериментировать прямо в браузере), а также GoogleColab предоставляет поддержку GPU для обучения, что может значительно ускорить тренировку модели.
 
 ## Importing dependencies
 
