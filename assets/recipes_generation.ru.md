@@ -148,7 +148,7 @@ print('Tensorflow version:', tf.__version__)
 print('Keras version:', tf.keras.__version__)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Python version: 3.7.6
@@ -156,18 +156,18 @@ _<small>➔ output:</small>_
 > Keras version: 2.2.4-tf
 > ```
 
-## Loading the dataset
+## Загружаем данные
 
-Let's load the dataset using [tf.keras.utils.get_file](https://www.tensorflow.org/api_docs/python/tf/keras/utils/get_file). Using `get_file()` utility is convenient because it handles caching for you out of the box. It means that you will download the dataset files only once and then even if you launch the same code block in the notebook once again it will use cache, and the code block will be executed faster.
+Для загрузки данных воспользуемся утилитой [tf.keras.utils.get_file](https://www.tensorflow.org/api_docs/python/tf/keras/utils/get_file). Использование `get_file()` для загрузки удобно, так как эта функция поддерживает кэширование данных. Это означает, загрузка файлов с данными произойдет только один раз, а затем, даже если вы запустите тот же блок кода в ноутбуке еще раз, он будет использовать кэшированные данные. 
 
-Create cache folder if it not exists:
+Создаем папку для кэша:
 
 ```python
 CACHE_DIR = './tmp'
 pathlib.Path(CACHE_DIR).mkdir(exist_ok=True)
 ```
 
-Download and unpack the dataset: 
+Загружаем и распаковываем данные: 
 
 ```python
 dataset_file_name = 'recipes_raw.zip'
@@ -184,21 +184,21 @@ dataset_file_path = tf.keras.utils.get_file(
 print(dataset_file_path)
 ```
 
-Here is a path to dataset file after it has been downloaded:
+Вот так выглядит путь к загруженным данным:
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > ./tmp/datasets/recipes_raw.zip
 > ```
 
-Let's print the cache folder and see what exactly has been downloaded:
+Давайте посмотрим, что находится у нас в кэше:
 
 ```bash
 !ls -la ./tmp/datasets/
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > total 521128
@@ -211,13 +211,13 @@ _<small>➔ output:</small>_
 > -rw-r--r--  1   93702755 May 20 06:46 recipes_raw_nosource_fn.json
 > ```
 
-As you may see, the dataset consists of _3_ files. We need to merge information from those _3_ files into one dataset later.
+Как видите, набор данных состоит из _3-х_ файлов. В дальнейшем нам необходимо объединить информацию из этих _3-х_ файлов в одну коллекцию.
 
-Let's load datasets data from `json` files and preview examples from them.
+Загружаем данные из `json` файлов:
 
 ```python
 def load_dataset(silent=False):
-    # List of dataset files we want to merge.
+    # Список файлов с данными, которые мы хотим объединить в один набор.
     dataset_file_names = [
         'recipes_raw_nosource_ar.json',
         'recipes_raw_nosource_epi.json',
@@ -236,7 +236,7 @@ def load_dataset(silent=False):
             dict_keys.sort()
             dataset += json_data_list
 
-            # This code block outputs the summary for each dataset.
+            # Этот блок кода выводит превью с данными из каждого файла.
             if silent == False:
                 print(dataset_file_path)
                 print('===========================================')
@@ -254,7 +254,7 @@ def load_dataset(silent=False):
 dataset_raw = load_dataset() 
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > ./tmp/datasets/recipes_raw_nosource_ar.json
@@ -325,7 +325,7 @@ Let's count the total number of examples after we merged the files:
 print('Total number of raw examples: ', len(dataset_raw))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Total number of raw examples:  125164
@@ -366,7 +366,7 @@ print('Dataset size AFTER validation', len(dataset_validated))
 print('Number of incomplete recipes', len(dataset_raw) - len(dataset_validated))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Dataset size BEFORE validation 125164
@@ -422,7 +422,7 @@ dataset_stringified = [recipe_to_string(recipe) for recipe in dataset_validated]
 print('Stringified dataset size: ', len(dataset_stringified))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Stringified dataset size:  122938
@@ -437,7 +437,7 @@ for recipe_index, recipe_string in enumerate(dataset_stringified[:3]):
     print('\n')
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Recipe #1
@@ -508,7 +508,7 @@ Just out of curiosity let's preview the recipe somewhere from the middle of the 
 print(dataset_stringified[50000])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 📗 Herbed Bean Ragoût 
@@ -555,7 +555,7 @@ plt.hist(recipes_lengths, bins=50)
 plt.show()
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 ![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/02-recipes-length.png)
 
@@ -566,7 +566,7 @@ plt.hist(recipes_lengths, range=(0, 8000), bins=50)
 plt.show()
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
@@ -589,7 +589,7 @@ print('Dataset size AFTER filtering: ', len(dataset_filtered))
 print('Number of eliminated recipes: ', len(dataset_stringified) - len(dataset_filtered))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Dataset size BEFORE filtering:  122938
@@ -608,7 +608,7 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('TOTAL_RECIPES_NUM: ', TOTAL_RECIPES_NUM)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > MAX_RECIPE_LENGTH:  2000
@@ -647,7 +647,7 @@ tokenizer.fit_on_texts(dataset_filtered)
 tokenizer.get_config()
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > {'num_words': None,
@@ -677,7 +677,7 @@ VOCABULARY_SIZE = len(tokenizer.word_counts) + 1
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > VOCABULARY_SIZE:  176
@@ -690,7 +690,7 @@ print(tokenizer.index_word[5])
 print(tokenizer.index_word[20])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > o
@@ -703,7 +703,7 @@ Let's try to convert character to index:
 tokenizer.word_index['r']
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 8
@@ -716,7 +716,7 @@ array_vocabulary = tokenizer.sequences_to_texts([[word_index] for word_index in 
 print([char for char in array_vocabulary])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > ['', ' ', 'e', 'a', 't', 'o', 'n', 'i', 'r', 's', 'l', 'd', 'h', 'c', 'u', 'p', '\n', 'm', 'g', 'b', ',', '.', 'f', 'w', '•', 'k', '1', 'v', 'y', '2', '/', '▪', '︎', 'S', '4', 'C', '-', '3', 'x', 'P', '5', '0', '(', ')', 'A', 'B', 'z', 'j', 'F', 'T', 'R', '📗', '🥕', '📝', 'I', 'M', ';', 'q', 'D', 'W', '8', 'G', '6', 'L', 'H', ':', '7', 'O', "'", 'E', 'K', '9', 'U', 'N', 'V', 'J', '®', '°', 'é', '"', 'Y', 'Q', '*', '!', 'Z', '–', '&', '%', 'ñ', 'è', '™', 'î', 'X', '?', '¿', '—', 'ç', '#', '½', 'í', '=', '’', 'â', '©', '¼', '+', '>', '$', '<', 'á', 'ó', 'ú', 'ï', 'É', 'û', ']', '[', 'ü', 'ê', 'à', '_', '\xad', '¾', '‚', '�', 'º', '⁄', 'ä', 'Ú', 'ù', '́', '}', 'ö', '{', 'ì', 'ô', '\x96', '”', '×', '˚', '»', '@', '§', '\\', '◊', '‱', '“', '‧', '\u202d', '⅛', 'å', 'ﬂ', '`', 'Á', 'ë', '\x97', '\x1a', 'ø', '⅓', '|', 'ư', '\x92', '´', '‒', 'Â', '␣', '¤', '‟', '\xa0', 'ơ', 'ă', '̀', '⅞', '€', '~', '\x95']
@@ -730,7 +730,7 @@ Let's see how we may use `tokenizer` functions to convert text to indices:
 tokenizer.texts_to_sequences(['📗 yes'])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > [[51, 1, 28, 2, 9]]
@@ -746,7 +746,7 @@ dataset_vectorized = tokenizer.texts_to_sequences(dataset_filtered)
 print('Vectorized dataset size', len(dataset_vectorized))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Vectorized dataset size 100212
@@ -758,7 +758,7 @@ This is how the beginning of the first vectorized recipe looks like:
 print(dataset_vectorized[0][:10], '...')
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > [51, 1, 33, 10, 5, 23, 1, 35, 5, 5] ...
@@ -774,7 +774,7 @@ def recipe_sequence_to_string(recipe_sequence):
 recipe_sequence_to_string(dataset_vectorized[0])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 📗 Slow Cooker Chicken and Dumplings
@@ -804,7 +804,7 @@ for recipe_index, recipe in enumerate(dataset_vectorized[:10]):
     print('Recipe #{} length: {}'.format(recipe_index + 1, len(recipe)))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Recipe #1 length: 546
@@ -846,7 +846,7 @@ for recipe_index, recipe in enumerate(dataset_vectorized_padded[:10]):
     print('Recipe #{} length: {}'.format(recipe_index, len(recipe)))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Recipe #0 length: 2001
@@ -869,7 +869,7 @@ Here is an example of how a first recipe looks like after the padding.
 recipe_sequence_to_string(dataset_vectorized_padded[0])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 📗 Slow Cooker Chicken and Dumplings
@@ -901,7 +901,7 @@ dataset = tf.data.Dataset.from_tensor_slices(dataset_vectorized_padded)
 print(dataset)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > <TensorSliceDataset shapes: (2001,), types: tf.int32>
@@ -916,7 +916,7 @@ for recipe in dataset.take(1):
     recipe_sequence_to_string(recipe.numpy())
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Raw recipe:
@@ -957,7 +957,7 @@ dataset_targeted = dataset.map(split_input_target)
 print(dataset_targeted)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
@@ -978,7 +978,7 @@ for input_example, target_example in dataset_targeted.take(1):
     print('Target: ', repr(''.join(target_stringified)))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Input sequence size: 2000
@@ -997,7 +997,7 @@ for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_examp
     print('  expected output: {} ({:s})'.format(target_idx, repr(tokenizer.sequences_to_texts([[target_idx.numpy()]])[0])))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Step  1
@@ -1040,7 +1040,7 @@ We have `~100k` recipes in the dataset, and each recipe has two tuples of `2000`
 print(dataset_targeted)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
@@ -1054,7 +1054,7 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > TOTAL_RECIPES_NUM:  100212
@@ -1085,7 +1085,7 @@ dataset_train = dataset_targeted \
 print(dataset_train)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > <RepeatDataset shapes: ((64, 2000), (64, 2000)), types: (tf.int32, tf.int32)>
@@ -1100,7 +1100,7 @@ for input_text, target_text in dataset_train.take(1):
     print('1st batch: target_text:', target_text)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 1st batch: input_text: tf.Tensor(
@@ -1166,7 +1166,7 @@ print('tmp_output_array:')
 print(tmp_output_array)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > tmp_input_array shape: (2, 8)
@@ -1232,7 +1232,7 @@ model = build_model(
 model.summary()
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Model: "sequential_13"
@@ -1262,7 +1262,7 @@ tf.keras.utils.plot_model(
 )
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 ![Model architecture](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/04-model.png)
 
@@ -1284,7 +1284,7 @@ for input_example_batch, target_example_batch in dataset_train.take(1):
     print(example_batch_predictions.shape, "# (batch_size, sequence_length, vocab_size)")
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > (64, 2000, 176) # (batch_size, sequence_length, vocab_size)
@@ -1297,7 +1297,7 @@ print('Prediction for the 1st letter of the batch 1st sequense:')
 print(example_batch_predictions[0, 0])
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Prediction for the 1st letter of the batch 1st sequense:
@@ -1373,7 +1373,7 @@ tmp_samples = tf.random.categorical(
 print(tmp_samples)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > tf.Tensor([[2 1 2 2 1]], shape=(1, 5), dtype=int64)
@@ -1395,7 +1395,7 @@ sampled_indices = tf.squeeze(
 sampled_indices.shape
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > (2000,)
@@ -1407,7 +1407,7 @@ Let's see some sampled predictions for the first `100` chars of the recipe:
 sampled_indices[:100]
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > array([ 64,  21,  91, 126, 170,  42, 146,  54, 125, 164,  60, 171,   9,
@@ -1428,7 +1428,7 @@ print()
 print('Next char prediction:\n', repr(''.join(tokenizer.sequences_to_texts([sampled_indices[:50]]))))
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Input:
@@ -1467,7 +1467,7 @@ print("scalar_loss.shape:      ", example_batch_loss.shape)
 print("scalar_loss:      ", example_batch_loss.numpy().mean())
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```
 > Prediction shape:    (64, 2000, 176)  # (batch_size, sequence_length, vocab_size)
@@ -1533,7 +1533,7 @@ print('INITIAL_EPOCH:   ', INITIAL_EPOCH)
 print('STEPS_PER_EPOCH: ', STEPS_PER_EPOCH)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
         
 > ```text
 > EPOCHS:           500
@@ -1577,7 +1577,7 @@ def render_training_history(training_history):
 render_training_history(history)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 ![Model training progress (first 10 epochs)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/05-training.png)
 
@@ -1595,7 +1595,7 @@ To keep this prediction step simple, we will restore the saved model and rebuild
 tf.train.latest_checkpoint(checkpoint_dir)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > 'tmp/checkpoints/ckpt_1'
@@ -1613,7 +1613,7 @@ model_simplified.build(tf.TensorShape([simplified_batch_size, None]))
 model_simplified.summary()
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Model: "sequential_6"
@@ -1638,7 +1638,7 @@ Let's double check that input shape is simplified:
 model_simplified.input_shape
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > (1, None)
@@ -1727,7 +1727,7 @@ To avoid making this article too long only some of those `56` combinations will 
 generate_combinations(model_simplified)
 ```
 
-_<small>➔ output:</small>_ 
+_<small>➔ вывод:</small>_ 
 
 > ```text
 > Attempt: "A" + 1.0
