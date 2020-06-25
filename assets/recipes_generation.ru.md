@@ -1138,9 +1138,9 @@ _<small>➔ вывод:</small>_
 - [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - слой LSTM, рекуррентная сеть (здесь также можно использовать слой [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU)),
 - [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense) - выходной слой, с `VOCABULARY_SIZE` количеством выходов.
 
-### Figuring out how the Embedding Layer works
+### Разбираемся как работает embedding layer
 
-Let's do a quick detour and see how Embedding Layer works. It takes several char indices sequences (batch) as an input. It encodes every character of every sequence to a vector of `tmp_embedding_size` length.
+Embedding layer принимает на вход последовательность (группу, пачку) индексов и кодирует каждый индекс в вектор длиной `tmp_embedding_size`:
 
 ```python
 tmp_vocab_size = 10
@@ -1203,11 +1203,11 @@ _<small>➔ вывод:</small>_
 >   [-0.02229502 -0.02800617 -0.0120693  -0.01681594 -0.00650246]]]
 > ```
 
-### LSTM Model
+### Модель LSTM
 
-Let's assemble the model.
+Начнем собирать модель.
 
-ℹ️ You may check [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook from TensorFlow documentation for more details on model components.
+ℹ️ В статье [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) вы можете найти более детальную информацию о слоях модели.
 
 ```python
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
@@ -1259,7 +1259,7 @@ _<small>➔ вывод:</small>_
 > _________________________________________________________________
 > ```
 
-Let's visualize the model:
+Визуализируем модель:
 
 ```python
 tf.keras.utils.plot_model(
@@ -1274,13 +1274,13 @@ _<small>➔ вывод:</small>_
 
 ![Model architecture](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/04-model.png)
 
-For each character the model looks up the embedding, runs the LSTM one time-step with the embedding as input, and applies the dense layer to generate logits predicting the log-likelihood of the next character:
+Для каждого символа модель находит соответствующий embedding вектор, подает его на вход LSTM, вывод LSTM подается на выходной слой модели, который для каждого символа в словаре генерирует его вероятность появления следующим.
 
 ![Model architecture](https://www.tensorflow.org/tutorials/text/images/text_generation_training.png)
 
-> Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
+> Источник изображения: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation).
 
-The picture above illustrates GRU network, but you may easily replace GRU with LSTM.
+Изображение выше иллюстрирует случай с сетью GRU, но оно также справедливо и для случая с LSTM.
 
 ## Trying the model before training
 
