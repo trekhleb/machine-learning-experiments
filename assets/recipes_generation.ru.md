@@ -1644,20 +1644,19 @@ _<small>➔ вывод:</small>_
 > (1, None)
 > ```
 
-### Петля прогнозирования
+### Цикл прогнозирования
 
-To use our trained model for recipe generation we need to implement a so-called prediction loop. The following code block generates the text using the loop:
+Чтобы использовать нашу обученную модель для генерации рецептов, нам необходимо реализовать так называемый цикл прогнозирования. Следующий блок кода генерирует текст с помощью цикла:
 
-- It starts by choosing a start string, initializing the RNN state and setting the number of characters to generate.
-- It gets the prediction distribution of the next character using the start string, and the RNN state.
-- Then, it uses a categorical distribution to calculate the index of the predicted character. It uses this predicted character as the next input to the model.
-- The RNN state returned by the model is fed back into the model so that it now has more context, instead of only one character. After predicting the next character, the modified RNN states are again fed back into the model, which is how it learns as it gets more context from the previously predicted characters.
+- Начинаем с выбора входящей строки, инициализации состояния RNN и установки количества генерируемых символов.
+- Получаем предсказания для каждого символа из словаря.
+- С помощью семплинга выбираем следующий символ. Используем его в качестве следующей входящей в модель строки.
 
 ![Prediction loop](https://www.tensorflow.org/tutorials/text/images/text_generation_sampling.png)
 
-> Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
+> Источник изображения [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) .
 
-The `temperature` parameter here defines how fuzzy or how unexpected the generated recipe is going to be. Low temperatures results in more predictable text. Higher temperatures result in more surprising text. You need to experiment to find the best setting. We will do some experimentation with different temperatures below.
+Параметр `temperature` здесь определяет, насколько нечетким или насколько неожиданным будет сгенерированный рецепт. Низкие значения `temperature` приводят к более предсказуемому тексту. Более высокие значения `temperature` приводят к более неожиданному тексту. Мы проведем некоторые эксперименты с различными значениями `temperature` ниже.
 
 ```python
 def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
@@ -1696,9 +1695,9 @@ def generate_text(model, start_string, num_generate = 1000, temperature=1.0):
     return (padded_start_string + ''.join(text_generated))
 ```
 
-### Figuring out proper temperature for prediction loop
+### Экспериментируем с параметром `temperature`
 
-Now, let's use `generate_text()` to actually generate some new recipes. The `generate_combinations()` function goes through all possible combinations of the first recipe letters and temperatures. It generates `56` different combinations to help us figure out how the model performs and what temperature is better to use.
+Воспользуемся функцией `generate_text()` для генерации рецептов. Функция `generate_combinations()` генерирует `56` различных комбинаций входящего текста и параметра `temperature`. Это должно помочь нам определиться с подходящим значением для `temperature`.
 
 ```python
 def generate_combinations(model):
@@ -1721,7 +1720,7 @@ def generate_combinations(model):
 
 ```
 
-To avoid making this article too long only some of those `56` combinations will be printed below.
+Чтобы не делать эту статью слишком длинной, ниже будут напечатаны только некоторые из этих `56` комбинаций.
 
 ```python
 generate_combinations(model_simplified)
@@ -2057,9 +2056,9 @@ _<small>➔ вывод:</small>_
 > ▪︎ Meanwhile, heat the olive oil in a large skillet over medium-high heat. Add the shallots and saute until tender, about 3 minutes. Add the garlic and cook for 1 minute. Add the sausage and cook until the shallots are tender, about 3 minutes. Add the sausage and cook until tender, about 2 minutes. Add the garlic and cook, stirring, until the garlic is lightly browned, about 1 minute. Add the sausage and cook until the s
 > ```   
 
-## Interactive model demo
+## Интерактивная демонстрация модели
 
-You may use 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser. 
+Вы можете воспользоватья 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser. 
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
