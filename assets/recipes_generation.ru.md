@@ -950,7 +950,9 @@ _<small>➔ вывод:</small>_
 
 ### Разбиваем текст рецептов на `входную` и `целевую` последовательности
 
-For each sequence we need to duplicate and shift it to form the `input` and `target` texts. For example, say the `sequence_length` is `4` and our text is `Hello`. The input sequence would be `Hell`, and the target sequence `ello`.
+Нейронная сеть нуждается в подсказках во время обучения. Например, когда мы будем подавать на вход символ `H` мы должны сообщить сети, какой символ мы ждем следующим (пускай `е`). Получив от нас подсказки по поводу каждого символа каждого рецепта, модель будет пытаться найти зависимости между символами.
+
+Поэтому для последовательности с текстом рецепта нам необходимо продублировать и сместить ее на один символ, чтобы сформировать `входную` и `целевую` последовательности. Например, если `sequence_length` равна `4`, а наш текст - это `Hello`, то входная последовательность будет `Hell`, а целевая последовательность - `ello`.
 
 ```python
 def split_input_target(recipe):
@@ -970,7 +972,7 @@ _<small>➔ вывод:</small>_
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
 > ```
 
-You may notice from the line above, that now each example in the dataset consists of two tuples: input and target. Let's print an example:
+Вы можете заметить теперь, что каждый экземпляр данных из нашего набора теперь представляет собой tuple из двух последовательностей: входящей и целевой:
 
 ```python
 for input_example, target_example in dataset_targeted.take(1):
@@ -995,7 +997,7 @@ _<small>➔ вывод:</small>_
 > Target:  '  S l o w   C o o k e r   C h i c k e n   a n d   D u m p l i n g s \n \n 🥕 \n \n •   4   s k i n l e s'
 > ```
 
-Each index of these vectors is processed as one time step by RNN. For the input at time step `0`, the model receives the index for `📗` and tries to predict the index for ` ` (a space character) as the next character. At the next time-step, it does the same thing, but the RNN considers the previous step context in addition to the current input character.
+Каждый индекс этих двух последовательностей будет пошагово обрабатываться нашей нейронной сетью. На нулевом шаге модель получит индекс символа `📗` на входе и для него она должна будет предсказать индекс символа ` ` (символ пробела в данном случае) в качестве следующего символа. На следующем шаге модель получит индекс символа ` ` (пробел) на входе и должна будет предсказать индекс символа `S` на выходе. При этом на каждом следующем шаге на вход модели будет поступать не только новый символ, но также и сохраненное внутренне состояние модели, которое позволит ей принимать во внимание не только один символ, но также и историю нескольких предыдущих символов. 
 
 ```python
 for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_example[:10])):
@@ -1039,9 +1041,9 @@ _<small>➔ вывод:</small>_
 >   expected output: 25 ('k')
 > ```
 
-### Split up the dataset into batches
+### Разбитие набора данных на группы
 
-We have `~100k` recipes in the dataset, and each recipe has two tuples of `2000` characters.
+В наборе данных мы имеем около `~100000` рецептов каждый из которых имеет длину `2000` символов.
 
 ```python
 print(dataset_targeted)
@@ -1053,7 +1055,7 @@ _<small>➔ вывод:</small>_
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
 > ```
 
-Let's print constants values:
+Выведем параметры набора данных:
 
 ```python
 print('TOTAL_RECIPES_NUM: ', TOTAL_RECIPES_NUM)
@@ -1069,24 +1071,23 @@ _<small>➔ вывод:</small>_
 > VOCABULARY_SIZE:  176
 > ```
 
-If we will feed the complete dataset during the training process to the model and then will try to do a back-propagation for all examples at once we might run out of memory and each training epoch may take too long to execute. To avoid the situation like this we need to split our dataset into batches.
+Если во время тренировочного процесса мы передадим полный набор данных модели, а затем попробуем рассчитать [backpropagation](https://en.wikipedia.org/wiki/Backpropagation) для всех рецептов сразу, то у нас может закончиться память, и каждая тренировочная эпоха может занять слишком много времени. Чтобы избежать такой ситуации, нам нужно разделить наш набор данных на пакеты.
 
 ```python
 # Batch size.
 BATCH_SIZE = 64
 
-# Buffer size to shuffle the dataset (TF data is designed to work
-# with possibly infinite sequences, so it doesn't attempt to shuffle
-# the entire sequence in memory. Instead, it maintains a buffer in
-# which it shuffles elements).
+# Размер буфера для перемешивания данных.
+# Перемешать все 100000 рецептов может быть ресурсозатратно.
+# Поэтому можем перемешивать пачками по 1000 рецептов.
 SHUFFLE_BUFFER_SIZE = 1000
 
 dataset_train = dataset_targeted \
-  # Shuffling examples first.
+  # Вначале перемешиваем рецепты.
   .shuffle(SHUFFLE_BUFFER_SIZE) \
-  # Splitting examples on batches.
+  # Разбиваем на группы.
   .batch(BATCH_SIZE, drop_remainder=True) \
-  # Making a dataset to be repeatable (it will never ends). 
+  # Зацикливаем набор данных. 
   .repeat()
 
 print(dataset_train)
@@ -1098,7 +1099,7 @@ _<small>➔ вывод:</small>_
 > <RepeatDataset shapes: ((64, 2000), (64, 2000)), types: (tf.int32, tf.int32)>
 > ```
 
-From the line above you may notice that our dataset now consists of the same two tuples of `2000` characters but now they are grouped in the batches by `64`.
+Из вывода в консоль выше можно заметить, что теперь каждый экземпляр нашего набора данных состоит из все тех же двух tuples для входящей и целевой последовательностей, но теперь они сгруппированы в пачки по `64`.
 
 ```python
 for input_text, target_text in dataset_train.take(1):
@@ -1129,13 +1130,13 @@ _<small>➔ вывод:</small>_
 >  [  1  70   2 ... 165 165 165]], shape=(64, 2000), dtype=int32)
 > ```
 
-## Build the model
+## Создаем модель
 
-We will use [tf.keras.Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) to define the model. For this experiment we will use the following layer types:
+Возьмем [tf.keras.Sequential](https://www.tensorflow.org/api_docs/python/tf/keras/Sequential) модель за основу. В данном эксперименте мы будем использовать следующие слои:
 
-- [tf.keras.layers.Embedding](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding) - the input layer (a trainable lookup table that will map the numbers of each character to a vector with `embedding_dim` dimensions),
-- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - a type of RNN with size `units=rnn_units` (you can also use a [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU) layer here),
-- [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense) - the output layer, with `VOCABULARY_SIZE` outputs.
+- [tf.keras.layers.Embedding](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Embedding) - входной слой (обучаемая матрица, которая сопоставляет индекс каждого символа с вектором размера `embedding_dim`),
+- [tf.keras.layers.LSTM](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM) - слой LSTM, рекуррентная сеть (здесь также можно использовать слой [GRU](https://www.tensorflow.org/api_docs/python/tf/keras/layers/GRU)),
+- [tf.keras.layers.Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense) - выходной слой, с `VOCABULARY_SIZE` количеством выходов.
 
 ### Figuring out how the Embedding Layer works
 
