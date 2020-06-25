@@ -1541,7 +1541,7 @@ _<small>➔ вывод:</small>_
 > STEPS_PER_EPOCH:  1500
 > ```        
 
-Let's launch the training:
+Запускаем тренировку:
 
 ```python
 history = model.fit(
@@ -1560,7 +1560,7 @@ model_name = 'recipe_generation_rnn_raw.h5'
 model.save(model_name, save_format='h5')
 ```
 
-### Visualizing training progress
+### Визуализируем процесс тренировки
 
 ```python
 def render_training_history(training_history):
@@ -1581,15 +1581,15 @@ _<small>➔ вывод:</small>_
 
 ![Model training progress (first 10 epochs)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/05-training.png)
 
-ℹ️ _On the chart above only first 10 epochs are presented._
+ℹ️ _На графике сверху представлены только первые 10 шагов тренировки._
 
-We can see from the chart that model performance is getting better during the training. It means that the model learns to predict next characters in a way that the final sequence looks similar to some real recipe texts.
+Из диаграммы видно, что погрешность модели уменьшается во время обучения. Это означает, что модель учится предсказывать следующие символы таким образом, чтобы окончательная последовательность выглядит более и более похожей на реальные тексты рецептов.
 
-## Generating recipes
+## Генерируем рецепты
 
-### Restore the model from the latest checkpoint
+### Восстанавливаем модель из сохраненных контрольных точек
 
-To keep this prediction step simple, we will restore the saved model and rebuild it with a batch size of 1. Because of the way the RNN state is passed from time-step to time-step, the model only accepts a fixed batch size once built. To run the model with a different `batch_size`, we need to rebuild the model and restore the weights from the checkpoint.
+Для упрощения генерации рецептов, мы создадим нашу модель заново, но на этот раз с `batch_size` равным `1`. Это будет значит, что вместо группы из `64` последовательностей на входе мы будем ожидать всего одну последовательность. Эта последовательность представляет собой начало нового рецепта. Продолжение рецепта будет сгенерировано нейронной сетью.
 
 ```python
 tf.train.latest_checkpoint(checkpoint_dir)
@@ -1601,7 +1601,7 @@ _<small>➔ вывод:</small>_
 > 'tmp/checkpoints/ckpt_1'
 > ```
 
-Let's rebuild the model with batch size of `1` and load trained weights to it:
+Перестроим нашу модель с `batch_size` равным `1` и загрузим сохраненные в контрольных точках параметры модели, чтобы нам не пришлось тренировать ее заново:
 
 ```python
 simplified_batch_size = 1
@@ -1632,7 +1632,7 @@ _<small>➔ вывод:</small>_
 > _________________________________________________________________
 > ```
 
-Let's double check that input shape is simplified:
+Проверим, что на вход ожидается группа из одной последовательности (вместо 64-х):
 
 ```python
 model_simplified.input_shape
@@ -1644,7 +1644,7 @@ _<small>➔ вывод:</small>_
 > (1, None)
 > ```
 
-### The prediction loop
+### Петля прогнозирования
 
 To use our trained model for recipe generation we need to implement a so-called prediction loop. The following code block generates the text using the loop:
 
