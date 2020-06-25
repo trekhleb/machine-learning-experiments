@@ -1446,11 +1446,11 @@ _<small>➔ вывод:</small>_
 
 ### Оптимизатор и функция потерь
 
-We're going to use [tf.keras.optimizers.Adam](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam) optimizer with [tf.keras.losses.sparse_categorical_crossentropy()](https://www.tensorflow.org/api_docs/python/tf/keras/losses/sparse_categorical_crossentropy) loss function to train the model:
+В качестве оптимизатора возьмем [tf.keras.optimizers.Adam](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam), а для функции потерь воспользуемся функцией [tf.keras.losses.sparse_categorical_crossentropy()](https://www.tensorflow.org/api_docs/python/tf/keras/losses/sparse_categorical_crossentropy):
 
 ```python
-# An objective function.
-# The function is any callable with the signature scalar_loss = fn(y_true, y_pred).
+# Функция потерь.
+# Сигнатура: scalar_loss = fn(y_true, y_pred).
 def loss(labels, logits):
     entropy = tf.keras.losses.sparse_categorical_crossentropy(
       y_true=labels,
@@ -1475,7 +1475,7 @@ _<small>➔ вывод:</small>_
 > scalar_loss:         5.1618285
 > ```
 
-Let's finally compile the model:
+Компилируем модель:
 
 ```python
 adam_optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
@@ -1486,11 +1486,11 @@ model.compile(
 )
 ```
 
-### Configuring callbacks
+### Настраиваем коллбеки
 
-#### Early stopping callback
+#### Ранняя остановка
 
-For model training process we may configure a [tf.keras.callbacks.EarlyStopping](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping) callback. It will stop the training automatically in case if model is not improving for several epochs anymore:
+Во время тренировки модели мы можем воспользоваться коллбеком [tf.keras.callbacks.EarlyStopping](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/EarlyStopping). Он останавливает процесс тренировки автоматически, если показатели модели ухудшаются в течение определенного количества эпох:
 
 ```python
 early_stopping_callback = tf.keras.callbacks.EarlyStopping(
@@ -1501,9 +1501,9 @@ early_stopping_callback = tf.keras.callbacks.EarlyStopping(
 )
 ```
 
-#### Model checkpoints callback
+#### Контрольные точки
 
-Let's also configure a [tf.keras.callbacks.ModelCheckpoint](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint) checkpoint that will allow us to periodically save trained weights to the file so that we could restore the model from weights afterwards.
+Мы также можем настроить автоматическое сохранение параметров модели во время тренировки с помощью коллбека [tf.keras.callbacks.ModelCheckpoint](https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint). Это позволит нам в будущем восстановить модель из сохраненных контрольных точек без ее тренировки.
 
 ```python
 # Create a checkpoints directory.
@@ -1517,11 +1517,11 @@ checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
 )
 ```
 
-### Execute the training
+### Тренируем модель
 
-Let's train our model for `500` epochs with `1500` steps per each epoch. For each epoch step the batch of `64` recipes will be fetched and gradient descent will be executed for those `64` recipes of length `2000` step by step.
+Будем тренировать модель в течение `500` эпох с `1500` шагами на каждую эпоху. На каждом шагу, модель будет обучаться на группе из `64` рецептов. Градиентный спуск на каждом также будет выполнен для группы из `64` рецептов (каждый из которых состоит из `2000` символов). 
 
-If you're experimenting with training parameters it might make sense to reduce the number of epochs to, let's say `20` along with the number of steps per epoch and then see how the model performs under that conditions. If the model improves its performance you may add more data (steps and epochs) to the training process. It might save you some time while you adjust parameters.
+Если вы экспериментируете с тренировочными параметрами, то, возможно, имеет смысл уменьшить количество эпох до, скажем, `20` вместе с количеством шагов на эпоху, а затем посмотреть, как модель работает в этих условиях. Если модель улучшит свою производительность, вы можете добавить больше данных (шагов и эпох) в тренировочный процесс. Это может сэкономить время на настройку параметров модели.
 
 ```python
 EPOCHS = 500
