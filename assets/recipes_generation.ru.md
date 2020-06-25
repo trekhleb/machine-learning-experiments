@@ -737,9 +737,11 @@ _<small>➔ вывод:</small>_
 > [[51, 1, 28, 2, 9]]
 > ```
 
-## Vectorizing the dataset
+## Векторизация данных
 
-Now, once we have a vocabulary (`character --> code` and `code --> character` relations) we may convert the set of recipes from text to numbers (RNN works with numbers as an input and not with the texts).
+ℹ️ _Под векторизацией будем понимать преобразования данных (в нашем случае строк) в числовые векторы (в нашем случае в одномерный массив индексов)._
+
+Теперь, когда у нас есть словарь (зависимости `символ --> индекс` and `индекс --> символ`) мы можем конвертировать строки с рецептами в последовательности индексов (RNN на входе принимает числа, а не символы).
 
 ```python
 dataset_vectorized = tokenizer.texts_to_sequences(dataset_filtered)
@@ -753,7 +755,7 @@ _<small>➔ вывод:</small>_
 > Vectorized dataset size 100212
 > ```
 
-This is how the beginning of the first vectorized recipe looks like:
+Вот так выглядит начало векторизированного рецепта:
 
 ```python
 print(dataset_vectorized[0][:10], '...')
@@ -765,7 +767,7 @@ _<small>➔ вывод:</small>_
 > [51, 1, 33, 10, 5, 23, 1, 35, 5, 5] ...
 > ```
 
-Let's see how can we convert vectorized recipe back to text representation:
+Попробуем теперь конвертировать вектаризированный рецепт обратно в строку:
 
 ```python
 def recipe_sequence_to_string(recipe_sequence):
