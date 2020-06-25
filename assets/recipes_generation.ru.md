@@ -2058,13 +2058,13 @@ _<small>➔ вывод:</small>_
 
 ## Интерактивная демонстрация модели
 
-Вы можете воспользоватья 🎨 [**Cooking recipes generator demo**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser. 
+Вы можете воспользоваться 🎨 [**Генератором рецептов**](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) прямо в браузере и поэкспериментировать с входным текстом и температурой. 
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 
-## Things to improve
+## Планы по улучшению модели
 
-This out of scope for this article but model still has the following issues that need to be addressed:
+Это выходит за рамки данной статьи, но модель все еще имеет следующие нюансы, которые необходимо улучшить/решить:
 
-- We need to get rid of duplicates on the ingredients section.
-- Recipe sections (name, ingredients and cooking steps) are disconnected most of the time, meaning that we may see, let's say, `mushrooms` in the ingredients section, but they are not mentioned in the name of the recipe or in the cooking steps.
+- Необходимо избавиться от дубликатов в разделе "Ингредиенты".
+- Разделы рецептов (название, ингредиенты и этапы приготовления) в большинстве случаев не связаны, что означает, что мы можем увидеть, скажем, `mushrooms` в разделе ингредиентов, но они не упоминаются ни в названии рецепта, ни на этапах приготовления.
