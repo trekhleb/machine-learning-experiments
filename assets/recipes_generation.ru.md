@@ -1,4 +1,4 @@
-# Генерируем странные кулинарные рецепты с помощью TensorFlow и рекуррентной нейронной сети (пошаговая инструкция)
+# 🌮 Генерируем странные кулинарные рецепты с помощью TensorFlow и рекуррентной нейронной сети (пошаговая инструкция)
 
 ## TL;DR
 
@@ -148,7 +148,7 @@ print('Tensorflow version:', tf.__version__)
 print('Keras version:', tf.keras.__version__)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Python version: 3.7.6
@@ -186,7 +186,7 @@ print(dataset_file_path)
 
 Вот так выглядит путь к загруженным данным:
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > ./tmp/datasets/recipes_raw.zip
@@ -198,7 +198,7 @@ _<small>➔ вывод:</small>_
 !ls -la ./tmp/datasets/
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > total 521128
@@ -254,7 +254,7 @@ def load_dataset(silent=False):
 dataset_raw = load_dataset() 
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > ./tmp/datasets/recipes_raw_nosource_ar.json
@@ -325,7 +325,7 @@ _<small>➔ вывод:</small>_
 print('Total number of raw examples: ', len(dataset_raw))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Total number of raw examples:  125164
@@ -364,7 +364,7 @@ print('Dataset size AFTER validation', len(dataset_validated))
 print('Number of incomplete recipes', len(dataset_raw) - len(dataset_validated))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Dataset size BEFORE validation 125164
@@ -422,7 +422,7 @@ dataset_stringified = [recipe_to_string(recipe) for recipe in dataset_validated]
 print('Stringified dataset size: ', len(dataset_stringified))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Stringified dataset size:  122938
@@ -437,7 +437,7 @@ for recipe_index, recipe_string in enumerate(dataset_stringified[:3]):
     print('\n')
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Recipe #1
@@ -508,7 +508,7 @@ _<small>➔ вывод:</small>_
 print(dataset_stringified[50000])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 📗 Herbed Bean Ragoût 
@@ -555,7 +555,7 @@ plt.hist(recipes_lengths, bins=50)
 plt.show()
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 ![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/02-recipes-length.png)
 
@@ -566,7 +566,7 @@ plt.hist(recipes_lengths, range=(0, 8000), bins=50)
 plt.show()
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 ![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
 
@@ -589,7 +589,7 @@ print('Dataset size AFTER filtering: ', len(dataset_filtered))
 print('Number of eliminated recipes: ', len(dataset_stringified) - len(dataset_filtered))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Dataset size BEFORE filtering:  122938
@@ -609,7 +609,7 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('TOTAL_RECIPES_NUM: ', TOTAL_RECIPES_NUM)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > MAX_RECIPE_LENGTH:  2000
@@ -648,7 +648,7 @@ tokenizer.fit_on_texts(dataset_filtered)
 tokenizer.get_config()
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > {'num_words': None,
@@ -678,7 +678,7 @@ VOCABULARY_SIZE = len(tokenizer.word_counts) + 1
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > VOCABULARY_SIZE:  176
@@ -691,7 +691,7 @@ print(tokenizer.index_word[5])
 print(tokenizer.index_word[20])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > o
@@ -704,7 +704,7 @@ _<small>➔ вывод:</small>_
 tokenizer.word_index['r']
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 8
@@ -717,7 +717,7 @@ array_vocabulary = tokenizer.sequences_to_texts([[word_index] for word_index in 
 print([char for char in array_vocabulary])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > ['', ' ', 'e', 'a', 't', 'o', 'n', 'i', 'r', 's', 'l', 'd', 'h', 'c', 'u', 'p', '\n', 'm', 'g', 'b', ',', '.', 'f', 'w', '•', 'k', '1', 'v', 'y', '2', '/', '▪', '︎', 'S', '4', 'C', '-', '3', 'x', 'P', '5', '0', '(', ')', 'A', 'B', 'z', 'j', 'F', 'T', 'R', '📗', '🥕', '📝', 'I', 'M', ';', 'q', 'D', 'W', '8', 'G', '6', 'L', 'H', ':', '7', 'O', "'", 'E', 'K', '9', 'U', 'N', 'V', 'J', '®', '°', 'é', '"', 'Y', 'Q', '*', '!', 'Z', '–', '&', '%', 'ñ', 'è', '™', 'î', 'X', '?', '¿', '—', 'ç', '#', '½', 'í', '=', '’', 'â', '©', '¼', '+', '>', '$', '<', 'á', 'ó', 'ú', 'ï', 'É', 'û', ']', '[', 'ü', 'ê', 'à', '_', '\xad', '¾', '‚', '�', 'º', '⁄', 'ä', 'Ú', 'ù', '́', '}', 'ö', '{', 'ì', 'ô', '\x96', '”', '×', '˚', '»', '@', '§', '\\', '◊', '‱', '“', '‧', '\u202d', '⅛', 'å', 'ﬂ', '`', 'Á', 'ë', '\x97', '\x1a', 'ø', '⅓', '|', 'ư', '\x92', '´', '‒', 'Â', '␣', '¤', '‟', '\xa0', 'ơ', 'ă', '̀', '⅞', '€', '~', '\x95']
@@ -731,7 +731,7 @@ _<small>➔ вывод:</small>_
 tokenizer.texts_to_sequences(['📗 yes'])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > [[51, 1, 28, 2, 9]]
@@ -749,7 +749,7 @@ dataset_vectorized = tokenizer.texts_to_sequences(dataset_filtered)
 print('Vectorized dataset size', len(dataset_vectorized))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Vectorized dataset size 100212
@@ -761,7 +761,7 @@ _<small>➔ вывод:</small>_
 print(dataset_vectorized[0][:10], '...')
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > [51, 1, 33, 10, 5, 23, 1, 35, 5, 5] ...
@@ -777,7 +777,7 @@ def recipe_sequence_to_string(recipe_sequence):
 recipe_sequence_to_string(dataset_vectorized[0])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 📗 Slow Cooker Chicken and Dumplings
@@ -809,7 +809,7 @@ for recipe_index, recipe in enumerate(dataset_vectorized[:10]):
     print('Recipe #{} length: {}'.format(recipe_index + 1, len(recipe)))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Recipe #1 length: 546
@@ -851,7 +851,7 @@ for recipe_index, recipe in enumerate(dataset_vectorized_padded[:10]):
     print('Recipe #{} length: {}'.format(recipe_index, len(recipe)))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Recipe #0 length: 2001
@@ -876,7 +876,7 @@ _<small>➔ вывод:</small>_
 recipe_sequence_to_string(dataset_vectorized_padded[0])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 📗 Slow Cooker Chicken and Dumplings
@@ -908,7 +908,7 @@ dataset = tf.data.Dataset.from_tensor_slices(dataset_vectorized_padded)
 print(dataset)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > <TensorSliceDataset shapes: (2001,), types: tf.int32>
@@ -923,7 +923,7 @@ for recipe in dataset.take(1):
     recipe_sequence_to_string(recipe.numpy())
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Raw recipe:
@@ -966,7 +966,7 @@ dataset_targeted = dataset.map(split_input_target)
 print(dataset_targeted)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
@@ -987,7 +987,7 @@ for input_example, target_example in dataset_targeted.take(1):
     print('Target: ', repr(''.join(target_stringified)))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Input sequence size: 2000
@@ -1006,7 +1006,7 @@ for i, (input_idx, target_idx) in enumerate(zip(input_example[:10], target_examp
     print('  expected output: {} ({:s})'.format(target_idx, repr(tokenizer.sequences_to_texts([[target_idx.numpy()]])[0])))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Step  1
@@ -1049,7 +1049,7 @@ _<small>➔ вывод:</small>_
 print(dataset_targeted)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > <MapDataset shapes: ((2000,), (2000,)), types: (tf.int32, tf.int32)>
@@ -1063,7 +1063,7 @@ print('MAX_RECIPE_LENGTH: ', MAX_RECIPE_LENGTH)
 print('VOCABULARY_SIZE: ', VOCABULARY_SIZE)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > TOTAL_RECIPES_NUM:  100212
@@ -1093,7 +1093,7 @@ dataset_train = dataset_targeted \
 print(dataset_train)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > <RepeatDataset shapes: ((64, 2000), (64, 2000)), types: (tf.int32, tf.int32)>
@@ -1108,7 +1108,7 @@ for input_text, target_text in dataset_train.take(1):
     print('1st batch: target_text:', target_text)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 1st batch: input_text: tf.Tensor(
@@ -1174,7 +1174,7 @@ print('tmp_output_array:')
 print(tmp_output_array)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > tmp_input_array shape: (2, 8)
@@ -1240,7 +1240,7 @@ model = build_model(
 model.summary()
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Model: "sequential_13"
@@ -1270,7 +1270,7 @@ tf.keras.utils.plot_model(
 )
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 ![Model architecture](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/04-model.png)
 
@@ -1292,7 +1292,7 @@ for input_example_batch, target_example_batch in dataset_train.take(1):
     print(example_batch_predictions.shape, "# (batch_size, sequence_length, vocab_size)")
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > (64, 2000, 176) # (batch_size, sequence_length, vocab_size)
@@ -1305,7 +1305,7 @@ print('Prediction for the 1st letter of the batch 1st sequense:')
 print(example_batch_predictions[0, 0])
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Prediction for the 1st letter of the batch 1st sequense:
@@ -1377,7 +1377,7 @@ tmp_samples = tf.random.categorical(
 print(tmp_samples)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > tf.Tensor([[2 1 2 2 1]], shape=(1, 5), dtype=int64)
@@ -1399,7 +1399,7 @@ sampled_indices = tf.squeeze(
 sampled_indices.shape
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > (2000,)
@@ -1411,7 +1411,7 @@ _<small>➔ вывод:</small>_
 sampled_indices[:100]
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > array([ 64,  21,  91, 126, 170,  42, 146,  54, 125, 164,  60, 171,   9,
@@ -1432,7 +1432,7 @@ print()
 print('Next char prediction:\n', repr(''.join(tokenizer.sequences_to_texts([sampled_indices[:50]]))))
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Input:
@@ -1467,7 +1467,7 @@ print("scalar_loss.shape:      ", example_batch_loss.shape)
 print("scalar_loss:      ", example_batch_loss.numpy().mean())
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```
 > Prediction shape:    (64, 2000, 176)  # (batch_size, sequence_length, vocab_size)
@@ -1533,7 +1533,7 @@ print('INITIAL_EPOCH:   ', INITIAL_EPOCH)
 print('STEPS_PER_EPOCH: ', STEPS_PER_EPOCH)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
         
 > ```text
 > EPOCHS:           500
@@ -1577,7 +1577,7 @@ def render_training_history(training_history):
 render_training_history(history)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 ![Model training progress (first 10 epochs)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/05-training.png)
 
@@ -1595,7 +1595,7 @@ _<small>➔ вывод:</small>_
 tf.train.latest_checkpoint(checkpoint_dir)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > 'tmp/checkpoints/ckpt_1'
@@ -1613,7 +1613,7 @@ model_simplified.build(tf.TensorShape([simplified_batch_size, None]))
 model_simplified.summary()
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Model: "sequential_6"
@@ -1638,7 +1638,7 @@ _<small>➔ вывод:</small>_
 model_simplified.input_shape
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > (1, None)
@@ -1726,7 +1726,7 @@ def generate_combinations(model):
 generate_combinations(model_simplified)
 ```
 
-_<small>➔ вывод:</small>_ 
+_➔ вывод:_ 
 
 > ```text
 > Attempt: "A" + 1.0
