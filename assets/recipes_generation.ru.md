@@ -1282,9 +1282,9 @@ _<small>➔ вывод:</small>_
 
 Изображение выше иллюстрирует случай с сетью GRU, но оно также справедливо и для случая с LSTM.
 
-## Trying the model before training
+## Тестируем интерфейс модели перед тренировкой
 
-Let's play around with un-trained model to see its interface (what input do we need and what output will we have) and let's see what model predicts before the training:
+Протестируем как работает _необученная_ модель и посмотрим, что она предсказывает перед тренировкой:
 
 ```python
 for input_example_batch, target_example_batch in dataset_train.take(1):
@@ -1298,7 +1298,7 @@ _<small>➔ вывод:</small>_
 > (64, 2000, 176) # (batch_size, sequence_length, vocab_size)
 > ```
 
-To get actual predictions from the model we need to sample from the output distribution, to get actual character indices. This distribution is defined by the logits over the character vocabulary.
+Для того, чтобы выбрать символ, который по мнению модели должен идти следующим нам необходимо сделать sampling по вероятностям появления каждого символа.
 
 ```python
 print('Prediction for the 1st letter of the batch 1st sequense:')
