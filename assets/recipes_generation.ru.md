@@ -1356,23 +1356,19 @@ _<small>➔ вывод:</small>_
 >   1.8154597e-03  4.7434499e-03  1.7146189e-03  1.1544267e-03], shape=(176,), dtype=float32)
 > ```
 
-For each input character the `example_batch_predictions` array contains a vector of probabilities of what the next character might be. If probability at position `15` in that vector is, lets say, `0.3` and the probability at position `25` is `1.1` it means that we should better pick the character with the index `25` as next following character.
+Для каждого символа на входе модели массив `example_batch_predictions` содержит вектор (массив) вероятностей того, какой символ может быть следующим. Если вероятность в позиции `15` этого вектора, пускай, равна `0.3`, а вероятность в позиции `25` равна `1.1` это означает, что стоит выбрать символ с индексом `25` в качестве прогнозируемого (следующего).
 
-Since we want our network to generate different recipes (even for the same input), we can't just pick the maximum probability value. In this case we will end up with the same recipe being predicted by the network over and over again. What we will do instead is drawing **samples** from predictions (like the one printed above) by using [tf.random.categorical()](https://www.tensorflow.org/api_docs/python/tf/random/categorical) function. It will bring some fuzziness to the network. For example, let's say we have character `H` as an input, then, by sampling from categorical distribution, our network may predict not only the word `He`, but also words `Hello`, and `Hi` etc.
+Поскольку мы хотим, чтобы наша модель генерировала разные рецепты (даже при условии одинаковых входных данных), мы не можем всегда выбирать символ с максимальной вероятностью в качестве следующего. Если бы выбирали следующий символ по критерию его максимальной вероятности, то наша модель генерировала бы один и тот же рецепт снова и снова (при одинаковых входных данных). Вместо этого, мы можем попробовать **sampling** по вероятностям с помощью функции [tf.random.categorical()](https://www.tensorflow.org/api_docs/python/tf/random/categorical). Это привнесет своего рода "случайность" или "импровизацию" в предсказания модели. Например, допустим, мы имеем в качестве входа символ `H`. После семплинга, наша сеть может предсказать не только слово `He`, но и слова `Hello`, `Hi` и т.п.
 
-### Understanding how `tf.random.categorical` works
+### Разбираемся, как работает функция `tf.random.categorical()`
+
+Одним из параметров функции `tf.random.categorical()` является `logits`. Логиты - это матрица размерностью `[batch_size, num_classes]`. Каждый ряд этой матрицы `[i, :]` представляет собой вероятности для каждого класса (в нашем случае дла каждого символа из словаря). В примере ниже вероятность для класса с индексом `0` низкая, но вероятность для класса с индексом `2` - выше. Теперь, предположим, что мы хотим сделать семплинг по этим вероятностям и сгенерировать, пускай, `5` следующих предсказаний. В таком случае вероятности появления каждого класса будут учтены функцией `tf.random.categorical()` и она выдаст нам тензор с 5-ю индексами классов. Мы ожидаем, что класс с индексом `2` будет встречаться чаще остальных.
 
 ```python
-# logits is 2-D Tensor with shape [batch_size, num_classes].
-# Each slice [i, :] represents the unnormalized log-probabilities for all classes.
-# In the example below we say that the probability for class "0"
-# (element with index 0) is low but the probability for class "2" is much higher.
 tmp_logits = [
   [-0.95, 0, 0.95],
 ];
 
-# Let's generate 5 samples. Each sample is a class index. Class probabilities 
-# are being taken into account (we expect to see more samples of class "2").
 tmp_samples = tf.random.categorical(
     logits=tmp_logits,
     num_samples=5
@@ -1387,7 +1383,7 @@ _<small>➔ вывод:</small>_
 > tf.Tensor([[2 1 2 2 1]], shape=(1, 5), dtype=int64)
 > ```
 
-### Sampling from LSTM predictions
+### Сэмплинг по предсказаниям LSTM модели
 
 ```python
 sampled_indices = tf.random.categorical(
@@ -1409,7 +1405,7 @@ _<small>➔ вывод:</small>_
 > (2000,)
 > ```
 
-Let's see some sampled predictions for the first `100` chars of the recipe:
+Посмотрим, что модель предсказывает для первых `100` символов рецепта:
 
 ```python
 sampled_indices[:100]
@@ -1428,7 +1424,7 @@ _<small>➔ вывод:</small>_
 >        160, 158, 119, 173,  50,  78,  45, 121, 118])
 > ```
 
-We may see now what our untrained model actually predicts:
+После трансформации предсказанных индексов в символы мы можем увидеть, как еще _необученная_ модель генерирует рецепты:
 
 ```python
 print('Input:\n', repr(''.join(tokenizer.sequences_to_texts([input_example_batch[0].numpy()[:50]]))))
@@ -1446,13 +1442,9 @@ _<small>➔ вывод:</small>_
 >  'H . î ⁄ ă ( “ I º Â 8 ̀ s % ù y “ © 0 ’ ‧ a ì ̀ r ă + o A € o + m × ␣ ︎ ñ ç ‱ ! S : ⅞ ´ r 2 ‧ D Q Á'
 > ```
 
-As you may see, the model suggests some meaningless predictions, but this is because it wasn't trained yet.
+## Тренируем модель
 
-## Training the model
-
-We want to train our model to generate recipes as similar to the real ones as possible. We will use all data from dataset for training. There is not need to extract test or validation sub-sets in this case. 
-
-### Attach an optimizer, and a loss function
+### Оптимизатор и функция потерь
 
 We're going to use [tf.keras.optimizers.Adam](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam) optimizer with [tf.keras.losses.sparse_categorical_crossentropy()](https://www.tensorflow.org/api_docs/python/tf/keras/losses/sparse_categorical_crossentropy) loss function to train the model:
 
