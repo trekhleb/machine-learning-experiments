@@ -601,3 +601,7 @@ In case if you have Python version `3.7.3` you might experience `RuntimeError: d
 
 - 📝 [Story behind the project](https://github.com/trekhleb/machine-learning-experiments/blob/master/assets/story.en.md)
 - 📝 [Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network](https://github.com/trekhleb/machine-learning-experiments/blob/master/assets/recipes_generation.en.md) (a step-by-step guide)
+
+## Supporting the project
+
+You may support this project via ❤️️ [GitHub](https://github.com/sponsors/trekhleb) or ❤️️ [Patreon](https://www.patreon.com/trekhleb).
