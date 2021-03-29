@@ -11,7 +11,7 @@ numpy==1.16.4
 opt-einsum==3.1.0
 prompt-toolkit==1.0.14
 protobuf==3.11.1
-Pygments==2.5.2
+Pygments==2.7.4
 PyInquirer==1.0.3
 regex==2019.12.19
 six==1.11.0
