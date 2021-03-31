@@ -42,7 +42,7 @@ jupyter-nbextensions-configurator==0.4.1
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 kiwisolver==1.1.0
-lxml==4.4.2
+lxml==4.6.3
 Markdown==3.1.1
 MarkupSafe==1.1.1
 matplotlib==3.1.2
