@@ -3,11 +3,11 @@ import React from 'react';
 import type { Node } from 'react';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import BugReportIcon from '@material-ui/icons/BugReport';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { ML_EXPERIMENTS_GITHUB_URL, ML_EXPERIMENTS_GITHUB_ISSUES_URL } from '../../constants/links';
+import { ML_EXPERIMENTS_GITHUB_URL, TREKHLEB_DEV_URL } from '../../constants/links';
 
 const Footer = (): Node => (
   <>
@@ -25,13 +25,13 @@ const Footer = (): Node => (
       </Box>
 
       <Box>
-        <Tooltip title="Create an issue on GitHub">
+        <Tooltip title="More articles about machine learning and web development">
           <Button
             size="small"
-            startIcon={<BugReportIcon />}
-            onClick={() => window.open(ML_EXPERIMENTS_GITHUB_ISSUES_URL, '_blank')}
+            startIcon={<MenuBookIcon />}
+            onClick={() => window.open(TREKHLEB_DEV_URL, '_blank')}
           >
-            Report an issue
+            trekhleb.dev
           </Button>
         </Tooltip>
       </Box>
