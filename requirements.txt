@@ -69,7 +69,7 @@ ptyprocess==0.6.0
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
 pydot==1.4.1
-Pygments==2.4.2
+Pygments==2.7.4
 pyparsing==2.4.5
 pyrsistent==0.15.5
 python-dateutil==2.8.1
