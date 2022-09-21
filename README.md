@@ -1,11 +1,16 @@
 # 🤖 Interactive Machine Learning Experiments
 
+> 🇺🇦 UKRAINE [IS BEING ATTACKED](https://war.ukraine.ua/) BY RUSSIAN ARMY. CIVILIANS ARE GETTING KILLED. RESIDENTIAL AREAS ARE GETTING BOMBED.
+> - Help Ukraine via [National Bank of Ukraine](https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi)
+> - Help Ukraine via [SaveLife](https://savelife.in.ua/en/donate-en/) fund
+> - More info on [war.ukraine.ua](https://war.ukraine.ua/) and [MFA of Ukraine](https://twitter.com/MFA_Ukraine)
+
+<hr/>
+
 This is a collection of interactive machine-learning experiments. Each experiment consists of 🏋️ Jupyter/Colab _notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser).
 
 - 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments/)
 - 🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
-
-<hr/>
 
 > ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets. Models might not perform well and there is a place for overfitting/underfitting.
 
