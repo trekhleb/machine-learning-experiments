@@ -13,6 +13,8 @@ This is a collection of interactive machine-learning experiments. Each experimen
 
 - 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments/)
 - 🏋️ [Launch ML experiments Jupyter notebooks](https://nbviewer.jupyter.org/github/trekhleb/machine-learning-experiments/tree/master/experiments/)
+  
+> _You might also be interested in [Homemade GPT • JS](https://github.com/trekhleb/homemade-gpt-js)_ 
 
 > ⚠️ This repository contains machine learning **experiments** and **not** a production ready, reusable, optimised and fine-tuned code and models. This is rather a sandbox or a playground for learning and trying different machine learning approaches, algorithms and data-sets. Models might not perform well and there is a place for overfitting/underfitting.
 
