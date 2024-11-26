@@ -1301,14 +1301,14 @@ _➔ вывод:_
 Для того, чтобы выбрать символ, который по мнению модели должен идти следующим нам необходимо сделать sampling по вероятностям появления каждого символа.
 
 ```python
-print('Prediction for the 1st letter of the batch 1st sequense:')
+print('Prediction for the 1st letter of the batch 1st sequence:')
 print(example_batch_predictions[0, 0])
 ```
 
 _➔ вывод:_ 
 
 > ```text
-> Prediction for the 1st letter of the batch 1st sequense:
+> Prediction for the 1st letter of the batch 1st sequence:
 > tf.Tensor(
 > [-9.0643829e-03 -1.9503604e-03  9.3381782e-04  3.7442446e-03
 >  -2.0541784e-03 -7.4054599e-03 -7.1884273e-03  2.6014952e-03
